@@ -1,0 +1,134 @@
+title: The interface problem
+slug: 2026-03-01-the-interface-problem
+date: 2026-03-01
+author: Adam Schaefers
+body: |
+      ### The problem we have interfacing with computers, and why LLMs are not the solution.
+
+      The CPU must be spoken to in a language it understands, that is represented in binary. Hence we have executable files, called binaries, that are computer programs compiled down to cpu-native computer language.
+
+      And so it follows that we use higher level intermediary computer programming languages, such as C, to interface with the CPU, where then we run our human-readable (yet precise) code through a compiler to produce the executable binary for the CPU.
+
+      C ironically used to be considered a high-level programming language, but now is often considered "low-level" because we have languages with syntaxes that are even easier to read, such as Python. Python, moreover, does not require an ahead-of-time compiler to generate a native executable, but instead provides a bundled interpreter, which compiles Python code into bytecode and executes it via a virtual machine, while also handling more complex subjects like memory management.
+
+      When given the same implementation, same version, same configuration, and same environment In the case of the interpreter or of the compiler, both produce the same result, every single time when presented with well-defined code in the programming language.
+
+      ### Hello, -name- (in C)
+
+      Here is a small program in C that when compiled and executed, prints "Hello, Adam!"
+
+      ```
+      #include <stdio.h>
+      #include <stdlib.h>
+      #include <string.h>
+
+      int main(void)
+      {
+          char *name;
+          char *msg;
+          size_t n;
+
+          name = "Adam";
+
+          /* "Hello, " + name + "!" + '\0' */
+          n = strlen("Hello, ") + strlen(name) + strlen("!") + 1;
+
+          msg = (char *)malloc(n);
+          if (msg == NULL)
+              return 1;
+
+          sprintf(msg, "Hello, %s!", name);
+          puts(msg);
+
+          free(msg);
+          return 0;
+       }
+       ```
+
+       ### Hello, -name- (in Python)
+
+       Here is a small program in Python that when interpreted, also prints "Hello, Adam!"
+
+       ```
+       #!/bin/python3
+
+       name = "Adam"
+       msg = f"Hello, {name}!"
+       print(msg)
+       ```
+
+       It is notable that the Python version, being higher level than the already high-level C language, immediately takes a performance hit. The code executes much slower, as it must be translated by the interpreter and all of the extra stuff that a Python program must do as discussed in paragraph 3 above.
+
+       It is also notable that the Python version is much easier to read and accessible to more humans by default, with less training required to get started and programming. For this reason, Python is often recommended as a great first programming language choice for a learner.
+
+       It is finally notable that ultimately, both programming languages are well defined, and their programs above are well defined, such that they both do the same exact thing, every single time.
+
+       ### Hello, -name- (in ChatGPT)
+
+       Here is a small LLM program in English that prints "Hello, Adam!", but oddly refuses to print "hello, Adam!" or "hello, adam!"
+
+       <img loading="lazy" width="75%" src="/images/Screenshot_20260301_020405.webp">
+
+       The result as shown, is only 1/3 responses from ChatGPT were technically correct with the precision I was looking for. The ambiguity of English is such that, I presume the bot assumed I wanted correct capitalization grammar, but how can it know for certain without guessing?
+
+       And this really boils down to show what it is: AI large language models as we currently implement them are such that they are probability based guessing machines, lacking consciousness, intent, will, true understanding or rationality.
+
+       ### English: Too high level (There and back again)
+
+       And now one might argue, **"well you did not train the AI that you wanted it to reply literally including grammar mistakes."** But, this is missing the point! This is but only one case. This is only one person. What if John has other requirements, and what if Jan still yet more? How ever will it precisely behave, consistently, and certainly, in a way that can be counted on reliably, without ambiguity, if it is only to interface with me or John or Jan using mere English? Do not humans even misunderstand and have communication break-downs among one another? Yes, of course, but surely this is not the most effective way to command computers? And surely this is a technology that would be unwise to send in to space, or to connect to the nuclear red button!
+
+       Well, okay then. Perhaps we need to go from English back towards a real computer programming language, which then we can feed to the AI such that it understands precisely what we intend to build. **But, now this begs the question, are we not going back again towards python, and away from the revolutionary guessing machine, such that, the more precision our projects require, the lower level our programming language needs to get to? And so we no longer now need the LLM.**
+
+       The LLM it turned out, is insufficient in itself in understanding the complexity of a human as projects gain enough complexity that description in English alone becomes "open to interpretation." It is the generally reported by the most advanced computer programmers who have tested LLM code generation deeply, that the more complex the project became, the harder it was for the human to describe his inspiration of the project to the AI in a way that the AI could understand; meanwhile, the AI seems to give an illusion of understanding us, while consistently delivering results that did not match our initial inspiration. It seems, there is a communication break-down.
+
+       ### "Open to interpretation." (Present the following J.R.R. Tolkien description to 5 different painters)
+
+       > In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to eat: it was a hobbit-hole, and that means comfort"
+
+       The English is such that we all know what it means, but we imagine it differently as humans. The painters, undoubtedly, each would apply their own style, color accents and more each with their own take of the scene.
+
+       And this is all fine, so far, and I am sure we would have 5 very nice paintings, but none of this is how we intend to program a computer. English and other native tongues are just simply not built to command computers accurately by themselves. They are the evolutionary language of anthropology, and perhaps the inspiration to painters, but they are not the driver of computer science.
+
+       ### Enter Chomsky
+
+       > "The most striking aspect of linguistic competence is what we may call the ‘creativity of language,’ that is, the speaker’s ability to produce new sentences… sentences that are immediately understood even though they bear no physical resemblance to familiar ones." - Chomsky, in Selected Readings on Transformational Theory (2012).
+
+       Noam Chomsky the greatest linguist of our time, says of humans, that we have the unique ability create language as we need it, unlike animals. And so it must follow that this is why we created computer programming languages. Programming languages are useful to communicate with the machines we have also created. It's all pretty neat, really.
+
+       ### Case Study: LSP (Language Server Protocol) and auto-completion
+
+       A new programmer sets out to code. He learns of auto-completion, he sees an advanced coder on youtube with a fancy editor that offers to complete what it statistically thinks is probably the most likely thing to complete. Various methods of inserting code snippets, boiler plate, function definitions, references and so forth, the person only need type partial code, hit *TAB* and poof, the wizard is typing code, oh so fast! And we had this prediction technology long before LLMs, and we have such that they are tied to our interpreters, compilers etc. in such a way that the predictions are typically pretty decent and helpful for the coder. The coder presses less keys, while still maintaining precision and completing to the screen only exactly the code he wishes to be there, refined precision: both speed and accuracy.
+
+       It would have been thought, and it has been thought by many, "OH MAN, this is going to make me a 10x developer! I'm now a super chad with my fancy auto complete." Only to realize later, when super chad begins to write his program, that it still takes him all day, that he is a slightly faster typer, but when he is programming, he is usually not typing at all! He, now being self aware, realizes that he spends most of his time planning, thinking, analyzing, and troubleshooting - alas, he often finds himself setting out to code before he fully knows what his code should even look like! - and he does all of this 10x more than he does typing in any new code at all! And so what he thought would be 1000% gains are perhaps only 10% gains.
+
+       **This is because the bottle-neck, all along, was not typing speed, but was interface to the CPU.** If only the CPU could understand the program that I am trying to translate to it from my brain, in C or in Python! But then I would have to use a real programming language, not English.
+
+       ### And that there, is the problem.
+
+       `How do I get the e.g. Python code out of my brain and on to the hard drive of this computer, in the most efficient way humanly possible?`
+
+       While the guessing machine that is LLM can of sometimes be of use for projects that may not require precision, for projects that are simple to describe and common such as "boiler plate", it is also a liability by its very nature, and cannot be counted upon for reasons already discussed in this article. Like the naive coder who hoped his auto complete would give him 1000% gains, we find in a coding project of any substantial depth the usefulness of the tool diminishes - as clarity decreases, while ambiguity increases, precision is lost. And this is because, **LLMs do not solve the real problem: the human computer interface.**
+
+       ### Brain implants and the cyborg dystopia
+
+       Perhaps, as a next step, we will begin to research how to grant LLMs access to read our brains, as translating agents between CPUs and the human mind? It seems to me, that this is the logical next step, to be paired with brain cybernetics that perhaps could increase our human cognitive context size, if we intend to seriously use LLM technology for advanced computer programming.
+
+       But something tells me, that when humans go down this dystopian path, they will end up serving the AIs as their master, and not vice-versa, all the while thinking they are in the drivers seat.
+
+       The whole idea, is cursed.
+
+       ### Back to the future
+
+       In summary, LLMs are useful at predicting small things statistically that humans do in rote, such as boiler code. They are useful when programs are small and predictable and when high degrees of precision are not required. Unlike a proper programming language, an LLM interfaced via English or similar is not guaranteed to give the same outputs when given the same inputs. Thus they are prone to error and not guaranteed to improve developer productivity by more than ~10%. Unless perhaps the developer was only ever doing trivial things that did not require precision to begin with.
+
+       As such, I do not expect LLMs to be taking many jobs, except maybe the people just described. Recommendation for path forward: gain hard skills and grow in deep expertise in your niche area. Avoid being a jack of all tradesman. At best, it is a tool that some developers may use with caution. At worst, it is going to be a tool that developers will use instead of expertise, resulting in a tech-debt situation, where the team does not understand the code - works for now, problems later.
+
+       <iframe
+      width="315"
+      height="560"
+      src="https://www.youtube.com/embed/qLVCEYaN59A"
+      title="YouTube Shorts video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+      </iframe>
