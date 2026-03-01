@@ -14,11 +14,9 @@
 
 hr {
     height: 4px;
-    /* width: 25%; */
-    margin: 1rem auto; /* centers it */
+    margin: 1rem auto;
     background-color: var(--bs-border-color);
     border: none;
-    /* margin: 1rem 0; */
 }
 
 body {
@@ -74,19 +72,6 @@ pre.fancy, code.fancy {
 
 blockquote {
     border-left: 2px solid var(--bs-link-color);
-
-    /* /\* experimental full-box section *\/ */
-    /* border-right: 2px solid var(--bs-link-color); */
-    /* border-top: 2px solid var(--bs-link-color); */
-    /* border-bottom: 2px solid var(--bs-link-color); */
-    /* padding-right: 1em; */
-    /* padding-top: 1em; */
-    /* padding-bottom: 1em; */
-    /* margin-right: 0; */
-    /* margin-top: 0; */
-    /* margin-bottom: 0; */
-    /* /\* /end experimental *\/ */
-
     padding-left: 1em;
     margin-left: 0;
     font-style: italic;
@@ -104,12 +89,10 @@ body {
     padding: 1rem;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    /* hyphens: auto; */
 }
 
 nav {
     font-size: 17px;
-    /* font-weight: 600; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
