@@ -136,6 +136,7 @@ function load() {
             });
 
             const body = `
+            <p><a href="/rss.xml">rss</a></p>
             <hr>
             <p>${yearNav}</p>
 

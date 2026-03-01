@@ -4,7 +4,7 @@ set -e
 
 make build
 
-git add pages.json news.json
+git add pages.json news.json sitemap.xml rss.xml
 
 echo "Pre-commit hook completed successfully"
 
