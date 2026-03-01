@@ -1,4 +1,4 @@
-title: The Problem of the Human-Computer Interface
+title: The Problem of the Human-Computer Interface and Why LLMs are not the Solution
 slug: 2026-03-01-the-interface-problem
 date: 2026-03-01
 author: Adam Schaefers
@@ -105,7 +105,7 @@ body: |
 
        ### And that there, is the problem.
 
-       `How do I get the e.g. Python code out of my brain and on to the hard drive of this computer, in the most efficient way humanly possible?`
+       How do I get the e.g. Python code out of my brain and on to the hard drive of this computer, in the most efficient way humanly possible?
 
        While the guessing machine that is LLM can of sometimes be of use for projects that may not require precision, for projects that are simple to describe and common such as "boiler plate", it is also a liability by its very nature, and cannot be counted upon for reasons already discussed in this article. Like the naive coder who hoped his auto complete would give him 1000% gains, we find in a coding project of any substantial depth the usefulness of the tool diminishes - as clarity decreases, while ambiguity increases, precision is lost. And this is because, **LLMs do not solve the real problem: the human computer interface.**
 
