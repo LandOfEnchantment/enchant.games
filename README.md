@@ -1,9 +1,13 @@
+A static website with headless backend decoupling
+
 ## Structure
 
-- `pages/`               — site pages, YAML+markdown
-- `news/`                — news articles, YAML+markdown
-- `js/content-loader.js` - browser-side YAML+markdown headless backend
-- `js/render.js`         - headless frontend
+- `pages/`               - site pages, YAML files with markdown
+- `news/`                - news articles, YAML files with markdown
+- `js/content-loader.js` - YAML+markdown processor / simulated headless backend / technically frontend
+- `js/render.js`         - SPA shell / client-side router / frontend renderer
+- `pages.json`           - page manifest
+- `news.json`            - news manifest
 
 ## Usage
 
