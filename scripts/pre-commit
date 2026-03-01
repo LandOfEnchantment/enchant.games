@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+make build
+
+git add pages.json news.json
+
+echo "Pre-commit hook completed successfully"
+
+exit 0

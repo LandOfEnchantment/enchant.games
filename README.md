@@ -19,6 +19,10 @@ Run locally:
 
     make run
 
+Install the git hook to auto-build manifests on commit:
+
+    cp scripts/pre-commit .git/hooks/pre-commit
+
 ## License
 
 [Unlicense](UNLICENSE) - public domain.
