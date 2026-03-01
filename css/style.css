@@ -40,17 +40,9 @@ body {
   pointer-events: none;
   color: #89b4fa;
   overflow: hidden;
-  font-size: 8px;
-  line-height: 8px;
-  /* text-align: center; */
-}
-
-@media (max-width: 768px) {
-  .ascii-bg {
-    font-size: 4px;
-    line-height: 4px;
-    text-align: center;
-  }
+  font-size: 4px;
+  line-height: 4px;
+  text-align: center;
 }
 
 .text-light {
