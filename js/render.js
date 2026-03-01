@@ -51,6 +51,16 @@ function load() {
                 ? news.find(p => p.Slug === article)
                 : null;
 
+            if (article && !match) {
+                const loadData = cachedData
+                    ? Promise.resolve(cachedData)
+                    : fetchData().then(json => (cachedData = json));
+                return loadData.then(data => {
+                    const e = data.pages["404"];
+                    renderPage(e.Title, e.Body, e.Title);
+                });
+            }
+
             if (match) {
                 // reformat ISO “YYYY-MM-DD” back to your original MM-DD-YYYY display
                 const [yr, mo, da] = match.Date.split("-");
