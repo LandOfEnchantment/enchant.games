@@ -6,12 +6,10 @@ A static website with headless backend decoupling
 - `news/`                - news articles, YAML files with markdown
 - `js/content-loader.js` - YAML+markdown processor / simulated headless backend / technically frontend
 - `js/render.js`         - SPA shell / client-side router / frontend renderer
-- `pages.json`           - page manifest
-- `news.json`            - news manifest
 
 ## Usage
 
-Generate `pages.json` and `news.json` manifests:
+Generate `pages.json`, `news.json`, `rss.xml` and `sitemap.xml` manifests:
 
     make build
 
