@@ -1,0 +1,30 @@
+title: Team
+slug: team
+date: 12-21-2025
+author: Land of Enchantment Games
+body: |
+
+  ---
+
+  ## Team
+
+  This exists because it exists. <br>More people may join later. <br> Right now, this is real.
+
+  <img loading="lazy" alt="Adam Schaefers, Founder" src="/images/adam.webp"
+     style="
+       display: block;
+       margin: 2rem auto;
+       width: 50%;
+       height: auto;
+       -webkit-mask-image: radial-gradient(circle at center, black 55%, transparent 95%);
+       mask-image: radial-gradient(circle at center, black 55%, transparent 95%);
+       -webkit-mask-repeat: no-repeat;
+       mask-repeat: no-repeat;
+       -webkit-mask-size: cover;
+       mask-size: cover;
+       background-color: transparent;
+     ">
+
+  <span class="text-muted">Adam Schaefers, Founder</span>
+
+  Learn more about how Land of Enchantment Games began at <a href="https://adamschaefers.com">adamschaefers.com</a>.

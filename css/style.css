@@ -1,0 +1,165 @@
+@font-face {
+    font-family: 'Fira Code';
+    src: url('/fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
+}
+
+:root {
+    --bs-body-bg: #121212;
+    --bs-body-color: #e0e0e0;
+    --bs-secondary-color: #aaaaaa;
+    --bs-link-color: #89b4fa;
+    --bs-link-hover-color: #add2ff;
+    --bs-border-color: #2a2a2a;
+}
+
+hr {
+    height: 4px;
+    /* width: 25%; */
+    margin: 1rem auto; /* centers it */
+    background-color: var(--bs-border-color);
+    border: none;
+    /* margin: 1rem 0; */
+}
+
+body {
+    color: inherit;
+    background-color: inherit;
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+.ascii-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-family: monospace;
+  white-space: pre;
+  z-index: 0;
+  pointer-events: none;
+  color: #89b4fa;
+  overflow: hidden;
+  font-size: 8px;
+  line-height: 8px;
+  /* text-align: center; */
+}
+
+@media (max-width: 768px) {
+  .ascii-bg {
+    font-size: 4px;
+    line-height: 4px;
+    text-align: center;
+  }
+}
+
+.text-light {
+    color: var(--bs-body-color);
+}
+
+.text-muted {
+    color: var(--bs-secondary-color);
+}
+
+.text-center {
+    text-align: center;
+}
+
+pre, code {
+    white-space: pre-wrap;
+    overflow-wrap: normal;
+}
+
+pre.fancy, code.fancy {
+    white-space: pre-wrap;
+    overflow-wrap: normal;
+    border-left: 2px solid var(--bs-link-color);
+    padding-left: 1em;
+    margin-left: 0;
+    /* font-style: italic; */
+    color: var(--bs-secondary-color);
+}
+
+blockquote {
+    border-left: 2px solid var(--bs-link-color);
+
+    /* /\* experimental full-box section *\/ */
+    /* border-right: 2px solid var(--bs-link-color); */
+    /* border-top: 2px solid var(--bs-link-color); */
+    /* border-bottom: 2px solid var(--bs-link-color); */
+    /* padding-right: 1em; */
+    /* padding-top: 1em; */
+    /* padding-bottom: 1em; */
+    /* margin-right: 0; */
+    /* margin-top: 0; */
+    /* margin-bottom: 0; */
+    /* /\* /end experimental *\/ */
+
+    padding-left: 1em;
+    margin-left: 0;
+    font-style: italic;
+    color: var(--bs-secondary-color);
+}
+
+body {
+    font-size: 15px;
+    font-family: 'Fira Code', monospace;
+}
+
+.container {
+    max-width: calc(79ch + 2rem);
+    margin: 0 auto;
+    padding: 1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    /* hyphens: auto; */
+}
+
+nav {
+    font-size: 17px;
+    /* font-weight: 600; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+nav a:focus,
+nav a:active {
+    text-decoration: none;
+    outline: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+h1,h2,h3,h4,h5 {
+    font-size: 17px;
+    font-weight: 600;
+}
+h2 {
+    color: var(--bs-link-color);
+}
+h3, h4, h5 {
+    color: #ff9da4;
+}
+code {
+    color: var(--bs-link-color);
+}
+a {
+    color: var(--bs-link-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+a:hover {
+    color: var(--bs-link-hover-color);
+    text-decoration: underline;
+}
+a:focus,
+a:active {
+    outline: none;
+    color: var(--bs-link-color);
+    text-decoration: none;
+}
