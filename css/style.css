@@ -27,14 +27,12 @@ body {
 }
 
 .ascii-bg {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   font-family: monospace;
   white-space: pre;
-  z-index: 0;
   pointer-events: none;
   color: #89b4fa;
   overflow: hidden;
@@ -84,6 +82,8 @@ body {
 }
 
 .container {
+    position: relative;
+    z-index: 1;
     max-width: calc(79ch + 2rem);
     margin: 0 auto;
     padding: 1rem;
