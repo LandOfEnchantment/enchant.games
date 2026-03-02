@@ -93,7 +93,19 @@ body: |
 
        > "The most striking aspect of linguistic competence is what we may call the ‘creativity of language,’ that is, the speaker’s ability to produce new sentences… sentences that are immediately understood even though they bear no physical resemblance to familiar ones." - Chomsky, in Selected Readings on Transformational Theory (2012).
 
-       Noam Chomsky the greatest linguist of our time, says of humans, that we have the unique ability create language as we need it, unlike animals. And so it must follow that this is why we created computer programming languages. Programming languages are useful to communicate with the machines we have also created. It's all pretty neat, really.
+       Noam Chomsky the greatest linguist of our time, says of humans, that we have the unique ability to create language as we need it, unlike animals. **And so it must follow that this is why we created computer programming languages.** Programming languages are useful to communicate with the machines we have also created. It's all pretty neat, really.
+
+       The problem now is, people seem to think we can throw it all away, no longer needing to learn real programming languages, and that by adopting new LLM methodologies the naive computer user thinks they may surpass the traditional computer programmer. Let's consider the insanity of this only briefly,
+
+       > AI users vibe coding in English are going to get far ahead of those who don't. It's like the car vs horse. AI just made 10,000 people expendible in my company. If you aren't AI native, you're next!
+       >
+       > Some shill on X, probably.
+
+       Now when I hear this, I am hearing a subtle rejection of K&R, The C Programming Language, of Mccarthy's Lisp, or of Knuths The Art of Programming and a whole host of other things. In favor of what? Ambiguous English dictation.
+
+       **And the audacity is, that these things are said all the while standing on the shoulders of Kernels and Operating Systems made by humans, they generate code that only compiles in toolchains and  compilers made by humans, in code that is only interpreted by interpreters made by humans. The generated code is derived from training data written by humans! The presumptious LLM user now intends to remove himself from the procreational energy source, cutting himself off from his own rationality: the soul of the art of programming itself being now lost. Cars vs. Horses? No. More like a step child yelling proudly "you're not my real dad, I can do it myself!" ... Well good luck bootstrapping your machine with a @#$!ing llama file, then...**
+
+       We need to slow down and show some respect to our elders. **It is the native human way, per Chomsky, to create a new language when a new language is needed.** The rejection of our inherited human computer programming languages designed by our forefathers in the computer sciences, is the downfall of AI technological advancements. **Computer programming languages exist for a reason and that is because our forefathers knew they needed to create a language for humans to precisely and properly interface with computers.** And they knew, that English was not enough. Moreover, the fact that computer programming languages exist and are still the defacto primary tool used, since Ada Lovelace over 140 years ago, is in fact, **Chomskian Linguistic proof that humans need computer programming languages, and that they are the best tool for the job. The reversion back to non programming languages such as English are archaic, and will lead to a new dark age of computer programming history.**
 
        ### Case Study: LSP (Language Server Protocol) and auto-completion
 
