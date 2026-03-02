@@ -97,7 +97,7 @@ body: |
        >
        > Some shill on X, probably.
 
-       Now when I hear this, I am hearing a subtle rejection of K&R, The C Programming Language, of Mccarthy's Lisp, or of Knuths The Art of Programming and a whole host of other things. In favor of what? Ambiguous English dictation.
+       Now when I hear this, I am hearing a subtle rejection of K&R, The C Programming Language, of Mccarthy's Lisp, or of Knuth's The Art of Programming and a whole host of other things. In favor of what? Ambiguous English dictation.
 
        And the audacity is, that these things are said all the while standing on the shoulders of Kernels and Operating Systems made by humans, they generate code that only compiles in toolchains and  compilers made by humans, in code that is only interpreted by interpreters made by humans. The generated code is derived from training data written by humans! The presumptious LLM user now intends to remove himself from the procreational energy source, cutting himself off from his own rationality: the soul of the art of programming itself being now lost. Cars vs. Horses? No. More like a step child yelling proudly "you're not my real dad, I can do it myself!" ... Well good luck bootstrapping your machine with a @#$!ing llama file, then...
 
