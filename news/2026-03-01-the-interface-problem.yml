@@ -3,7 +3,7 @@ slug: 2026-03-01-the-interface-problem
 date: 2026-03-01
 author: Adam Schaefers
 body: |
-      ### The problem we have interfacing with computers, and why LLMs are not the solution.
+      ### How Computer Programming Actually Works
 
       The CPU must be spoken to in a language it understands, that is represented in binary. Hence we have executable files, called binaries, that are computer programs compiled down to cpu-native computer language.
 
@@ -81,7 +81,7 @@ body: |
 
        The LLM it turned out, is insufficient in itself in understanding the complexity of a human as projects gain enough complexity that description in English alone becomes "open to interpretation." It is the generally reported feedback of most advanced computer programmers, that the more complex the project became, the harder it was for the human to describe his inspiration of the project to the AI in a way that the AI could understand; meanwhile, the AI seems to give an illusion of understanding us, while consistently delivering results that did not match our initial inspiration. It seems, there is a communication break-down.
 
-       ### "Open to interpretation." (Present the following J.R.R. Tolkien description to 5 different painters)
+       ### "Open to interpretation" (Present the following J.R.R. Tolkien description to 5 different painters)
 
        > In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to eat: it was a hobbit-hole, and that means comfort"
 
@@ -115,7 +115,7 @@ body: |
 
        This is because the bottle-neck, all along, was not typing speed, but was interface to the CPU. If only the CPU could understand the program that I am trying to translate to it from my brain, in C or in Python! But then I would have to use a real programming language, not English.
 
-       ### And that there, is the problem.
+       ### And that there, is the problem
 
        How do I get the e.g. Python code out of my brain and on to the hard drive of this computer, in the most efficient way humanly possible?
 
