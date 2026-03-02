@@ -3,7 +3,7 @@ slug: 2026-03-01-the-interface-problem
 date: 2026-03-01
 author: Adam Schaefers
 body: |
-      ### How Computer Programming Actually Works
+      ### How computer programming actually works
 
       The CPU must be spoken to in a language it understands, that is represented in binary. Hence we have executable files, called binaries, that are computer programs compiled down to cpu-native computer language.
 
