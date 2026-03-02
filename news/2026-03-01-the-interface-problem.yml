@@ -57,11 +57,11 @@ body: |
        print(msg)
        ```
 
-       It is notable that the Python version, being higher level than the already high-level C language, immediately takes a performance hit. The code executes much slower, as it must be translated by the interpreter and all of the extra stuff that a Python program must do as discussed in paragraph 3 above.
+       The Python version, being higher level than the already high-level C language, immediately takes a performance hit. The code executes much slower, as it must be translated by the interpreter and all of the extra stuff that a Python program must do as discussed in paragraph 3 above.
 
-       It is also notable that the Python version is much easier to read and accessible to more humans by default, with less training required to get started and programming. For this reason, Python is often recommended as a great first programming language choice for a learner.
+       While the Python version is also much easier to read and accessible to more humans by default, with less training required to get started and programming. For this reason, Python is often recommended as a great first programming language choice for a learner.
 
-       It is finally notable that ultimately, both programming languages are well defined, and their programs above are well defined, such that they both do the same exact thing, every single time.
+       Other than some tradeoffs we noted, both programming languages are well defined, and their programs above are well defined, such that they both do the same exact thing, every single time.
 
        ### Hello, -name- (in English)
 
