@@ -63,7 +63,7 @@ body: |
 
        It is finally notable that ultimately, both programming languages are well defined, and their programs above are well defined, such that they both do the same exact thing, every single time.
 
-       ### Hello, -name- (in ChatGPT)
+       ### Hello, -name- (in English)
 
        Here is a small LLM program in English that prints "Hello, Adam!", but oddly refuses to print "hello, Adam!" or "hello, adam!"
 
