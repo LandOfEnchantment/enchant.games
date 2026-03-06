@@ -1,6 +1,6 @@
 import { html, render } from '/js/lit/lit-html/lit-html.js';
 import { unsafeHTML } from '/js/lit/lit-html/directives/unsafe-html.js';
-import { loadData as fetchData, loadNews as fetchNews } from '/js/content-loader.js';
+import { loadData as fetchData, loadNews as fetchNews, loadArticle as fetchArticle } from '/js/content-loader.js';
 
 // using Lit only as a HTML renderer + client-side router, not leveraging its reactive components.
 
@@ -47,34 +47,32 @@ function load() {
 
         return loadNews.then(news => {
             const { article, year } = newsRoute;
-            const match = article
-                ? news.find(p => p.Slug === article)
-                : null;
 
-            if (article && !match) {
-                const loadData = cachedData
-                    ? Promise.resolve(cachedData)
-                    : fetchData().then(json => (cachedData = json));
-                return loadData.then(data => {
-                    const e = data.pages["404"];
-                    renderPage(e.Title, e.Body, e.Title);
+            if (article) {
+                const manifestEntry = news.find(p => p.Slug === article);
+                if (!manifestEntry) {
+                    const loadData = cachedData
+                        ? Promise.resolve(cachedData)
+                        : fetchData().then(json => (cachedData = json));
+                    return loadData.then(data => {
+                        const e = data.pages["404"];
+                        renderPage(e.Title, e.Body, e.Title);
+                    });
+                }
+
+                return fetchArticle(manifestEntry.File).then(match => {
+                    const [yr, mo, da] = match.Date.split("-");
+                    const dispDate = `${mo}-${da}-${yr}`;
+                    const body = `
+                    <hr>
+                    <h2>${match.Title}</h2>
+                    <p><em>${dispDate} — ${match.Author}</em></p>
+                    <p><a href="?slug=news&year=${yr}" data-nav><- Back</a></p>
+
+              ${match.Body}
+            `;
+                    renderPage("News", body, match.Title);
                 });
-            }
-
-            if (match) {
-                // reformat ISO “YYYY-MM-DD” back to your original MM-DD-YYYY display
-                const [yr, mo, da] = match.Date.split("-");
-                const dispDate = `${mo}-${da}-${yr}`;
-                const body = `
-                <hr>
-                <h2>${match.Title}</h2>
-                <p><em>${dispDate} — ${match.Author}</em></p>
-                <p><a href="?slug=news&year=${yr}" data-nav><- Back</a></p>
-
-          ${match.Body}
-        `;
-                renderPage("News", body, match.Title);
-                return;
             }
 
             // build year navigation (using ISO year)
@@ -97,7 +95,7 @@ function load() {
 
             // group by month index
             const byMonth = filtered.reduce((acc, post) => {
-                // post.Date is ISO “YYYY-MM-DD”: split out MM
+                // post.Date is ISO "YYYY-MM-DD": split out MM
                 const [, mo] = post.Date.split("-");
                 const monthIdx = parseInt(mo, 10) - 1; // 0–11 as before
 
@@ -201,7 +199,7 @@ function renderPage(title, body, pageTitle) {
 
         <p class="text-muted">(c) ${currentYear} enchant.games</p>
 
-        <p><b>Curious what we’re building? Follow along.</b></p>
+        <p><b>Curious what we're building? Follow along.</b></p>
 
         <p>
         <a href="https://discord.gg/h6sFUNzaFj"><img alt="Discord logo" loading="lazy" height="75" width="75" src="/images/discord.webp"></a>

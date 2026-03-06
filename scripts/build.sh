@@ -6,7 +6,21 @@ BASE="https://enchant.games"
 (printf '['; sep=''; for f in pages/*.yml; do printf '%s"%s"' "$sep" "$(basename "$f")"; sep=','; done; printf ']\n') > pages.json
 
 # --- news.json ---
-(printf '['; sep=''; for f in news/*.yml; do printf '%s"%s"' "$sep" "$(basename "$f")"; sep=','; done; printf ']\n') > news.json
+{
+printf '['
+sep=''
+for f in news/*.yml; do
+    fname=$(basename "$f")
+    t=$(awk '/^title:/{$1=""; print substr($0,2)}' "$f")
+    s=$(awk '/^slug:/{print $2}' "$f")
+    d=$(awk '/^date:/{print $2}' "$f")
+    a=$(awk '/^author:/{$1=""; print substr($0,2)}' "$f")
+    printf '%s{"title":"%s","slug":"%s","date":"%s","author":"%s","file":"%s"}' \
+        "$sep" "$t" "$s" "$d" "$a" "$fname"
+    sep=','
+done
+printf ']\n'
+} > news.json
 echo "Built pages.json and news.json"
 
 # --- sitemap.xml ---

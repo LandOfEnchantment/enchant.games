@@ -44,10 +44,18 @@ export async function loadData() {
 
 export async function loadNews() {
     const manifest = await (await fetch('/news.json')).json();
-    const entries = await Promise.all(
-        manifest.map(f => fetchYAML('/news/' + f))
-    );
-    const news = entries.map(toEntry);
+    const news = manifest.map(m => ({
+        Title:  String(m.title  || ''),
+        Slug:   String(m.slug   || ''),
+        Date:   String(m.date   || ''),
+        Author: String(m.author || ''),
+        File:   String(m.file   || ''),
+    }));
     news.sort((a, b) => (a.Date > b.Date ? -1 : a.Date < b.Date ? 1 : 0));
     return news;
+}
+
+export async function loadArticle(filename) {
+    const raw = await fetchYAML('/news/' + filename);
+    return toEntry(raw);
 }
