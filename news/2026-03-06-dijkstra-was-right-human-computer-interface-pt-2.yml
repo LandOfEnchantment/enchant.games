@@ -13,13 +13,21 @@ body: |
 
       Dijkstra makes the case, that with a natural language interface, it results in more work, not less being required.
 
-      With a more expressive (e.g. English) interface
+      With a more expressive (e.g. English) interface, we find there will be:
 
-      - more interpretation required
-      - more coordination work
-      - more total complexity
+      - more interpretation required,
 
-      He asks you to imagine a scenario where computers had only ever accepted natural language (English, German, etc.)
+      > "the work involved in co-operating and communicating across the interface has to be added."
+
+      - more coordination work,
+
+      > "We know in the meantime —from sobering experience, I may add— that a change of interface can easily increase at both sides of the fence the amount of work to be done (even drastically so)."
+
+      - more total complexity,
+
+      > "Therefore, although changing to communication between machine and man conducted in the latter's native tongue would greatly increase the machine's burden, we have to challenge the assumption that this would simplify man's life."
+
+      Near the end, he asks you to imagine a scenario where computers had only ever accepted natural language (English, German, etc.)
 
       Meaning `Human -> English -> Computer` and **not** `Human -> Programming Language -> Computer`.
 
