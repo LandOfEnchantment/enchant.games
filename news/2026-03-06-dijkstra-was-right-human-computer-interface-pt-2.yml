@@ -40,11 +40,7 @@ body: |
       I discovered this paper from Primeagen so here was his talk as well, enjoy.
 
       <iframe
-      width="560"
-      height="315"
       src="https://www.youtube.com/embed/MwMaBg7JpDc"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
+      allowfullscreen
+      style="width:100%; aspect-ratio:16/9; border:0;">
       </iframe>
