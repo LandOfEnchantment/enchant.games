@@ -1,0 +1,42 @@
+title: Dijkstra was right - The Human Computer Interface Part 2
+slug: 2026-03-06-dijkstra-was-right-human-computer-interface-pt-2
+date: 2026-03-06
+author: Adam Schaefers
+body: |
+      ###
+
+      In my first essay [The Problem of the Human-Computer Interface and Why LLMs are not the Solution](https://enchant.games/?slug=news&article=2026-03-01-the-interface-problem) I attempt to explain why natural languages are terrible for computer programming.
+
+      It has now come to my attention, that **Dijkstra predicted this debate 50 years ago.** in his article, [On the foolishness of "natural language programming"](https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html)
+
+      It turns out my essay was just a restatement of Dijkstra. There really is nothing new under the sun, is there?
+
+      Dijkstra makes the case, that with a natural language interface, it results in more work, not less being required.
+
+      With a more expressive (e.g. English) interface
+
+      - more interpretation required
+      - more coordination work
+      - more total complexity
+
+      He asks you to imagine a scenario where computers had only ever accepted natural language (English, German, etc.)
+
+      Meaning `Human -> English -> Computer` and **not** `Human -> Programming Language -> Computer`.
+
+      His prediction was **"a black art of bootstrapping a formal system."** meaning that humans would spend their time trying to invent precise symbolic languages to escape the ambiguity of natural language.
+
+      > It may be illuminating to try to imagine what would have happened if, right from the start our native tongue would have been the only vehicle for the input into and the output from our information processing equipment. My considered guess is that history would, in a sense, have repeated itself, and that computer science would consist mainly of the indeed black art how to bootstrap from there to a sufficiently well-defined formal system. We would need all the intellect in the world to get the interface narrow enough to be usable, and, in view of the history of mankind, it may not be overly pessimistic to guess that to do the job well enough would require again a few thousand years.
+      >
+      > Dijkstra, "On the foolishness of "natural language programming" https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html
+
+      I discovered this paper from Primeagen so here was his talk as well, enjoy.
+
+      <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/MwMaBg7JpDc"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+      </iframe>

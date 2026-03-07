@@ -4,7 +4,14 @@
     <title>Land of Enchantment Games - News</title>
     <link>https://enchant.games/?slug=news</link>
     <description>Updates from Land of Enchantment Games</description>
-    <lastBuildDate>Sun, 01 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Dijkstra was right - The Human Computer Interface Part 2</title>
+      <link>https://enchant.games/?slug=news&amp;article=2026-03-06-dijkstra-was-right-human-computer-interface-pt-2</link>
+      <guid>https://enchant.games/?slug=news&amp;article=2026-03-06-dijkstra-was-right-human-computer-interface-pt-2</guid>
+      <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
+      <description>In my first essay [The Problem of the Human-Computer Interface and Why LLMs are not the Solution](https://enchant.games/?slug=news&amp;article=2026-03-01-the-interface-problem) I attempt to explain why natural languages are terrible for computer programming. It has now come to my attention, that **Dijks</description>
+    </item>
     <item>
       <title>The Problem of the Human-Computer Interface and Why LLMs are not the Solution</title>
       <link>https://enchant.games/?slug=news&amp;article=2026-03-01-the-interface-problem</link>
