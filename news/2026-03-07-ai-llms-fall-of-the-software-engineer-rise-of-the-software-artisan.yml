@@ -1,0 +1,207 @@
+title: AI, LLMs, and the Fall of the Software Engineer - The Rise of the Software Artisan
+slug: 2026-03-07-ai-llms-fall-of-the-software-engineer-rise-of-the-software-artisan.yml
+date: 2026-03-07
+author: Adam Schaefers
+body: |
+      ### Should we begin exploring software-engineering alternatives?
+
+      The question online increasingly seems to be:
+
+      - Should I become a carpenter? (https://www.youtube.com/watch?v=RJyPVLMyyuA)
+
+      The worry is:
+
+      - Am I becoming obsoleted?
+
+      The reality is:
+
+      - *Maybe.*
+
+      Why? Because if you worked for a software engineering company that released mediocre products, where speed to market was prioritized above code purity or long-term architectural integrity, then one of two things is going to happen:
+
+      - 1.) You indeed are going to become replaced by LLMs.
+
+      **OR**
+
+      - 2.) While not replaced, you begin to despise yourself even more than you did before. Because at least the shitty code you released prior was *your shitty code*, but now you are tasked with *2x output requirements* by your janny project managers -- you are now a robot babysitter full time.<small><b>*</b></small>
+
+      And when you consider that option 2. is the most likely outcome, you begin to think that **this is just not what I signed up for.**
+
+      - <small><b>*</b>It's noteworthy that those who do not *resonate* with option 2, but feel like, "wow I can get my shitty programming job done even faster now than I did before, and have more fun to do *other not-computing stuff* instead!" are people that are compromised and not the target audience of this article. These are mediocre programmers who are a perfect fit for mediocre corporations who are satisfied with living a mediocre life. **This article is for people are in it for the love of the game.**</small>
+
+      ### Some recent cases in point (testimonials)
+
+      What follows is one YouTube video and 3 subreddit comments that discuss and express very real frustrations of real software engineers in various employed contexts. What they all have in common is adoption or forced adoption of vibe coding methodologies using LLMs, and now they don't want to do it anymore! *Like, at all...*
+
+      **I was a 10x engineer. Now I'm useless**
+
+      <iframe
+      src="https://www.youtube.com/embed/pzkwn3hu1Cc"
+      allowfullscreen
+      style="width:100%; aspect-ratio:16/9; border:0;">
+      </iframe>
+
+      **Software Engineering is currently going through a major shift (for the worse)**
+
+      Mental_Quality_7265 chimes in, https://www.reddit.com/r/BetterOffline/comments/1rnsnz0/software_engineering_is_currently_going_through_a/
+
+      > I am a junior SWE in a Big Tech company, so for me the AI problem is rather existential. I personally have avoided using AI to write code / solve problems, so as not to fall into the mental trap of using it as a crutch, and up until now this has not been a problem. But lately the environment has entirely changed.
+      >
+      > AI agent/coding usage internally has become a mandate. At first, it was a couple people talking about how they find some tools useful. Then it was your manager encouraging you to ‘try them out’. And now it has become company-wise messaging, essentially saying ‘those who use AI will replace those who don’t.’ (Very encouraging, btw)
+      >
+      > All of this is probably a pretty standard tale for those working in tech. Different companies are at various different stages of the adoption cycle, but adoption is definitely increasing. However, the issue is; the models/tools are actually kind of good now.
+      >
+      > I’m an avid reader of Ed’s content. I am a firm believer that the AI companies are not able to financially sustain themselves longterm. I do not think we will attain a magical ‘AGI’. But within the past couple months I’ve had to confront the harsh reality that none of that matters at the moment when Claude Code is able to do my job better than I can. For a while, the bottleneck was the models’ ability to fully grasp the intricacies of a larger codebase, but perhaps model input token caps have increased, or we are just allowing more model calls per query, but these tools do not struggle as much as they once did. I work on some large codebases - the difference in a Github Copilot result between now (Opus 4.6) and 6 months ago is insane.
+      >
+      > They are by no means perfect, but I believe we’ve hit a point where they’re ‘good enough,’ where we will start to see companies increase their dependence on these tools at the expense of allowing their junior engineers to sharpen their skills, at the expense of even hiring them in the first place, and at the expense of whatever financial ramifications it may have down the line. It is no longer sufficient to say ‘the tools are not good enough’ when in reality they are. As a junior SWE, this terrifies me. I don’t know what the rest of my career is going to look like, when I thought I did ~3 months ago. I definitely do not want to become a full time slop PR reviewer.
+
+      **AI has completely oneshoted my ability to code.**
+
+      ghostwilliz writes in, https://www.reddit.com/r/BetterOffline/comments/1rng517/ai_has_completely_oneshoted_my_ability_to_code/
+
+      >  In like 2023- early 2024, my company went full on ai.
+      >
+      > They got us vercels V0 and copilot, I loved it at first because I hated that job. I worked directly under the CEO and he never said no to clients. Our app was full of if (isThisClient) else if (isThatClient) ect because they all wanted custom shit and no one above the programmers knew how to run a sass company so they just said yes.
+      >
+      > Anyways, that was annoying so I was happy to just dump it on ai
+      >
+      > I have always made games in my spare time, and when I got back to it after using ai, I was a drooling invalid nincompoop
+      >
+      > I forgot everything in like 2 or 3 months
+      >
+      > Also, the app fell apart like the house of cards it was and clients wouldn't pay and I lost my job
+      >
+      > It took like 4 days to get back to being good at programming, but had I just given up, I could see it being worse...
+
+      **My boss is addicted to AI. Trying to bring the whole team to use it. I want to quit so bad...**
+
+      GSalmao writes in, https://www.reddit.com/r/BetterOffline/comments/1rj8wu4/my_boss_is_addicted_to_ai_trying_to_bring_the/
+
+      > I am a game developer, the funniest job possible. I make gameplay mechanics, lots of physics and practical math, these things are pretty fun... however, recently my boss is acting really weird.
+      >
+      > He asked for all of the developers to stop writing code and only use Opus 4.6 to code. Guide him all the way through with prompts while typing zero manual code. the workflow is I ask something for it, wait, ask for adjustements, wait some more, and review the code... while before, I had the task, think about it, think of a solution and just type it. I fucking can't stand it, I dont want to become a braindead AI prompter.
+      >
+      > And this is just one complaint I have with him. When we had a meeting today, he was acting weird. He said he's sleeping about 3 to 4 hours a day, because he's working with AI all day long, it's like the machine ate him, he is a zombie in the system. By the end of our meeting he said THREE GODAMN TIMES: "Use AI for your personal projects", like some kind of manthra or crazy cultist shit.
+      >
+      > What the fuck is happening with the world?? Why can't I just write good code and ship? Why is software development becoming some kind of Pay2Win experience? Are there companies where you're not supposed to be this insane? I am going INSANE.
+      >
+      > I'll have a conversation with him tomorrow and, if he doesn't let me at least WRITE code and use my brain, I'm going to quit. I don't want to live in an industry like that, I want something engaging that makes me happy. Please, somebody, PLEASE tell me this is not something in the whole industry, please tell me there are companies that let me write my own code and let me build a mental model of the whole architecture I'm developing, I am becoming less of a human the more I work in this company.
+
+      ### Why gamedev is still the best outlet for a software artisan
+
+      Without restating the case I have made prior, that [video Games are the most important software in the world](http://localhost:3000/?slug=news&article=2026-02-28-why-I-care) I want to discuss more in depth what is special about the sector right now.
+
+      First of all, while AI can generate ai-slop art, it is absolutely terrible at generating consistent sprite sheets and models. Generative AI is built to do almost the opposite. Diffusion models generate independent images. They don't maintain a persistent object like:
+
+      ```
+      character {
+       head
+       torso
+       arm_left
+       arm_right
+       }
+       ```
+
+       Instead they generate:
+
+       ```
+       "image that looks like a character"
+       ```
+
+       And the model re-invents the character each time.
+
+       For more on this topic, see:
+
+       - https://www.reddit.com/r/BetterOffline/comments/1r5pm4l/ai_cant_make_good_video_game_worlds_yet_and_it/
+
+       - https://www.theverge.com/column/879524/ai-video-game-worlds-project-genie
+
+       Moreover, video games are a wholistic kind of software, requiring a broad skillset, such as creative arts, language arts, programming arts, voice acting arts, music composition arts, etc. This is not a monkey-see monkey-do kind of industry. This is something that requires the soul of the human, nothing less.
+
+       Given video games have the highest artisan requirements such that you need a team or a polymath developer, it follows that video games will be the last sector of programming to fall to AI slop. And given that AI has no soul, it only can imitate the soul of a human, it stands to reason then humans will always produce the best video games.
+
+       For the same reason we prefer crab to imitation crab, organic non-gmo to frozen carrotts and peas, wild fish to farmed fish, etc. For the same reason we prefer to watch Magnus and Hikaru play chess - not stockfish. For these reasons we will always prefer human-created non-gmo organic video games.
+
+       ### AI code is mid-tier and gamers do not tolerate it
+
+       Being that AI is trained on the sum of all code. And given that most code on the internet is mid (at best). Your AI generated code is mid. It lacks soul, artistan, elegance and understanding.
+
+       And just as gamers are sick of unoptimized, bloated unreal engine games:
+
+       - https://gamingbolt.com/what-is-going-on-with-unreal-engine-5
+
+       - https://www.pcgamer.com/hardware/unreal-engine-often-gets-flack-for-games-running-poorly-or-stuttering-but-as-avowed-demonstrates-its-really-about-how-devs-use-it-and-the-pressures-of-time
+
+       - https://www.reddit.com/r/pcgaming/comments/1ihks0j/game_engines_and_shader_stuttering_unreal_engines
+
+       - https://www.reddit.com/r/pcmasterrace/comments/1f4je0m/is_anyone_else_beyond_disappointed_by_horribly/
+
+       It is reasonable to think games too will be sick of AI slop video games.
+
+       Already gamers have begun to vote with their wallets in favor of indie gaming. Since 2020, the game market has grown doubling in size to around 10-11 billion annually, driven by platforms like Steam. With Steam indie game revenue increasing from about ~30% in 2020 to ~50% in 2024. The forcast of indie gaming is to be approx. 25-30 billion by 2033.
+
+       This begs the question. One might interject, “Gamers say they hate slop, but they will still buy it.” But on the contrary, unlike enterprise SaaS, corporate apps, government software, or venture-funded startups, the gaming market is one of the few software markets that ruthlessly punishes mediocrity.
+
+       If your game is mediocrityid, players refund it, review bomb it, ignore it on streams, and move on within hours. There are no procurement contracts, lock-in agreements, or enterprise sales teams to hide behind. The player decides your fate. This pure democracy is fresh air in a rigged world.
+
+       ### Gamer consensus on AI in games in 2026 is negative
+
+       Surveys show strong opposition:
+
+       - 85% of gamers have a negative attitude toward generative AI in games
+
+       - Concerns include art theft, job loss, lower quality, and studios cutting costs instead of improving games.
+
+       See https://www.aiandgames.com/p/when-generative-ai-backlash-dominates?utm_source=chatgpt.com
+
+       ### Backlash against AI in games
+
+       - Call of Duty: Black Ops 7 (AI art controversy) https://www.forbes.com/sites/paultassi/2025/11/15/call-of-duty-black-ops-7s-awful-ai-use-is-a-watershed-moment/?utm_source=chatgpt.com
+
+       - Arc Raiders (AI voice acting controversy) https://nymag.com/intelligencer/article/gamers-are-extremely-mad-about-ai.html
+
+       - The Roottrees Are Dead https://www.theverge.com/ai-artificial-intelligence/686651/roottrees-ai-original-illustrator-replacement
+
+       - Fortnite AI Darth Vader voice dispute https://apnews.com/article/sagaftra-fortnite-darth-vader-ai-627d9adac6d4007b3bc489e511c1beb8
+
+       - Over half of game developers are turning against it https://www.cbr.com/gen-ai-gaming-harming-industry-developer-survey
+
+      ### The gate is wide open and steam is waiting for you
+
+      For about $100, you can list your own indie game on steam, where steam will then give the indie developer a potential massive marketing audience and full sales pipeline, giving you 70% of the profits to take home.
+
+      There are also alternative more open-sourcey type of platforms like https://itch.io with other models that take less of a cut, or none at all.
+
+      I'm not saying don't open your own store and sell your own .exe file with your own distribution methods and take home 100%, but I am saying that if you have a good game and you want to launch it, it has never been easier for an indie gamedev.
+
+      ### The engine-scene has never been more accessible
+
+      From SDL2, Raylib, Love2d to Bevy or Godot - it has never been more open, more free and more documented.
+
+      It has never been a better time to learn to be a gamedev!
+
+      ### What this world really needs (Or how to be unreplaceable)
+
+      We need less software engineers.
+
+      We need more software artisans.
+
+      We need less corporate code.
+
+      We need more humanity respecting creations.
+
+      I cannot promise you this is a path to wealth or good jobs. I can promise that this is the a path to fulfillment in computing. If that means I have to go and [be a farmer](https://dylan.gr/1768295794), see [Have Taken Up Farming](https://dylan.gr/1768295794) by Dylan Araps; or if that means I need to work blue collar and be a tradie, then so be it. Because I know that I will in the evenings as I am free, or on the weekends, in my leisure, still create freedom respecting code, code that liberates humans and my own soul.
+
+      It's your soul that's at stake in the AI debates, right now. Nothing less.
+
+      This year of 2026 we are going to separate the wheat from the tares, the software artisans from the sellouts.
+
+      On which side will you be on, is the question? We all must choose.
+
+      The side of integrity or the side of "it works, ship it." One is love of the art, it ships art made with love. The other is love of money, it ships mid level shit made with haste.
+
+      This is a call to leave mediocrity behind and to raise the bar. It's a call to make a stand. Get banned from communities that tolerate mid. And tell your AI-pushing boss to get wrecked. It is time for software culture to hold the standard high and to gate-keep. For love of the craft, we will turn others away. But for the humble, the one who is willing to uninstall his coding agents, the message is different - join us.
+
+      If you feel inspired or aligned with the mission in this blog, please join the Discord and say hello. Share your story, and participate as much as you wish. We are a small group learning to make games together with learning mechanisms in-place to help one another grow, to become the best integrity-respecting human software artisans on spaceship earth.
+
+      <small>>>>Donald Knuth called his magnum opus **The Art of Computer Programming.** This was no accident. Stay tuned for an upcoming article on the subject.<<<</small>
