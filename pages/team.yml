@@ -25,4 +25,6 @@ body: |
        background-color: transparent;
      ">
 
-  <a href="https://adamschaefers.com"><span class="text-muted">Adam Schaefers, Founder</span></a>
+  <span class="text-muted">Adam Schaefers, Founder</span>
+
+  <a href="https://adamschaefers.com">https://adamschaefers.com</a>
