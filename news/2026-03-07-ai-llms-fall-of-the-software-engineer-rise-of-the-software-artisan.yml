@@ -205,3 +205,9 @@ body: |
       If you feel inspired or aligned with the mission in this blog, please join the Discord and say hello. Share your story, and participate as much as you wish. We are a small group learning to make games together with learning mechanisms in-place to help one another grow, to become the best integrity-respecting human software artisans on spaceship earth.
 
       <small>>>>Donald Knuth called his magnum opus **The Art of Computer Programming.** This was no accident. Stay tuned for an upcoming article on the subject.<<<</small>
+
+      <iframe
+      src="https://www.youtube.com/embed/xd-9D3GzUpo"
+      allowfullscreen
+      style="width:100%; aspect-ratio:16/9; border:0;">
+      </iframe>
