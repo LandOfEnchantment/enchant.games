@@ -27,7 +27,7 @@ body: |
 
       And when you consider that option 2. is the most likely outcome, you begin to think that **this is just not what I signed up for.**
 
-      - <small><b>*</b>It's noteworthy that those who do not *resonate* with option 2, but feel like, "wow I can get my shitty programming job done even faster now than I did before, and have more fun to do *other not-computing stuff* instead!" are people that are compromised and not the target audience of this article. These are mediocre programmers who are a perfect fit for mediocre corporations who are satisfied with living a mediocre life. **This article is for people who are in it for the love of the game.**</small>
+      > <b>*</b>It's noteworthy that those who do not *resonate* with option 2, but feel like, "wow I can get my shitty programming job done even faster now than I did before, and have more fun to do *other not-computing stuff* instead!" are people that are compromised and not the target audience of this article. These are mediocre programmers who are a perfect fit for mediocre corporations who are satisfied with living a mediocre life. **This article is for people who are in it for the love of the game.**
 
       ### Some recent cases in point (testimonials)
 
@@ -193,6 +193,7 @@ body: |
       I cannot promise you this is a path to wealth or good jobs. I can promise that this is the path to fulfillment in computing. If that means I have to go and [be a farmer](https://dylan.gr/1768295794), see [Have Taken Up Farming](https://dylan.gr/1768295794) by Dylan Araps; or if that means I need to work blue collar and be a tradie, then so be it. Because I know that I will in the evenings as I am free, or on the weekends, in my leisure, still create freedom respecting code, code that liberates humans and my own soul.
 
       > The real danger isn't AGI replacing programmers.
+      >
       > It’s programmers turning themselves into NPCs.
 
       It's your soul that's at stake in the AI debates, right now. Nothing less.
