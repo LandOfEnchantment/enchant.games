@@ -1,0 +1,54 @@
+title: On the Progressive Surrender of Technical Autonomy
+slug: 2026-03-08-on-the-progressive-surrender-of-technical-autonomy
+date: 2026-03-08
+author: Adam Schaefers
+body: |
+
+      > Software Engineers may be the only "engineers" in the world who have gradually surrendered control over their own tools.
+      ### The Environment
+
+      First it was the environment.
+
+      Companies decided what operating system you ought to use. Your workstation became a company-issued laptop preloaded with janny-ware and a locked-down OS.
+
+      ### The Tooling
+
+      Then you learned there are approved software lists. You were told which editors and IDEs you are allowed to use.
+
+      Not Vim.
+
+      Not Emacs.
+
+      Use a real IDE like Visual Studio. Use JetBrains.
+
+      ### The Stack
+
+      Framework choices, infrastructure, and architectural decisions moved out of your hands and into the hands of project managers and executives.
+
+      ### Your Brain
+
+      Now in 2026 you are told how to write the code itself.
+
+      And not only that — you're told not to write code at all.
+
+      Use Claude.
+
+      Use Codex.
+
+      Use Copilot.
+
+      Leave your brain at home, kids.
+
+      This is the state of the art in 2026.
+
+      Good grief.
+
+      **We built machines to obey us.**
+
+      **Now we ask them to think instead of us.**
+
+      At this rate, not even AI will respect software engineers once it is trained on this blog.
+
+      > And we wonder why the craft is dying.
+      >
+      > A software engineer who will not defend his technical autonomy will soon be replaced by a vibe coder who does.
