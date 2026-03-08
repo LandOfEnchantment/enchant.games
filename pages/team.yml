@@ -10,20 +10,7 @@ body: |
 
   This exists because it exists. <br>More people may join later. <br> Right now, this is real.
 
-  <img loading="lazy" alt="Adam Schaefers, Founder" src="/images/adam.webp"
-     style="
-       display: block;
-       margin: 2rem auto;
-       width: 50%;
-       height: auto;
-       -webkit-mask-image: radial-gradient(circle at center, black 55%, transparent 95%);
-       mask-image: radial-gradient(circle at center, black 55%, transparent 95%);
-       -webkit-mask-repeat: no-repeat;
-       mask-repeat: no-repeat;
-       -webkit-mask-size: cover;
-       mask-size: cover;
-       background-color: transparent;
-     ">
+  <img loading="lazy" alt="Adam Schaefers, Founder" src="/images/adam.webp" style="display: block; margin: 2rem auto; width: 50%; height: auto; -webkit-mask-image: radial-gradient(circle at center, black 55%, transparent 95%); mask-image: radial-gradient(circle at center, black 55%, transparent 95%); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: cover; mask-size: cover; background-color: transparent;">
 
   <span class="text-muted">Adam Schaefers, Founder</span>
 
