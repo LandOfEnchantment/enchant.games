@@ -1,0 +1,19 @@
+title: Emacs hacking 06 - Spartan Emacs - Crash Course PT 6
+slug: 2025-05-05-emacs-hacking-06
+date: 2025-05-05
+author: Adam Schaefers
+body: |
+
+      TBH this video is trash.
+
+      <iframe
+      src="https://www.youtube.com/embed/ijS1pAcUIaQ"
+      allowfullscreen
+      style="width:100%; aspect-ratio:16/9; border:0;">
+      </iframe>
+
+      This project has also since been renamed to grokEmacs https://github.com/a-schaefers/grokEmacs - it does most of the same things, but the codebase is cleaner and more light-weight.
+
+      It's complete and "done."
+
+      Fork it, hack it and make it your own, or don't.
