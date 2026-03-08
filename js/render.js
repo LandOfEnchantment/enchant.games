@@ -28,9 +28,16 @@ function getSlug() {
 
 function parseNewsUrl() {
     const params = new URLSearchParams(location.search);
+    let article = params.get("article") || null;
+    // workaround for accidentally .yml published urls
+    if (article && article.endsWith(".yml")) {
+        article = article.slice(0, -4);
+        params.set("article", article);
+        history.replaceState({}, "", "?" + params.toString());
+    }
     return {
         slug: params.get("slug") || "home",
-        article: params.get("article") || null,
+        article,
         year: params.get("year") || null
     };
 }
