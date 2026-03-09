@@ -5,7 +5,7 @@ author: Adam Schaefers
 body: |
       ###
 
-      In my first essay [The Problem of the Human-Computer Interface and Why LLMs are not the Solution](https://enchant.games/?slug=news&article=2026-03-01-the-interface-problem) I attempt to explain why natural languages are terrible for computer programming.
+      In my first essay [The Problem of the Human-Computer Interface and Why LLMs are not the Solution](https://enchant.games/?slug=journal&article=2026-03-01-the-interface-problem) I attempt to explain why natural languages are terrible for computer programming.
 
       It has now come to my attention, that **Dijkstra predicted this debate 50 years ago.** in his article, [On the foolishness of "natural language programming"](https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html)
 

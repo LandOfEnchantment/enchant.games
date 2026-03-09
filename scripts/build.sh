@@ -34,7 +34,7 @@ for f in pages/*.yml; do
 done
 for f in news/*.yml; do
     slug=$(awk '/^slug:/{print $2}' "$f")
-    printf '  <url><loc>%s/?slug=news&amp;article=%s</loc></url>\n' "$BASE" "$slug"
+    printf '  <url><loc>%s/?slug=journal&amp;article=%s</loc></url>\n' "$BASE" "$slug"
 done
 printf '</urlset>\n'
 } > sitemap.xml
@@ -47,8 +47,8 @@ xmlesc() { printf '%s' "$1" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\
 printf '<?xml version="1.0" encoding="UTF-8"?>\n'
 printf '<rss version="2.0">\n'
 printf '  <channel>\n'
-printf '    <title>Land of Enchantment Games - News</title>\n'
-printf '    <link>%s/?slug=news</link>\n' "$BASE"
+printf '    <title>Land of Enchantment Games - Journal</title>\n'
+printf '    <link>%s/?slug=journal</link>\n' "$BASE"
 printf '    <description>Updates from Land of Enchantment Games</description>\n'
 
 latest=$(ls -r news/*.yml | head -1)
@@ -69,8 +69,8 @@ for f in $(ls -r news/*.yml); do
 
     printf '    <item>\n'
     printf '      <title>%s</title>\n' "$(xmlesc "$title")"
-    printf '      <link>%s/?slug=news&amp;article=%s</link>\n' "$BASE" "$slug"
-    printf '      <guid>%s/?slug=news&amp;article=%s</guid>\n' "$BASE" "$slug"
+    printf '      <link>%s/?slug=journal&amp;article=%s</link>\n' "$BASE" "$slug"
+    printf '      <guid>%s/?slug=journal&amp;article=%s</guid>\n' "$BASE" "$slug"
     printf '      <pubDate>%s</pubDate>\n' "$pub"
     printf '      <description>%s</description>\n' "$(xmlesc "$desc")"
     printf '    </item>\n'

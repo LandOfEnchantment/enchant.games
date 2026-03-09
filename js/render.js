@@ -8,7 +8,7 @@ const main = document.querySelector("main");
 let cachedNews = null;
 let cachedData = null;
 
-const menuOrder = ["home", "values", "team", "news"];
+const menuOrder = ["home", "values", "team", "journal"];
 
 // Utility to capitalize link text
 function displayName(str) {
@@ -28,6 +28,11 @@ function getSlug() {
 
 function parseNewsUrl() {
     const params = new URLSearchParams(location.search);
+    // backwards compat: rewrite old slug=journal to slug=journal
+    if (params.get("slug") === "news") {
+        params.set("slug", "journal");
+        history.replaceState({}, "", "?" + params.toString());
+    }
     let article = params.get("article") || null;
     // workaround for accidentally .yml published urls
     if (article && article.endsWith(".yml")) {
@@ -46,7 +51,7 @@ function load() {
     window.scrollTo(0, 0);
     const newsRoute = parseNewsUrl();
 
-    if (newsRoute.slug === "news") {
+    if (newsRoute.slug === "journal") {
         const loadNews = cachedNews
             ? Promise.resolve(cachedNews)
             : fetchNews()
@@ -74,11 +79,11 @@ function load() {
                     <hr>
                     <h2>${match.Title}</h2>
                     <p><em>${dispDate} — ${match.Author}</em></p>
-                    <p><a href="?slug=news&year=${yr}" data-nav><- Back</a></p>
+                    <p><a href="?slug=journal&year=${yr}" data-nav><- Back</a></p>
 
               ${match.Body}
             `;
-                    renderPage("News", body, match.Title);
+                    renderPage("Journal", body, match.Title);
                 });
             }
 
@@ -91,7 +96,7 @@ function load() {
                 .map(y =>
                     y === selectedYear
                         ? `<strong>${y}</strong>`
-                        : `<a href="?slug=news&year=${y}" data-nav>${y}</a>`
+                        : `<a href="?slug=journal&year=${y}" data-nav>${y}</a>`
                 )
                 .join(" | ");
 
@@ -132,7 +137,7 @@ function load() {
                     .forEach(post => {
                         articlesHtml += `
                         <p>
-                        <a href="?slug=news&article=${encodeURIComponent(post.Slug)}" data-nav>
+                        <a href="?slug=journal&article=${encodeURIComponent(post.Slug)}" data-nav>
                   ${post.Title}
                   </a>
                   </p>
@@ -141,8 +146,9 @@ function load() {
             });
 
             const body = `
-            <p><a href="/rss.xml">rss</a></p>
             <hr>
+            <h2>Journal</h2>
+            <p><a href="/rss.xml">rss</a></p>
             <p>${yearNav}</p>
 
 
@@ -150,7 +156,7 @@ function load() {
 
         ${articlesHtml}
       `;
-            renderPage("News", body, "News");
+            renderPage("Journal", body, "Journal");
         });
     }
 

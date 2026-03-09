@@ -1,126 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>Land of Enchantment Games - News</title>
-    <link>https://enchant.games/?slug=news</link>
+    <title>Land of Enchantment Games - Journal</title>
+    <link>https://enchant.games/?slug=journal</link>
     <description>Updates from Land of Enchantment Games</description>
     <lastBuildDate>Sun, 08 Mar 2026 00:00:00 +0000</lastBuildDate>
     <item>
       <title>On the Progressive Surrender of Technical Autonomy</title>
-      <link>https://enchant.games/?slug=news&amp;article=2026-03-08-on-the-progressive-surrender-of-technical-autonomy</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2026-03-08-on-the-progressive-surrender-of-technical-autonomy</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2026-03-08-on-the-progressive-surrender-of-technical-autonomy</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2026-03-08-on-the-progressive-surrender-of-technical-autonomy</guid>
       <pubDate>Sun, 08 Mar 2026 00:00:00 +0000</pubDate>
       <description>&gt; Software Engineers may be the only &quot;engineers&quot; in the world who have gradually surrendered control over their own tools. The Environment First it was the environment. Companies decided what operating system you ought to use. Your workstation became a company-issued laptop preloaded with janny-ware</description>
     </item>
     <item>
       <title>Recommending Harvard Gazette - Is AI dulling our minds?</title>
-      <link>https://enchant.games/?slug=news&amp;article=2026-03-08-recommending-harvard-gazette-is-ai-dulling-our-minds</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2026-03-08-recommending-harvard-gazette-is-ai-dulling-our-minds</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2026-03-08-recommending-harvard-gazette-is-ai-dulling-our-minds</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2026-03-08-recommending-harvard-gazette-is-ai-dulling-our-minds</guid>
       <pubDate>Sun, 08 Mar 2026 00:00:00 +0000</pubDate>
       <description>This is going to be a short one. I recommend reading and sharing the following Harvard Gazette article by Liz Mineo, *Is AI dulling our minds?* with your friends: https://news.harvard.edu/gazette/story/2025/11/is-ai-dulling-our-minds/ The piece centers on a recent MIT Media Lab study and opens with </description>
     </item>
     <item>
       <title>AI, LLMs, and the Fall of the Software Engineer - The Rise of the Software Artisan</title>
-      <link>https://enchant.games/?slug=news&amp;article=2026-03-07-ai-llms-fall-of-the-software-engineer-rise-of-the-software-artisan</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2026-03-07-ai-llms-fall-of-the-software-engineer-rise-of-the-software-artisan</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2026-03-07-ai-llms-fall-of-the-software-engineer-rise-of-the-software-artisan</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2026-03-07-ai-llms-fall-of-the-software-engineer-rise-of-the-software-artisan</guid>
       <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
       <description>&gt; **The modern programmer does not love software too much; he loves it too little - for he no longer loves the making of it.** &gt; &gt; G.K. Chesterton, if he were alive today. Should we begin exploring software engineering alternatives? The question online increasingly seems to be: - Should I become a c</description>
     </item>
     <item>
       <title>Dijkstra was right - The Problem of the Human-Computer Interface - Part 2</title>
-      <link>https://enchant.games/?slug=news&amp;article=2026-03-06-dijkstra-was-right-human-computer-interface-pt-2</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2026-03-06-dijkstra-was-right-human-computer-interface-pt-2</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2026-03-06-dijkstra-was-right-human-computer-interface-pt-2</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2026-03-06-dijkstra-was-right-human-computer-interface-pt-2</guid>
       <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
-      <description>In my first essay [The Problem of the Human-Computer Interface and Why LLMs are not the Solution](https://enchant.games/?slug=news&amp;article=2026-03-01-the-interface-problem) I attempt to explain why natural languages are terrible for computer programming. It has now come to my attention, that **Dijks</description>
+      <description>In my first essay [The Problem of the Human-Computer Interface and Why LLMs are not the Solution](https://enchant.games/?slug=journal&amp;article=2026-03-01-the-interface-problem) I attempt to explain why natural languages are terrible for computer programming. It has now come to my attention, that **Di</description>
     </item>
     <item>
       <title>The Problem of the Human-Computer Interface and Why LLMs are not the Solution</title>
-      <link>https://enchant.games/?slug=news&amp;article=2026-03-01-the-interface-problem</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2026-03-01-the-interface-problem</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2026-03-01-the-interface-problem</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2026-03-01-the-interface-problem</guid>
       <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
       <description>How computer programming actually works The CPU must be spoken to in a language it understands, that is represented in binary. Hence we have executable files, called binaries, that are computer programs compiled down to cpu-native computer language. And so it follows that we use higher level interme</description>
     </item>
     <item>
       <title>Now Who Is The Doomer</title>
-      <link>https://enchant.games/?slug=news&amp;article=2026-03-01-now-who-is-the-doomer</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2026-03-01-now-who-is-the-doomer</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2026-03-01-now-who-is-the-doomer</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2026-03-01-now-who-is-the-doomer</guid>
       <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
       <description>OK, DOOMER? At times I have been accused of dooming too hard on the sad state of tech. This piece aims to be a bit more optimistic. It&#39;s so important to me for me and for my friends, to get this issue (on LLMs) right and to communicate a stance with clarity and punch. There is so much FOMO, so much </description>
     </item>
     <item>
       <title>Why I care about NOT using AI generative code and HOW I am building a business around NOT using it</title>
-      <link>https://enchant.games/?slug=news&amp;article=2026-02-28-why-I-care</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2026-02-28-why-I-care</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2026-02-28-why-I-care</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2026-02-28-why-I-care</guid>
       <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
       <description>I was challenged by my friend... who is a devops engineer about why I am so strongly opposed to generative AI usage in code, when he said: &gt; &quot;You don&#39;t even work in IT anymore, why do you care so much&quot; In this article, I will reply to this question personally, about why I care. The question is a pre</description>
     </item>
     <item>
       <title>Happy New Year - Cool Stuff Ahead</title>
-      <link>https://enchant.games/?slug=news&amp;article=2026-01-06-happy-new-year-cool-stuff-ahead</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2026-01-06-happy-new-year-cool-stuff-ahead</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2026-01-06-happy-new-year-cool-stuff-ahead</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2026-01-06-happy-new-year-cool-stuff-ahead</guid>
       <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
       <description>Discord Our Discord is growing in to a tight-nit small group of like minded solo devs (for now), working on our craft, we have many private channels with learning tracks and personal progress trackers where we can sign in and get to work on our games. Currently I have created the following tracks: -</description>
     </item>
     <item>
       <title>On Santa Claus</title>
-      <link>https://enchant.games/?slug=news&amp;article=2025-12-26-on-santa-claus-and-answering-the-question-plainly</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2025-12-26-on-santa-claus-and-answering-the-question-plainly</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2025-12-26-on-santa-claus-and-answering-the-question-plainly</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2025-12-26-on-santa-claus-and-answering-the-question-plainly</guid>
       <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
       <description>Answering the Question Plainly In 1897, an eight-year-old girl named Virginia O’Hanlon wrote to a New York newspaper asking whether Santa Claus was real. Some of her friends said no. Her father suggested she write to the paper and ask. Francis P. Church&#39;s reply did not beat around the bush, &gt; **Ye</description>
     </item>
     <item>
       <title>Let&#39;s be gamedevs</title>
-      <link>https://enchant.games/?slug=news&amp;article=2025-12-18-upcoming-game-studio</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2025-12-18-upcoming-game-studio</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2025-12-18-upcoming-game-studio</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2025-12-18-upcoming-game-studio</guid>
       <pubDate>Thu, 18 Dec 2025 00:00:00 +0000</pubDate>
       <description>Devops is dead, let&#39;s be gamedevs. and... Let&#39;s make something beautiful. If the art of code is to be considered. If beauty goodness and truth matter. If integrity of software is anything... Is not the most human thing to do, in an **a**nti **i**ntelligence world, **to buck the system and make indie</description>
     </item>
     <item>
       <title>Emacs hacking 06 - Spartan Emacs - Crash Course PT 6</title>
-      <link>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-06</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-06</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-06</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-06</guid>
       <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
       <description>TBH this video is trash. &lt;iframe src=&quot;https://www.youtube.com/embed/ijS1pAcUIaQ&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; This project has also since been renamed to grokEmacs https://github.com/a-schaefers/grokEmacs - it does most of the same things, but the codebase is cle</description>
     </item>
     <item>
       <title>Emacs hacking 05 - More CRUX goodies - Emacs Crash Course PT 5</title>
-      <link>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-05</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-05</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-05</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-05</guid>
       <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
       <description>&lt;iframe src=&quot;https://www.youtube.com/embed/Rk8vngeJZOk&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; </description>
     </item>
     <item>
       <title>Emacs hacking 04 - Emacs TRAMP Crash Course PT 4</title>
-      <link>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-04</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-04</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-04</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-04</guid>
       <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
       <description>&lt;iframe src=&quot;https://www.youtube.com/embed/AI3y15hJtKA&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; </description>
     </item>
     <item>
       <title>Emacs hacking 03 - Crash Course PT 3 org-mode ediff Magit Projectile and more</title>
-      <link>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-03</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-03</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-03</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-03</guid>
       <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
       <description>&lt;iframe src=&quot;https://www.youtube.com/embed/JNpNge1cRhw&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; </description>
     </item>
     <item>
       <title>Emacs hacking 02 - Vanilla Emacs Crash Course PT 2</title>
-      <link>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-02</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-02</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-02</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-02</guid>
       <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
       <description>&lt;iframe src=&quot;https://www.youtube.com/embed/SEPlByrobAI&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; </description>
     </item>
     <item>
       <title>Emacs hacking 01 - Vanilla Emacs Crash Course</title>
-      <link>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-01</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-01</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-01</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-01</guid>
       <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
       <description>&lt;iframe src=&quot;https://www.youtube.com/embed/dCdoyDeR_rI&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; </description>
     </item>
     <item>
       <title>Emacs hacking 00 - Avoid RSI and emacs pinky once and for all</title>
-      <link>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-00</link>
-      <guid>https://enchant.games/?slug=news&amp;article=2025-05-05-emacs-hacking-00</guid>
+      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-00</link>
+      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-00</guid>
       <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
       <description>&lt;iframe src=&quot;https://www.youtube.com/embed/n9gJxKchkRw&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; </description>
     </item>
