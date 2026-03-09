@@ -183,7 +183,8 @@ function renderPage(title, body, pageTitle) {
 <span class="text-muted"><b>Making games worthy of the human.</b></span>
 </pre>
 
-        <nav>
+        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.header-nav').classList.toggle('open')">&#9776;</button>
+        <nav class="header-nav" onclick="this.classList.remove('open')">
         ${menuOrder.map(key =>
             html`<a href="/?slug=${key}" data-nav>[${displayName(key)}]</a>`
         )}

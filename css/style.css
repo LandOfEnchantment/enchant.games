@@ -100,6 +100,26 @@ nav {
     padding: 1rem;
 }
 
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 10;
+    background: var(--bs-body-bg);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 3px;
+    color: var(--bs-link-color);
+    font-size: 32px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s;
+}
+.hamburger:hover {
+    background-color: var(--bs-link-color);
+    color: var(--bs-body-bg);
+}
+
 nav a, .nav-btn {
     padding: 0.15rem 0.4rem;
     border-radius: 3px;
@@ -211,6 +231,33 @@ a:active {
 }
 
 @media (max-width: 600px) {
+    .hamburger {
+        display: inline-block;
+    }
+    .header-nav {
+        position: fixed;
+        top: 0;
+        right: -70%;
+        z-index: 9;
+        width: 70%;
+        height: 100%;
+        background: rgba(18, 18, 18, 0.85);
+        border-left: 1px solid var(--bs-border-color);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2rem 1rem;
+        transition: right 0.25s ease;
+        display: flex;
+    }
+    .header-nav.open {
+        right: 0;
+    }
+    footer nav {
+        font-size: 13px;
+        gap: 0.3rem;
+    }
     .journal-row {
         display: grid;
         grid-template-columns: 12.5% 58.33% 29.17%;
