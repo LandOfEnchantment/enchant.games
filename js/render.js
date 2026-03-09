@@ -81,6 +81,8 @@ function load() {
                     <p><a href="?slug=journal" data-nav><- Back</a></p>
 
               ${match.Body}
+
+                    <p><a href="?slug=journal" data-nav><- Back</a></p>
             `;
                     renderPage("Journal", body, match.Title);
                 });
@@ -103,7 +105,14 @@ function load() {
 
             const sortedYears = Object.keys(byYear).sort().reverse();
 
-            let articlesHtml = `<div class="journal-list">`;
+            let articlesHtml = `<div class="journal-list">
+                <div class="journal-row journal-header">
+                    <span class="journal-year">Date</span>
+                    <span class="journal-month"></span>
+                    <span class="journal-day"></span>
+                    <span class="journal-title">Title</span>
+                    <span class="journal-author">Author</span>
+                </div>`;
             let rowIndex = 0;
             let lastYear = null;
             let lastMonth = null;
@@ -125,6 +134,7 @@ function load() {
                                 <span class="journal-month">${showMonth ? monthNames[mIdx] : ""}</span>
                                 <span class="journal-day">${day}</span>
                                 <span class="journal-title">${post.Title}</span>
+                                <small class="journal-author">${post.Author}</small>
                             </a>`;
                             lastYear = yr;
                             lastMonth = mIdx;
@@ -137,7 +147,7 @@ function load() {
             const body = `
             <hr>
             <h2>Journal</h2>
-            <p><a href="/rss.xml">rss</a></p>
+            <p><a href="/rss.xml" class="nav-btn">[rss]</a></p>
 
         ${articlesHtml}
       `;
@@ -175,7 +185,7 @@ function renderPage(title, body, pageTitle) {
 
         <nav>
         ${menuOrder.map(key =>
-            html`<a href="/?slug=${key}" data-nav>${displayName(key)}</a>`
+            html`<a href="/?slug=${key}" data-nav>[${displayName(key)}]</a>`
         )}
         </nav>
         </header>
@@ -189,7 +199,7 @@ function renderPage(title, body, pageTitle) {
 
     <nav>
         ${menuOrder.map(key =>
-            html`<a href="/?slug=${key}" data-nav>${displayName(key)}</a>`
+            html`<a href="/?slug=${key}" data-nav>[${displayName(key)}]</a>`
         )}
     </nav>
 
