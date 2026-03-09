@@ -199,7 +199,7 @@ function renderPage(title, body, pageTitle) {
 
     <hr>
 
-    <nav>
+    <nav class="footer-nav">
         ${menuOrder.map(key =>
             html`<a href="/?slug=${key}" data-nav>[${displayName(key)}]</a>`
         )}

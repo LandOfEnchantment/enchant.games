@@ -267,9 +267,8 @@ a:active {
         height: 100%;
         z-index: 8;
     }
-    footer nav {
-        font-size: 13px;
-        gap: 0.3rem;
+    .footer-nav {
+        display: none;
     }
     .journal-row {
         display: grid;
