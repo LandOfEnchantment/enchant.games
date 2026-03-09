@@ -183,8 +183,9 @@ function renderPage(title, body, pageTitle) {
 <span class="text-muted"><b>Making games worthy of the human.</b></span>
 </pre>
 
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.header-nav').classList.toggle('open')">&#9776;</button>
-        <nav class="header-nav" onclick="this.classList.remove('open')">
+        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.header-nav').classList.toggle('open'); document.querySelector('.nav-backdrop').classList.toggle('open')">&#9776;</button>
+        <div class="nav-backdrop" onclick="this.classList.remove('open'); document.querySelector('.header-nav').classList.remove('open')"></div>
+        <nav class="header-nav" onclick="if(event.target.closest('a')){this.classList.remove('open'); document.querySelector('.nav-backdrop').classList.remove('open')}">
         ${menuOrder.map(key =>
             html`<a href="/?slug=${key}" data-nav>[${displayName(key)}]</a>`
         )}

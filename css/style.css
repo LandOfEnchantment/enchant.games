@@ -115,6 +115,9 @@ nav {
     cursor: pointer;
     transition: background-color 0.15s, color 0.15s;
 }
+.nav-backdrop {
+    display: none;
+}
 .hamburger:hover {
     background-color: var(--bs-link-color);
     color: var(--bs-body-bg);
@@ -242,7 +245,7 @@ a:active {
         width: 70%;
         height: 100%;
         background: rgba(18, 18, 18, 0.85);
-        border-left: 1px solid var(--bs-border-color);
+        border-left: none;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -253,6 +256,16 @@ a:active {
     }
     .header-nav.open {
         right: 0;
+        border-left: 1px solid var(--bs-border-color);
+    }
+    .nav-backdrop.open {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 30%;
+        height: 100%;
+        z-index: 8;
     }
     footer nav {
         font-size: 13px;
