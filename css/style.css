@@ -209,3 +209,27 @@ a:active {
     margin-left: 2ch;
     color: var(--bs-secondary-color);
 }
+
+@media (max-width: 600px) {
+    .journal-row {
+        display: grid;
+        grid-template-columns: 12.5% 58.33% 29.17%;
+    }
+    .journal-year,
+    .journal-month,
+    .journal-day {
+        grid-column: 1;
+        width: auto;
+    }
+    .journal-title {
+        grid-column: 2;
+        grid-row: 1 / span 3;
+        flex: none;
+    }
+    .journal-author {
+        grid-column: 3;
+        grid-row: 1 / span 3;
+        flex: none;
+        margin-left: 0;
+    }
+}
