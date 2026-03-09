@@ -240,7 +240,7 @@ a:active {
     .header-nav {
         position: fixed;
         top: 0;
-        right: -70%;
+        right: -100%;
         z-index: 9;
         width: 70%;
         height: 100%;
