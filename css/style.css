@@ -198,14 +198,14 @@ a:active {
     color: var(--bs-secondary-color);
 }
 .journal-title {
-    flex: 1;
+    flex: 3;
     color: var(--bs-link-color);
 }
 .journal-row:hover .journal-title {
     color: var(--bs-link-hover-color);
 }
 .journal-author {
-    flex-shrink: 0;
+    flex: 1;
     margin-left: 2ch;
     color: var(--bs-secondary-color);
 }

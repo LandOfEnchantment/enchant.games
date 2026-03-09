@@ -134,7 +134,7 @@ function load() {
                                 <span class="journal-month">${showMonth ? monthNames[mIdx] : ""}</span>
                                 <span class="journal-day">${day}</span>
                                 <span class="journal-title">${post.Title}</span>
-                                <small class="journal-author">${post.Author}</small>
+                                <span class="journal-author">${post.Author}</span>
                             </a>`;
                             lastYear = yr;
                             lastMonth = mIdx;
