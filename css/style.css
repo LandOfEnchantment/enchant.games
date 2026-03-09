@@ -284,6 +284,7 @@ a:active {
         grid-column: 2;
         grid-row: 1 / span 3;
         flex: none;
+        padding: 0 0.5rem;
     }
     .journal-author {
         grid-column: 3;
