@@ -138,3 +138,49 @@ a:active {
     color: var(--bs-link-color);
     text-decoration: none;
 }
+
+.journal-list {
+    display: flex;
+    flex-direction: column;
+}
+.journal-row {
+    display: flex;
+    gap: 0;
+    padding: 0.4rem 0.5rem;
+    min-height: calc(2lh + 0.8rem);
+    text-decoration: none;
+    transition: background-color 0.15s;
+}
+.journal-row-even {
+    background-color: #1a1a1a;
+}
+.journal-row-odd {
+    background-color: #222222;
+}
+.journal-row:hover {
+    background-color: #2e2e3e;
+    text-decoration: none;
+}
+.journal-year {
+    width: 5ch;
+    flex-shrink: 0;
+    color: var(--bs-link-color);
+    font-weight: 600;
+}
+.journal-month {
+    width: 4ch;
+    flex-shrink: 0;
+    color: #ff9da4;
+    font-weight: 600;
+}
+.journal-day {
+    width: 4ch;
+    flex-shrink: 0;
+    color: var(--bs-secondary-color);
+}
+.journal-title {
+    color: var(--bs-link-color);
+}
+.journal-row:hover .journal-title {
+    color: var(--bs-link-hover-color);
+}

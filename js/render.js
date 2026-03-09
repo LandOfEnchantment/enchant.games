@@ -28,7 +28,7 @@ function getSlug() {
 
 function parseNewsUrl() {
     const params = new URLSearchParams(location.search);
-    // backwards compat: rewrite old slug=journal to slug=journal
+    // backwards compat: rewrite old slug=news to slug=journal
     if (params.get("slug") === "news") {
         params.set("slug", "journal");
         history.replaceState({}, "", "?" + params.toString());
@@ -42,8 +42,7 @@ function parseNewsUrl() {
     }
     return {
         slug: params.get("slug") || "home",
-        article,
-        year: params.get("year") || null
+        article
     };
 }
 
@@ -58,7 +57,7 @@ function load() {
                 .then(json => (cachedNews = json));
 
         return loadNews.then(news => {
-            const { article, year } = newsRoute;
+            const { article } = newsRoute;
 
             if (article) {
                 const manifestEntry = news.find(p => p.Slug === article);
@@ -79,7 +78,7 @@ function load() {
                     <hr>
                     <h2>${match.Title}</h2>
                     <p><em>${dispDate} — ${match.Author}</em></p>
-                    <p><a href="?slug=journal&year=${yr}" data-nav><- Back</a></p>
+                    <p><a href="?slug=journal" data-nav><- Back</a></p>
 
               ${match.Body}
             `;
@@ -87,72 +86,58 @@ function load() {
                 });
             }
 
-            // build year navigation (using ISO year)
-            const years = [...new Set(news.map(p => p.Date.split("-")[0]))]
-                .sort()
-                .reverse();
-            const selectedYear = year || years[0];
-            const yearNav = years
-                .map(y =>
-                    y === selectedYear
-                        ? `<strong>${y}</strong>`
-                        : `<a href="?slug=journal&year=${y}" data-nav>${y}</a>`
-                )
-                .join(" | ");
-
-            // filter posts for the selected year
-            const filtered = news.filter(p =>
-                p.Date.startsWith(selectedYear + "-")
-            );
-
-            // group by month index
-            const byMonth = filtered.reduce((acc, post) => {
-                // post.Date is ISO "YYYY-MM-DD": split out MM
-                const [, mo] = post.Date.split("-");
-                const monthIdx = parseInt(mo, 10) - 1; // 0–11 as before
-
-                acc[monthIdx] = acc[monthIdx] || [];
-                acc[monthIdx].push(post);
-                return acc;
-            }, {});
-
-            // month names lookup
+            // group posts by year then month, most recent first
             const monthNames = [
                 "Jan", "Feb", "Mar", "Apr", "May", "Jun",
                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
             ];
 
-            // sort months descending
-            const sortedMonths = Object.keys(byMonth)
-                .map(Number)
-                .sort((a, b) => b - a);
-
-            // build HTML by month
-            let articlesHtml = "";
-            sortedMonths.forEach(mIdx => {
-                articlesHtml += `<h3>${monthNames[mIdx]}</h3>`;
-                byMonth[mIdx]
-                    // ISO dates sort lexicographically; this avoids Date.parse quirks
-                    .sort((a, b) => b.Date.localeCompare(a.Date))
-                    .forEach(post => {
-                        articlesHtml += `
-                        <p>
-                        <a href="?slug=journal&article=${encodeURIComponent(post.Slug)}" data-nav>
-                  ${post.Title}
-                  </a>
-                  </p>
-            `;
-                    });
+            const byYear = {};
+            news.forEach(post => {
+                const [yr, mo] = post.Date.split("-");
+                const mIdx = parseInt(mo, 10) - 1;
+                byYear[yr] = byYear[yr] || {};
+                byYear[yr][mIdx] = byYear[yr][mIdx] || [];
+                byYear[yr][mIdx].push(post);
             });
+
+            const sortedYears = Object.keys(byYear).sort().reverse();
+
+            let articlesHtml = `<div class="journal-list">`;
+            let rowIndex = 0;
+            let lastYear = null;
+            let lastMonth = null;
+            sortedYears.forEach(yr => {
+                const sortedMonths = Object.keys(byYear[yr])
+                    .map(Number)
+                    .sort((a, b) => b - a);
+                sortedMonths.forEach(mIdx => {
+                    byYear[yr][mIdx]
+                        .sort((a, b) => b.Date.localeCompare(a.Date))
+                        .forEach(post => {
+                            const stripe = rowIndex % 2 === 0 ? "journal-row-even" : "journal-row-odd";
+                            const showYear = yr !== lastYear;
+                            const showMonth = showYear || mIdx !== lastMonth;
+                            const day = post.Date.split("-")[2];
+                            articlesHtml += `
+                            <a href="?slug=journal&article=${encodeURIComponent(post.Slug)}" data-nav class="journal-row ${stripe}">
+                                <span class="journal-year">${showYear ? yr : ""}</span>
+                                <span class="journal-month">${showMonth ? monthNames[mIdx] : ""}</span>
+                                <span class="journal-day">${day}</span>
+                                <span class="journal-title">${post.Title}</span>
+                            </a>`;
+                            lastYear = yr;
+                            lastMonth = mIdx;
+                            rowIndex++;
+                        });
+                });
+            });
+            articlesHtml += `</div>`;
 
             const body = `
             <hr>
             <h2>Journal</h2>
             <p><a href="/rss.xml">rss</a></p>
-            <p>${yearNav}</p>
-
-
-            <h2>${selectedYear}</h2>
 
         ${articlesHtml}
       `;
