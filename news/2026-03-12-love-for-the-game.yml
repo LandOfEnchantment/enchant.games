@@ -4403,7 +4403,7 @@ body: |
 
       For more on the topic, I suggest reading [How Deep Does Your Dependency Tree Go? An Empirical Study of Dependency Amplification Across 10 Package Ecosystems](https://arxiv.org/html/2512.14739v1)
 
-      > ...and this article does even intend to discuss the security implications of all this.
+      > ...and this article doesn't even intend to discuss the security implications of all this.
 
       ### Really bad software: Electron Apps
 
