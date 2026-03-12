@@ -34,9 +34,9 @@ body: |
 
       Programs that do one thing well.
 
-      ### What we ship today
+      ### What we ship
 
-      Now look at what we ship today:
+      Now look at what we actually ship today:
 
       - GNU glibc giga libs with extremely large codebases, huge ABI compatibility burdens, and very complex internal behavior that is difficult to replace or modify.
 
