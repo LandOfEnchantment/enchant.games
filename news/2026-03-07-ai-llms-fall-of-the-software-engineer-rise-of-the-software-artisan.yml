@@ -94,7 +94,7 @@ body: |
 
       ### Why gamedev is still the best outlet for a software artisan
 
-      Without restating the case I have made prior, that [video Games are the most important software in the world](https://enchant.games/?slug=journal&article=2026-02-28-why-I-care) I want to discuss more in depth what is special about the sector right now.
+      Without restating the case I have made prior, that [video Games are the most important software in the world](/?slug=journal&article=2026-02-28-why-I-care) I want to discuss more in depth what is special about the sector right now.
 
       First of all, while AI can generate ai-slop art, it is absolutely terrible at generating consistent sprite sheets and models. Generative AI is built to do almost the opposite. Diffusion models generate independent images. They don't maintain a persistent object like:
 
