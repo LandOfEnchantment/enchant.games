@@ -199,11 +199,7 @@ function renderPage(title, body, pageTitle) {
 
     <hr>
 
-    <nav class="footer-nav">
-        ${menuOrder.map(key =>
-            html`<a href="/?slug=${key}" data-nav>[${displayName(key)}]</a>`
-        )}
-    </nav>
+    <a href="#" class="back-to-top nav-btn" onclick="event.preventDefault(); window.scrollTo(0, 0)">[Back to Top]</a>
 
 
 
@@ -234,6 +230,14 @@ function renderPage(title, body, pageTitle) {
 
     document.title = `${pageTitle} - Land of Enchantment Games`;
     render(view, main);
+
+    requestAnimationFrame(() => {
+        const btn = document.querySelector('.back-to-top');
+        if (btn) {
+            const scrolls = document.documentElement.scrollHeight > window.innerHeight;
+            btn.classList.toggle('visible', scrolls);
+        }
+    });
 }
 
 document.addEventListener("click", e => {

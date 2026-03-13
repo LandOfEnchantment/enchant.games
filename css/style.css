@@ -234,7 +234,17 @@ a:active {
     color: var(--bs-secondary-color);
 }
 
+.back-to-top {
+    display: none;
+}
+.back-to-top.visible {
+    display: inline-block;
+}
+
 @media (max-width: 600px) {
+    .back-to-top {
+        display: none !important;
+    }
     .hamburger {
         display: inline-block;
     }
@@ -267,9 +277,6 @@ a:active {
         width: 30%;
         height: 100%;
         z-index: 8;
-    }
-    .footer-nav {
-        display: none;
     }
     .journal-row {
         display: grid;
