@@ -203,7 +203,7 @@ function renderPage(title, body, pageTitle) {
 
 
 
-        <p class="text-muted">(c) ${currentYear} enchant.games</p>
+        <p class="text-muted">(c) ${currentYear} Land of Enchantment Games</p>
 
         <p><b>Curious what we're building? Follow along.</b></p>
 
