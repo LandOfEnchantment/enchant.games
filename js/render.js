@@ -8,7 +8,7 @@ const main = document.querySelector("main");
 let cachedNews = null;
 let cachedData = null;
 
-const menuOrder = ["home", "values", "mission", "team", "journal"];
+const menuOrder = ["home", "games", "values", "mission", "team", "journal", "community", "press"];
 
 // Utility to capitalize link text
 function displayName(str) {
