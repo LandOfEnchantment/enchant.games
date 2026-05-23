@@ -13,13 +13,6 @@
       <description>You don&#39;t love programming enough Up to now I have been arguing: &gt; The modern programmer does not love software too much; he loves it too little - for he no longer loves the making of it. If you did, you would be up in arms about what is going down right now in software culture. The low quality code</description>
     </item>
     <item>
-      <title>What This World Really Needs | The Rise of the Software Artisan | Promo video</title>
-      <link>https://enchant.games/?slug=journal&amp;article=2026-03-10-what-this-world-really-needs-the-rise-of-the-software-artisan</link>
-      <guid>https://enchant.games/?slug=journal&amp;article=2026-03-10-what-this-world-really-needs-the-rise-of-the-software-artisan</guid>
-      <pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate>
-      <description>&lt;iframe src=&quot;https://www.youtube.com/embed/ZMau2o7KWYM&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; Full Text: [AI, LLMs, and the Fall of the Software Engineer - The Rise of the Software Artisan](/?slug=journal&amp;article=2026-03-07-ai-llms-fall-of-the-software-engineer-rise-of-th</description>
-    </item>
-    <item>
       <title>On the Progressive Surrender of Technical Autonomy</title>
       <link>https://enchant.games/?slug=journal&amp;article=2026-03-08-on-the-progressive-surrender-of-technical-autonomy</link>
       <guid>https://enchant.games/?slug=journal&amp;article=2026-03-08-on-the-progressive-surrender-of-technical-autonomy</guid>
@@ -55,20 +48,6 @@
       <description>OK, DOOMER? At times I have been accused of dooming too hard on the sad state of tech. This piece aims to be a bit more optimistic. It&#39;s so important to me for me and for my friends, to get this issue (on LLMs) right and to communicate a stance with clarity and punch. There is so much FOMO, so much </description>
     </item>
     <item>
-      <title>Why I care about NOT using AI generative code and HOW I am building a business around NOT using it</title>
-      <link>https://enchant.games/?slug=journal&amp;article=2026-02-28-why-I-care</link>
-      <guid>https://enchant.games/?slug=journal&amp;article=2026-02-28-why-I-care</guid>
-      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
-      <description>I was challenged by my friend... who is a devops engineer about why I am so strongly opposed to generative AI usage in code, when he said: &gt; &quot;You don&#39;t even work in IT anymore, why do you care so much&quot; In this article, I will reply to this question personally, about why I care. The question is a pre</description>
-    </item>
-    <item>
-      <title>Happy New Year | Cool Stuff Ahead</title>
-      <link>https://enchant.games/?slug=journal&amp;article=2026-01-06-happy-new-year-cool-stuff-ahead</link>
-      <guid>https://enchant.games/?slug=journal&amp;article=2026-01-06-happy-new-year-cool-stuff-ahead</guid>
-      <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
-      <description>Discord Our Discord is growing in to a tight-nit small group of like minded solo devs (for now), working on our craft, we have many private channels with learning tracks and personal progress trackers where we can sign in and get to work on our games. Currently I have created the following tracks: -</description>
-    </item>
-    <item>
       <title>On Santa Claus</title>
       <link>https://enchant.games/?slug=journal&amp;article=2025-12-26-on-santa-claus-and-answering-the-question-plainly</link>
       <guid>https://enchant.games/?slug=journal&amp;article=2025-12-26-on-santa-claus-and-answering-the-question-plainly</guid>
@@ -83,53 +62,11 @@
       <description>Devops is dead, let&#39;s be gamedevs. and... Let&#39;s make something beautiful. If the art of code is to be considered. If beauty goodness and truth matter. If integrity of software is anything... Is not the most human thing to do, in an **a**nti **i**ntelligence world, **to buck the system and make indie</description>
     </item>
     <item>
-      <title>Emacs hacking 06 | Spartan Emacs - Crash Course PT 6</title>
-      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-06</link>
-      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-06</guid>
-      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
-      <description>TBH this video is trash. &lt;iframe src=&quot;https://www.youtube.com/embed/ijS1pAcUIaQ&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; This project has also since been renamed to grokEmacs https://github.com/a-schaefers/grokEmacs - it does most of the same things, but the codebase is cle</description>
-    </item>
-    <item>
-      <title>Emacs hacking 05 | More CRUX goodies - Emacs Crash Course PT 5</title>
-      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-05</link>
-      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-05</guid>
-      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
-      <description>&lt;iframe src=&quot;https://www.youtube.com/embed/Rk8vngeJZOk&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; </description>
-    </item>
-    <item>
-      <title>Emacs hacking 04 | Emacs TRAMP Crash Course PT 4</title>
-      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-04</link>
-      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-04</guid>
-      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
-      <description>&lt;iframe src=&quot;https://www.youtube.com/embed/AI3y15hJtKA&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; </description>
-    </item>
-    <item>
-      <title>Emacs hacking 03 | Crash Course PT 3 org-mode ediff Magit Projectile and more</title>
-      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-03</link>
-      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-03</guid>
-      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
-      <description>&lt;iframe src=&quot;https://www.youtube.com/embed/JNpNge1cRhw&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; </description>
-    </item>
-    <item>
-      <title>Emacs hacking 02 | Vanilla Emacs Crash Course PT 2</title>
-      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-02</link>
-      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-02</guid>
-      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
-      <description>&lt;iframe src=&quot;https://www.youtube.com/embed/SEPlByrobAI&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; </description>
-    </item>
-    <item>
       <title>Emacs hacking 01 | Vanilla Emacs Crash Course</title>
       <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-01</link>
       <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-01</guid>
       <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
       <description>&lt;iframe src=&quot;https://www.youtube.com/embed/dCdoyDeR_rI&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; </description>
-    </item>
-    <item>
-      <title>Emacs hacking 00 | Avoid RSI and emacs pinky once and for all</title>
-      <link>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-00</link>
-      <guid>https://enchant.games/?slug=journal&amp;article=2025-05-05-emacs-hacking-00</guid>
-      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
-      <description>&lt;iframe src=&quot;https://www.youtube.com/embed/n9gJxKchkRw&quot; allowfullscreen style=&quot;width:100%; aspect-ratio:16/9; border:0;&quot;&gt; </description>
     </item>
   </channel>
 </rss>
