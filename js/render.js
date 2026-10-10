@@ -1,5 +1,6 @@
 import { html, render } from '/js/lit/lit-html/lit-html.js';
 import { unsafeHTML } from '/js/lit/lit-html/directives/unsafe-html.js';
+import { mountContactForms } from '/js/contact.js';
 import { loadData as fetchData, loadNews as fetchNews, loadArticle as fetchArticle } from '/js/content-loader.js';
 
 // using Lit only as a HTML renderer + client-side router, not leveraging its reactive components.
@@ -255,6 +256,7 @@ function renderPage(title, body, pageTitle) {
 
     document.title = `${pageTitle} - Land of Enchantment Games`;
     render(view, main);
+    mountContactForms(main);
 
     requestAnimationFrame(() => {
         const btn = document.querySelector('.back-to-top');

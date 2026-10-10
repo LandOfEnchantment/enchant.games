@@ -290,3 +290,36 @@ a:active {
         margin-left: 0;
     }
 }
+
+/* Contact form (js/contact.js), the same form as on adamschaefers.com */
+#contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem 1.25rem; }
+#contact-form .wide { grid-column: 1 / -1; }
+#contact-form label { display: block; color: var(--bs-secondary-color); margin-bottom: .35rem; }
+#contact-form input, #contact-form textarea { box-sizing: border-box; width: 100%; font: inherit; color: var(--bs-body-color); background: #1a1a1a; border: 1px solid var(--bs-border-color); border-radius: 3px; padding: .6rem .75rem; }
+#contact-form textarea { resize: vertical; min-height: 9rem; }
+#contact-form input:focus-visible, #contact-form textarea:focus-visible { outline: 2px solid var(--bs-link-color); outline-offset: 1px; border-color: transparent; }
+#contact-form button { justify-self: start; font: inherit; font-weight: 600; color: var(--bs-body-bg); background: var(--bs-link-color); border: 0; border-radius: 3px; padding: .5rem 1.5rem; cursor: pointer; transition: background-color .15s; }
+#contact-form button:hover { background: var(--bs-link-hover-color); }
+#contact-form button:disabled { opacity: .6; cursor: progress; }
+#contact-status { margin: 0; color: var(--bs-secondary-color); }
+#contact-status:empty { display: none; }
+/* Sent: the form flips away and the sent card swings in */
+.inquiry-card { perspective: 1100px; perspective-origin: 50% 0; transition: height .45s cubic-bezier(.3, .7, .2, 1); }
+#contact-form[hidden], .inquiry-sent[hidden] { display: none; }
+#contact-form.is-leaving { transform-origin: 50% 100%; animation: form-leave .75s cubic-bezier(.55, 0, .75, .1) forwards; pointer-events: none; }
+@keyframes form-leave { 0% { transform: none; } 18% { transform: rotateX(-7deg) translateY(-.5rem); opacity: 1; } 100% { transform: rotateX(88deg) translateY(1.5rem) scale(.92); opacity: 0; } }
+.inquiry-sent { display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 1.75rem; border-radius: 3px; background: #1a1a1a; box-shadow: inset 0 0 0 1px var(--bs-border-color); transform-origin: 50% 0; }
+.inquiry-sent:focus { outline: none; }
+.inquiry-sent.is-arriving { animation: sent-arrive .7s cubic-bezier(.2, 1.35, .4, 1) both; }
+@keyframes sent-arrive { from { transform: rotateX(-80deg); opacity: 0; } 40% { opacity: 1; } to { transform: none; } }
+.sent-check { flex: none; width: 3.25rem; height: 3.25rem; fill: none; stroke: var(--bs-link-color); stroke-linecap: round; stroke-linejoin: round; }
+.sent-check circle { stroke-width: 2.5; stroke-dasharray: 145; }
+.sent-check path { stroke-width: 4; stroke-dasharray: 34; }
+.is-arriving .sent-check circle { animation: draw .6s .25s ease-out both; --len: 145; }
+.is-arriving .sent-check path { animation: draw .35s .7s ease-out both; --len: 34; }
+@keyframes draw { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: 0; } }
+.sent-title { margin: 0; font-weight: 600; color: var(--bs-link-color); }
+.sent-note { margin: .2rem 0 0; color: var(--bs-secondary-color); }
+@media (max-width: 600px) {
+    #contact-form { grid-template-columns: 1fr; }
+}
