@@ -208,12 +208,7 @@ function renderPage(title, body, pageTitle) {
         <p><b>Curious what we're building? Follow along.</b></p>
 
         <p>
-        <a href="https://discord.gg/h6sFUNzaFj"><img alt="Discord logo" loading="lazy" height="75" width="75" src="/images/discord.webp"></a>
         <a href="https://www.twitch.tv/enchantdev"><img alt="Twitch.tv logo" loading="lazy" height="75" width="75" src="/images/twitch.webp"></a>
-        <a href="https://www.youtube.com/@enchantdev"><img alt="Youtube logo" loading="lazy" height="75" width="75" src="/images/youtube.webp"></a>
-        <a href="https://www.reddit.com/r/LoEGames"><img alt="Reddit logo" loading="lazy" height="75" width="75" src="/images/reddit.webp"></a>
-        <a href="https://x.com/enchantdev575"><img alt="Twitter logo" loading="lazy" height="75" width="75" src="/images/twitter.webp"></a>
-        <a href="https://github.com/LandOfEnchantment"><img alt="Github logo" loading="lazy" height="75" width="75" src="/images/github.webp"></a>
         </p>
 
     </footer>
