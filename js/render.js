@@ -10,6 +10,19 @@ let cachedData = null;
 
 const menuOrder = ["home", "games", "values", "journal", "press"];
 
+// Icons for the mobile tab bar (24x24, drawn with currentColor)
+const tabIcons = {
+    home: '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>',
+    games: '<rect x="2" y="7" width="20" height="11" rx="4"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="15.5" cy="11.5" r="0.6"/><circle cx="18" cy="13.5" r="0.6"/>',
+    values: '<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',
+    journal: '<path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h6M8 11h6"/>',
+    press: '<path d="M3 10v4h3l7 4V6L6 10z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11"/>',
+};
+
+function tabIcon(key) {
+    return unsafeHTML(`<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${tabIcons[key]}</svg>`);
+}
+
 // Utility to capitalize link text
 function displayName(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -183,14 +196,23 @@ function renderPage(title, body, pageTitle) {
 <span class="text-muted"><b>Making games worthy of the human.</b></span>
 </pre>
 
-        <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.header-nav').classList.toggle('open'); document.querySelector('.nav-backdrop').classList.toggle('open')">&#9776;</button>
-        <div class="nav-backdrop" onclick="this.classList.remove('open'); document.querySelector('.header-nav').classList.remove('open')"></div>
-        <nav class="header-nav" onclick="if(event.target.closest('a')){this.classList.remove('open'); document.querySelector('.nav-backdrop').classList.remove('open')}">
+        <nav class="header-nav">
         ${menuOrder.map(key =>
             html`<a href="/?slug=${key}" data-nav>[${displayName(key)}]</a>`
         )}
         </nav>
         </header>
+  `;
+
+    const activeSlug = parseNewsUrl().slug === "journal" ? "journal" : getSlug();
+    const tabBar = html`
+    <nav class="tab-bar" aria-label="Main">
+        ${menuOrder.map(key =>
+            html`<a href="/?slug=${key}" data-nav class=${key === activeSlug ? "active" : ""} aria-current=${key === activeSlug ? "page" : "false"}>
+                ${tabIcon(key)}<span>${displayName(key)}</span>
+            </a>`
+        )}
+    </nav>
   `;
 
     const currentYear = new Date().getFullYear();
@@ -228,6 +250,7 @@ function renderPage(title, body, pageTitle) {
       <article id="page-body">${unsafeHTML(body)}</article>
       </main>
     ${footer}
+    ${tabBar}
   `;
 
     document.title = `${pageTitle} - Land of Enchantment Games`;
