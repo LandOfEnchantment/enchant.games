@@ -1,0 +1,3 @@
+node_modules/
+# What make build writes: CI builds it on every merge and deploys it, so it is never committed.
+/public/

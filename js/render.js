@@ -1,7 +1,7 @@
-import { html, render } from '/js/lit/lit-html/lit-html.js';
-import { unsafeHTML } from '/js/lit/lit-html/directives/unsafe-html.js';
-import { mountContactForms } from '/js/contact.js';
-import { loadData as fetchData, loadNews as fetchNews, loadArticle as fetchArticle } from '/js/content-loader.js';
+import { html, render } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { mountContactForms } from './contact.js';
+import { loadData as fetchData, loadNews as fetchNews, loadArticle as fetchArticle } from './content-loader.js';
 
 // using Lit only as a HTML renderer + client-side router, not leveraging its reactive components.
 

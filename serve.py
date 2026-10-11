@@ -1,6 +1,6 @@
 import http.server, os
 
-ROOT = os.path.dirname(__file__) or "."
+ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
 
 class SPAHandler(http.server.SimpleHTTPRequestHandler):
     extensions_map = {**http.server.SimpleHTTPRequestHandler.extensions_map,

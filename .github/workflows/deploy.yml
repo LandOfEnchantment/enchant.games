@@ -1,0 +1,84 @@
+# The merge is the deploy (2026-10-11). On every push to master: the pull request's check
+# again on the merged commit (check.yml), then the site it built deployed to GitHub Pages,
+# then a smoke test of the live site. Before this, GitHub Pages served master's files as they
+# were and a git hook built the manifests; now nothing built is committed.
+#
+# No secret: GitHub Pages takes the deploy on the job's own OIDC token, and the
+# `github-pages` environment takes deploys from master only (scripts/github-settings.sh).
+# Deploys never overlap, and a running one is never cancelled. The hourly run catches a
+# merge GitHub Actions made itself (owner-merge.yml arming auto-merge), which starts no push
+# run: it deploys only when the live deployment isn't master's newest commit. Rollback: revert
+# the commit (scripts/ship.sh), or dispatch this workflow on an older commit.
+
+name: deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+  schedule:
+    - cron: '41 * * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  # Whether anything isn't live yet. A push or a dispatch always goes on; the hourly run
+  # goes on only when the newest github-pages deployment isn't this commit.
+  pending:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      deployments: read
+    outputs:
+      go: ${{ steps.pending.outputs.go }}
+    steps:
+      - id: pending
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          set -eu
+          if [ "$EVENT" != schedule ]; then echo go=yes >> "$GITHUB_OUTPUT"; exit 0; fi
+          live=$(gh api "repos/$REPO/deployments?environment=github-pages&per_page=1" --jq '.[0].sha // ""')
+          if [ "$live" = "$GITHUB_SHA" ]; then echo "the site is live at $GITHUB_SHA"; echo go=no >> "$GITHUB_OUTPUT"
+          else echo "the site is live at ${live:-nothing}, master is $GITHUB_SHA"; echo go=yes >> "$GITHUB_OUTPUT"; fi
+
+  check:
+    needs: pending
+    if: needs.pending.outputs.go == 'yes'
+    uses: ./.github/workflows/check.yml
+
+  deploy:
+    needs: check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+
+  smoke:
+    needs: deploy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/site
+      - run: mkdir public && tar -xf "$RUNNER_TEMP/site/artifact.tar" -C public
+      - run: sh scripts/smoke.sh

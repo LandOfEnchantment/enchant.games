@@ -1,0 +1,42 @@
+# `make check` (the site built into public/, every link on it, these workflows' rules) on
+# every pull request, and on every merge as the first job of deploy.yml, which then deploys
+# exactly the site this job built (the `github-pages` artifact). CI is the build of record:
+# what this job's esbuild bundles is what is served.
+#
+# The `check` job is the required check on master (.github/rulesets/master.json, pinned to
+# GitHub Actions): a pull request merges only once it is green. A required check that never
+# reports holds a pull request at "Expected" for ever, so this workflow takes no path filter.
+# It holds no secret: a pull request's code runs here. Every `uses:` names a commit (the
+# repository requires it); Dependabot moves the pins.
+
+name: check
+
+on:
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    concurrency:
+      group: check-${{ github.ref }}
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: make check
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: public/
+          retention-days: 14

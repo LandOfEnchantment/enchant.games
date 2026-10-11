@@ -6,20 +6,34 @@ A static website with headless backend decoupling
 - `news/`                - news articles, YAML files with markdown
 - `js/content-loader.js` - YAML+markdown processor / simulated headless backend / technically frontend
 - `js/render.js`         - SPA shell / client-side router / frontend renderer
+- `scripts/build.js`     - builds `public/`: the bundled script, the pages, and the `pages.json`, `news.json`, `rss.xml` and `sitemap.xml` manifests
 
 ## Usage
 
-Generate `pages.json`, `news.json`, `rss.xml` and `sitemap.xml` manifests:
+Install the pinned libraries and toolchain (Node 24):
+
+    npm ci
+
+Build `public/` (what the site serves; never committed):
 
     make build
 
-Run locally:
+Run locally at http://localhost:3000:
 
     make run
 
-Install the git hook to auto-build manifests on commit:
+Check it the way CI does:
 
-    cp scripts/pre-commit .git/hooks/pre-commit
+    make check
+
+## Shipping
+
+`master` takes pull requests only, and the merge is the deploy: CI builds the
+site and publishes it to GitHub Pages. Commit on a branch, then:
+
+    scripts/ship.sh
+
+See `.claude/rules/cicd.md` for the whole pipeline.
 
 ## License
 

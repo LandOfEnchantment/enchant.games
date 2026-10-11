@@ -1,5 +1,5 @@
-import { load, JSON_SCHEMA } from '/js/js-yaml/dist/js-yaml.mjs';
-import { marked } from '/js/marked/lib/marked.esm.js';
+import { load, JSON_SCHEMA } from 'js-yaml';
+import { marked } from 'marked';
 
 marked.setOptions({
     gfm: true,

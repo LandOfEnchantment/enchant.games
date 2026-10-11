@@ -1,0 +1,17 @@
+{
+  "name": "enchant.games",
+  "private": true,
+  "type": "module",
+  "description": "The site's libraries and toolchain, pinned here for CI and local use (make drives it): esbuild bundles js/render.js with lit-html, marked and js-yaml into public/js/render.js.",
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "js-yaml": "4.1.0",
+    "lit-html": "3.3.3",
+    "marked": "15.0.7"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

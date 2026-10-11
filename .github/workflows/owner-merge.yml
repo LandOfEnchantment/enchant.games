@@ -1,0 +1,103 @@
+# The owner's pull requests merge themselves; everyone else's wait for the
+# owner (2026-10-11, as in ../adamschaefers.com).
+#
+# master takes no direct push: the ruleset in .github/rulesets/master.json wants a
+# pull request, the `check` job green, and one approving review. GitHub never
+# lets an author approve their own pull request, so this workflow is the
+# approval for exactly one person's: the owner's (a-schaefers, user id
+# 26800291), which includes every Claude session the owner drives, since those
+# open pull requests and push as the owner. It approves the head it was woken
+# for, then makes sure auto-merge is armed, so GitHub merges the moment `check`
+# passes.
+#
+# Everyone else, other Claudes and Dependabot included, gets nothing from it:
+# their pull request waits until the owner approves it by hand. So does the
+# owner's own pull request after anyone else pushes to it (the ruleset dismisses
+# a stale approval; the next push by the owner is approved again).
+#
+# A draft is how the owner holds one back: drafts are skipped, and "Ready for
+# review" approves and arms it.
+#
+# WHY pull_request_target: it runs master's copy of this file with a token that
+# can approve, and never the pull request's code. That is the whole safety of
+# it: no checkout, no script from the branch, nothing from the event but
+# numbers, a commit hash and ids. A pull request that edits this file changes
+# nothing until it is merged, and merging it needs this file's approval or the
+# owner's.
+#
+# Who arms auto-merge decides whether master gets its deploy run: a merge
+# armed with this job's token is GitHub Actions' push, and such a push starts no
+# workflow. So scripts/ship.sh and the owner's Claude sessions arm it as the
+# owner; this job arms it only when nobody has, and then deploy.yml's hourly run
+# deploys the merged commit (it checks it first).
+#
+# Needs two repository settings (scripts/github-settings.sh applies both):
+# Actions may approve pull requests, and auto-merge is allowed.
+
+name: owner merge
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions: {}
+
+# A newer push to the same pull request replaces a pending run.
+concurrency:
+  group: owner-merge-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  approve:
+    # The author and whoever caused this event are the owner, the branch lives
+    # in this repository (never a fork's), and it is not a draft. Ids, not
+    # logins: a login can be renamed and taken.
+    if: >-
+      github.event.pull_request.user.id == 26800291 &&
+      github.event.sender.id == 26800291 &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write       # arm auto-merge (the merge writes master)
+      pull-requests: write  # the approving review
+    steps:
+      - name: Approve the head and arm auto-merge
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          # The approval names the commit it was given for; a newer push makes
+          # it stale (dismissed by the ruleset) and wakes this job again.
+          gh api -X POST "repos/$REPO/pulls/$PR/reviews" \
+            -f event=APPROVE -f commit_id="$HEAD" \
+            -f body="The owner's pull request: approved for $HEAD." >/dev/null
+          echo "approved #$PR at $HEAD"
+
+          armed=$(gh pr view "$PR" --repo "$REPO" --json autoMergeRequest \
+                    --jq '.autoMergeRequest.enabledBy.login // ""')
+          case "$armed" in
+            '') ;;
+            github-actions|'github-actions[bot]')
+              # armed by this job for an older head: arm it again for this one
+              gh pr merge "$PR" --repo "$REPO" --disable-auto || true ;;
+            *) echo "auto-merge was armed by $armed; leaving it"
+               exit 0 ;;
+          esac
+          # GitHub refuses the merge if the head is anything but this one.
+          state() { gh pr view "$PR" --repo "$REPO" --json mergeStateStatus --jq .mergeStateStatus; }
+          if gh pr merge "$PR" --repo "$REPO" --auto --merge --match-head-commit "$HEAD"; then
+            echo "auto-merge armed on #$PR at $HEAD"
+          elif case "$(state)" in CLEAN|UNSTABLE|HAS_HOOKS) true ;; *) false ;; esac; then
+            # Already mergeable (its check passed before the approval, as after
+            # "Ready for review"): auto-merge cannot be armed on it, so merge.
+            gh pr merge "$PR" --repo "$REPO" --merge --match-head-commit "$HEAD"
+            echo "merged #$PR at $HEAD"
+          else
+            echo "::error::auto-merge could not be armed on #$PR (state $(state))"
+            exit 1
+          fi
