@@ -31,7 +31,7 @@ How a change reaches `master` and the live site (2026-10-11). The same road as .
 ## Settings
 
 - Kept in `scripts/github-settings.sh` (`check` names any drift; `apply` writes it, needs `gh` as admin): the ruleset; Actions may approve pull requests, default token read only; auto-merge, merge commits, delete branch on merge, update branch; only GitHub-owned and verified actions, each pinned to a commit; a fork's workflows wait for approval every time; secret scanning with push protection; Dependabot alerts and security fixes; GitHub Pages built by Actions at enchant.games, its `github-pages` environment deploying from `master` only.
-- Actions may approve pull requests only because the owner is the one collaborator: anyone else with write access could approve their own pull request through a workflow on their branch. Revisit before granting anyone write access to LandOfEnchantment.
+- Actions may approve pull requests only because the owner is the one collaborator: anyone else with write access could approve their own pull request through a workflow on their branch. Revisit before granting anyone write access to LandOfEnchantment (dontNedd, the other member, has read). The organization's own setting must allow it too (2026-10-11: turned on; `github-settings.sh` checks and applies it).
 - The emergency door: when `check` itself is broken and its fix cannot pass it, the owner sets the ruleset's enforcement to disabled (Settings, Rules, or the JSON's `"enforcement"` and `apply`), merges the fix, and sets it back (`check` shows the drift if forgotten). Never a bypass actor.
 
 ## Done by hand, on purpose

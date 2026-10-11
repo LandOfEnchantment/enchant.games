@@ -14,7 +14,9 @@
 #     and every agent get the same rule. owner-merge.yml approves the owner's
 #     pull requests; anyone else's waits for the owner.
 #   - Actions may approve pull requests (owner-merge.yml's approval), and the
-#     default token is read only (each workflow asks for what it needs).
+#     default token is read only (each workflow asks for what it needs). The
+#     LandOfEnchantment organization must allow it first: it does, so a repository
+#     may opt in (only this one has).
 #   - Auto-merge allowed, merge commits allowed, a branch deleted when merged,
 #     an out-of-date branch can be updated from the pull request.
 #   - Only GitHub-owned and verified actions run, each pinned to a commit.
@@ -48,6 +50,7 @@ repo_settings='{
     "secret_scanning_push_protection": { "status": "enabled" }
   }
 }'
+org=${repo%%/*}
 workflow_permissions='{ "default_workflow_permissions": "read", "can_approve_pull_request_reviews": true }'
 actions_permissions='{ "enabled": true, "allowed_actions": "selected", "sha_pinning_required": true }'
 selected_actions='{ "github_owned_allowed": true, "verified_allowed": true, "patterns_allowed": [] }'
@@ -83,6 +86,7 @@ if [ "$mode" = check ]; then
   same "repository" "$(jq -c 'del(.security_and_analysis)' <<<"$repo_settings")" "$(gh api "repos/$repo")"
   same "secret scanning" "$(jq -c .security_and_analysis <<<"$repo_settings")" \
     "$(gh api "repos/$repo" --jq '.security_and_analysis | {secret_scanning: {status: .secret_scanning.status}, secret_scanning_push_protection: {status: .secret_scanning_push_protection.status}}')"
+  same "organization lets workflows approve" '{"can_approve_pull_request_reviews": true}' "$(gh api "orgs/$org/actions/permissions/workflow")"
   same "workflow token" "$workflow_permissions" "$(gh api "repos/$repo/actions/permissions/workflow")"
   same "actions allowed" "$actions_permissions" "$(gh api "repos/$repo/actions/permissions")"
   same "selected actions" "$selected_actions" "$(gh api "repos/$repo/actions/permissions/selected-actions")"
@@ -111,6 +115,7 @@ fi
 
 # apply. The workflow token's right to approve goes first: once the ruleset
 # wants an approval, the owner's pull requests need owner-merge.yml's.
+put PUT "orgs/$org/actions/permissions/workflow" "$workflow_permissions"
 put PUT "repos/$repo/actions/permissions/workflow" "$workflow_permissions"
 put PATCH "repos/$repo" "$repo_settings"
 put PUT "repos/$repo/actions/permissions" "$actions_permissions"
