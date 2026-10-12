@@ -6,7 +6,8 @@ A static website with headless backend decoupling
 - `news/`                - news articles, YAML files with markdown
 - `js/content-loader.js` - YAML+markdown processor / simulated headless backend / technically frontend
 - `js/render.js`         - SPA shell / client-side router / frontend renderer
-- `scripts/build.js`     - builds `public/`: the bundled script, the pages, and the `pages.json`, `news.json`, `rss.xml` and `sitemap.xml` manifests
+- `scripts/build.js`     - builds `public/`: the bundled script, the pages, the `pages.json`, `news.json`, `rss.xml` and `sitemap.xml` manifests, and a `?v=` cache key on every file a page asks for
+- `js/version.js`        - offers an open tab "Reload" when a newer version of the site is live
 
 ## Usage
 

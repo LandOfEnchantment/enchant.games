@@ -17,7 +17,7 @@ class SPAHandler(http.server.SimpleHTTPRequestHandler):
         super().__init__(*a, directory=ROOT, **kw)
 
     def do_GET(self):
-        path = os.path.join(ROOT, self.path.lstrip("/"))
+        path = os.path.join(ROOT, self.path.split("?", 1)[0].split("#", 1)[0].lstrip("/"))
         if not os.path.exists(path) or os.path.isdir(path) and not os.path.exists(os.path.join(path, "index.html")):
             self.path = "/index.html"
         super().do_GET()

@@ -23,7 +23,10 @@
 #   - A fork's workflows wait for approval every time, not only the first.
 #   - Secret scanning with push protection; Dependabot alerts and fixes.
 #   - GitHub Pages built by GitHub Actions (deploy.yml), not from a branch, at the custom
-#     domain enchant.games; its `github-pages` environment takes deploys from master only.
+#     domain enchant.games; its `github-pages` environment takes deploys from master only,
+#     and holds the Cloudflare token deploy.yml purges with (CLOUDFLARE_API_TOKEN, set by
+#     hand: gh secret set CLOUDFLARE_API_TOKEN --env github-pages). The zone id is a
+#     repository variable (not a secret).
 #
 # The emergency door: when the check itself is broken and its fix cannot pass
 # it, the owner sets the ruleset's enforcement to disabled (Settings → Rules,
@@ -51,6 +54,7 @@ repo_settings='{
   }
 }'
 org=${repo%%/*}
+zone_id=efb09cd72ebf216e31b520d204b8f54c
 workflow_permissions='{ "default_workflow_permissions": "read", "can_approve_pull_request_reviews": true }'
 actions_permissions='{ "enabled": true, "allowed_actions": "selected", "sha_pinning_required": true }'
 selected_actions='{ "github_owned_allowed": true, "verified_allowed": true, "patterns_allowed": [] }'
@@ -97,10 +101,13 @@ if [ "$mode" = check ]; then
   if gh api "repos/$repo/environments/github-pages" --silent 2>/dev/null; then
     same "github-pages environment" "$environment" "$(gh api "repos/$repo/environments/github-pages" --jq '{deployment_branch_policy}')"
     same "github-pages deploys from" '["master"]' "$(gh api "repos/$repo/environments/github-pages/deployment-branch-policies" --jq '[.branch_policies[].name]')"
+    if gh api "repos/$repo/environments/github-pages/secrets/CLOUDFLARE_API_TOKEN" --silent 2>/dev/null; then echo "ok     github-pages has CLOUDFLARE_API_TOKEN"
+    else echo "DRIFT  github-pages has no CLOUDFLARE_API_TOKEN (gh secret set CLOUDFLARE_API_TOKEN --env github-pages)"; drift=1; fi
   else
     echo "DRIFT  no github-pages environment"; drift=1
   fi
   same "pages" "$pages" "$(gh api "repos/$repo/pages" 2>/dev/null || echo '{}')"
+  same "variables" "{\"value\": \"$zone_id\"}" "$(gh api "repos/$repo/actions/variables/CLOUDFLARE_ZONE_ID" 2>/dev/null || echo '{}')"
   if [ -z "$id" ]; then
     echo "DRIFT  ruleset \"$name\" does not exist"; drift=1
   else
@@ -127,6 +134,7 @@ put PUT "repos/$repo/environments/github-pages" "$environment"
 if ! gh api "repos/$repo/environments/github-pages/deployment-branch-policies" --jq '.branch_policies[].name' | grep -qx master; then
   put POST "repos/$repo/environments/github-pages/deployment-branch-policies" '{ "name": "master", "type": "branch" }'
 fi
+gh variable set CLOUDFLARE_ZONE_ID --repo "$repo" --body "$zone_id" && echo "set    variable CLOUDFLARE_ZONE_ID"
 if gh api "repos/$repo/pages" --silent 2>/dev/null; then put PUT "repos/$repo/pages" "$pages"
 else put POST "repos/$repo/pages" "$pages"; fi
 if [ -z "$id" ]; then

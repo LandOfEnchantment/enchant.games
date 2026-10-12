@@ -1,6 +1,8 @@
 import { html, render } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { mountContactForms } from './contact.js';
+import { asset } from './assets.js';
+import { watchVersion } from './version.js';
 import { loadData as fetchData, loadNews as fetchNews, loadArticle as fetchArticle } from './content-loader.js';
 
 // using Lit only as a HTML renderer + client-side router, not leveraging its reactive components.
@@ -231,7 +233,7 @@ function renderPage(title, body, pageTitle) {
         <p><b>Curious what we're building? Follow along.</b></p>
 
         <p>
-        <a href="https://www.twitch.tv/enchantdev"><img alt="Twitch.tv logo" loading="lazy" height="75" width="75" src="/images/twitch.webp"></a>
+        <a href="https://www.twitch.tv/enchantdev"><img alt="Twitch.tv logo" loading="lazy" height="75" width="75" src=${asset("/images/twitch.webp")}></a>
         <!-- disabled:
         <a href="https://discord.gg/h6sFUNzaFj"><img alt="Discord logo" loading="lazy" height="75" width="75" src="/images/discord.webp"></a>
         <a href="https://www.youtube.com/@enchantdev"><img alt="Youtube logo" loading="lazy" height="75" width="75" src="/images/youtube.webp"></a>
@@ -277,3 +279,5 @@ document.addEventListener("click", e => {
 
 window.addEventListener("popstate", load);
 window.addEventListener("DOMContentLoaded", load);
+
+watchVersion();

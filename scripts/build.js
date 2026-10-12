@@ -2,7 +2,18 @@
 // pages and journal articles, js/render.js bundled with lit-html, marked and js-yaml (from
 // npm), and the manifests the site and crawlers read (pages.json, news.json, sitemap.xml,
 // rss.xml). None of it is committed: CI builds it on every merge and deploys it.
+//
+// Every file a page asks for carries a cache key, ?v=<number from its own content> (as in
+// ../merecatholicity.com's stamp_versions.py): a changed file gets a new address, so no
+// browser or Cloudflare cache can hand back the old bytes, and an unchanged one keeps its
+// key, so a rebuild changes nothing. Nobody bumps a key by hand. Stamped in dependency
+// order: the fonts into style.css; the manifests, pages, articles and pictures into the
+// bundle (js/assets.js reads them); then the bundle, style.css and the icon into
+// index.html. version.json names the keys index.html carries (js/version.js asks it
+// whether an open tab is behind). Only the addresses that can't carry a key go unkeyed:
+// the pages themselves, version.json, the feed and the sitemap.
 import { build } from 'esbuild';
+import { createHash } from 'node:crypto';
 import { load, JSON_SCHEMA } from 'js-yaml';
 import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -78,8 +89,34 @@ writeFileSync(join(OUT, 'rss.xml'), [
     '</rss>', '',
 ].filter(l => l !== null).join('\n'));
 
+// The first 32 bits of the file's sha256, as a number.
+const key = file => String(parseInt(createHash('sha256').update(readFileSync(file)).digest('hex').slice(0, 8), 16));
+const files = dir => readdirSync(join(OUT, dir)).filter(f => !f.startsWith('.')).map(f => `/${dir}/${f}`);
+const keysOf = paths => Object.fromEntries(paths.sort().map(p => [p, key(join(OUT, p))]));
+
+// Every reference in FILE to a path in KEYS (an src=, an href= or a CSS url(); not a bare
+// mention of the name), with or without a key already, given its current one. A path FILE
+// never references is a mistake in this script.
+const literally = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+function stamp(file, keys) {
+    const path = join(OUT, file);
+    let text = readFileSync(path, 'utf8');
+    for (const [p, k] of Object.entries(keys)) {
+        const ref = new RegExp(String.raw`((?:\b(?:src|href)\s*=\s*|url\(\s*)["']?)` + literally(p)
+            + String.raw`(?:\?v=[0-9a-z]+)?(?=["')\s>])`, 'g');
+        const out = text.replace(ref, `$1${p}?v=${k}`);
+        if (out === text && !text.includes(`${p}?v=${k}`)) throw new Error(`build: ${file} names no ${p} to stamp`);
+        text = out;
+    }
+    writeFileSync(path, text);
+}
+
+stamp('css/style.css', keysOf(files('fonts')));
+const runtime = keysOf(['/pages.json', '/news.json', ...files('pages'), ...files('news'), ...files('images')]);
+
 await build({
     entryPoints: [at('js/render.js')],
+    define: { __ASSET_KEYS__: JSON.stringify(runtime) },
     outfile: join(OUT, 'js/render.js'),
     bundle: true,
     format: 'esm',
@@ -89,4 +126,12 @@ await build({
     logLevel: 'warning',
 });
 
-console.log(`built public/: ${pages.length} pages, ${news.length} articles`);
+const shell = keysOf(['/js/render.js', '/css/style.css', '/favicon.png']);
+stamp('index.html', shell);
+const assets = Object.fromEntries(Object.entries(shell).map(([p, k]) => [p.split('/').pop(), k]));
+const buildId = createHash('sha256')
+    .update(Object.entries({ ...runtime, ...shell }).sort().map(([p, k]) => `${p}=${k}`).join('\n'))
+    .digest('hex').slice(0, 12);
+json('version.json', { build: buildId, assets });
+
+console.log(`built public/ ${buildId}: ${pages.length} pages, ${news.length} articles, ${Object.keys(runtime).length + 3} keyed files`);
