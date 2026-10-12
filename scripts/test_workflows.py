@@ -4,9 +4,10 @@
 Plain text checks (no YAML library): every action pinned to a commit, every
 workflow with its own permissions, `check` never path-filtered and required by
 master's ruleset, owner-merge.yml approving only the owner's pull requests
-without ever running their code, no secret anywhere, and the right to publish
-the site only where a pull request can never reach it: deploy.yml's job in the
-github-pages environment, which runs on master only.
+without ever running their code, and the right to publish the site and the one
+secret (the Cloudflare token, for the purge) only where a pull request can never
+reach them: deploy.yml's job in the github-pages environment, which runs on master
+only, purging only after GitHub Pages has published.
 """
 import json
 import re
@@ -107,10 +108,19 @@ class OwnerMerge(unittest.TestCase):
 class Secrets(unittest.TestCase):
     """A pull request's code runs in check.yml: nothing it can reach may publish the site."""
 
-    def test_no_workflow_names_a_secret(self):
+    def test_only_the_deploy_and_the_purge_name_a_secret(self):
         for path in sorted(WORKFLOWS.glob("*.yml")):
+            if path.name in ("deploy.yml", "purge-cache.yml"):
+                continue
             with self.subTest(file=path.name):
                 self.assertNotIn("secrets.", path.read_text())
+
+    def test_the_purge_button_runs_on_master_in_github_pages_only(self):
+        purge = text("purge-cache.yml")
+        on = purge.split("\njobs:")[0]
+        self.assertRegex(on, r"on:\n  workflow_dispatch:\n\n", "a button, nothing else")
+        self.assertIn("environment: github-pages", purge)
+        self.assertNotIn("pages: write", purge)
 
     def test_check_only_reads(self):
         check = text("check.yml")
@@ -124,7 +134,7 @@ class Secrets(unittest.TestCase):
         self.assertRegex(on, r"push:\n\s+branches: \[master\]")
         jobs = re.split(r"(?m)^  (?=[\w-]+:$)", deploy.split("\njobs:\n", 1)[1])
         for job in jobs:
-            if "pages: write" in job or "id-token: write" in job:
+            if "pages: write" in job or "id-token: write" in job or "secrets." in job:
                 with self.subTest(job=job.split(":")[0]):
                     self.assertRegex(job, r"environment:\n\s+name: github-pages")
         for path in sorted(WORKFLOWS.glob("*.yml")):
@@ -132,6 +142,16 @@ class Secrets(unittest.TestCase):
                 with self.subTest(file=path.name):
                     self.assertNotIn("pages: write", path.read_text())
                     self.assertNotIn("id-token: write", path.read_text())
+
+    def test_the_purge_follows_the_publish(self):
+        """A purge before GitHub Pages has published lets Cloudflare fill the new keys with
+        the old files; deploy-pages returns only once the deployment succeeded."""
+        deploy = text("deploy.yml")
+        self.assertLess(deploy.index("actions/deploy-pages@"), deploy.index("node scripts/purge.js"))
+        self.assertLess(deploy.index("node scripts/purge.js"), deploy.index("sh scripts/smoke.sh"))
+        step = deploy[deploy.index("- name: Purge"):deploy.index("node scripts/purge.js")]
+        self.assertIn("secrets.CLOUDFLARE_API_TOKEN", step, "the token goes to the purge step alone")
+        self.assertEqual(deploy.count("secrets."), 1)
 
     def test_deploys_never_overlap_or_cancel(self):
         self.assertRegex(text("deploy.yml"), r"concurrency:\n\s+group: deploy\n\s+cancel-in-progress: false")

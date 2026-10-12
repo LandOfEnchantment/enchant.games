@@ -9,11 +9,13 @@ build:
 run: build
 	python3 serve.py
 
-# What CI's required check runs: the build, every link on it, the workflows' rules.
+# What CI's required check runs: the build, every link and cache key on it, the update
+# offer's rules, the workflows' rules.
 check: build check-dist test
 
 check-dist:
 	node scripts/check-dist.js
 
 test:
+	node --test scripts/*.test.js
 	python3 scripts/test_workflows.py

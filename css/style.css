@@ -323,3 +323,39 @@ a:active {
 @media (max-width: 600px) {
     #contact-form { grid-template-columns: 1fr; }
 }
+
+/* The new-version offer (js/version.js): bottom right, above the phone's tab bar. */
+.update-bar {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    background: #1a1a1a;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 3px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+}
+.update-bar button {
+    padding: 0.15rem 0.5rem;
+    background: var(--bs-link-color);
+    color: var(--bs-body-bg);
+    border: 0;
+    border-radius: 3px;
+    font: inherit;
+    cursor: pointer;
+}
+.update-bar .update-later {
+    background: none;
+    color: var(--bs-secondary-color);
+}
+@media (max-width: 600px) {
+    .update-bar {
+        left: 1rem;
+        bottom: calc(4.5rem + env(safe-area-inset-bottom));
+    }
+}

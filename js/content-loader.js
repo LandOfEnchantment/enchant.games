@@ -1,5 +1,6 @@
 import { load, JSON_SCHEMA } from 'js-yaml';
 import { marked } from 'marked';
+import { asset, keyLinks } from './assets.js';
 
 marked.setOptions({
     gfm: true,
@@ -7,7 +8,7 @@ marked.setOptions({
 });
 
 function toHTML(markdown) {
-    return marked.parse(markdown || '');
+    return keyLinks(marked.parse(markdown || ''));
 }
 
 function toEntry(raw) {
@@ -27,9 +28,9 @@ async function fetchYAML(path) {
 }
 
 export async function loadData() {
-    const manifest = await (await fetch('/pages.json')).json();
+    const manifest = await (await fetch(asset('/pages.json'))).json();
     const entries = await Promise.all(
-        manifest.map(f => fetchYAML('/pages/' + f))
+        manifest.map(f => fetchYAML(asset('/pages/' + f)))
     );
     const pages = {};
     for (const raw of entries) {
@@ -43,7 +44,7 @@ export async function loadData() {
 }
 
 export async function loadNews() {
-    const manifest = await (await fetch('/news.json')).json();
+    const manifest = await (await fetch(asset('/news.json'))).json();
     const news = manifest.map(m => ({
         Title:  String(m.title  || ''),
         Slug:   String(m.slug   || ''),
@@ -56,6 +57,6 @@ export async function loadNews() {
 }
 
 export async function loadArticle(filename) {
-    const raw = await fetchYAML('/news/' + filename);
+    const raw = await fetchYAML(asset('/news/' + filename));
     return toEntry(raw);
 }

@@ -4,6 +4,8 @@ paths:
   - "scripts/**"
   - "package.json"
   - "Makefile"
+  - "js/assets.js"
+  - "js/version.js"
 ---
 
 # CI/CD
@@ -25,15 +27,21 @@ How a change reaches `master` and the live site (2026-10-11). The same road as .
 ## Workflows
 
 - `check.yml`, the required check: `npm ci`, then `make check` (`scripts/build.js` builds `public/`; `scripts/check-dist.js` checks the manifests, every page's and article's title and slug, and every link and picture that points at the site itself; `scripts/test_workflows.py`), then uploads `public/` as the `github-pages` artifact. On every pull request, no secret, no path filter (never rename the job without the ruleset).
-- `deploy.yml`, on every push to `master` (and hourly, and by hand): `check.yml` again on the merged commit, then `actions/deploy-pages` publishes that artifact in the `github-pages` environment (master only; the job's OIDC token, no secret), then `scripts/smoke.sh` fetches the live script and manifests (cache-busted by the commit) until they are this build's. Deploys never overlap and are never cancelled. The hourly run stops when the newest `github-pages` deployment is already `master`'s.
+- `deploy.yml`, on every push to `master` (and hourly, and by hand): `check.yml` again on the merged commit, then in the `github-pages` environment (master only): `actions/deploy-pages` publishes that artifact (the job's OIDC token) and waits until GitHub says it is live; only then `scripts/purge.js` clears Cloudflare's copy of every address the build serves, bare and keyed (`CLOUDFLARE_API_TOKEN`, given to that step alone; a purge before the publish would refill the new keys with the old files); then `scripts/smoke.sh` asks with nonce probes (`?probe=<commit>-<attempt>-<random>`, an address no cache has seen) until the page shell, script, manifests and `version.json` are this build's. It never fetches a keyed address. Deploys never overlap and are never cancelled. The hourly run stops when the newest `github-pages` deployment is already `master`'s.
+- `purge-cache.yml`, by hand only: empties Cloudflare's whole cache of the zone without a deploy (`scripts/purge.js --everything`), waiting for any running deploy.
 - Every `uses:` names a commit with a `# vX.Y.Z` comment; `.github/dependabot.yml` bumps the action pins and the npm packages weekly, each pull request waiting for the owner.
+
+## Cache busting
+
+As in ../merecatholicity.com (2026-10-11). Every file a page asks for carries `?v=<the first 32 bits of its sha256, as a number>`, stamped by `scripts/build.js` in dependency order (fonts into `style.css`; manifests, pages, articles and pictures into the bundle through `js/assets.js`; the bundle, `style.css` and the icon into `index.html`). Content alone decides a key, so a rebuild changes nothing and nobody bumps one by hand; `scripts/check-dist.js` fails on any key that isn't its file's. Unkeyed on purpose: the pages, `version.json`, `rss.xml`, `sitemap.xml`. `version.json` (`{build, assets}`) names the keys `index.html` loads; `js/version.js` compares it, fetched no-store, with the keys the open page is running (read off its own `<script>`/`<link>` addresses), on returning to the tab and hourly, and offers Reload; it never reloads by itself, nor over a half-written form (`scripts/version.test.js`). Cloudflare: Browser Cache TTL respects the origin (GitHub's ten minutes), and keyed files get a day in the browser (`scripts/cloudflare-settings.sh check|apply`; it was 4 hours on everything before, which no purge could reach).
 
 ## Settings
 
-- Kept in `scripts/github-settings.sh` (`check` names any drift; `apply` writes it, needs `gh` as admin): the ruleset; Actions may approve pull requests, default token read only; auto-merge, merge commits, delete branch on merge, update branch; only GitHub-owned and verified actions, each pinned to a commit; a fork's workflows wait for approval every time; secret scanning with push protection; Dependabot alerts and security fixes; GitHub Pages built by Actions at enchant.games, its `github-pages` environment deploying from `master` only.
+- Kept in `scripts/github-settings.sh` (`check` names any drift; `apply` writes it, needs `gh` as admin): the ruleset; Actions may approve pull requests, default token read only; auto-merge, merge commits, delete branch on merge, update branch; only GitHub-owned and verified actions, each pinned to a commit; a fork's workflows wait for approval every time; secret scanning with push protection; Dependabot alerts and security fixes; GitHub Pages built by Actions at enchant.games, its `github-pages` environment deploying from `master` only and holding `CLOUDFLARE_API_TOKEN`; the zone id as the variable `CLOUDFLARE_ZONE_ID`.
+- The token is the account-wide Cloudflare token ../merecatholicity.com's pipeline uses (`CLOUDFLARE_ROOT_TOKEN` in `~/.config/merecatholicity/ci.env`); a hobby account, one token. Rotating it there means `gh secret set CLOUDFLARE_API_TOKEN --env github-pages` here too.
 - Actions may approve pull requests only because the owner is the one collaborator: anyone else with write access could approve their own pull request through a workflow on their branch. Revisit before granting anyone write access to LandOfEnchantment (dontNedd, the other member, has read). The organization's own setting must allow it too (2026-10-11: turned on; `github-settings.sh` checks and applies it).
 - The emergency door: when `check` itself is broken and its fix cannot pass it, the owner sets the ruleset's enforcement to disabled (Settings, Rules, or the JSON's `"enforcement"` and `apply`), merges the fix, and sets it back (`check` shows the drift if forgotten). Never a bypass actor.
 
 ## Done by hand, on purpose
 
-- Cloudflare proxies enchant.games in front of GitHub Pages (DNS, TLS). It caches `js/render.js` up to GitHub's `max-age=600`, so for ten minutes after a deploy a visitor may get the new pages with the old script.
+- Cloudflare proxies enchant.games in front of GitHub Pages (DNS, TLS). Its cache settings are `scripts/cloudflare-settings.sh`'s, not clicked.
