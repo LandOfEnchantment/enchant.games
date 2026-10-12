@@ -105,6 +105,11 @@ class OwnerMerge(unittest.TestCase):
             self.assertIn('--match-head-commit "$HEAD"', merge)
 
 
+    def test_dispatches_the_deploy_its_own_merge_cannot_start(self):
+        self.assertIn("actions: write", self.code)
+        self.assertIn('gh workflow run deploy.yml --repo "$REPO" --ref master', self.code)
+
+
 class Secrets(unittest.TestCase):
     """A pull request's code runs in check.yml: nothing it can reach may publish the site."""
 
