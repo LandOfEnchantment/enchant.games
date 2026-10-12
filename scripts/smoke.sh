@@ -15,11 +15,17 @@ nonce="${GITHUB_SHA:-local}-${GITHUB_RUN_ATTEMPT:-0}-$(od -An -N4 -tu4 /dev/uran
 fail() { echo "smoke: $*" >&2; exit 1; }
 sum() { sha256sum | cut -d' ' -f1; }
 
+# The page shell is judged by the keyed addresses it loads, not its bytes: Cloudflare
+# writes a hidden link of its own into every page it serves (its AI Labyrinth).
+fingerprint() {
+  if [ "$1" = index.html ]; then grep -o '\(src\|href\)="[^"]*?v=[0-9]*"' | sort | sum; else sum; fi
+}
+
 # GitHub Pages reaches every edge within a minute or two of publishing; give it five.
 for f in index.html version.json news.json pages.json js/render.js; do
-  want=$(sum < "public/$f")
+  want=$(fingerprint "$f" < "public/$f")
   for i in $(seq 1 30); do
-    got=$(curl -fsS "$site/$f?probe=$nonce-$i" | sum || true)
+    got=$(curl -fsS "$site/$f?probe=$nonce-$i" | fingerprint "$f" || true)
     [ "$got" = "$want" ] && break
     [ "$i" = 30 ] && fail "/$f is not this build's"
     sleep 10
