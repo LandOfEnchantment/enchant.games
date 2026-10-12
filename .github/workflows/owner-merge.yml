@@ -25,11 +25,13 @@
 # nothing until it is merged, and merging it needs this file's approval or the
 # owner's.
 #
-# Who arms auto-merge decides whether master gets its deploy run: a merge
-# armed with this job's token is GitHub Actions' push, and such a push starts no
-# workflow. So scripts/ship.sh and the owner's Claude sessions arm it as the
-# owner; this job arms it only when nobody has, and then deploy.yml's hourly run
-# deploys the merged commit (it checks it first).
+# Who arms auto-merge decides whether master gets its push-triggered deploy: a
+# merge armed with this job's token is GitHub Actions' push, and such a push
+# starts no workflow. scripts/ship.sh arms it as the owner, so the push deploys.
+# When this job arms or makes the merge itself, it stays to see the merge land
+# and then dispatches deploy.yml (a dispatch is the one thing this token may
+# start), so every merge deploys at once (owner, 2026-10-12). deploy.yml's
+# hourly run stays the safety net.
 #
 # Needs two repository settings (scripts/github-settings.sh applies both):
 # Actions may approve pull requests, and auto-merge is allowed.
@@ -58,10 +60,11 @@ jobs:
       github.event.pull_request.head.repo.full_name == github.repository &&
       !github.event.pull_request.draft
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 25
     permissions:
       contents: write       # arm auto-merge (the merge writes master)
       pull-requests: write  # the approving review
+      actions: write        # dispatch deploy.yml once the merge lands
     steps:
       - name: Approve the head and arm auto-merge
         env:
@@ -101,3 +104,17 @@ jobs:
             echo "::error::auto-merge could not be armed on #$PR (state $(state))"
             exit 1
           fi
+
+          # A merge this token makes starts no push run, so deploy it here: wait
+          # for the merge (auto-merge lands once `check` passes), then dispatch.
+          for _ in $(seq 120); do
+            case "$(gh pr view "$PR" --repo "$REPO" --json state --jq .state)" in
+              MERGED)
+                gh workflow run deploy.yml --repo "$REPO" --ref master
+                echo "#$PR merged: deploy.yml dispatched"
+                exit 0 ;;
+              CLOSED) echo "#$PR was closed unmerged"; exit 0 ;;
+            esac
+            sleep 10
+          done
+          echo "#$PR hasn't merged after 20 minutes: deploy.yml's hourly run will deploy it"
