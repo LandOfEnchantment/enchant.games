@@ -4,8 +4,12 @@ The site is the YAML pages (`pages/`) and journal articles (`news/`), each of
 which `scripts/build.js` draws into its own HTML file (`layout.html` around
 the markdown) at its own address: `/` for home, `/<slug>/` for a page,
 `/journal/` and `/journal/<slug>/`, and `/404.html`. What sits in a
-`disabled/` folder isn't served. The browser gets every page whole; its one
-script (`js/site.js`) only brings the forms to life and offers Reload.
+`disabled/` folder isn't served, and its old address must forward somewhere:
+`redirects.yml` maps each retired address to a live one (the build fails on a
+disabled page without an entry; add one too when deleting a page or article).
+The browser gets the page it asked for whole; then its one script
+(`js/site.js`) fetches every other page in the background (`js/nav.js`) and
+swaps them in place on a click, so moving around is instant.
 `README.md` covers the layout and the make targets. After editing, build and
 look with:
 
@@ -19,6 +23,9 @@ an article as `/journal/<slug>/` (with the slash); `make check` fails on a
 link that leads nowhere in `public/`, and on an old `/?slug=` address. Those
 old addresses still work for visitors: Cloudflare 301s them
 (`scripts/cloudflare-settings.sh`), and the home page sends on any it misses.
+After a deploy that moves or retires anything, `make old-links` opens every
+address the site has ever had (from the git history) in a real browser
+(`~/.cloakbrowser`) against the live site; each must land on a live page.
 
 Every file a page asks for carries a cache key, `?v=<number from its
 content>`, stamped by the build (`scripts/build.js`); never write or bump one

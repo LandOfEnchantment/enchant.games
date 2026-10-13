@@ -1,4 +1,4 @@
-.PHONY: build run check check-dist test signup-deploy
+.PHONY: build run check check-dist test signup-deploy old-links
 
 # public/, exactly what the site serves (scripts/build.js: the static files, the YAML pages and
 # articles, the bundled script and the manifests). Never committed: CI builds and deploys it.
@@ -20,6 +20,12 @@ check-dist:
 test:
 	node --test scripts/*.test.js signup-worker/test/*.test.js
 	python3 scripts/test_workflows.py
+
+# Every address the site has ever had (the git history's slugs, old and new forms), opened
+# in a real browser (~/.cloakbrowser) against the live site: each must land on a live page.
+# By hand, after a deploy that moves or retires anything. URL=http://localhost:3000 for make run.
+old-links:
+	python3 -I scripts/browse-old-links.py $(or $(URL),https://enchant.games)
 
 # The Games page's release signup Worker (signup-worker/), by hand, never from CI: its table
 # migrations, then its code. Needs CLOUDFLARE_API_TOKEN. Its one secret, TURNSTILE_SECRET,

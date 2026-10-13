@@ -60,6 +60,9 @@ body {
     color: var(--bs-secondary-color);
 }
 
+/* js/nav.js focuses a swapped-in page's heading for screen readers; no ring for it */
+h1[tabindex='-1']:focus { outline: none; }
+
 .text-center {
     text-align: center;
 }
@@ -314,18 +317,23 @@ a:active {
 #contact-form button:disabled { opacity: .6; cursor: progress; }
 #contact-status { margin: 0; color: var(--bs-secondary-color); }
 #contact-status:empty { display: none; }
-/* Mailing list signup (js/signup.js): one address and its consent, in the contact form's dress */
-#signup-form { display: grid; gap: .75rem; max-width: 34rem; }
-#signup-form label[for] { color: var(--bs-secondary-color); margin-bottom: -.4rem; }
-#signup-form input[type=email] { width: 100%; box-sizing: border-box; font: inherit; color: var(--bs-body-color); background: #1a1a1a; border: 1px solid var(--bs-border-color); border-radius: 3px; padding: .6rem .75rem; }
-#signup-form input[type=email]:focus-visible { outline: 2px solid var(--bs-link-color); outline-offset: 1px; border-color: transparent; }
-#signup-form button { justify-self: start; font: inherit; font-weight: 600; color: var(--bs-body-bg); background: var(--bs-link-color); border: 0; border-radius: 3px; padding: .5rem 1.25rem; cursor: pointer; transition: background-color .15s; }
-#signup-form button:hover { background: var(--bs-link-hover-color); }
-#signup-form button:disabled { opacity: .6; cursor: progress; }
+/* Mailing list (js/signup.js): the signup, in the contact form's dress, and the unsubscribe
+   form folded away under it */
+#signup-form, #unsubscribe-form { display: grid; gap: .75rem; max-width: 34rem; }
+#signup-form label[for], #unsubscribe-form label[for] { color: var(--bs-secondary-color); margin-bottom: -.4rem; }
+#signup-form input[type=email], #unsubscribe-form input[type=email] { width: 100%; box-sizing: border-box; font: inherit; color: var(--bs-body-color); background: #1a1a1a; border: 1px solid var(--bs-border-color); border-radius: 3px; padding: .6rem .75rem; }
+#signup-form input[type=email]:focus-visible, #unsubscribe-form input[type=email]:focus-visible { outline: 2px solid var(--bs-link-color); outline-offset: 1px; border-color: transparent; }
+#signup-form button, #unsubscribe-form button { justify-self: start; font: inherit; font-weight: 600; color: var(--bs-body-bg); background: var(--bs-link-color); border: 0; border-radius: 3px; padding: .5rem 1.25rem; cursor: pointer; transition: background-color .15s; }
+#signup-form button:hover, #unsubscribe-form button:hover { background: var(--bs-link-hover-color); }
+#signup-form button:disabled, #unsubscribe-form button:disabled { opacity: .6; cursor: progress; }
 #signup-form .signup-consent { display: flex; gap: .6rem; align-items: flex-start; margin: 0; color: var(--bs-secondary-color); font-size: .9em; cursor: pointer; }
 #signup-form .signup-consent input { flex: none; width: 1.05rem; height: 1.05rem; margin: .2rem 0 0; accent-color: var(--bs-link-color); cursor: pointer; }
-#signup-status { margin: 0; color: var(--bs-secondary-color); }
-#signup-status:empty { display: none; }
+.signup-status { margin: 0; color: var(--bs-secondary-color); }
+.signup-status:empty { display: none; }
+.unsubscribe { margin-top: 1.5rem; max-width: 34rem; }
+.unsubscribe summary { width: fit-content; color: var(--bs-secondary-color); font-size: .9em; cursor: pointer; }
+.unsubscribe summary:hover { color: var(--bs-link-color); }
+.unsubscribe[open] summary { margin-bottom: .9rem; }
 /* Sent: the form flips away and the sent card swings in */
 .inquiry-card { perspective: 1100px; perspective-origin: 50% 0; transition: height .45s cubic-bezier(.3, .7, .2, 1); }
 #contact-form[hidden], #signup-form[hidden], .inquiry-sent[hidden] { display: none; }

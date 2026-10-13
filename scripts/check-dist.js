@@ -36,10 +36,19 @@ for (const { src, title, file } of expected) {
     if (left) fail(`/${file}: layout.html's ${left[0]} was never filled`);
 }
 
+// Retired addresses (redirects.yml): each a page forwarding to a page that's drawn.
+const redirects = load(readFileSync(join(ROOT, 'redirects.yml'), 'utf8'), { schema: JSON_SCHEMA }) ?? {};
+const forwards = new Map(Object.entries(redirects).map(([from, to]) => [`${from.slice(1)}index.html`, String(to)]));
+for (const [file, to] of forwards) {
+    if (!existsSync(join(OUT, file))) { fail(`redirects.yml: /${file} isn't built`); continue; }
+    if (!read(file).includes(`<meta http-equiv="refresh" content="0; url=${to}">`)) fail(`/${file} doesn't forward to ${to}`);
+    if (!expected.some(e => `/${e.file}`.replace(/index\.html$/, '') === to)) fail(`/${file} forwards to ${to}, which no page is drawn at`);
+}
+
 const walk = dir => readdirSync(join(OUT, dir), { withFileTypes: true }).flatMap(e =>
     e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
 const all = walk('');
-const html = all.filter(f => f.endsWith('.html'));
+const html = all.filter(f => f.endsWith('.html') && !forwards.has(f));
 for (const f of html) if (!expected.some(e => e.file === f)) fail(`/${f} is built, but no page or article is drawn there`);
 
 // A reference to the site itself: a path from the root, which must be a file in public/ (or
