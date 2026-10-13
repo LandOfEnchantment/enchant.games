@@ -36,6 +36,25 @@ site and publishes it to GitHub Pages. Commit on a branch, then:
 
 See `.claude/rules/cicd.md` for the whole pipeline.
 
+## Release signup
+
+The Games page asks visitors for an email address to hear when a game is out
+(`js/signup.js`). It posts to a Cloudflare Worker at `enchant.games/api/signup`
+(`signup-worker/`), which checks Turnstile and stores the address in the D1
+database `enchant-games-signups` (table `signups`: `email`, `created_at`). It
+sends nothing to anyone, and nothing on the site reads the list back.
+
+The Worker is deployed by hand, not by CI (needs `CLOUDFLARE_API_TOKEN`):
+
+    make signup-deploy
+
+Its Turnstile secret is a Worker secret, set once:
+`cd signup-worker && npx wrangler secret put TURNSTILE_SECRET`. To look at the
+list:
+
+    cd signup-worker && npx wrangler d1 execute enchant-games-signups --remote \
+      --command "SELECT * FROM signups ORDER BY created_at"
+
 ## License
 
 [Unlicense](UNLICENSE) - public domain.

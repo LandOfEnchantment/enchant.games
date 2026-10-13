@@ -1,6 +1,7 @@
 import { html, render } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { mountContactForms } from './contact.js';
+import { mountSignupForms } from './signup.js';
 import { asset } from './assets.js';
 import { watchVersion } from './version.js';
 import { loadData as fetchData, loadNews as fetchNews, loadArticle as fetchArticle } from './content-loader.js';
@@ -259,6 +260,7 @@ function renderPage(title, body, pageTitle) {
     document.title = `${pageTitle} - Land of Enchantment Games`;
     render(view, main);
     mountContactForms(main);
+    mountSignupForms(main);
 
     requestAnimationFrame(() => {
         const btn = document.querySelector('.back-to-top');

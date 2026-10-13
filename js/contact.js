@@ -2,6 +2,8 @@
 // Worker at contact-api.adamschaefers.com, which checks Turnstile and emails the message.
 // A page opts in with an empty <div id="contact-mount"></div> in its markdown.
 
+import { loadTurnstile } from './turnstile.js';
+
 const ACTION = 'https://contact-api.adamschaefers.com/';
 const SITEKEY = '0x4AAAAAAFSCqQ6GlpqWfqoi';
 const DRAFT_KEY = 'contact-draft';
@@ -27,23 +29,6 @@ const FORM_HTML = `
   <div><p class="sent-title">Sent. Thank you!</p><p class="sent-note">We'll get back to you by email.</p></div>
 </div>
 </div>`;
-
-// The page is rendered client-side, so Turnstile is loaded once and rendered explicitly
-// into each freshly mounted form rather than scanning the page on load.
-let turnstileReady = null;
-function loadTurnstile() {
-    if (!turnstileReady) {
-        turnstileReady = new Promise((resolve, reject) => {
-            window.onTurnstileLoad = () => resolve(window.turnstile);
-            const s = document.createElement('script');
-            s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad';
-            s.async = true;
-            s.onerror = () => { turnstileReady = null; reject(new Error('Turnstile failed to load')); };
-            document.head.appendChild(s);
-        });
-    }
-    return turnstileReady;
-}
 
 export function mountContactForms(root) {
     const mount = root.querySelector('#contact-mount');

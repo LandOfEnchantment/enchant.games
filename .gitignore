@@ -1,3 +1,6 @@
 node_modules/
 # What make build writes: CI builds it on every merge and deploys it, so it is never committed.
 /public/
+# wrangler's local state and dev secrets (signup-worker/).
+.wrangler/
+.dev.vars

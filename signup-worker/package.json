@@ -1,0 +1,12 @@
+{
+  "name": "enchant-games-signup",
+  "private": true,
+  "type": "module",
+  "description": "The release-announcement signup Worker's toolchain (wrangler, pinned), apart from the site's so CI's npm ci never installs it.",
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "wrangler": "4.149.0"
+  }
+}
