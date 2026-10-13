@@ -2,16 +2,14 @@
   "name": "enchant.games",
   "private": true,
   "type": "module",
-  "description": "The site's libraries and toolchain, pinned here for CI and local use (make drives it): esbuild bundles js/render.js with lit-html, marked and js-yaml into public/js/render.js.",
+  "description": "The site's build, pinned here for CI and local use (make drives it): scripts/build.js draws every page from its YAML with marked and js-yaml, copies Fira Code from firacode, and esbuild bundles js/site.js. Nothing here reaches the browser but the font and that bundle.",
   "engines": {
     "node": ">=24"
   },
-  "dependencies": {
-    "js-yaml": "4.1.0",
-    "lit-html": "3.3.3",
-    "marked": "15.0.7"
-  },
   "devDependencies": {
-    "esbuild": "0.28.2"
+    "esbuild": "0.28.2",
+    "firacode": "6.2.0",
+    "js-yaml": "4.1.0",
+    "marked": "15.0.7"
   }
 }

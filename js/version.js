@@ -1,6 +1,6 @@
 // Is this tab running the site that is live? (as in ../merecatholicity.com's nav.js)
 //
-// The build writes /version.json, the cache key of each file the page loads (render.js,
+// The build writes /version.json, the cache key of each file the page loads (site.js,
 // style.css). This compares it against the keys THIS PAGE IS RUNNING, read off its own
 // <script> and <link> addresses rather than a constant compiled in: a page cached from an
 // older build carries older keys, and the addresses can't lie about that.

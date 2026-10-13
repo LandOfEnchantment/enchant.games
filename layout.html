@@ -4,17 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
-
-  <meta name="description" content="An indie gamedev studio proudly based in New Mexico, the Land of Enchantment, USA.">
-  <title>Land of Enchantment Games</title>
+{{redirect}}
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="{{url}}">
+  <meta property="og:site_name" content="Land of Enchantment Games">
+  <meta property="og:type" content="{{type}}">
+  <meta property="og:title" content="{{heading}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{url}}">
+  <meta name="twitter:card" content="summary">
 
   <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Land of Enchantment Games - Journal" href="/rss.xml">
 
-  <link rel="preload" href="/css/style.css" as="style">
+  <link rel="preload" href="/fonts/FiraCode-VF.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/site.js"></script>
 
-  <link rel="modulepreload" href="/js/render.js">
-  <script type="module" src="/js/render.js"></script>
+  <!-- Chromium fetches a page as the pointer rests on its link, so the click lands on a page
+       already here. -->
+  <script type="speculationrules">
+  {"prefetch": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"href_matches": "/*.xml"}}]}, "eagerness": "moderate"}]}
+  </script>
 </head>
 
 <body>
@@ -81,7 +93,51 @@
 
 
   <main class="container">
-    <!-- render.js -->
+    <div>
+    <h1 class="text-center">{{heading}}</h1>
+    <header class="text-center">
+
+<pre>
+░█▀▀░█▀█░█▀▀░█░█░█▀█░█▀█░▀█▀░
+░█▀▀░█░█░█░░░█▀█░█▀█░█░█░░█░░
+░▀▀▀░▀░▀░▀▀▀░▀░▀░▀░▀░▀░▀░░▀░░
+
+<span class="text-muted"><b>Making games worthy of the human.</b></span>
+</pre>
+
+        <nav class="header-nav">
+        {{nav}}
+        </nav>
+    </header>
+      <article id="page-body">
+{{body}}
+      </article>
+    </div>
+    <footer class="text-center">
+
+    <hr>
+
+    <a href="#" class="back-to-top nav-btn" onclick="event.preventDefault(); window.scrollTo(0, 0)">[Back to Top]</a>
+
+        <p class="text-muted">(c) {{year}} Land of Enchantment Games · <a href="/sitemap/">Sitemap</a> · <a href="/privacy-policy/">Privacy</a> · <a href="/terms-of-service/">Terms</a></p>
+
+        <p><b>Curious what we're building? Follow along.</b></p>
+
+        <p>
+        <a href="https://www.twitch.tv/enchantdev"><img alt="Twitch.tv logo" loading="lazy" height="75" width="75" src="/images/twitch.webp"></a>
+        <!-- disabled:
+        <a href="https://discord.gg/h6sFUNzaFj"><img alt="Discord logo" loading="lazy" height="75" width="75" src="/images/discord.webp"></a>
+        <a href="https://www.youtube.com/@enchantdev"><img alt="Youtube logo" loading="lazy" height="75" width="75" src="/images/youtube.webp"></a>
+        <a href="https://www.reddit.com/r/LoEGames"><img alt="Reddit logo" loading="lazy" height="75" width="75" src="/images/reddit.webp"></a>
+        <a href="https://x.com/enchantdev575"><img alt="Twitter logo" loading="lazy" height="75" width="75" src="/images/twitter.webp"></a>
+        <a href="https://github.com/LandOfEnchantment"><img alt="Github logo" loading="lazy" height="75" width="75" src="/images/github.webp"></a>
+        -->
+        </p>
+
+    </footer>
+    <nav class="tab-bar" aria-label="Main">
+    {{tabs}}
+    </nav>
   </main>
 </body>
 </html>

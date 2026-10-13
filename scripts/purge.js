@@ -1,8 +1,8 @@
 // After a deploy, clear Cloudflare's copy of every address this build serves that a cache
 // might hold from before it (as merecatholicity.com's deploy job does): each file's bare
-// address (the pages, version.json, the feed and the sitemap can't carry a key, and a tab
-// from an older build may ask for any file without one) and every keyed address the build
-// stamped (in case one was fetched in the moments before GitHub Pages published, when a
+// address (the pages, by their folders too, version.json, the feed and the sitemap can't
+// carry a key, and a tab from an older build may ask for any file without one) and every
+// keyed address the build stamped (in case one was fetched in the moments before GitHub Pages published, when a
 // new key could have been filled with old bytes). Run by deploy.yml only once deploy-pages
 // says the site is published: a purge before that would re-cache the old files.
 //
@@ -20,11 +20,11 @@ for (const f of everything ? [] : readdirSync(OUT, { recursive: true, withFileTy
     if (!f.isFile()) continue;
     const path = '/' + relative(OUT, join(f.parentPath, f.name)).split('\\').join('/');
     urls.add(SITE + path);
-    if (/\.(html|css|js)$/.test(path)) {
+    // a page is asked for by its folder (/games/), not its file
+    if (path.endsWith('/index.html')) urls.add(SITE + path.slice(0, -'index.html'.length));
+    if (/\.(html|css)$/.test(path)) {
         const text = readFileSync(join(OUT, path), 'utf8');
         for (const m of text.matchAll(/(\/[\w./-]+\?v=\d+)/g)) urls.add(SITE + m[1]);
-        // the bundle's keys for what it fetches (js/assets.js adds the ?v= as it asks)
-        for (const m of text.matchAll(/"(\/[\w./-]+)":"(\d+)"/g)) urls.add(`${SITE}${m[1]}?v=${m[2]}`);
     }
 }
 const all = [...urls].sort();

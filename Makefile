@@ -5,7 +5,8 @@
 build:
 	node scripts/build.js
 
-# public/ at http://localhost:3000, unknown paths falling back to index.html.
+# public/ at http://localhost:3000, answered as GitHub Pages answers (an unknown address
+# gets 404.html).
 run: build
 	python3 serve.py
 

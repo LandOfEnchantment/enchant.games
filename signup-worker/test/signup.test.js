@@ -17,8 +17,8 @@ function env() {
             prepare: sql => ({
                 bind: (...args) => ({
                     run: async () => {
-                        assert.match(sql, /^INSERT INTO signups \(email\) VALUES \(\?1\) ON CONFLICT \(email\) DO NOTHING$/);
-                        saved.push(...args);
+                        assert.match(sql, /^INSERT INTO signups \(email, consent\) VALUES \(\?1, \?2\) ON CONFLICT \(email\) DO UPDATE SET consent = excluded\.consent$/);
+                        saved.push(args);
                         return { success: true };
                     },
                 }),
@@ -54,13 +54,13 @@ beforeEach(() => {
 });
 afterEach(() => { globalThis.fetch = realFetch; });
 
-const good = { email: '  Player@Example.com ', 'cf-turnstile-response': 'tok' };
+const good = { email: '  Player@Example.com ', consent: 'yes', 'cf-turnstile-response': 'tok' };
 
-test('stores a verified address, trimmed and as typed', async () => {
+test('stores a verified address, trimmed and as typed, with what it agreed to', async () => {
     const r = await call(post(good));
     assert.equal(r.status, 200);
     assert.deepEqual(r.body, { ok: true });
-    assert.deepEqual(saved, ['Player@Example.com']);
+    assert.deepEqual(saved, [['Player@Example.com', 'games-and-sales']]);
     assert.equal(r.headers.get('Cache-Control'), 'no-store');
     assert.equal(siteverifyBody.get('secret'), 'secret');
     assert.equal(siteverifyBody.get('response'), 'tok');
@@ -97,6 +97,18 @@ test('refuses a malformed or overlong address before Turnstile', async () => {
     for (const email of ['', 'nobody', 'a@b', 'a b@c.d', `${'a'.repeat(250)}@b.co`]) {
         const r = await call(post({ ...good, email }));
         assert.equal(r.status, 400, email);
+    }
+    assert.equal(siteverifyBody, null);
+    assert.deepEqual(saved, []);
+});
+
+test('refuses an address whose box is not ticked, before Turnstile', async () => {
+    for (const consent of [undefined, '', 'no', 'on']) {
+        const fields = { ...good };
+        if (consent === undefined) delete fields.consent; else fields.consent = consent;
+        const r = await call(post(fields));
+        assert.equal(r.status, 400, String(consent));
+        assert.match(r.body.error, /tick the box/);
     }
     assert.equal(siteverifyBody, null);
     assert.deepEqual(saved, []);
