@@ -3,26 +3,37 @@
 
 Plain text checks (no YAML library): every action pinned to a commit, every
 workflow with its own permissions, `check` never path-filtered and required by
-master's ruleset, owner-merge.yml approving only the owner's pull requests
-without ever running their code, and the right to publish the site and the one
-secret (the Cloudflare token, for the purge) only where a pull request can never
-reach them: deploy.yml's job in the github-pages environment, which runs on master
-only, purging only after GitHub Pages has published.
+master's ruleset (terraform/github.tf), owner-merge.yml approving only the owner's
+pull requests without ever running their code, the right to publish the site and
+the Cloudflare token for the purge only where a pull request can never reach them:
+deploy.yml's job in the github-pages environment, which runs on master only, purging
+only after GitHub Pages has published; and terraform.yml (as ../merecatholicity.com's)
+blanking every secret on a pull request, printing no plan, uploading no plan or
+state, refusing a destroy, and applying only from master behind the owner's review.
 """
-import json
 import re
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 WORKFLOWS = ROOT / ".github" / "workflows"
-RULESET = ROOT / ".github" / "rulesets" / "master.json"
+TERRAFORM = ROOT / "terraform"
 OWNER_ID = "26800291"  # a-schaefers
 GITHUB_ACTIONS_APP = 15368
 
 
 def text(name: str) -> str:
     return (WORKFLOWS / name).read_text()
+
+
+def resource(kind: str, name: str) -> str:
+    """One resource block of terraform/*.tf, as text (blocks end at a closing brace in
+    column 0, as terraform fmt writes them)."""
+    for path in sorted(TERRAFORM.glob("*.tf")):
+        m = re.search(rf'(?ms)^resource "{kind}" "{name}" {{\n.*?^}}', path.read_text())
+        if m:
+            return m.group(0)
+    raise AssertionError(f"no resource {kind}.{name} in terraform/")
 
 
 class Pins(unittest.TestCase):
@@ -53,22 +64,20 @@ class RequiredCheck(unittest.TestCase):
         self.assertRegex(text("check.yml"), r"(?m)^  check:$")
 
     def test_ruleset_requires_it_from_github_actions(self):
-        rules = {r["type"]: r.get("parameters", {}) for r in json.loads(RULESET.read_text())["rules"]}
-        checks = rules["required_status_checks"]["required_status_checks"]
-        self.assertIn({"context": "check", "integration_id": GITHUB_ACTIONS_APP}, checks)
+        ruleset = resource("github_repository_ruleset", "master")
+        self.assertRegex(ruleset, rf'required_check {{\s+context\s+= "check"\s+integration_id = {GITHUB_ACTIONS_APP}\s+}}')
 
 
 class Ruleset(unittest.TestCase):
     def test_master_takes_pull_requests_only_with_an_approval(self):
-        ruleset = json.loads(RULESET.read_text())
-        rules = {r["type"]: r.get("parameters", {}) for r in ruleset["rules"]}
-        self.assertEqual(ruleset["enforcement"], "active")
-        self.assertEqual(ruleset["conditions"]["ref_name"]["include"], ["~DEFAULT_BRANCH"])
-        self.assertEqual(ruleset["bypass_actors"], [], "no bypass: the owner and every agent alike")
-        self.assertIn("deletion", rules)
-        self.assertIn("non_fast_forward", rules)
-        self.assertEqual(rules["pull_request"]["required_approving_review_count"], 1)
-        self.assertTrue(rules["pull_request"]["dismiss_stale_reviews_on_push"])
+        ruleset = resource("github_repository_ruleset", "master")
+        self.assertRegex(ruleset, r'enforcement\s+= "active"')
+        self.assertRegex(ruleset, r'include = \["~DEFAULT_BRANCH"\]')
+        self.assertNotIn("bypass_actors", ruleset, "no bypass: the owner and every agent alike")
+        self.assertRegex(ruleset, r"deletion\s+= true")
+        self.assertRegex(ruleset, r"non_fast_forward\s+= true")
+        self.assertRegex(ruleset, r"required_approving_review_count\s+= 1")
+        self.assertRegex(ruleset, r"dismiss_stale_reviews_on_push\s+= true")
 
 
 class OwnerMerge(unittest.TestCase):
@@ -113,9 +122,9 @@ class OwnerMerge(unittest.TestCase):
 class Secrets(unittest.TestCase):
     """A pull request's code runs in check.yml: nothing it can reach may publish the site."""
 
-    def test_only_the_deploy_and_the_purge_name_a_secret(self):
+    def test_only_the_deploy_the_purge_and_terraform_name_a_secret(self):
         for path in sorted(WORKFLOWS.glob("*.yml")):
-            if path.name in ("deploy.yml", "purge-cache.yml"):
+            if path.name in ("deploy.yml", "purge-cache.yml", "terraform.yml"):
                 continue
             with self.subTest(file=path.name):
                 self.assertNotIn("secrets.", path.read_text())
@@ -160,6 +169,63 @@ class Secrets(unittest.TestCase):
 
     def test_deploys_never_overlap_or_cancel(self):
         self.assertRegex(text("deploy.yml"), r"concurrency:\n\s+group: deploy\n\s+cancel-in-progress: false")
+
+
+class Terraform(unittest.TestCase):
+    """terraform.yml, as ../merecatholicity.com's: everything it prints or uploads is
+    public, state and the binary plan hold secrets, and a pull request's HCL must never
+    meet a credential."""
+
+    def setUp(self):
+        self.text = text("terraform.yml")
+        self.code = "\n".join(l for l in self.text.splitlines() if not l.lstrip().startswith("#"))
+
+    def test_runs_on_every_pull_request_and_on_master(self):
+        on = self.text.split("\njobs:")[0]
+        self.assertRegex(on, r"on:\n  pull_request:\n  push:\n    branches: \[master\]")
+        self.assertRegex(self.text, r"(?m)^  plan:$")
+
+    def test_no_pull_request_ever_sees_a_secret(self):
+        refs = re.findall(r"\$\{\{([^}]*secrets\.[^}]*)\}\}", self.code)
+        self.assertTrue(refs)
+        for ref in refs:
+            with self.subTest(ref=ref.strip()):
+                self.assertRegex(ref.strip(), r"^github\.event_name != 'pull_request' && secrets\.(CLOUDFLARE_ROOT_TOKEN|GH_ROOT_TOKEN) \|\| ''$")
+
+    def test_prints_no_plan_and_uploads_no_plan_or_state(self):
+        self.assertIn("-out=tfplan > /tmp/plan.txt 2>&1", self.code)
+        self.assertIn("tfplan > /tmp/apply.txt 2>&1", self.code)
+        self.assertNotRegex(self.code, r"cat /tmp/(plan|apply)\.txt")
+        self.assertNotRegex(self.code, r"terraform -chdir=terraform show(?! -json tfplan > /tmp/plan\.json)")
+        self.assertEqual(re.findall(r"(?m)^\s+path: (.+)$", self.code), ["/tmp/summary/plan.md"], "only the summary is uploaded")
+        self.assertNotRegex(self.code, r"tfstate|\.tfplan\b")
+        for m in re.finditer(r"grep -E '\^([^']*)' /tmp/(plan|apply)\.txt", self.code):
+            self.assertIn(m.group(1), ("Error:", "(Apply complete|Error)", "Apply complete"), "only the summary lines")
+
+    def test_masks_the_derived_state_credentials(self):
+        self.assertIn('echo "::add-mask::$key"; echo "::add-mask::$secret"', self.code)
+
+    def test_refuses_a_destroy_unless_dispatched_to(self):
+        self.assertEqual(self.code.count("--fail-on-destroy $ALLOW"), 2, "the plan job and the apply job")
+        for allow in re.findall(r"ALLOW: (.+)", self.code):
+            self.assertEqual(allow.strip(), "${{ github.event_name == 'workflow_dispatch' && inputs.allow_destroy && '--allow-destroy' || '' }}")
+
+    def test_applies_only_from_master_behind_the_owners_review(self):
+        apply = self.code.split("\n  apply:\n", 1)[1]
+        self.assertIn("(github.event_name == 'push' && github.ref == 'refs/heads/master')", apply)
+        self.assertIn("(github.event_name == 'workflow_dispatch' && inputs.apply)", apply)
+        self.assertRegex(apply, r"environment:\n\s+name: terraform-production")
+        self.assertIn('if [ "$now" != "$REVIEWED" ]', apply, "the reviewed plan, or nothing")
+        gate = resource("github_repository_environment", "terraform_production")
+        self.assertRegex(gate, r"can_admins_bypass\s+= false")
+        self.assertRegex(gate, rf"users = \[{OWNER_ID}\]")
+        policy = resource("github_repository_environment_deployment_policy", "terraform_production_master")
+        self.assertRegex(policy, r'branch_pattern = "master"')
+
+    def test_git_never_holds_state_or_a_plan(self):
+        ignored = (TERRAFORM / ".gitignore").read_text().split()
+        for pattern in ("*.tfstate", "*.tfstate.*", ".terraform/", "generated.tf", "*.tfplan", "*.auto.tfvars", ".env"):
+            self.assertIn(pattern, ignored)
 
 
 if __name__ == "__main__":

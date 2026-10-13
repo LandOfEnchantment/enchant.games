@@ -1,6 +1,6 @@
 # A button that empties Cloudflare's cache of enchant.games without a deploy (as in
 # ../merecatholicity.com): for when something is served stale that shouldn't be, or a cache
-# rule changed (scripts/cloudflare-settings.sh). Every deploy already purges the addresses
+# rule changed (terraform/rulesets.tf). Every deploy already purges the addresses
 # it serves (deploy.yml, after GitHub Pages has published); this waits for a running deploy
 # (their shared concurrency group), so it never empties the cache before a publish.
 #

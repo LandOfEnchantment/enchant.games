@@ -6,7 +6,7 @@
 #
 # GitHub Pages takes the deploy on the job's own OIDC token. The one secret is
 # CLOUDFLARE_API_TOKEN, for the purge, in the `github-pages` environment, which takes
-# deploys from master only (scripts/github-settings.sh): no pull request can read it.
+# deploys from master only (terraform/github.tf): no pull request can read it.
 # Deploys never overlap, and a running one is never cancelled. A merge GitHub Actions made
 # itself (owner-merge.yml arming auto-merge) starts no push run, so owner-merge.yml
 # dispatches this when the merge lands; the hourly run is the safety net and deploys only

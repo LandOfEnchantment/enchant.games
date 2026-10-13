@@ -2,7 +2,7 @@
 """Opens every address the site has ever had in a real browser and says where each lands.
 
 The Chromium under ~/.cloakbrowser, driven over chromedriver's WebDriver API (stdlib only),
-so what runs is what a visitor gets: Cloudflare's 301s (scripts/cloudflare-settings.sh), the
+so what runs is what a visitor gets: Cloudflare's 301s (terraform/rulesets.tf), the
 home page's head sending on what they miss, and a retired page's stub sending on again
 (redirects.yml). Every slug any page or article in pages/ or news/ ever had, from the git
 history, as the old ?slug= address and the new one; plus the .yml forms the old site

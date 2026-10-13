@@ -3,7 +3,7 @@
 # exactly the site this job built (the `github-pages` artifact). CI is the build of record:
 # what this job's esbuild bundles is what is served.
 #
-# The `check` job is the required check on master (.github/rulesets/master.json, pinned to
+# The `check` job is the required check on master (terraform/github.tf, pinned to
 # GitHub Actions): a pull request merges only once it is green. A required check that never
 # reports holds a pull request at "Expected" for ever, so this workflow takes no path filter.
 # It holds no secret: a pull request's code runs here. Every `uses:` names a commit (the

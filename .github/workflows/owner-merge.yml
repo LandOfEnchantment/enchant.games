@@ -1,7 +1,7 @@
 # The owner's pull requests merge themselves; everyone else's wait for the
 # owner (2026-10-11, as in ../adamschaefers.com).
 #
-# master takes no direct push: the ruleset in .github/rulesets/master.json wants a
+# master takes no direct push: the ruleset in terraform/github.tf wants a
 # pull request, the `check` job green, and one approving review. GitHub never
 # lets an author approve their own pull request, so this workflow is the
 # approval for exactly one person's: the owner's (a-schaefers, user id
@@ -33,7 +33,7 @@
 # start), so every merge deploys at once (owner, 2026-10-12). deploy.yml's
 # hourly run stays the safety net.
 #
-# Needs two repository settings (scripts/github-settings.sh applies both):
+# Needs two repository settings (terraform/github.tf holds both):
 # Actions may approve pull requests, and auto-merge is allowed.
 
 name: owner merge
