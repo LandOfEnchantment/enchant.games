@@ -67,6 +67,12 @@ class RequiredCheck(unittest.TestCase):
         ruleset = resource("github_repository_ruleset", "master")
         self.assertRegex(ruleset, rf'required_check {{\s+context\s+= "check"\s+integration_id = {GITHUB_ACTIONS_APP}\s+}}')
 
+    def test_terraforms_plan_is_required_too_and_reports_on_every_pull_request(self):
+        ruleset = resource("github_repository_ruleset", "master")
+        self.assertRegex(ruleset, rf'required_check {{\s+context\s+= "plan"\s+integration_id = {GITHUB_ACTIONS_APP}\s+}}')
+        on = text("terraform.yml").split("\njobs:")[0]
+        self.assertNotRegex(on.split("push:")[0], r"paths(-ignore)?:", "a required check must report on every pull request")
+
 
 class Ruleset(unittest.TestCase):
     def test_master_takes_pull_requests_only_with_an_approval(self):
