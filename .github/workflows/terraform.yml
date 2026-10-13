@@ -1,0 +1,326 @@
+# Terraform from CI (terraform/), as in ../merecatholicity.com: plan on every change to
+# terraform/, apply from master behind an approval gate.
+#
+#   * EVERY pull request runs it, fmt + an offline validate in seconds, and NO credentials: a
+#     pull request's HCL is what `plan` evaluates, and an `http` or `external` data source in
+#     it could read the tokens at plan time, before any gate. Every secret below is blanked
+#     on a pull_request event in its own expression (scripts/test_workflows.py holds it to
+#     that), and a fork's run waits for the owner's approval before it runs at all.
+#   * On master it fires only when terraform/ changes (or by hand): the merge's `plan` needs
+#     the credentials, and `apply` waits on the `terraform-production` environment, whose
+#     required reviewer is the owner ("Review deployments" on the run, or
+#     scripts/ci_approve.sh, the same API call). A no-change plan needs no approval.
+#   * THIS REPOSITORY IS PUBLIC, so its logs, summaries and artifacts are public. Terraform
+#     state carries secrets (the Turnstile widget's), and the binary plan file embeds the
+#     prior state. So: plan and apply write to files on the runner and are never printed;
+#     the plan file is never uploaded; on a failure only the `Error:` lines show; and what a
+#     reviewer sees is scripts/tf_plan_summary.py: addresses, actions, attribute names, and
+#     values only for attributes the provider does not mark sensitive.
+#   * THE LAW: never apply a plan that destroys or replaces (a replaced D1 database is the
+#     mailing list, gone). Any delete fails the plan job unless run by hand with
+#     allow_destroy=true, the deliberate exception, made in the open.
+#   * The apply job re-plans and refuses if the set of changes differs from what was
+#     reviewed: an approval covers one plan, not whatever the world looks like later.
+#   * The R2 state backend's S3 credentials are DERIVED from the Cloudflare token (access
+#     key = the token's id, secret = SHA-256 of its value, Cloudflare's documented scheme),
+#     masked before use, so one secret serves everything.
+#
+# Secrets (repository Actions secrets, set by hand; never managed by Terraform):
+#   CLOUDFLARE_ROOT_TOKEN  the account token the three sites share (terraform/README.md)
+#   GH_ROOT_TOKEN          a classic token with admin on this repository and its organization
+
+name: Terraform
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+    paths:
+      - 'terraform/**'
+      - '.github/workflows/terraform.yml'
+      - 'scripts/tf_plan_summary.py'
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Apply after the plan (still waits for approval)"
+        type: boolean
+        default: false
+      allow_destroy:
+        description: "Permit a plan that deletes or replaces resources. Read the plan first."
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+# One Terraform at a time, and never cancel one mid-apply. A pull request's
+# fmt + validate touches no state and is its own group: it must never queue
+# behind an apply that waits days for its reviewer.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('terraform-pr-{0}', github.ref) || 'terraform' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  TF_VERSION: 1.16.1
+  TF_IN_AUTOMATION: "1"
+  TF_INPUT: "0"
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      creds: ${{ steps.creds.outputs.present }}
+      changes: ${{ steps.plan.outputs.changes }}
+      fingerprint: ${{ steps.summary.outputs.fingerprint }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+
+      - name: Formatting
+        run: terraform -chdir=terraform fmt -check -recursive -diff
+
+      # A pull request NEVER gets the credentials, not even from this repository:
+      # `terraform plan` evaluates the PR's own HCL, and an `http` or `external`
+      # data source in it would read both tokens at plan time, before any gate.
+      # PRs get fmt + validate; the plan that gets reviewed is the push's.
+      - name: Are the credentials here?
+        id: creds
+        env:
+          CF: ${{ github.event_name != 'pull_request' && secrets.CLOUDFLARE_ROOT_TOKEN || '' }}
+          GH: ${{ github.event_name != 'pull_request' && secrets.GH_ROOT_TOKEN || '' }}
+        run: |
+          if [ -n "$CF" ] && [ -n "$GH" ]; then
+            echo "present=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=no" >> "$GITHUB_OUTPUT"
+            echo "::notice::no credentials on this event (a pull request, or not yet configured) — validating offline, no plan."
+          fi
+
+      - name: Validate (offline)
+        if: steps.creds.outputs.present == 'no'
+        run: |
+          terraform -chdir=terraform init -backend=false -input=false >/dev/null
+          terraform -chdir=terraform validate
+
+      - name: Derive the state backend's S3 credentials
+        if: steps.creds.outputs.present == 'yes'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ github.event_name != 'pull_request' && secrets.CLOUDFLARE_ROOT_TOKEN || '' }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          # The state backend's S3 pair IS the token: key = the token's id,
+          # secret = SHA-256 of its value (Cloudflare's documented scheme). It is
+          # derived every run, so a rotation carries the backend with it and
+          # there is no second credential to keep in step.
+          # An ACCOUNT-owned token (cfat_…) verifies under the account; a user
+          # token under /user. The id is the same thing either way.
+          acct="${CLOUDFLARE_ACCOUNT_ID:-6093bc0889c95a08f0a92a8df6750c66}"
+          key=$( { curl -fsS "https://api.cloudflare.com/client/v4/accounts/$acct/tokens/verify" \
+                     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" 2>/dev/null \
+                || curl -fsS https://api.cloudflare.com/client/v4/user/tokens/verify \
+                     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"; } \
+                | python3 -c 'import json,sys;print(json.load(sys.stdin)["result"]["id"])')
+          secret=$(printf %s "$CLOUDFLARE_API_TOKEN" | sha256sum | cut -d' ' -f1)
+          echo "::add-mask::$key"; echo "::add-mask::$secret"
+          { echo "AWS_ACCESS_KEY_ID=$key"; echo "AWS_SECRET_ACCESS_KEY=$secret"; } >> "$GITHUB_ENV"
+
+      - name: Init + validate
+        if: steps.creds.outputs.present == 'yes'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ github.event_name != 'pull_request' && secrets.CLOUDFLARE_ROOT_TOKEN || '' }}
+          GITHUB_TOKEN: ${{ github.event_name != 'pull_request' && secrets.GH_ROOT_TOKEN || '' }}
+        run: |
+          terraform -chdir=terraform init -input=false -lockfile=readonly >/dev/null
+          terraform -chdir=terraform validate
+
+      - name: Plan (output kept off the public log)
+        id: plan
+        if: steps.creds.outputs.present == 'yes'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ github.event_name != 'pull_request' && secrets.CLOUDFLARE_ROOT_TOKEN || '' }}
+          GITHUB_TOKEN: ${{ github.event_name != 'pull_request' && secrets.GH_ROOT_TOKEN || '' }}
+        run: |
+          set +e
+          terraform -chdir=terraform plan -input=false -lock-timeout=5m -detailed-exitcode \
+            -no-color -out=tfplan > /tmp/plan.txt 2>&1
+          code=$?
+          set -e
+          case $code in
+            0) echo "changes=no"  >> "$GITHUB_OUTPUT"; echo "plan: no changes" ;;
+            2) echo "changes=yes" >> "$GITHUB_OUTPUT"; echo "plan: changes pending (see the summary)" ;;
+            *) echo "::error::terraform plan failed — summary lines only below; the detail is not printed to a public log, run the plan locally for it"; grep -E '^Error:' /tmp/plan.txt | head -20; exit 1 ;;
+          esac
+          # Paths given to a -chdir'd terraform resolve INSIDE that directory:
+          # the plan is terraform/tfplan on disk, so it is `tfplan` here.
+          terraform -chdir=terraform show -json tfplan > /tmp/plan.json
+
+      - name: Summarise for review
+        id: summary
+        if: steps.creds.outputs.present == 'yes'
+        env:
+          ALLOW: ${{ github.event_name == 'workflow_dispatch' && inputs.allow_destroy && '--allow-destroy' || '' }}
+        run: |
+          mkdir -p /tmp/summary
+          python3 scripts/tf_plan_summary.py /tmp/plan.json --markdown > /tmp/summary/plan.md
+          cat /tmp/summary/plan.md >> "$GITHUB_STEP_SUMMARY"
+          fp=$(python3 scripts/tf_plan_summary.py /tmp/plan.json --fingerprint | base64 -w0)
+          echo "fingerprint=$fp" >> "$GITHUB_OUTPUT"
+          # The law, enforced: a destroy or replace fails here unless allowed by hand.
+          python3 scripts/tf_plan_summary.py /tmp/plan.json --fail-on-destroy $ALLOW
+
+      - name: Publish the summary (it is safe by construction)
+        if: steps.creds.outputs.present == 'yes'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: tf-plan-summary
+          path: /tmp/summary/plan.md
+          retention-days: 14
+
+  ask:
+    # GitHub tells no one of their own activity, and every run here is the
+    # owner's, so the gate's wait never reached them: the bot asks by name in
+    # an "Approval needed" issue (scripts/ci_ask_review.sh). Same needs and same
+    # condition as the gate; `settle` closes the issue when the gate is done.
+    needs: plan
+    if: >-
+      needs.plan.outputs.creds == 'yes' && needs.plan.outputs.changes == 'yes'
+      && (
+        (github.event_name == 'push' && github.ref == 'refs/heads/master')
+        || (github.event_name == 'workflow_dispatch' && inputs.apply)
+      )
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      issues: write          # the "Approval needed" issue
+      actions: read
+    outputs:
+      issue: ${{ steps.ask.outputs.issue }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/ci_ask_review.sh
+          sparse-checkout-cone-mode: false
+
+      - name: Ask the reviewer
+        id: ask
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TRIGGERING_ACTOR: ${{ github.triggering_actor }}
+        run: scripts/ci_ask_review.sh
+
+  settle:
+    # The ask's issue closes with the gate's outcome (approved, rejected, or
+    # never reviewed) — whatever became of the gated job, hence always().
+    needs: [ask, apply]
+    if: always() && needs.ask.outputs.issue != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      issues: write          # the issue's outcome and its close
+      actions: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/ci_ask_review.sh
+          sparse-checkout-cone-mode: false
+
+      - name: Settle the ask
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ needs.ask.outputs.issue }}
+          RESULT: ${{ needs.apply.result }}
+        run: scripts/ci_ask_review.sh close
+
+  apply:
+    # Only from master (or a deliberate dispatch), only with credentials, and only
+    # when there is something to apply — a no-change plan needs no approval.
+    if: >-
+      needs.plan.outputs.creds == 'yes' && needs.plan.outputs.changes == 'yes'
+      && (
+        (github.event_name == 'push' && github.ref == 'refs/heads/master')
+        || (github.event_name == 'workflow_dispatch' && inputs.apply)
+      )
+    needs: plan
+    runs-on: ubuntu-latest
+    environment:
+      name: terraform-production
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+
+      - name: Derive the state backend's S3 credentials
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ github.event_name != 'pull_request' && secrets.CLOUDFLARE_ROOT_TOKEN || '' }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          # The state backend's S3 pair IS the token: key = the token's id,
+          # secret = SHA-256 of its value (Cloudflare's documented scheme). It is
+          # derived every run, so a rotation carries the backend with it and
+          # there is no second credential to keep in step.
+          # An ACCOUNT-owned token (cfat_…) verifies under the account; a user
+          # token under /user. The id is the same thing either way.
+          acct="${CLOUDFLARE_ACCOUNT_ID:-6093bc0889c95a08f0a92a8df6750c66}"
+          key=$( { curl -fsS "https://api.cloudflare.com/client/v4/accounts/$acct/tokens/verify" \
+                     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" 2>/dev/null \
+                || curl -fsS https://api.cloudflare.com/client/v4/user/tokens/verify \
+                     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"; } \
+                | python3 -c 'import json,sys;print(json.load(sys.stdin)["result"]["id"])')
+          secret=$(printf %s "$CLOUDFLARE_API_TOKEN" | sha256sum | cut -d' ' -f1)
+          echo "::add-mask::$key"; echo "::add-mask::$secret"
+          { echo "AWS_ACCESS_KEY_ID=$key"; echo "AWS_SECRET_ACCESS_KEY=$secret"; } >> "$GITHUB_ENV"
+
+      - name: Re-plan, and refuse if it differs from what was reviewed
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ github.event_name != 'pull_request' && secrets.CLOUDFLARE_ROOT_TOKEN || '' }}
+          GITHUB_TOKEN: ${{ github.event_name != 'pull_request' && secrets.GH_ROOT_TOKEN || '' }}
+          REVIEWED: ${{ needs.plan.outputs.fingerprint }}
+          ALLOW: ${{ github.event_name == 'workflow_dispatch' && inputs.allow_destroy && '--allow-destroy' || '' }}
+        run: |
+          terraform -chdir=terraform init -input=false -lockfile=readonly >/dev/null
+          set +e
+          terraform -chdir=terraform plan -input=false -lock-timeout=5m -detailed-exitcode \
+            -no-color -out=tfplan > /tmp/plan.txt 2>&1
+          code=$?
+          set -e
+          if [ $code -eq 1 ]; then echo "::error::terraform plan failed — summary lines only; run the plan locally for the detail"; grep -E '^Error:' /tmp/plan.txt | head -20; exit 1; fi
+          terraform -chdir=terraform show -json tfplan > /tmp/plan.json
+          python3 scripts/tf_plan_summary.py /tmp/plan.json --markdown >> "$GITHUB_STEP_SUMMARY"
+          python3 scripts/tf_plan_summary.py /tmp/plan.json --fail-on-destroy $ALLOW
+          now=$(python3 scripts/tf_plan_summary.py /tmp/plan.json --fingerprint | base64 -w0)
+          if [ "$now" != "$REVIEWED" ]; then
+            echo "::error::the plan changed between review and apply — nothing applied. Re-run to review the new plan."
+            echo "reviewed:"; echo "$REVIEWED" | base64 -d; echo "now:"; echo "$now" | base64 -d
+            exit 1
+          fi
+          if [ $code -eq 0 ]; then echo "nothing left to apply"; echo "SKIP=1" >> "$GITHUB_ENV"; fi
+
+      - name: Apply
+        if: env.SKIP != '1'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ github.event_name != 'pull_request' && secrets.CLOUDFLARE_ROOT_TOKEN || '' }}
+          GITHUB_TOKEN: ${{ github.event_name != 'pull_request' && secrets.GH_ROOT_TOKEN || '' }}
+        run: |
+          # Output to a file, not the public log: apply echoes attribute values.
+          set +e
+          terraform -chdir=terraform apply -input=false -lock-timeout=5m -no-color tfplan > /tmp/apply.txt 2>&1
+          code=$?
+          set -e
+          grep -E '^(Apply complete|Error)' /tmp/apply.txt || true
+          if [ $code -ne 0 ]; then
+            echo "::error::terraform apply failed — summary lines only; provider errors can echo attribute values, so the detail stays off this public log"
+            grep -E '^Error:' /tmp/apply.txt | head -20
+            exit 1
+          fi
+          grep -E '^Apply complete' /tmp/apply.txt >> "$GITHUB_STEP_SUMMARY" || true

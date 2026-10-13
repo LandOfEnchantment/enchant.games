@@ -43,7 +43,7 @@ for path in /press/ "/journal/$article/" /rss.xml /sitemap.xml; do
 done
 code=$(curl -sS -o /dev/null -w '%{http_code}' "$site/no-such-page-$nonce/")
 [ "$code" = 404 ] || fail "an unknown address answered $code, not 404"
-# The old addresses: Cloudflare's redirect rules (scripts/cloudflare-settings.sh).
+# The old addresses: Cloudflare's redirect rules (terraform/rulesets.tf).
 for pair in "slug=press /press/" "slug=journal /journal/" "slug=journal&article=$article /journal/$article/"; do
   to=$(curl -sS -o /dev/null -w '%{http_code} %{redirect_url}' "$site/?${pair% *}&probe=$nonce")
   [ "$to" = "301 $site${pair#* }" ] || fail "/?${pair% *} answered \"$to\", not a 301 to ${pair#* }"

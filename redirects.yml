@@ -2,7 +2,7 @@
 # sends a visitor now. scripts/build.js writes a small page at each that forwards at once (a
 # meta refresh with a canonical link, which search engines read as a permanent move), and
 # check-dist holds every target to a page the build serves. The old ?slug= forms of these
-# reach them through Cloudflare's 301s (scripts/cloudflare-settings.sh) first.
+# reach them through Cloudflare's 301s (terraform/rulesets.tf) first.
 # scripts/browse-old-links.py opens every address the site ever had, these included.
 
 # Pages retired when the site became a solo studio's (2026-10-10), and the vision page

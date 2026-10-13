@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # The one road to master (2026-10-11, as in ../adamschaefers.com). master takes no direct
-# push (the ruleset in .github/rulesets/master.json): every change is a pull request whose
+# push (the ruleset in terraform/github.tf): every change is a pull request whose
 # `check` passes, and its merge is the deploy (deploy.yml). This pushes the checkout's
 # commits to a branch, opens its pull request (or finds the open one), arms auto-merge as
 # you, and waits for the merge or for the check that failed. owner-merge.yml approves the

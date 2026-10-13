@@ -1,0 +1,14 @@
+# State never enters git: it holds secret material and this repo is public.
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl.bak
+crash.log
+crash.*.log
+# -generate-config-out scratch, folded into the real files by hand
+generated.tf
+*.tfplan
+# Any local credential helper. There should never be one, but if there is, it stays out.
+*.auto.tfvars
+.env

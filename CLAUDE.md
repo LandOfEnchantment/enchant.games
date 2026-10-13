@@ -22,7 +22,7 @@ pinned, with its lockfile); nothing is vendored. Link a page as `/<slug>/` and
 an article as `/journal/<slug>/` (with the slash); `make check` fails on a
 link that leads nowhere in `public/`, and on an old `/?slug=` address. Those
 old addresses still work for visitors: Cloudflare 301s them
-(`scripts/cloudflare-settings.sh`), and the home page sends on any it misses.
+(`terraform/rulesets.tf`), and the home page sends on any it misses.
 After a deploy that moves or retires anything, `make old-links` opens every
 address the site has ever had (from the git history) in a real browser
 (`~/.cloakbrowser`) against the live site; each must land on a live page.
@@ -38,4 +38,7 @@ add a throwaway query (`?probe=$RANDOM`) and never fetch a fresh `?v=` address
 during a deploy: it could cache the old file under the new key.
 
 Every change reaches `master` through a pull request (`scripts/ship.sh`), and
-the merge is the deploy: `.claude/rules/cicd.md` is the pipeline.
+the merge is the deploy: `.claude/rules/cicd.md` is the pipeline. The
+repository's GitHub settings and the zone's Cloudflare configuration are
+Terraform (`terraform/`, its README): change them there, never by hand; the
+merge plans in CI and applies after the owner's review.

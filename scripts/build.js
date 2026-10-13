@@ -13,7 +13,7 @@
 //                            crawlers, named in robots.txt)
 //
 // The old addresses (/?slug=games, /?slug=journal&article=<slug>) land on the home page,
-// whose head sends them on (and Cloudflare 301s them first: scripts/cloudflare-settings.sh).
+// whose head sends them on (and Cloudflare 301s them first: terraform/rulesets.tf).
 // An address whose page or article was retired forwards to where redirects.yml says.
 //
 // Every file a page asks for carries a cache key, ?v=<number from its own content> (as in
