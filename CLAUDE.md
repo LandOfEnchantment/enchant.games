@@ -13,7 +13,13 @@ swaps them in place on a click, so moving around is instant.
 `README.md` covers the layout and the make targets. After editing, build and
 look with:
 
-    make build      # make run serves public/ at http://localhost:3000
+    make build      # or make run: http://localhost:3000, rebuilt on save
+
+`make run` (`scripts/dev.js`) serves `public/` the way GitHub Pages does, builds
+it again on every save in the sources, and reloads every open page over a
+WebSocket (`/__dev`) whose script the dev server adds to the pages it answers;
+it is never in `public/`, so never on the site. A failed build shows its error
+over the page. `PORT=` changes the port.
 
 `public/` (every page, `rss.xml`, `sitemap.xml`, `version.json`) is build
 output: git ignores it, and CI builds and deploys it on every merge. marked,

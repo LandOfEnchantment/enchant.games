@@ -6,9 +6,10 @@ build:
 	node scripts/build.js
 
 # public/ at http://localhost:3000, answered as GitHub Pages answers (an unknown address
-# gets 404.html).
-run: build
-	python3 serve.py
+# gets 404.html), rebuilt on every save, and open pages reloaded (scripts/dev.js: a
+# WebSocket only its local answers carry, never the site).
+run:
+	node scripts/dev.js
 
 # What CI's required check runs: the build, every link and cache key on it, the update
 # offer's rules, the two Workers (offline), the workflows' rules.
