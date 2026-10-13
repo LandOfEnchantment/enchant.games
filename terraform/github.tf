@@ -48,8 +48,9 @@ resource "github_repository" "site" {
   }
 }
 
-# master takes no direct push: a pull request with `check` green (from GitHub Actions only,
-# app 15368, so a status of that name from anywhere else satisfies nothing) and one
+# master takes no direct push: a pull request with `check` and Terraform's `plan` green (from
+# GitHub Actions only, app 15368, so a status of that name from anywhere else satisfies
+# nothing; both run on every pull request, neither path-filtered) and one
 # approval, stale approvals dismissed. No force push, no deletion. No bypass actor: the
 # owner and every agent get the same rule; owner-merge.yml approves the owner's pull
 # requests, anyone else's waits for the owner. The emergency door, when `check` itself is
@@ -88,6 +89,10 @@ resource "github_repository_ruleset" "master" {
       strict_required_status_checks_policy = false
       required_check {
         context        = "check"
+        integration_id = 15368
+      }
+      required_check {
+        context        = "plan"
         integration_id = 15368
       }
     }
