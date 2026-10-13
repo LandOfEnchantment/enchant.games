@@ -1,11 +1,11 @@
-// Contact form, the same one as on adamschaefers.com. It posts to the shared Cloudflare
-// Worker at contact-api.adamschaefers.com, which checks Turnstile and emails the message.
+// Contact form, in the same dress as adamschaefers.com's. It posts to this site's own Worker
+// at /api/contact (contact-worker/), which checks Turnstile and emails the message.
 // A page opts in with an empty <div id="contact-mount"></div> in its markdown.
 
 import { loadTurnstile } from './turnstile.js';
 
-const ACTION = 'https://contact-api.adamschaefers.com/';
-const SITEKEY = '0x4AAAAAAFSCqQ6GlpqWfqoi';
+const ACTION = '/api/contact';
+const SITEKEY = '0x4AAAAAAFVRUaFaE_eoc-i-';
 const DRAFT_KEY = 'contact-draft';
 const FIELDS = ['name', 'email', 'message'];
 const DRAFT_MAX_AGE = 30 * 24 * 60 * 60 * 1000;
@@ -46,7 +46,7 @@ export function mountContactForms(root) {
     loadTurnstile()
         .then(turnstile => {
             if (!mount.isConnected) return;
-            widget = turnstile.render(form.querySelector('.cf-turnstile'), { sitekey: SITEKEY, theme: 'dark' });
+            widget = turnstile.render(form.querySelector('.cf-turnstile'), { sitekey: SITEKEY, action: 'contact', theme: 'dark' });
         })
         .catch(() => { status.textContent = 'Could not load the verification check. Reload the page and try again.'; });
 

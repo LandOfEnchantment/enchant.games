@@ -8,19 +8,20 @@ imported on 2026-10-12. Terraform did not create the site.
 
 ## What Terraform owns, and what it must not touch
 
-**Terraform owns** (`terraform state list`, 41 resources): the zone, its three deliberate
+**Terraform owns** (`terraform state list`, 42 resources): the zone, its three deliberate
 settings (SSL full, Always Use HTTPS, Browser Cache TTL 0) and bot management; all 16 DNS
 records; the two rulesets (the cache rule that keeps keyed files a day in browsers, the
-redirects that 301 the old `?slug=` addresses); the mailing list's Turnstile widget and
-D1 database *as records that they exist*; the zone's Web Analytics site (beacon
+redirects that 301 the old `?slug=` addresses); the two Turnstile widgets (the mailing
+list's and the contact form's) and the mailing list's D1 database *as records that they
+exist*; the zone's Web Analytics site (beacon
 injection off: the privacy policy says no analytics); this state's own R2 bucket and its
 r2.dev switch (off); and on GitHub the repository, master's ruleset, the workflow token's
 rights (and the LandOfEnchantment organization's, which must allow them first), the
 allowed actions, Dependabot alerts and fixes, GitHub Pages, the `github-pages` and
 `terraform-production` environments, and the zone id variable.
 
-**wrangler owns** the mailing list Worker (`signup-worker/`): its script, routes,
-bindings, vars, secrets and D1 migrations. `wrangler deploy` rewrites those on every
+**wrangler owns** the two Workers (`signup-worker/`, `contact-worker/`): their scripts,
+routes, bindings, vars, secrets and D1 migrations. `wrangler deploy` rewrites those on every
 deploy; were Terraform to declare them too, the two would fight forever. **deploy.yml
 owns** what GitHub Pages serves and Cloudflare's cached copy of it.
 
@@ -30,9 +31,10 @@ is the line that keeps an apply in one from becoming drift in another:
 
 - ../merecatholicity.com's: its zone, its repositories, and its own buckets, databases
   and widgets.
-- ../adamschaefers.com's: its zone, its repository, and its own objects, including the
-  "adamschaefers contact form" Turnstile widget that the Press page's contact form uses
-  (its domains name enchant.games too, but it is that project's).
+- ../adamschaefers.com's: its zone, its repositories, and its own objects. Until
+  2026-10-12 the Press page's contact form used its widget and Worker; now this site has
+  its own (`contact-worker/`, the widget "enchant.games contact form"), and nothing of one
+  site serves the other.
 - Nobody's: the account itself, its API tokens, its Email Routing destination address,
   its Zero Trust organization, and every zone and widget of the account's other sites.
 
