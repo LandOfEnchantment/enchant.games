@@ -1,7 +1,9 @@
-// Release announcements: a visitor leaves an email address to hear when a game is out. It
-// posts to the Worker at /api/signup (signup-worker/), which checks Turnstile and stores the
-// address; nothing is sent yet. A page opts in with an empty <div id="signup-mount"></div>
-// in its markdown.
+// The mailing list: a visitor leaves an email address, and ticks the box agreeing to hear
+// about our games (releases and sales promotions). It posts to the Worker at /api/signup
+// (signup-worker/), which wants the box ticked, checks Turnstile and stores the address with
+// what it agreed to; nothing is sent yet. A page opts in with an empty
+// <div id="signup-mount"></div> in its markdown. Change the box's wording and the Worker's
+// CONSENT (and a migration naming the new wording) together.
 
 import { loadTurnstile } from './turnstile.js';
 
@@ -12,17 +14,19 @@ const FORM_HTML = `
 <div class="inquiry-card">
 <form id="signup-form" action="${ACTION}" method="POST">
   <label for="su-email">Email</label>
-  <div class="signup-row">
-    <input id="su-email" type="email" name="email" maxlength="254" autocomplete="email" required>
-    <button type="submit">Notify me</button>
-  </div>
+  <input id="su-email" type="email" name="email" maxlength="254" autocomplete="email" required>
+  <label class="signup-consent">
+    <input type="checkbox" name="consent" value="yes" required>
+    <span>I agree to receive emails from Land of Enchantment Games about our games, including release announcements and sales promotions, under our <a href="/privacy-policy/">Privacy Policy</a>. I can unsubscribe at any time.</span>
+  </label>
+  <button type="submit">Notify me</button>
   <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
   <div class="cf-turnstile"></div>
   <p id="signup-status" role="status"></p>
 </form>
 <div class="inquiry-sent" tabindex="-1" hidden>
   <svg class="sent-check" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23"/><path d="M15.5 27.5l7 7 14-15"/></svg>
-  <div><p class="sent-title">You're on the list.</p><p class="sent-note">We'll email you when a game is released.</p></div>
+  <div><p class="sent-title">You're on the list.</p><p class="sent-note">We'll email you news about our games.</p></div>
 </div>
 </div>`;
 

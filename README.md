@@ -2,16 +2,20 @@ A static website with headless backend decoupling
 
 ## Structure
 
-- `pages/`               - site pages, YAML files with markdown
-- `news/`                - news articles, YAML files with markdown
-- `js/content-loader.js` - YAML+markdown processor / simulated headless backend / technically frontend
-- `js/render.js`         - SPA shell / client-side router / frontend renderer
-- `scripts/build.js`     - builds `public/`: the bundled script, the pages, the `pages.json`, `news.json`, `rss.xml` and `sitemap.xml` manifests, and a `?v=` cache key on every file a page asks for
-- `js/version.js`        - offers an open tab "Reload" when a newer version of the site is live
+- `pages/`           - site pages, YAML files with markdown, each served at `/<slug>/` (home at `/`)
+- `news/`            - journal articles, YAML files with markdown, each served at `/journal/<slug>/`
+- `layout.html`      - the frame every page is drawn into: head, header, menu, footer
+- `scripts/build.js` - builds `public/`: every page and article as its own HTML file, the journal, `rss.xml`, `sitemap.xml`, the font from npm, `js/site.js` bundled, and a `?v=` cache key on every file a page asks for
+- `js/site.js`       - the one script a page loads: the contact and signup forms (`js/contact.js`, `js/signup.js`) and the update offer (`js/version.js`)
+
+Everything is drawn once, at build time (in CI on every merge), so a visitor
+gets the whole page in the first answer and nothing is fetched to draw it.
+The old addresses (`/?slug=games`, `/?slug=journal&article=<slug>`) 301 to the
+new ones.
 
 ## Usage
 
-Install the pinned libraries and toolchain (Node 24):
+Install the pinned build tools and font (Node 24):
 
     npm ci
 
@@ -36,13 +40,22 @@ site and publishes it to GitHub Pages. Commit on a branch, then:
 
 See `.claude/rules/cicd.md` for the whole pipeline.
 
-## Release signup
+## Mailing list
 
-The Games page asks visitors for an email address to hear when a game is out
-(`js/signup.js`). It posts to a Cloudflare Worker at `enchant.games/api/signup`
-(`signup-worker/`), which checks Turnstile and stores the address in the D1
-database `enchant-games-signups` (table `signups`: `email`, `created_at`). It
-sends nothing to anyone, and nothing on the site reads the list back.
+The Games page asks visitors for an email address, with a box they must tick
+agreeing to emails about our games, release announcements and sales promotions
+included (`js/signup.js`). It posts to a Cloudflare Worker at
+`enchant.games/api/signup` (`signup-worker/`), which wants the box ticked,
+checks Turnstile and stores the address in the D1 database
+`enchant-games-signups` (table `signups`: `email`, `created_at`, `consent`).
+It sends nothing to anyone, and nothing on the site reads the list back.
+
+`consent` is the wording an address agreed to
+(`signup-worker/migrations/0002_consent.sql`): `games-and-sales` for the
+checkbox, `releases` for the few who signed up before it, when the form
+promised release announcements only. Send those no promotions. Every
+marketing email needs a way to unsubscribe (the privacy policy promises one,
+and the law wants it).
 
 The Worker is deployed by hand, not by CI (needs `CLOUDFLARE_API_TOKEN`):
 

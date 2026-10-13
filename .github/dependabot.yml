@@ -1,7 +1,7 @@
 # Keeps the SHA-pinned actions current: the repository requires every `uses:` to name a
 # commit, so a bump is a pull request that changes a hash and its version comment. And the
-# npm packages (package.json): the site's libraries (lit-html, marked, js-yaml), bundled into
-# what is served, and esbuild, which bundles them. Dependabot's pull requests are not the
+# npm packages (package.json): the build's (marked and js-yaml, which draw the pages;
+# esbuild, which bundles the script) and the font (firacode), which is served. Dependabot's pull requests are not the
 # owner's: each waits for the owner's approval (owner-merge.yml approves only the owner's),
 # and a merged bump redeploys the site. Pull requests carry no secrets.
 # A release waits a week before Dependabot offers it, so a compromised one that is pulled

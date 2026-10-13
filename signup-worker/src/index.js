@@ -1,10 +1,14 @@
 /* The release-announcement signup for enchant.games (POST /api/signup, from js/signup.js).
-   Rate limits per IP, verifies the Turnstile token, then stores the address in D1. An address
-   already on the list answers the same as a new one, so the form can't be used to learn who
-   signed up. It sends no email and offers no way to read the list back. */
+   Rate limits per IP, wants the consent box ticked, verifies the Turnstile token, then stores
+   the address in D1 with what it agreed to (CONSENT; migrations/0002_consent.sql names each
+   wording). An address already on the list answers the same as a new one, so the form can't
+   be used to learn who signed up; signing up again records the newer consent. It sends no
+   email and offers no way to read the list back. */
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const TURNSTILE_ACTION = 'signup';
+// The wording js/signup.js's checkbox shows: news about our games, releases and sales.
+const CONSENT = 'games-and-sales';
 
 function json(body, status) {
   return new Response(JSON.stringify(body), {
@@ -36,6 +40,9 @@ export default {
     if (email.length > 254 || !EMAIL.test(email)) {
       return json({ ok: false, error: 'Please enter a valid email address.' }, 400);
     }
+    if (form.get('consent') !== 'yes') {
+      return json({ ok: false, error: 'Please tick the box to agree to the emails.' }, 400);
+    }
 
     let verdict;
     try {
@@ -57,8 +64,9 @@ export default {
     }
 
     try {
-      await env.DB.prepare('INSERT INTO signups (email) VALUES (?1) ON CONFLICT (email) DO NOTHING')
-        .bind(email).run();
+      await env.DB.prepare('INSERT INTO signups (email, consent) VALUES (?1, ?2) '
+        + 'ON CONFLICT (email) DO UPDATE SET consent = excluded.consent')
+        .bind(email, CONSENT).run();
     } catch (err) {
       console.log(JSON.stringify({ event: 'insert_failed', error: String(err) }));
       return json({ ok: false, error: 'Could not save your address. Please try again later.' }, 500);

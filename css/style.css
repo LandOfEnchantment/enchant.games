@@ -1,6 +1,17 @@
+/* Fira Code, variable weight, from npm (firacode, the font project's own release;
+   scripts/build.js copies the file). (c) The Fira Code Project Authors, SIL Open Font
+   License 1.1. */
 @font-face {
     font-family: 'Fira Code';
-    src: url('/fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+    font-weight: 300 700;
+    src: url('/fonts/FiraCode-VF.woff2') format('woff2');
+    /* The line height of the Google Fonts copy the site had before (ascent 1980, descent
+       644 of 2000 units), so nothing moved when the font came from npm. */
+    ascent-override: 99%;
+    descent-override: 32.2%;
+    line-gap-override: 0%;
 }
 
 :root {
@@ -303,15 +314,16 @@ a:active {
 #contact-form button:disabled { opacity: .6; cursor: progress; }
 #contact-status { margin: 0; color: var(--bs-secondary-color); }
 #contact-status:empty { display: none; }
-/* Release signup (js/signup.js): one address, in the contact form's dress */
+/* Mailing list signup (js/signup.js): one address and its consent, in the contact form's dress */
 #signup-form { display: grid; gap: .75rem; max-width: 34rem; }
-#signup-form label { color: var(--bs-secondary-color); margin-bottom: -.4rem; }
-.signup-row { display: flex; gap: .75rem; }
-#signup-form input { flex: 1; min-width: 0; font: inherit; color: var(--bs-body-color); background: #1a1a1a; border: 1px solid var(--bs-border-color); border-radius: 3px; padding: .6rem .75rem; }
-#signup-form input:focus-visible { outline: 2px solid var(--bs-link-color); outline-offset: 1px; border-color: transparent; }
-#signup-form button { flex: none; font: inherit; font-weight: 600; color: var(--bs-body-bg); background: var(--bs-link-color); border: 0; border-radius: 3px; padding: .5rem 1.25rem; cursor: pointer; transition: background-color .15s; }
+#signup-form label[for] { color: var(--bs-secondary-color); margin-bottom: -.4rem; }
+#signup-form input[type=email] { width: 100%; box-sizing: border-box; font: inherit; color: var(--bs-body-color); background: #1a1a1a; border: 1px solid var(--bs-border-color); border-radius: 3px; padding: .6rem .75rem; }
+#signup-form input[type=email]:focus-visible { outline: 2px solid var(--bs-link-color); outline-offset: 1px; border-color: transparent; }
+#signup-form button { justify-self: start; font: inherit; font-weight: 600; color: var(--bs-body-bg); background: var(--bs-link-color); border: 0; border-radius: 3px; padding: .5rem 1.25rem; cursor: pointer; transition: background-color .15s; }
 #signup-form button:hover { background: var(--bs-link-hover-color); }
 #signup-form button:disabled { opacity: .6; cursor: progress; }
+#signup-form .signup-consent { display: flex; gap: .6rem; align-items: flex-start; margin: 0; color: var(--bs-secondary-color); font-size: .9em; cursor: pointer; }
+#signup-form .signup-consent input { flex: none; width: 1.05rem; height: 1.05rem; margin: .2rem 0 0; accent-color: var(--bs-link-color); cursor: pointer; }
 #signup-status { margin: 0; color: var(--bs-secondary-color); }
 #signup-status:empty { display: none; }
 /* Sent: the form flips away and the sent card swings in */
@@ -333,8 +345,6 @@ a:active {
 .sent-note { margin: .2rem 0 0; color: var(--bs-secondary-color); }
 @media (max-width: 600px) {
     #contact-form { grid-template-columns: 1fr; }
-    .signup-row { flex-direction: column; }
-    #signup-form button { align-self: start; }
 }
 
 /* The new-version offer (js/version.js): bottom right, above the phone's tab bar. */

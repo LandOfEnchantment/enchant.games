@@ -29,7 +29,7 @@ test('never over a half-written message', () => {
     assert.match(src, /if \(bar \|\| typing\(\)\) return;/);
 });
 
-test('render.js starts it', () => {
-    const render = readFileSync(join(import.meta.dirname, '..', 'js', 'render.js'), 'utf8');
-    assert.match(render, /^watchVersion\(\);$/m);
+test('site.js starts it', () => {
+    const site = readFileSync(join(import.meta.dirname, '..', 'js', 'site.js'), 'utf8');
+    assert.match(site, /^watchVersion\(\);$/m);
 });
