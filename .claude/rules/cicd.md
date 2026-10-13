@@ -45,3 +45,4 @@ As in ../merecatholicity.com (2026-10-11). Every file a page asks for carries `?
 ## Done by hand, on purpose
 
 - Cloudflare proxies enchant.games in front of GitHub Pages (DNS, TLS). Its cache settings are `scripts/cloudflare-settings.sh`'s, not clicked.
+- The release signup Worker, `enchant-games-signup` (`signup-worker/`, routed at `enchant.games/api/signup`; 2026-10-12): `make signup-deploy` applies its D1 migrations and deploys it, by hand, with the same token. CI only runs its tests (`make test`); a merge doesn't deploy it, so deploy a change to it before (or with) the pages that need it. Its `TURNSTILE_SECRET` belongs to the Turnstile widget "enchant.games release signup" (enchant.games only); the database `enchant-games-signups` holds the addresses and nothing reads them.
