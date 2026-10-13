@@ -27,7 +27,8 @@ Build `public/` (what the site serves; never committed):
 
     make build
 
-Run locally at http://localhost:3000:
+Run locally at http://localhost:3000, rebuilt on every save (the open page
+reloads by itself):
 
     make run
 
