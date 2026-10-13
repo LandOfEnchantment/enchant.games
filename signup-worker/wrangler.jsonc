@@ -1,5 +1,6 @@
-// The Games page's "tell me when a game is out" signup (js/signup.js): checks Turnstile and
-// stores the address in D1. It sends nothing to anyone. Deployed by hand: README.md.
+// The Games page's mailing list (js/signup.js): /api/signup stores an address in D1 and
+// /api/unsubscribe deletes one, each behind Turnstile. It sends nothing to anyone. Deployed
+// by hand: README.md.
 {
   "name": "enchant-games-signup",
   "account_id": "6093bc0889c95a08f0a92a8df6750c66",
@@ -7,7 +8,10 @@
   "compatibility_date": "2026-10-01",
   "observability": { "enabled": true },
   // Same origin as the pages, so no CORS. Only this address: no workers.dev or preview ones.
-  "routes": [{ "pattern": "enchant.games/api/signup", "zone_name": "enchant.games" }],
+  "routes": [
+    { "pattern": "enchant.games/api/signup", "zone_name": "enchant.games" },
+    { "pattern": "enchant.games/api/unsubscribe", "zone_name": "enchant.games" }
+  ],
   "workers_dev": false,
   "preview_urls": false,
   "d1_databases": [

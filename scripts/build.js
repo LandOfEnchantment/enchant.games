@@ -14,6 +14,7 @@
 //
 // The old addresses (/?slug=games, /?slug=journal&article=<slug>) land on the home page,
 // whose head sends them on (and Cloudflare 301s them first: scripts/cloudflare-settings.sh).
+// An address whose page or article was retired forwards to where redirects.yml says.
 //
 // Every file a page asks for carries a cache key, ?v=<number from its own content> (as in
 // ../merecatholicity.com's stamp_versions.py): a changed file gets a new address, so no
@@ -268,6 +269,37 @@ await build({
     logLevel: 'warning',
 });
 
+// Retired addresses (redirects.yml): a page at each that forwards at once. Never one a page
+// is drawn at, and never to an address nothing is drawn at.
+const redirects = load(readFileSync(at('redirects.yml'), 'utf8'), { schema: JSON_SCHEMA }) ?? {};
+// A page or article set aside in a disabled/ folder was served once, so its address needs
+// somewhere to go.
+for (const [dir, address] of [['pages', pageAddress], ['news', articleAddress]]) {
+    for (const file of readdirSync(at(dir, 'disabled')).filter(f => f.endsWith('.yml'))) {
+        const slug = String(load(readFileSync(at(dir, 'disabled', file), 'utf8'), { schema: JSON_SCHEMA })?.slug ?? '');
+        if (slug && !(address(slug) in redirects)) fail(`${dir}/disabled/${file} was served at ${address(slug)}; say in redirects.yml where that address goes now`);
+    }
+}
+const drawn = new Set(served.map(f => '/' + f.replace(/(^|\/)index\.html$/, '$1')));
+for (const [from, to] of Object.entries(redirects)) {
+    if (!/^\/[\w./-]+\/$/.test(from)) fail(`redirects.yml: ${from} isn't a folder address (/<path>/)`);
+    if (drawn.has(from)) fail(`redirects.yml: ${from} is a page the build draws`);
+    if (!drawn.has(String(to))) fail(`redirects.yml: ${from} forwards to ${to}, which the build doesn't draw`);
+    const target = esc(BASE + to);
+    write(fileFor(from), `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Moved - ${SITE_NAME}</title>
+  <link rel="canonical" href="${target}">
+  <meta http-equiv="refresh" content="0; url=${esc(to)}">
+  <script>location.replace(${JSON.stringify(String(to))} + location.hash);</script>
+</head>
+<body><p>This page has moved: <a href="${esc(to)}">${target}</a>.</p></body>
+</html>
+`);
+}
+
 // The first 32 bits of the file's sha256, as a number.
 const key = file => String(parseInt(createHash('sha256').update(readFileSync(file)).digest('hex').slice(0, 8), 16));
 const files = dir => readdirSync(join(OUT, dir)).filter(f => !f.startsWith('.')).map(f => `/${dir}/${f}`);
@@ -302,4 +334,4 @@ const buildId = createHash('sha256')
     .digest('hex').slice(0, 12);
 write('version.json', JSON.stringify({ build: buildId, assets }) + '\n');
 
-console.log(`built public/ ${buildId}: ${pages.length} pages, ${news.length} articles, ${served.length} HTML files, ${Object.keys(keys).length} keyed files`);
+console.log(`built public/ ${buildId}: ${pages.length} pages, ${news.length} articles, ${served.length} HTML files, ${Object.keys(redirects).length} retired addresses forwarded, ${Object.keys(keys).length} keyed files`);

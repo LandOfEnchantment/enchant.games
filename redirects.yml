@@ -1,0 +1,31 @@
+# Addresses that once served a page or article that has since been retired, and where each
+# sends a visitor now. scripts/build.js writes a small page at each that forwards at once (a
+# meta refresh with a canonical link, which search engines read as a permanent move), and
+# check-dist holds every target to a page the build serves. The old ?slug= forms of these
+# reach them through Cloudflare's 301s (scripts/cloudflare-settings.sh) first.
+# scripts/browse-old-links.py opens every address the site ever had, these included.
+
+# Pages retired when the site became a solo studio's (2026-10-10), and the vision page
+# that became the mission page.
+/team/: /
+/mission/: /
+/vision/: /
+/community/: /
+
+# Emacs Hacking: the course was kept as one article, the crash course.
+/journal/2025-05-05-emacs-hacking-00/: /journal/2025-05-05-emacs-hacking-01/
+/journal/2025-05-05-emacs-hacking-02/: /journal/2025-05-05-emacs-hacking-01/
+/journal/2025-05-05-emacs-hacking-03/: /journal/2025-05-05-emacs-hacking-01/
+/journal/2025-05-05-emacs-hacking-04/: /journal/2025-05-05-emacs-hacking-01/
+/journal/2025-05-05-emacs-hacking-05/: /journal/2025-05-05-emacs-hacking-01/
+/journal/2025-05-05-emacs-hacking-06/: /journal/2025-05-05-emacs-hacking-01/
+
+# Articles retired from the journal.
+/journal/2025-12-18-upcoming-game-studio/: /journal/
+/journal/2026-01-06-happy-new-year-cool-stuff-ahead/: /journal/
+/journal/2026-02-28-why-I-care/: /journal/
+/journal/2026-02-29-now-who-is-the-doomer/: /journal/
+/journal/2026-03-01-now-who-is-the-doomer/: /journal/
+/journal/2026-03-08-recommending-harvard-gazette-is-ai-dulling-our-minds/: /journal/
+/journal/2026-03-10-what-this-world-really-needs-the-rise-of-the-software-artisan/: /journal/
+/journal/2026-03-13-we-are-not-wrong-we-are-just-early/: /journal/

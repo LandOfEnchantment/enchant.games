@@ -1,11 +1,11 @@
-// The signup Worker against stand-ins for its bindings (D1, the rate limiter) and for
+// The mailing list Worker (its signup and unsubscribe doors) against stand-ins for its bindings (D1, the rate limiter) and for
 // Turnstile's siteverify. Offline: node --test signup-worker/test/ (make test runs it).
 import { test, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import worker from '../src/index.js';
 
 const ORIGIN = 'https://enchant.games';
-let saved, limited, verdict, siteverifyBody, realFetch;
+let saved, ran, limited, verdict, siteverifyBody, realFetch;
 
 function env() {
     return {
@@ -17,7 +17,7 @@ function env() {
             prepare: sql => ({
                 bind: (...args) => ({
                     run: async () => {
-                        assert.match(sql, /^INSERT INTO signups \(email, consent\) VALUES \(\?1, \?2\) ON CONFLICT \(email\) DO UPDATE SET consent = excluded\.consent$/);
+                        ran.push(sql);
                         saved.push(args);
                         return { success: true };
                     },
@@ -27,12 +27,15 @@ function env() {
     };
 }
 
-function post(fields, { origin = ORIGIN, method = 'POST' } = {}) {
+const INSERT = 'INSERT INTO signups (email, consent) VALUES (?1, ?2) ON CONFLICT (email) DO UPDATE SET consent = excluded.consent';
+const DELETE = 'DELETE FROM signups WHERE email = ?1';
+
+function post(fields, { origin = ORIGIN, method = 'POST', path = '/api/signup' } = {}) {
     const body = new FormData();
     for (const [k, v] of Object.entries(fields)) body.append(k, v);
     const headers = { 'CF-Connecting-IP': '203.0.113.7' };
     if (origin) headers.Origin = origin;
-    return new Request('https://enchant.games/api/signup', method === 'POST' ? { method, body, headers } : { method, headers });
+    return new Request(`https://enchant.games${path}`, method === 'POST' ? { method, body, headers } : { method, headers });
 }
 
 async function call(req) {
@@ -42,6 +45,7 @@ async function call(req) {
 
 beforeEach(() => {
     saved = [];
+    ran = [];
     limited = false;
     verdict = { success: true, hostname: 'enchant.games', action: 'signup' };
     siteverifyBody = null;
@@ -61,6 +65,7 @@ test('stores a verified address, trimmed and as typed, with what it agreed to', 
     assert.equal(r.status, 200);
     assert.deepEqual(r.body, { ok: true });
     assert.deepEqual(saved, [['Player@Example.com', 'games-and-sales']]);
+    assert.deepEqual(ran, [INSERT]);
     assert.equal(r.headers.get('Cache-Control'), 'no-store');
     assert.equal(siteverifyBody.get('secret'), 'secret');
     assert.equal(siteverifyBody.get('response'), 'tok');
@@ -138,4 +143,47 @@ test('says so when the database refuses', async () => {
     const res = await worker.fetch(post(good), e);
     assert.equal(res.status, 500);
     assert.equal((await res.json()).ok, false);
+});
+
+const out = { email: '  Player@Example.com ', 'cf-turnstile-response': 'tok' };
+const unsubscribe = (fields, opts = {}) => post(fields, { ...opts, path: '/api/unsubscribe' });
+
+test('unsubscribing deletes the address and names it back, with no box to tick', async () => {
+    verdict.action = 'unsubscribe';
+    const r = await call(unsubscribe(out));
+    assert.deepEqual([r.status, r.body], [200, { ok: true, email: 'Player@Example.com' }]);
+    assert.deepEqual(ran, [DELETE]);
+    assert.deepEqual(saved, [['Player@Example.com']]);
+});
+
+test('an unsubscribe answers the same whether or not the address was there', async () => {
+    verdict.action = 'unsubscribe';
+    const e = env();
+    e.DB = { prepare: () => ({ bind: () => ({ run: async () => ({ success: true, meta: { changes: 0 } }) }) }) };
+    const res = await worker.fetch(unsubscribe(out), e);
+    assert.deepEqual([res.status, await res.json()], [200, { ok: true, email: 'Player@Example.com' }]);
+});
+
+test("each door wants a token solved for its own action", async () => {
+    verdict.action = 'signup';
+    assert.equal((await call(unsubscribe(out))).status, 403);
+    verdict.action = 'unsubscribe';
+    assert.equal((await call(post(good))).status, 403);
+    assert.deepEqual(ran, []);
+});
+
+test('an unsubscribe is held to the same gates: origin, rate limit, address, honeypot', async () => {
+    verdict.action = 'unsubscribe';
+    assert.equal((await call(unsubscribe(out, { origin: 'https://evil.example' }))).status, 403);
+    assert.equal((await call(unsubscribe({ ...out, email: 'nobody' }))).status, 400);
+    const trap = await call(unsubscribe({ ...out, website: 'x' }));
+    assert.deepEqual([trap.status, trap.body], [200, { ok: true, email: 'Player@Example.com' }]);
+    limited = true;
+    assert.equal((await call(unsubscribe(out))).status, 429);
+    assert.deepEqual(ran, []);
+});
+
+test('any other path is not found', async () => {
+    assert.equal((await call(post(good, { path: '/api/other' }))).status, 404);
+    assert.equal((await call(post(good, { path: '/' }))).status, 404);
 });
