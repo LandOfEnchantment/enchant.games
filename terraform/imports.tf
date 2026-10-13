@@ -139,6 +139,13 @@ import {
   id = "6093bc0889c95a08f0a92a8df6750c66/0x4AAAAAAFVLgGBnejf8bKWT"
 }
 
+# The contact form's own widget, made through the API on 2026-10-12 (its secret went straight
+# to the Worker) and adopted here.
+import {
+  to = cloudflare_turnstile_widget.contact
+  id = "6093bc0889c95a08f0a92a8df6750c66/0x4AAAAAAFVRUaFaE_eoc-i-"
+}
+
 import {
   to = cloudflare_d1_database.signups
   id = "6093bc0889c95a08f0a92a8df6750c66/a1fdf1f6-ba08-48b4-b3c7-a84518413668"

@@ -1,0 +1,27 @@
+// The Press page's contact form (js/contact.js): checks Turnstile and emails the message to
+// the owner. enchant.games' own (2026-10-12); it shared adamschaefers.com's until then.
+// Deployed by hand: README.md.
+{
+  "name": "enchant-games-contact",
+  "account_id": "6093bc0889c95a08f0a92a8df6750c66",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+  // Same origin as the pages, so no CORS. Only this address: no workers.dev or preview ones.
+  "routes": [{ "pattern": "enchant.games/api/contact", "zone_name": "enchant.games" }],
+  "workers_dev": false,
+  "preview_urls": false,
+  // Sends only to the owner's verified Email Routing destination, from contact-form@enchant.games
+  // (Email Routing is on for the zone).
+  "send_email": [{ "name": "EMAIL", "destination_address": "adam.schaefers@icloud.com" }],
+  // 3 sends a minute per IP, before Turnstile, so a flood can't burn either quota.
+  "ratelimits": [
+    { "name": "SEND_LIMIT", "namespace_id": "4002", "simple": { "limit": 3, "period": 60 } }
+  ],
+  // TURNSTILE_SECRET is a Worker secret (wrangler secret put TURNSTILE_SECRET), never here.
+  "vars": {
+    "ALLOWED_ORIGIN": "https://enchant.games",
+    "TURNSTILE_HOSTNAME": "enchant.games",
+    "CONTACT_TO": "adam.schaefers@icloud.com"
+  }
+}

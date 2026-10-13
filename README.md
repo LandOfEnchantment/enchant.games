@@ -76,6 +76,17 @@ list:
     cd signup-worker && npx wrangler d1 execute enchant-games-signups --remote \
       --command "SELECT * FROM signups ORDER BY created_at"
 
+## Contact form
+
+The Press page's contact form (`js/contact.js`) posts to the Worker at
+`enchant.games/api/contact` (`contact-worker/`), which checks Turnstile and
+emails the message to the owner. Deployed by hand, not by CI:
+
+    make contact-deploy
+
+Its Turnstile secret is a Worker secret, set once:
+`cd contact-worker && npx wrangler secret put TURNSTILE_SECRET`.
+
 ## License
 
 [Unlicense](UNLICENSE) - public domain.
