@@ -1,0 +1,124 @@
+title: A week on the farm with Dylan Araps
+slug: 2026-10-14-a-week-on-the-farm-with-dylan-araps
+date: 2026-10-14
+author: Adam Schaefers
+body: |
+
+      *Republished from my blog at [adamschaefers.com](https://adamschaefers.com/blog/2026-10-13-a-week-on-the-farm/), where it first appeared on October 13, 2026.*
+
+      <video controls playsinline preload="metadata" style="max-width:100%;height:auto;" src="https://media.adamschaefers.com/farming.mp4"></video>
+
+      I first met Dylan Araps on IRC seven or eight years ago. I had taken an
+      interest in minimalist Linux distros, and he was working on a brand new one
+      called KISS Linux. (You may know him from [Neofetch](https://github.com/dylanaraps/neofetch) or the [Pure Bash Bible](https://github.com/dylanaraps/pure-bash-bible).)
+      The [old site](https://kisslinux.github.io/) is still online, and the project lives on today at
+      [kisscommunity.org](https://kisscommunity.org/).
+
+      While KISS was new and exciting and at its most active, I became the number
+      two committer on the project, behind Dylan. Mostly I maintained the GNU stack in
+      the community repository. I also tested the package manager's features,
+      hunting for edge cases and bugs, and helped with the init scripts.
+
+      Today KISS is mature, really a finished product, or a finished idea: a Linux
+      distro simple enough for one person to maintain as an island unto itself, with
+      a small group of enthusiasts still to be found on IRC, on Libera now that
+      freenode is no more.
+
+      ### Have taken up farming
+
+      Then Dylan went AWOL, and nobody really knew how he was doing. By then I had
+      moved on too. I had gotten married, paid work left me no time for KISS, and I
+      had [orphaned my packages](https://github.com/dylanaraps/community/issues/1165).
+
+      In March 2024 I opened a pull request on his old profile repository, ["Hope
+      you're good"](https://github.com/dylanaraps/dylanaraps/pull/1), wondering if he'd throw us a bone and let everyone know how he
+      was doing. A couple of months later his profile [said](https://github.com/dylanaraps/dylanaraps/commit/811599cc564418e242f23a11082299323e7f62f8) "Have taken up farming." We were
+      all happy for him, though we didn't know what that really meant.
+
+      In January 2026, nearly two years later, he [finally explained](https://dylan.gr/1768295794).
+
+      I related to the physical pain and the mental agony, the burnout from software
+      development he described, so I sent him an email: I wanted to see the farm.
+
+      He said come on over.
+
+      ### The WILD Project
+
+      We set some dates, and later I learned the farm is [the WILD Project](https://wild.gr), a WWOOF
+      host. They grow grapes and olives, mostly, and make wine and olive oil, among
+      other things.
+
+      But look closely at the few clips I shared and you'll see it's more than
+      that. They are community minded, and they want to preserve an older way of
+      life. When you arrive, there are yurts and camp mats provided. It's a very
+      simple arrangement, and it put me in mind of one of the things Marcus Aurelius
+      thanked his teacher Diognetus for:
+
+      > To choose the Greek lifestyle—the camp-bed and the cloak.
+      >
+      > Marcus Aurelius, *Meditations* 1.6 (tr. Gregory Hays)
+
+      And they're working to be self-sufficient in as many ways as possible from the
+      farm, while pursuing philosophy and simple living.
+
+      It's KISS Linux, real life edition.
+
+      Dylan's family has something they believe is good, beautiful and true, and
+      they share it with anyone moved to come and see for themselves: people willing
+      to work with open minds and open hands, open to learning and open to sharing,
+      to giving and to receiving.
+
+      ### Group think kills
+
+      There is lively discussion around the table at meals, often difficult, and no
+      question is off limits. They are after what Aristotle called the good life.
+      But what is the good life? How do you get there? Bring your favorite talking
+      points, the accepted opinions your university or your favorite streamer
+      drilled into you, and you may find yourself challenged. I saw it happen. It's
+      a kind of challenge that's rare nowadays, because they are pushing against
+      group think: "group think kills" is handwritten on one of the windows by the
+      dining table.
+
+      You're free to think what you want, but you're expected to form your own
+      views and not to hold them as sacred cows. In software we stress test our
+      programs and systems for strength, weaknesses, scalability problems, bugs,
+      edge cases and exceptions. Dylan and his family may be out of the software
+      business, but I reckon they're in the truth-seeking business, the philosophy
+      business. They may not talk about the Unix philosophy in terms of programs
+      anymore, but they may be applying it to everyday life in ways we never
+      thought possible.
+
+      ### Grounded
+
+      All of this, along with living close to the land, is a search for what might
+      be called reality, which is hard to find in a world that is chronically
+      online and yet disconnected. Many of us, myself included at times, are prone
+      to illusions and fantasies. We fall out of touch because we aren't grounded,
+      whether because we don't grow our own food, or because we keep doing things
+      we know are wrong, to our own inner compromise and detriment.
+
+      On that last point, I was surprised by how seriously this family takes doing
+      the right thing. They are just going to do the right thing, as they see it,
+      damn it, at all costs. That is admirable, and it is very hard to find.
+
+      ### Coming clean
+
+      This next part I have a hard time admitting.
+
+      I wanted to stay longer and help with the grapes and the olives, but I had a
+      hard time on the farm. As an American, I showed up in poor health and wasn't
+      able to do the work. And honestly, the work was entirely reasonable. Nobody
+      else on the farm was struggling the way I was. It was purely my fault.
+
+      So if computer and desk work have left you severely overweight, my advice is
+      this: before you visit, at least get to where you can work on your feet, doing
+      physical tasks outdoors, for several hours a day.
+
+      I stayed about a week, enjoyed the company, gave my thanks as best I could,
+      and bid them farewell, but not before learning all about vegan cooking and
+      eating, and taking some of their wisdom home with me. I do hope to return
+      soon, in better health, and try again.
+
+      To Dylan and his family: thank you. Not goodbye, just see you later.
+
+      Adam
