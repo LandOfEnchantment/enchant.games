@@ -15,7 +15,7 @@
 import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { readFile, stat } from 'node:fs/promises';
-import { watch } from 'node:fs';
+import { readdirSync, statSync, watch } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize } from 'node:path';
 
@@ -89,6 +89,31 @@ function changed(file) {
     clearTimeout(timer);
     // A save is often several events (a backup, a rename, the write): build once, after them.
     timer = setTimeout(rebuild, 100);
+}
+
+/** DIR (relative to the repository) and every folder in it, each folder watched itself.
+    Not watch(DIR, { recursive: true }): on Linux Node follows each file by its inode, and
+    loses one that a save replaces (Emacs renames the old file to file~ and writes a new
+    one), so after a save or two its changes went unseen. A folder's own watch names any
+    file in it that changes, however it was saved. */
+const folders = new Map();
+function watchTree(dir) {
+    let ino;
+    try { ino = statSync(join(ROOT, dir)).ino; } catch { return; }
+    const known = folders.get(dir);
+    if (known?.ino === ino) return;
+    known?.watcher.close(); // a folder deleted and made again
+    const watcher = watch(join(ROOT, dir), (_, name) => {
+        if (!name) return;
+        const file = `${dir}/${name}`;
+        try { if (statSync(join(ROOT, file)).isDirectory()) watchTree(file); } catch { /* gone */ }
+        changed(file);
+    });
+    watcher.on('error', () => { watcher.close(); folders.delete(dir); });
+    folders.set(dir, { ino, watcher });
+    for (const entry of readdirSync(join(ROOT, dir), { withFileTypes: true })) {
+        if (entry.isDirectory()) watchTree(`${dir}/${entry.name}`);
+    }
 }
 
 // The open pages' sockets, and just enough of WebSocket (RFC 6455) to send them a message.
@@ -210,7 +235,7 @@ await new Promise(resolve => {
 // same, and the next save may fix it.
 await rebuild();
 
-for (const dir of WATCHED_DIRS) watch(join(ROOT, dir), { recursive: true }, (_, file) => file && changed(`${dir}/${file}`));
+for (const dir of WATCHED_DIRS) watchTree(dir);
 // The folders, not the files: an editor that saves by renaming would leave a file's watch behind.
 for (const dir of new Set(WATCHED_FILES.map(f => f.includes('/') ? f.slice(0, f.lastIndexOf('/')) : ''))) {
     watch(join(ROOT, dir), (_, file) => {
