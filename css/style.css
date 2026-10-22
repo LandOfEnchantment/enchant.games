@@ -390,3 +390,19 @@ a:active {
         bottom: calc(4.5rem + env(safe-area-inset-bottom));
     }
 }
+
+/* An article's footnotes: after the section that first refers to each, small; a number
+   and its note link to each other. */
+sup {
+    line-height: 0;
+}
+.footnotes {
+    font-size: 13px;
+    color: var(--bs-secondary-color);
+    border-top: 1px solid var(--bs-border-color);
+    margin: 1.5rem 0;
+    padding-top: 0.25rem;
+}
+.footnotes p {
+    margin: 0.5rem 0;
+}
