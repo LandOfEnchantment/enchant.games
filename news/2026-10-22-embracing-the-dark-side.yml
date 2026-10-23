@@ -183,21 +183,23 @@ body: |
 
       Under the hood, it's no toy. A typed front end in PureScript. My own API on Cloudflare Workers, with a database, file storage and real-time chat, sharded so it scales. The infrastructure is code too, in Terraform. Every change goes through CI, waits for my approval before it reaches production, rolls out in stages, and gets tested against production every night.
 
-      It took a week to get it standing, and [the history is public](https://github.com/merecatholicity/merecatholicity.com). That's when I knew software engineers were cooked.
+      It took a week to get it standing.<sup id="fnr-history"><a href="#fn-history">19</a></sup> That's when I knew software engineers were cooked.
 
       I said the guessing machine can't be counted on. It still guesses, but with a compiler, tests and a human review behind it, the guesses are good enough to count on for most work.
 
-      In *The fall of the software engineer*<sup id="fnr-j3"><a href="#fn-j3">19</a></sup> I said AI code is mid, because it's trained on the average of all code. It's past the average now. In the same post I quoted a junior engineer at a big tech company: "Claude Code is able to do my job better than I can." I filed it under the problem. I should have listened.
+      In *The fall of the software engineer*<sup id="fnr-j3"><a href="#fn-j3">20</a></sup> I said AI code is mid, because it's trained on the average of all code. It's past the average now. In the same post I quoted a junior engineer at a big tech company: "Claude Code is able to do my job better than I can." I filed it under the problem. I should have listened.
 
       I said games and art are where the soul shows most. But I wouldn't bet a career on any corner of software being the last to fall.
 
       It's better than most coders I've worked with now. Flat out. It's better than me, too. I'm not convinced it's better than the best of us. It doesn't have to be.
 
-      So how does a thing that can't think beat me at my own job? That's the question I started with, and I answer it in [Can it improve itself?](#improve)
+      So how does a thing that can't think beat me at my own job? That's the question I started with.
 
       <div class="footnotes">
 
-      <sup id="fn-j3"><a href="#fnr-j3">19</a></sup> The same post as the first note, the one with the video.
+      <sup id="fn-history"><a href="#fnr-history">19</a></sup> The history is public, [on GitHub](https://github.com/merecatholicity/merecatholicity.com).
+
+      <sup id="fn-j3"><a href="#fnr-j3">20</a></sup> The same post as the first note, the one with the video.
 
       </div>
 
@@ -205,19 +207,19 @@ body: |
 
       I still don't believe AGI is possible, if AGI means a machine with a mind of its own. A machine can't have a mind.
 
-      Aristotle said the mind "cannot reasonably be regarded as blended with the body," and has no organ the way sight has the eye.<sup id="fnr-deanima"><a href="#fn-deanima">20</a></sup> Grasping a universal, what makes a triangle a triangle and not just this one or that one, isn't something matter does,<sup id="fnr-st75"><a href="#fn-st75">21</a></sup> no matter how much of it you wire together.
+      Aristotle said the mind "cannot reasonably be regarded as blended with the body," and has no organ the way sight has the eye.<sup id="fnr-deanima"><a href="#fn-deanima">21</a></sup> Grasping a universal, what makes a triangle a triangle and not just this one or that one, isn't something matter does,<sup id="fnr-st75"><a href="#fn-st75">22</a></sup> no matter how much of it you wire together.
 
-      Why not? Draw a triangle. It's this triangle, this size, these angles, in this spot on the page. Every triangle made of matter is like that, one particular triangle. Your idea of a triangle isn't any of them. It fits every triangle there is, big or small, drawn or not, and it's no size at all. Aquinas gives the rule: "whatever is received into something is received according to the condition of the recipient." Matter makes things particular, so what matter takes in, it takes in as one particular. If the mind were matter, "the forms of things would be received into it as individuals, and so it would only know the individual."<sup id="fnr-st75a5"><a href="#fn-st75a5">22</a></sup>
+      Why not? Draw a triangle. It's this triangle, this size, these angles, in this spot on the page. Every triangle made of matter is like that, one particular triangle. Your idea of a triangle isn't any of them. It fits every triangle there is, big or small, drawn or not, and it's no size at all. Aquinas gives the rule: "whatever is received into something is received according to the condition of the recipient." Matter makes things particular, so what matter takes in, it takes in as one particular. If the mind were matter, "the forms of things would be received into it as individuals, and so it would only know the individual."<sup id="fnr-st75a5"><a href="#fn-st75a5">23</a></sup>
 
       A computer is the plainest case. Everything in it is a particular, these bits, these voltages, these weights. A type called Triangle is some bytes in a file, and it means every triangle only because a programmer reads it that way. A trained model sorts triangles it has never seen, just as a concept would. That's the shaping. A machine can be shaped to act as if it understood. It can't understand.
 
-      Harold Bloom argued that Shakespeare's people become themselves by hearing themselves think out loud. "Self-overhearing is their royal road to individuation."<sup id="fnr-bloom"><a href="#fn-bloom">23</a></sup>
+      Harold Bloom argued that Shakespeare's people become themselves by hearing themselves think out loud. "Self-overhearing is their royal road to individuation."<sup id="fnr-bloom"><a href="#fn-bloom">24</a></sup>
 
       A reasoning model does the self-overhearing part. It writes out a chain of thought and reads it back. Nobody is home to overhear it.
 
       Girard read the same plays and found Shakespeare's people mostly wanting what their rivals want. Man has a nature and a mind of his own, and he still learns what to want from somebody else.
 
-      Girard has a line about writers in *A Theater of Envy* that fits the machine better than any playwright:<sup id="fnr-envy"><a href="#fn-envy">24</a></sup>
+      Girard has a line about writers in *A Theater of Envy* that fits the machine better than any playwright:<sup id="fnr-envy"><a href="#fn-envy">25</a></sup>
 
       > Writers are such mimes, we are told, that they can feign a thousand states of mind that they never experience themselves. This is true, no doubt, but it is not the whole truth... What a genuine writer truly desires to represent is his own state of mind.
 
@@ -227,15 +229,15 @@ body: |
 
       <div class="footnotes">
 
-      <sup id="fn-deanima"><a href="#fnr-deanima">20</a></sup> Aristotle, *De Anima* III.4, trans. J. A. Smith ([MIT](https://classics.mit.edu/Aristotle/soul.3.iii.html)).
+      <sup id="fn-deanima"><a href="#fnr-deanima">21</a></sup> Aristotle, *De Anima* III.4, trans. J. A. Smith ([MIT](https://classics.mit.edu/Aristotle/soul.3.iii.html)).
 
-      <sup id="fn-st75"><a href="#fnr-st75">21</a></sup> The intellect "has an operation per se apart from the body" (*Summa Theologiae* I q.75 a.2, [New Advent](https://www.newadvent.org/summa/1075.htm#article2)).
+      <sup id="fn-st75"><a href="#fnr-st75">22</a></sup> The intellect "has an operation per se apart from the body" (*Summa Theologiae* I q.75 a.2, [New Advent](https://www.newadvent.org/summa/1075.htm#article2)).
 
-      <sup id="fn-st75a5"><a href="#fnr-st75a5">22</a></sup> *Summa Theologiae* I q.75 a.5 ([New Advent](https://www.newadvent.org/summa/1075.htm#article5)), "since matter is the principle by which forms are individualized."
+      <sup id="fn-st75a5"><a href="#fnr-st75a5">23</a></sup> *Summa Theologiae* I q.75 a.5 ([New Advent](https://www.newadvent.org/summa/1075.htm#article5)), "since matter is the principle by which forms are individualized."
 
-      <sup id="fn-bloom"><a href="#fnr-bloom">23</a></sup> Harold Bloom, *Shakespeare: The Invention of the Human* (1998), p. xvii, quoted at [Shakespeare Navigators](https://shakespeare-navigators.ewu.edu/hamlet/Bloom.html).
+      <sup id="fn-bloom"><a href="#fnr-bloom">24</a></sup> Harold Bloom, *Shakespeare: The Invention of the Human* (1998), p. xvii, quoted at [Shakespeare Navigators](https://shakespeare-navigators.ewu.edu/hamlet/Bloom.html).
 
-      <sup id="fn-envy"><a href="#fnr-envy">24</a></sup> René Girard, *A Theater of Envy: William Shakespeare* (Oxford University Press, 1991), ch. 37, "Does Not the Stone Rebuke Me for Being More Stone Than It?", p. 338.
+      <sup id="fn-envy"><a href="#fnr-envy">25</a></sup> René Girard, *A Theater of Envy: William Shakespeare* (Oxford University Press, 1991), ch. 37, "Does Not the Stone Rebuke Me for Being More Stone Than It?", p. 338.
 
       </div>
 
@@ -243,13 +245,13 @@ body: |
 
       Here's the case for recursive self-improvement, and its believers say nothing in principle stops it. The model writes better code. Then it writes a better model. That one writes a better one still. Where's the wall?
 
-      There is one, and it's old: "nothing can be reduced from potentiality to actuality, except by something in a state of actuality."<sup id="fnr-st2"><a href="#fn-st2">25</a></sup> A machine can't give itself a perfection it doesn't already have from somewhere: from the people who built it, the data it was trained on, the power it draws. You can't give what you don't have.<sup id="fnr-nemo"><a href="#fn-nemo">26</a></sup>
+      There is one, and it's old: "nothing can be reduced from potentiality to actuality, except by something in a state of actuality."<sup id="fnr-st2"><a href="#fn-st2">26</a></sup> A machine can't give itself a perfection it doesn't already have from somewhere: from the people who built it, the data it was trained on, the power it draws. You can't give what you don't have.<sup id="fnr-nemo"><a href="#fn-nemo">27</a></sup>
 
       Whatever it adds to itself, it adds in degree, never in kind. It can't grow a mind.
 
       Mind you, that's metaphysics, not a forecast. It says what the machine is, not how well it will score.
 
-      Wolfgang Smith, the mathematician and physicist who took Aristotle and Aquinas into modern physics, puts the same axiom in terms an engineer can follow.<sup id="fnr-smith"><a href="#fn-smith">27</a></sup> He splits causes in two. There's the chain of cause and effect in time, one thing knocking into the next. He calls it horizontal, and it "is able to effect change, effect transformations of various kinds, but cannot give rise to something new." Something new comes from above. "A truly productive cause is either the primary causation itself, or else it is the free act of an intelligent agent who 'participates' in the primary causality."
+      Wolfgang Smith, the mathematician and physicist who took Aristotle and Aquinas into modern physics, puts the same axiom in terms an engineer can follow.<sup id="fnr-smith"><a href="#fn-smith">28</a></sup> He splits causes in two. There's the chain of cause and effect in time, one thing knocking into the next. He calls it horizontal, and it "is able to effect change, effect transformations of various kinds, but cannot give rise to something new." Something new comes from above. "A truly productive cause is either the primary causation itself, or else it is the free act of an intelligent agent who 'participates' in the primary causality."
 
       Training is horizontal. A model learning from its own output is horizontal. A model rewriting its own code is horizontal. Every one of them changes the thing. None of them makes a new thing.
 
@@ -257,19 +259,19 @@ body: |
 
       But stack up enough of it, the argument goes, and something new comes out the top. Scale is all you need. Smith caught the same mistake in Heisenberg, long before AI. Heisenberg's account leaves the difference between the potential and the actual a matter of size alone, "as if the passage from potency to actuality could be effected simply by joining together a sufficient number of atoms." Swap atoms for parameters and you have the pitch. And of the quantum world: "Do what one may, the substrate never ceases to be a substrate." A pile of parameters is a substrate too.
 
-      Then why can't more reasoning add up to understanding? Because they're two different acts. Reason works step by step. Intellect sees.<sup id="fnr-st79"><a href="#fn-st79">28</a></sup> The machine can copy the steps. It can't do the seeing.
+      Then why can't more reasoning add up to understanding? Because they're two different acts. Reason works step by step. Intellect sees.<sup id="fnr-st79"><a href="#fn-st79">29</a></sup> The machine can copy the steps. It can't do the seeing.
 
-      Seeing isn't a hunch. A lot of what we call a programmer's intuition is habit, pattern worn in by practice, and the machine copies that too.<sup id="fnr-st78"><a href="#fn-st78">29</a></sup> The seeing I mean is narrower. What the thing is for. Whether it's right, not just whether it runs. Maybe its imitation of that judgment gets good enough too. Even then, somebody has to answer for it, and only somebody with a mind can.
+      Seeing isn't a hunch. A lot of what we call a programmer's intuition is habit, pattern worn in by practice, and the machine copies that too.<sup id="fnr-st78"><a href="#fn-st78">30</a></sup> The seeing I mean is narrower. What the thing is for. Whether it's right, not just whether it runs. Maybe its imitation of that judgment gets good enough too. Even then, somebody has to answer for it, and only somebody with a mind can.
 
       And the order only runs one way. In *Science and Myth*: "It is the lower functions, in fact, which are invariably dependent upon higher faculties, even as reasoning is dependent upon intellect, whereas the reverse is metaphysically impossible."
 
       The machine's steps hang on a mind, and the mind is ours. Of problems "solved" by computers, Smith says the mathematician stays indispensable: "it is he, after all, who programs the computer, and it is he again who interprets its output."
 
-      Chesterton had a name for reason and nothing else. In *Orthodoxy*: "The madman is not the man who has lost his reason. The madman is the man who has lost everything except his reason."<sup id="fnr-maniac"><a href="#fn-maniac">30</a></sup>
+      Chesterton had a name for reason and nothing else. In *Orthodoxy*: "The madman is not the man who has lost his reason. The madman is the man who has lost everything except his reason."<sup id="fnr-maniac"><a href="#fn-maniac">31</a></sup>
 
       That's recursive self-improvement. Reason checking reason, with nobody else in the room, in a circle that can get perfect but never larger. "A bullet is quite as round as the world, but it is not the world."
 
-      It's still an artifact, too. Aristotle passes on an old argument about a bed: "if you planted a bed and the rotting wood acquired the power of sending up a shoot, it would not be a bed that would come up, but wood."<sup id="fnr-physics"><a href="#fn-physics">31</a></sup> Left to itself, a computer is sand and electricity.
+      It's still an artifact, too. Aristotle passes on an old argument about a bed: "if you planted a bed and the rotting wood acquired the power of sending up a shoot, it would not be a bed that would come up, but wood."<sup id="fnr-physics"><a href="#fn-physics">32</a></sup> Left to itself, a computer is sand and electricity.
 
       Smith says the same of everything we make: "The forms imposed by human art are of a different kind: they are forms that give being, not to substance, but to an artifact." It can rewrite every weight it has. The form is still ours.
 
@@ -285,41 +287,41 @@ body: |
 
       <div class="footnotes">
 
-      <sup id="fn-st2"><a href="#fnr-st2">25</a></sup> *Summa Theologiae* I q.2 a.3 ([New Advent](https://www.newadvent.org/summa/1002.htm#article3)), the first of his five ways.
+      <sup id="fn-st2"><a href="#fnr-st2">26</a></sup> *Summa Theologiae* I q.2 a.3 ([New Advent](https://www.newadvent.org/summa/1002.htm#article3)), the first of his five ways.
 
-      <sup id="fn-nemo"><a href="#fnr-nemo">26</a></sup> The old maxim *nemo dat quod non habet*: nobody gives what he doesn't have.
+      <sup id="fn-nemo"><a href="#fnr-nemo">27</a></sup> The old maxim *nemo dat quod non habet*: nobody gives what he doesn't have.
 
-      <sup id="fn-smith"><a href="#fnr-smith">27</a></sup> Wolfgang Smith taught mathematics at MIT, UCLA and Oregon State and wrote on physics and philosophy as a Thomist. The causation, evolution, Heisenberg, substrate and artifact quotes here are from *The Quantum Enigma: Finding the Hidden Key*. The intellect, computer and algorithm quotes are from *Science and Myth: What We Are Never Told*.
+      <sup id="fn-smith"><a href="#fnr-smith">28</a></sup> Wolfgang Smith taught mathematics at MIT, UCLA and Oregon State and wrote on physics and philosophy as a Thomist. The causation, evolution, Heisenberg, substrate and artifact quotes here are from *The Quantum Enigma: Finding the Hidden Key*. The intellect, computer and algorithm quotes are from *Science and Myth: What We Are Never Told*.
 
-      <sup id="fn-st79"><a href="#fnr-st79">28</a></sup> "To understand is simply to apprehend intelligible truth: and to reason is to advance from one thing understood to another" (*Summa Theologiae* I q.79 a.8, [New Advent](https://www.newadvent.org/summa/1079.htm#article8)). Two acts, he says, of one power, as rest and motion belong to one thing.
+      <sup id="fn-st79"><a href="#fnr-st79">29</a></sup> "To understand is simply to apprehend intelligible truth: and to reason is to advance from one thing understood to another" (*Summa Theologiae* I q.79 a.8, [New Advent](https://www.newadvent.org/summa/1079.htm#article8)). Two acts, he says, of one power, as rest and motion belong to one thing.
 
-      <sup id="fn-st78"><a href="#fnr-st78">29</a></sup> What Aquinas calls the cogitative power is one of the inner senses, not the intellect. It "is also called the 'particular reason'... for it compares individual intentions, just as the intellectual reason compares universal intentions" (*Summa Theologiae* I q.78 a.4, [New Advent](https://www.newadvent.org/summa/1078.htm#article4)).
+      <sup id="fn-st78"><a href="#fnr-st78">30</a></sup> What Aquinas calls the cogitative power is one of the inner senses, not the intellect. It "is also called the 'particular reason'... for it compares individual intentions, just as the intellectual reason compares universal intentions" (*Summa Theologiae* I q.78 a.4, [New Advent](https://www.newadvent.org/summa/1078.htm#article4)).
 
-      <sup id="fn-maniac"><a href="#fnr-maniac">30</a></sup> *Orthodoxy*, ch. 2, "The Maniac", where the bullet line is too.
+      <sup id="fn-maniac"><a href="#fnr-maniac">31</a></sup> *Orthodoxy*, ch. 2, "The Maniac", where the bullet line is too.
 
-      <sup id="fn-physics"><a href="#fnr-physics">31</a></sup> Aristotle, *Physics* II.1, trans. R. P. Hardie and R. K. Gaye ([MIT](https://classics.mit.edu/Aristotle/physics.2.ii.html)). He credits the bed to Antiphon.
+      <sup id="fn-physics"><a href="#fnr-physics">32</a></sup> Aristotle, *Physics* II.1, trans. R. P. Hardie and R. K. Gaye ([MIT](https://classics.mit.edu/Aristotle/physics.2.ii.html)). He credits the bed to Antiphon.
 
       </div>
 
       <h3 id="linus">Even Linus</h3>
 
-      Use it. Use it as a tool. Even Linus Torvalds does. Tom's Hardware reported on a patch series he built with an LLM.<sup id="fnr-toms"><a href="#fn-toms">32</a></sup>
+      Use it. Use it as a tool. Even Linus Torvalds does. Tom's Hardware reported on a patch series he built with an LLM.<sup id="fnr-toms"><a href="#fn-toms">33</a></sup>
 
-      It started as a branch to make reading files from the page cache, the copy of your files the kernel keeps in memory, scale. His write-up of the branch is plain about how it was made:<sup id="fnr-commit"><a href="#fn-commit">33</a></sup>
+      It started as a branch to make reading files from the page cache, the copy of your files the kernel keeps in memory, scale. His write-up of the branch is plain about how it was made:<sup id="fnr-commit"><a href="#fn-commit">34</a></sup>
 
       > The code, the test programs, the review behind the list above and the first draft of this text were done with an LLM coding assistant (Claude Code) under my direction. The measurements were run on my machine.
 
       The write-up owns up to ten known problems. Another kernel developer, Kiryl Shutsemau, found the first version could get processes killed when a machine ran short of memory, and had a better idea: hold back only the pages that get read again and again.
 
-      Linus reworked it, with two patches from Kiryl, and posted it to the mailing list<sup id="fnr-lore"><a href="#fn-lore">34</a></sup> as rcu-free-v3.<sup id="fnr-rcu"><a href="#fn-rcu">35</a></sup> He called his own best benchmark, 23 times faster, "not a real number in the sense that no real load will ever see it."
+      Linus reworked it, with two patches from Kiryl, and posted it to the mailing list<sup id="fnr-lore"><a href="#fn-lore">35</a></sup> as rcu-free-v3.<sup id="fnr-rcu"><a href="#fn-rcu">36</a></sup> He called his own best benchmark, 23 times faster, "not a real number in the sense that no real load will ever see it."
 
-      Kiryl found a race too, a read that could return bytes nobody ever wrote there.<sup id="fnr-race"><a href="#fn-race">36</a></sup> None of it has merged. That isn't the method failing. That's peer review doing its job.
+      Kiryl found a race too, a read that could return bytes nobody ever wrote there.<sup id="fnr-race"><a href="#fn-race">37</a></sup> None of it has merged. That isn't the method failing. That's peer review doing its job.
 
       Most of us aren't Linus. That's what tests, review and staged rollouts are for. They hold what one head can't.
 
       That's how you use it. The machine wrote the code. A man who understands every line of it directed it, measured it, put it in front of his peers, took their correction, and owns the result.
 
-      A tool acts only as the hand moves it, so the work is the hand's.<sup id="fnr-st62"><a href="#fn-st62">37</a></sup> When Linus signs his patch, he owns it. Each one carries an "Assisted-by: LLM" line, right next to his "Signed-off-by." When a company ships slop, it can't blame the model.
+      A tool acts only as the hand moves it, so the work is the hand's.<sup id="fnr-st62"><a href="#fn-st62">38</a></sup> When Linus signs his patch, he owns it. Each one carries an "Assisted-by: LLM" line, right next to his "Signed-off-by." When a company ships slop, it can't blame the model.
 
       It's the interface I argued for back in March, precise code understood and audited by humans, with a much faster pair of hands.
 
@@ -327,53 +329,53 @@ body: |
 
       <div class="footnotes">
 
-      <sup id="fn-toms"><a href="#fnr-toms">32</a></sup> Tom's Hardware, [Linus Torvalds posts his first LLM-assisted patch to the Linux kernel](https://www.tomshardware.com/software/linux/linus-torvalds-posts-his-first-llm-assisted-patch-to-the-linux-kernel-after-issuing-clear-pro-ai-directives-the-bossman-makes-use-of-ai-tooling-himself).
+      <sup id="fn-toms"><a href="#fnr-toms">33</a></sup> Tom's Hardware, [Linus Torvalds posts his first LLM-assisted patch to the Linux kernel](https://www.tomshardware.com/software/linux/linus-torvalds-posts-his-first-llm-assisted-patch-to-the-linux-kernel-after-issuing-clear-pro-ai-directives-the-bossman-makes-use-of-ai-tooling-himself).
 
-      <sup id="fn-commit"><a href="#fnr-commit">33</a></sup> [Commit 4c0f369](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4c0f3697118eb3a708ea79175f7f07c43339bfab) in Linus's tree.
+      <sup id="fn-commit"><a href="#fnr-commit">34</a></sup> [Commit 4c0f369](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4c0f3697118eb3a708ea79175f7f07c43339bfab) in Linus's tree.
 
-      <sup id="fn-lore"><a href="#fnr-lore">34</a></sup> [His post](https://lore.kernel.org/all/CAHk-=wjLjgfwgSZ1RDk4YdNFcV0ntosMO5AmBoHD76Zb3HFY7Q@mail.gmail.com/) on the kernel mailing list.
+      <sup id="fn-lore"><a href="#fnr-lore">35</a></sup> [His post](https://lore.kernel.org/all/CAHk-=wjLjgfwgSZ1RDk4YdNFcV0ntosMO5AmBoHD76Zb3HFY7Q@mail.gmail.com/) on the kernel mailing list.
 
-      <sup id="fn-rcu"><a href="#fnr-rcu">35</a></sup> The [rcu-free-v3](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?h=rcu-free-v3) branch, two of its ten patches Kiryl's.
+      <sup id="fn-rcu"><a href="#fnr-rcu">36</a></sup> The [rcu-free-v3](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?h=rcu-free-v3) branch, two of its ten patches Kiryl's.
 
-      <sup id="fn-race"><a href="#fnr-race">36</a></sup> [Kiryl Shutsemau on the mailing list](https://lwn.net/ml/all/as6vBoWQGglxXxb0@thinkstation/), October 13, 2026: "If the folio is replaced under us with a new one and then `i_size` is extended, we can read data that never got written there."
+      <sup id="fn-race"><a href="#fnr-race">37</a></sup> [Kiryl Shutsemau on the mailing list](https://lwn.net/ml/all/as6vBoWQGglxXxb0@thinkstation/), October 13, 2026: "If the folio is replaced under us with a new one and then `i_size` is extended, we can read data that never got written there."
 
-      <sup id="fn-st62"><a href="#fnr-st62">37</a></sup> "The instrumental cause works not by the power of its form, but only by the motion whereby it is moved by the principal agent" (*Summa Theologiae* III q.62 a.1, [New Advent](https://www.newadvent.org/summa/4062.htm#article1)).
+      <sup id="fn-st62"><a href="#fnr-st62">38</a></sup> "The instrumental cause works not by the power of its form, but only by the motion whereby it is moved by the principal agent" (*Summa Theologiae* III q.62 a.1, [New Advent](https://www.newadvent.org/summa/4062.htm#article1)).
 
       </div>
 
       <h3 id="dark-side">The right fear</h3>
 
-      So I'm changing. I'm embracing the dark side. That's how it looked from where I stood in March. Using the machine was the dark side, and the pragmatists were Darth Vader. Take the power that's on the table and put it to work. The free software hippies like Stallman lost.<sup id="fnr-stallman"><a href="#fn-stallman">38</a></sup>
+      So I'm changing. I'm embracing the dark side. That's how it looked from where I stood in March. Using the machine was the dark side, and the pragmatists were Darth Vader. Take the power that's on the table and put it to work. The free software hippies like Stallman lost.<sup id="fnr-stallman"><a href="#fn-stallman">39</a></sup>
 
-      My living depends on it, but that's a reason I weigh, not an order I follow. The clock can go back, remember. Chesterton warned in *The Outline of Sanity* that "those who begin by saying that we cannot abolish the machine, that we must use the machine, are themselves refusing to use the mind."<sup id="fnr-outline"><a href="#fn-outline">39</a></sup> I'm choosing it, with my mind, knowing what it costs.
+      My living depends on it, but that's a reason I weigh, not an order I follow. The clock can go back, remember. Chesterton warned in *The Outline of Sanity* that "those who begin by saying that we cannot abolish the machine, that we must use the machine, are themselves refusing to use the mind."<sup id="fnr-outline"><a href="#fn-outline">40</a></sup> I'm choosing it, with my mind, knowing what it costs.
 
-      Would I still sign the pause? No. Men can stop it, but can isn't should. Prudence weighs what a pause would give up, and I'd take the cures. It also asks whether the means can work, and a treaty that can't be verified binds nobody.<sup id="fnr-st49"><a href="#fn-st49">40</a></sup> Pope Leo XIV asks for a politics "capable of slowing things down when everything is accelerating."<sup id="fnr-mh"><a href="#fn-mh">41</a></sup> I respect the bishop of Rome without holding his every judgment binding, and on this one I part ways with him.
+      Would I still sign the pause? No. Men can stop it, but can isn't should. Prudence weighs what a pause would give up, and I'd take the cures. It also asks whether the means can work, and a treaty that can't be verified binds nobody.<sup id="fnr-st49"><a href="#fn-st49">41</a></sup> Pope Leo XIV asks for a politics "capable of slowing things down when everything is accelerating."<sup id="fnr-mh"><a href="#fn-mh">42</a></sup> I respect the bishop of Rome without holding his every judgment binding, and on this one I part ways with him.
 
-      But I pay one of the racers every month. Doesn't that feed the wolf? The evil isn't building the thing. It's the racing, the creedless wolf Ulysses warned about. My fee can't pay for the building without paying for the race too. Money is fungible. But what I buy is a tool, and the racing is their choice, not mine. The moral theologians have a name for it, cooperation. Sharing in the evil, wanting what the other man wants, is formal cooperation, and it's never allowed. Helping without wanting it, from far off, is remote material cooperation, and it's allowed for a proportionate reason.<sup id="fnr-coop"><a href="#fn-coop">42</a></sup> I don't want the race, a monthly fee is a long way from it, and my livelihood is a proportionate reason. If using the tool ever meant wanting the race, I'd be out.
+      But I pay one of the racers every month. Doesn't that feed the wolf? The evil isn't building the thing. It's the racing, the creedless wolf Ulysses warned about. My fee can't pay for the building without paying for the race too. Money is fungible. But what I buy is a tool, and the racing is their choice, not mine. The moral theologians have a name for it, cooperation. Sharing in the evil, wanting what the other man wants, is formal cooperation, and it's never allowed. Helping without wanting it, from far off, is remote material cooperation, and it's allowed for a proportionate reason.<sup id="fnr-coop"><a href="#fn-coop">43</a></sup> I don't want the race, a monthly fee is a long way from it, and my livelihood is a proportionate reason. If using the tool ever meant wanting the race, I'd be out.
 
       There's one more condition, scandal: don't lead anyone else into sin by your example. This essay tells you to do what I do, so here are the terms. Use it the way Linus does. Keep the craft. Own the model if you can.
 
-      And renting isn't the only road. Chesterton would take the tool, then ask whose tool it is. His fight was over who owns the means of making things: "Too much capitalism does not mean too many capitalists, but too few capitalists."<sup id="fnr-divorce"><a href="#fn-divorce">43</a></sup> A monthly bill to a lab is too few capitalists, the owning for renting trade at its worst.
+      And renting isn't the only road. Chesterton would take the tool, then ask whose tool it is. His fight was over who owns the means of making things: "Too much capitalism does not mean too many capitalists, but too few capitalists."<sup id="fnr-divorce"><a href="#fn-divorce">44</a></sup> A monthly bill to a lab is too few capitalists, the owning for renting trade at its worst.
 
-      He even had a case like ours. In his day it was electricity. A central plant was "a real dependence," he granted, but "if electricity could be cheapened, the chances of a very large number of small independent shops, especially workshops, would be greatly improved." So use it, he decided, "to break up the hopeless block of concentrated capital and management." The point was never the machine: "We are concerned to produce a particular sort of men, the sort of men who will not worship machines even if they use machines."<sup id="fnr-sanity"><a href="#fn-sanity">44</a></sup>
+      He even had a case like ours. In his day it was electricity. A central plant was "a real dependence," he granted, but "if electricity could be cheapened, the chances of a very large number of small independent shops, especially workshops, would be greatly improved." So use it, he decided, "to break up the hopeless block of concentrated capital and management." The point was never the machine: "We are concerned to produce a particular sort of men, the sort of men who will not worship machines even if they use machines."<sup id="fnr-sanity"><a href="#fn-sanity">45</a></sup>
 
       The models are the electricity this time. Friends of mine already run open models on hardware they own. One of them runs four agents at once on a single graphics card. The models aren't the frontier yet, but they do real work. Make them cheaper still, and a town could own a datacenter the way it owns its library, a shop could own its model, and the little workshops get their chance.
 
       The founders protected a machine once already. [The 1st Amendment](https://constitution.congress.gov/constitution/amendment-1/) guards "the freedom of speech, or of the press," and the press was a machine. England licensed its presses until 1695, and the founders made sure Congress never could. Nobody needs a license to run one. A model on your own hardware is the press of our day, and nobody should need a license to run that either. The law can only keep the door open. Walk through it and own the thing, and the power stays with the people. Who's to say we don't get there?
 
-      That's where Stallman ended up. He has a name for renting what you could run yourself, Service as a Software Substitute, and says it gives "someone else power over your computing."<sup id="fnr-saass"><a href="#fn-saass">45</a></sup> The free software hippies lost the war, and here I am at their conclusion, by Chesterton's road. Stallman would tell me to cancel my subscription. He'd have a point.
+      That's where Stallman ended up. He has a name for renting what you could run yourself, Service as a Software Substitute, and says it gives "someone else power over your computing."<sup id="fnr-saass"><a href="#fn-saass">46</a></sup> The free software hippies lost the war, and here I am at their conclusion, by Chesterton's road. Stallman would tell me to cancel my subscription. He'd have a point.
 
       > Fear is the path to the dark side... fear leads to anger... anger leads to hate... hate leads to suffering.
       >
-      > Yoda, *Star Wars: Episode I*<sup id="fnr-yoda"><a href="#fn-yoda">46</a></sup>
+      > Yoda, *Star Wars: Episode I*<sup id="fnr-yoda"><a href="#fn-yoda">47</a></sup>
 
       The joke's on me. I walked every step of the path Yoda warned about, resisting. Fear of being replaced. Fear of falling behind. Then the anger. Then the hate.
 
       I hated falling behind. I hated the fear-based, anti-LLM thinking that would rather lose than automate anything. I hated FUD.
 
-      Hate leads to suffering, and I've had my fill. The way off that path is virtue, which is "a mean, i.e. the mean relative to us."<sup id="fnr-eth2"><a href="#fn-eth2">47</a></sup> Between the zealot and the luddite stands the brave man, the one "who faces and who fears the right things and from the right motive, in the right way."<sup id="fnr-eth3"><a href="#fn-eth3">48</a></sup>
+      Hate leads to suffering, and I've had my fill. The way off that path is virtue, which is "a mean, i.e. the mean relative to us."<sup id="fnr-eth2"><a href="#fn-eth2">48</a></sup> Between the zealot and the luddite stands the brave man, the one "who faces and who fears the right things and from the right motive, in the right way."<sup id="fnr-eth3"><a href="#fn-eth3">49</a></sup>
 
-      Courage gets you through the fear. It doesn't make the call. That's prudence, which Aquinas calls the "right reason of things to be done."<sup id="fnr-st57"><a href="#fn-st57">49</a></sup> Choosing it with my mind means choosing it by prudence.
+      Courage gets you through the fear. It doesn't make the call. That's prudence, which Aquinas calls the "right reason of things to be done."<sup id="fnr-st57"><a href="#fn-st57">50</a></sup> Choosing it with my mind means choosing it by prudence.
 
       The machine grows in degree, never in kind. It can't become a mind, but it can become powerful. Power without a mind needs a master, and a master needs a mind. If it isn't yours, it'll be the lab's, or nobody's at all.
 
@@ -385,29 +387,29 @@ body: |
 
       <div class="footnotes">
 
-      <sup id="fn-stallman"><a href="#fnr-stallman">38</a></sup> Richard Stallman, who founded the free software movement ([stallman.org](https://stallman.org/)).
+      <sup id="fn-stallman"><a href="#fnr-stallman">39</a></sup> Richard Stallman, who founded the free software movement ([stallman.org](https://stallman.org/)).
 
-      <sup id="fn-outline"><a href="#fnr-outline">39</a></sup> G. K. Chesterton, [The Outline of Sanity](https://archive.org/details/theoutlineofsanity) (1926).
+      <sup id="fn-outline"><a href="#fnr-outline">40</a></sup> G. K. Chesterton, [The Outline of Sanity](https://archive.org/details/theoutlineofsanity) (1926).
 
-      <sup id="fn-st49"><a href="#fnr-st49">40</a></sup> Foresight, which looks ahead to what an act will bring about, is a part of prudence (*Summa Theologiae* II-II q.49 a.6, [New Advent](https://www.newadvent.org/summa/3049.htm#article6)).
+      <sup id="fn-st49"><a href="#fnr-st49">41</a></sup> Foresight, which looks ahead to what an act will bring about, is a part of prudence (*Summa Theologiae* II-II q.49 a.6, [New Advent](https://www.newadvent.org/summa/3049.htm#article6)).
 
-      <sup id="fn-mh"><a href="#fnr-mh">41</a></sup> Pope Leo XIV, [Magnifica Humanitas](https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html), May 15, 2026, §107.
+      <sup id="fn-mh"><a href="#fnr-mh">42</a></sup> Pope Leo XIV, [Magnifica Humanitas](https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html), May 15, 2026, §107.
 
-      <sup id="fn-coop"><a href="#fnr-coop">42</a></sup> The distinction in this classic form is St. Alphonsus Liguori's, in *Theologia Moralis* (1748), and the moral manuals after him. Its root is Aquinas's double effect: "Nothing hinders one act from having two effects, only one of which is intended, while the other is beside the intention" (*Summa Theologiae* II-II q.64 a.7, [New Advent](https://www.newadvent.org/summa/3064.htm#article7)).
+      <sup id="fn-coop"><a href="#fnr-coop">43</a></sup> The distinction in this classic form is St. Alphonsus Liguori's, in *Theologia Moralis* (1748), and the moral manuals after him. Its root is Aquinas's double effect: "Nothing hinders one act from having two effects, only one of which is intended, while the other is beside the intention" (*Summa Theologiae* II-II q.64 a.7, [New Advent](https://www.newadvent.org/summa/3064.htm#article7)).
 
-      <sup id="fn-divorce"><a href="#fnr-divorce">43</a></sup> G. K. Chesterton, [The Superstition of Divorce](https://www.gutenberg.org/cache/epub/62680/pg62680-images.html#page_47) (1920).
+      <sup id="fn-divorce"><a href="#fnr-divorce">44</a></sup> G. K. Chesterton, [The Superstition of Divorce](https://www.gutenberg.org/cache/epub/62680/pg62680-images.html#page_47) (1920).
 
-      <sup id="fn-sanity"><a href="#fnr-sanity">44</a></sup> *The Outline of Sanity*, pp. 193 and 252 ([Internet Archive](https://archive.org/details/theoutlineofsanity)), in "The Free Man and the Ford Car" and "A Summary."
+      <sup id="fn-sanity"><a href="#fnr-sanity">45</a></sup> *The Outline of Sanity*, pp. 193 and 252 ([Internet Archive](https://archive.org/details/theoutlineofsanity)), in "The Free Man and the Ford Car" and "A Summary."
 
-      <sup id="fn-saass"><a href="#fnr-saass">45</a></sup> Richard Stallman, [Who Does That Server Really Serve?](https://www.gnu.org/philosophy/who-does-that-server-really-serve.html), GNU Project.
+      <sup id="fn-saass"><a href="#fnr-saass">46</a></sup> Richard Stallman, [Who Does That Server Really Serve?](https://www.gnu.org/philosophy/who-does-that-server-really-serve.html), GNU Project.
 
-      <sup id="fn-yoda"><a href="#fnr-yoda">46</a></sup> *Star Wars: Episode I, The Phantom Menace* (1999), [the script](https://imsdb.com/scripts/Star-Wars-The-Phantom-Menace.html).
+      <sup id="fn-yoda"><a href="#fnr-yoda">47</a></sup> *Star Wars: Episode I, The Phantom Menace* (1999), [the script](https://imsdb.com/scripts/Star-Wars-The-Phantom-Menace.html).
 
-      <sup id="fn-eth2"><a href="#fnr-eth2">47</a></sup> Aristotle, *Nicomachean Ethics* II.6 ([MIT](https://classics.mit.edu/Aristotle/nicomachaen.2.ii.html)).
+      <sup id="fn-eth2"><a href="#fnr-eth2">48</a></sup> Aristotle, *Nicomachean Ethics* II.6 ([MIT](https://classics.mit.edu/Aristotle/nicomachaen.2.ii.html)).
 
-      <sup id="fn-eth3"><a href="#fnr-eth3">48</a></sup> Aristotle, *Nicomachean Ethics* III.7 ([MIT](https://classics.mit.edu/Aristotle/nicomachaen.3.iii.html)).
+      <sup id="fn-eth3"><a href="#fnr-eth3">49</a></sup> Aristotle, *Nicomachean Ethics* III.7 ([MIT](https://classics.mit.edu/Aristotle/nicomachaen.3.iii.html)).
 
-      <sup id="fn-st57"><a href="#fnr-st57">49</a></sup> *Summa Theologiae* I-II q.57 a.4 ([New Advent](https://www.newadvent.org/summa/2057.htm#article4)).
+      <sup id="fn-st57"><a href="#fnr-st57">50</a></sup> *Summa Theologiae* I-II q.57 a.4 ([New Advent](https://www.newadvent.org/summa/2057.htm#article4)).
 
       </div>
 
@@ -415,11 +417,11 @@ body: |
 
       Whatever comes, we can't let our dev teams forget how to code. They still need their skills, their brains and their souls.
 
-      "Men become builders by building and lyreplayers by playing the lyre."<sup id="fnr-eth21"><a href="#fn-eth21">50</a></sup> Programmers become programmers by programming. Aquinas says why it slips away: "the intellectual habit is diminished or even wholly destroyed by cessation from act."<sup id="fnr-st53"><a href="#fn-st53">51</a></sup> Watching the machine isn't doing the acts.
+      "Men become builders by building and lyreplayers by playing the lyre."<sup id="fnr-eth21"><a href="#fn-eth21">51</a></sup> Programmers become programmers by programming. Aquinas says why it slips away: "the intellectual habit is diminished or even wholly destroyed by cessation from act."<sup id="fnr-st53"><a href="#fn-st53">52</a></sup> Watching the machine isn't doing the acts.
 
-      Aquinas sets prudence beside its twin. Art is the "right reason of things to be made."<sup id="fnr-st57art"><a href="#fn-st57art">52</a></sup> Coding is an art. Whether and how to use the machine is prudence. Losing the art isn't a sin in itself. Neglecting it when other people depend on what you understand can be.
+      Aquinas sets prudence beside its twin. Art is the "right reason of things to be made."<sup id="fnr-st57art"><a href="#fn-st57art">53</a></sup> Coding is an art. Whether and how to use the machine is prudence. Losing the art isn't a sin in itself. Neglecting it when other people depend on what you understand can be.
 
-      The hellscape I warned about is still possible. Use the machine. Do the work yourself.<sup id="fnr-bsd"><a href="#fn-bsd">53</a></sup> That's how we don't build it.
+      The hellscape I warned about is still possible. Use the machine. Do the work yourself.<sup id="fnr-bsd"><a href="#fn-bsd">54</a></sup> That's how we don't build it.
 
       **Master the machine, or the machine will master you.**
 
@@ -427,13 +429,13 @@ body: |
 
       <div class="footnotes">
 
-      <sup id="fn-eth21"><a href="#fnr-eth21">50</a></sup> Aristotle, *Nicomachean Ethics* II.1.
+      <sup id="fn-eth21"><a href="#fnr-eth21">51</a></sup> Aristotle, *Nicomachean Ethics* II.1.
 
-      <sup id="fn-st53"><a href="#fnr-st53">51</a></sup> *Summa Theologiae* I-II q.53 a.3 ([New Advent](https://www.newadvent.org/summa/2053.htm#article3)).
+      <sup id="fn-st53"><a href="#fnr-st53">52</a></sup> *Summa Theologiae* I-II q.53 a.3 ([New Advent](https://www.newadvent.org/summa/2053.htm#article3)).
 
-      <sup id="fn-st57art"><a href="#fnr-st57art">52</a></sup> *Summa Theologiae* I-II q.57 a.4 ([New Advent](https://www.newadvent.org/summa/2057.htm#article4)), the same article that calls prudence the "right reason of things to be done."
+      <sup id="fn-st57art"><a href="#fnr-st57art">53</a></sup> *Summa Theologiae* I-II q.57 a.4 ([New Advent](https://www.newadvent.org/summa/2057.htm#article4)), the same article that calls prudence the "right reason of things to be done."
 
-      <sup id="fn-bsd"><a href="#fnr-bsd">53</a></sup> [Backseat Driver](https://github.com/a-schaefers/backseat-driver), a coding tutor I built for myself. Try it out if you want, but it's not why this article was written.
+      <sup id="fn-bsd"><a href="#fnr-bsd">54</a></sup> [Backseat Driver](https://github.com/a-schaefers/backseat-driver), a coding tutor I built for myself. Try it out if you want, but it's not why this article was written.
 
       </div>
 
