@@ -8,1225 +8,434 @@ body: |
 
       <img src="/images/ai-crusades.webp" alt="Embracing the dark side" width="1168" height="784" style="max-width:100%;height:auto;">
 
-      *Can a machine think? Can it improve itself into a mind? Aristotle and Aquinas say no. It doesn't need to. A programmer's case for using it anyway.*
+      *Can a machine think? Aristotle and Aquinas say no. It grows in degree, never in kind, and it doesn't need a mind to master you. Fear of falling behind isn't the right fear. Fear of being mastered is.*
 
-      In March I made a video telling you to "tell your AI-pushing boss to get
-      wrecked."<sup id="fnr-artisan"><a href="#fn-artisan">1</a></sup>
+      In March I made a video telling you to "tell your AI-pushing boss to get wrecked."<sup id="fnr-artisan"><a href="#fn-artisan">1</a></sup>
 
-      Here's what happened since: where I stood, what held up, what didn't, and
-      where I stand now.
+      When Aristotle broke with his own teacher, he called it a duty, "for the sake of maintaining the truth even to destroy what touches us closely."<sup id="fnr-truth"><a href="#fn-truth">2</a></sup> What touches me closely is six essays and a video against leaning on AI to code, all with my name on them.
 
-      When Aristotle broke with his own teacher, he called it a duty, "for the sake
-      of maintaining the truth even to destroy what touches us
-      closely."<sup id="fnr-truth"><a href="#fn-truth">2</a></sup> What touches me closely is six essays and a video
-      with my name on them.
+      AI is new, but the questions it raises are old, so I've gone back to Aristotle and Aquinas. One question won't leave me alone. How does a thing that can't think beat me at my own job?
 
-      AI is new, but the questions it raises are old, so I've gone back to Aristotle
-      and Aquinas to work through them.
-
-      1.  [What I've said so far](#said) - six pieces this year against leaning on
-          AI to code.
-      2.  [Perspectives](#perspectives) - colleagues and friends, from "it changes
-          everything" to "I won't touch it".
-      3.  [Where I stood](#stood) - it imitates, it doesn't think, and that's
-          already enough to wreck us.
-          - [So-called Machines of Loving Grace](#grace) - a CEO's techno-religion,
-            and why I wouldn't live in it.
-          - [The crossroads](#crossroads) - decentralize it the American way, or
-            join the Empire.
-          - [Progress without a creed](#creed) - the race, the clock, church, the
-            trivium and the vote.
-      4.  [Nobody knows tradeoffs like a programmer](#tradeoffs) - I'd been treating
-          a tradeoff like a sin.
-      5.  [What I got right](#right) - code is still the interface, and
-          understanding is still ownership.
-      6.  [What I got wrong](#wrong) - it got good, fast.
-      7.  [The slop machine](#slop) - anyone can clone anything now, Adobe included.
-      8.  [Copyright](#copyright) - copying isn't theft, and Aquinas mostly agrees.
-      9.  [My work is worth less now](#worth) - devops automated itself, and the
-          robots are coming for the rest.
-      10. [AGI doesn't matter](#agi) - a machine can't have a mind, and it doesn't
-          need one to be dangerous.
-      11. [Can it improve itself?](#improve) - it can grow in degree, never in kind.
-      12. [Even Linus](#linus) - how to use the tool with integrity.
-      13. [Embracing the dark side](#dark-side) - the pragmatist's choice, and the
-          right thing to fear.
-      14. [The good life](#good-life) - what we're for once the shuttle weaves
-          itself.
-      15. [Power to the people](#power) - a datacenter in every town, and if that
-          fails, a king on terms.
-      16. [Don't forget how to code](#code) - use it or lose it.
+      1.  [Where I stood](#stood) - it imitates, it doesn't think, and that's already enough to wreck us.
+          - [So-called Machines of Loving Grace](#grace) - a CEO's techno-religion, and why I wouldn't live in it.
+          - [Progress without a creed](#creed) - the race, the clock, church and the trivium.
+      2.  [Nobody knows tradeoffs like a programmer](#tradeoffs) - I'd been treating a tradeoff like a sin.
+      3.  [What I got wrong](#wrong) - it got good, fast.
+      4.  [AGI doesn't matter](#agi) - a machine can't have a mind, and it doesn't need one to be dangerous.
+      5.  [Can it improve itself?](#improve) - it can grow in degree, never in kind.
+      6.  [Even Linus](#linus) - how to use the tool with integrity.
+      7.  [The right fear](#dark-side) - the pragmatist's choice, and what's worth being afraid of.
+      8.  [Don't forget how to code](#code) - use it or lose it.
 
       <div class="footnotes">
 
-      <sup id="fn-artisan"><a href="#fnr-artisan">1</a></sup> Adam Schaefers, [What This World Really Needs \| The Rise of the Software Artisan](https://www.youtube.com/watch?v=ZMau2o7KWYM), YouTube, March 10, 2026.
+      <sup id="fn-artisan"><a href="#fnr-artisan">1</a></sup> [The fall of the software engineer, the rise of the software artisan](/journal/2026-03-07-ai-llms-fall-of-the-software-engineer-rise-of-the-software-artisan/), Enchant Games journal, March 7, 2026, where the video is.
 
       <sup id="fn-truth"><a href="#fnr-truth">2</a></sup> Aristotle, *Nicomachean Ethics* I.6, parting from Plato's Forms: "while both are dear, piety requires us to honour truth above our friends."
 
       </div>
 
-      <h3 id="said">What I've said so far</h3>
-
-      Here are the six, all from the Enchant Games journal.
-
-      - *The problem of the human-computer interface*.<sup id="fnr-j1"><a href="#fn-j1">3</a></sup> LLMs are
-        probability-based guessing machines, and English is too ambiguous to command
-        a computer. The more precision a project needs, the closer you get to a real
-        programming language again, and the less you need the LLM. I called it a
-        borrow now, pay later approach, and I said the danger isn't a sentient
-        machine. It's a human who has become an NPC.
-      - *Dijkstra was right*.<sup id="fnr-j2"><a href="#fn-j2">4</a></sup> It turns out Dijkstra made the case
-        long ago, in *On the foolishness of "natural language
-        programming"*.<sup id="fnr-ewd"><a href="#fn-ewd">5</a></sup> A natural language interface means more
-        work, not less.
-      - *The fall of the software engineer, the rise of the software
-        artisan*.<sup id="fnr-j3"><a href="#fn-j3">6</a></sup> Companies mandating AI turn engineers into robot
-        babysitters. AI code is mid, because it's trained on code that is mostly
-        mid. "We need less software engineers. We need more software artisans."
-      - *On the progressive surrender of technical autonomy*.<sup id="fnr-j4"><a href="#fn-j4">7</a></sup> First
-        they took our operating systems, then our editors, then our stacks. Now they
-        want our brains. "We built machines to obey us. Now we ask them to think
-        instead of us."
-      - *For the love of the game*.<sup id="fnr-j5"><a href="#fn-j5">8</a></sup> Software was bloated long before
-        LLMs, and AI only amplifies it. Programmers tolerate complexity because they
-        don't love the game enough. The cure is the Unix philosophy, the classics,
-        small programs, and knowing your system.
-      - *It's not all about speed*.<sup id="fnr-j6"><a href="#fn-j6">9</a></sup> If it takes me longer but I grok
-        it, that matters. "It's about ownership of understanding."
-
-      I still stand behind the heart of every one of them. Not every line.
-
-      <div class="footnotes">
-
-      <sup id="fn-j1"><a href="#fnr-j1">3</a></sup> [The problem of the human-computer interface](/journal/2026-03-01-the-interface-problem/), Enchant Games journal, March 1, 2026.
-
-      <sup id="fn-j2"><a href="#fnr-j2">4</a></sup> [Dijkstra was right](/journal/2026-03-06-dijkstra-was-right-human-computer-interface-pt-2/), March 6, 2026.
-
-      <sup id="fn-ewd"><a href="#fnr-ewd">5</a></sup> Edsger W. Dijkstra, [On the foolishness of "natural language programming"](https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html) (EWD667).
-
-      <sup id="fn-j3"><a href="#fnr-j3">6</a></sup> [The fall of the software engineer, the rise of the software artisan](/journal/2026-03-07-ai-llms-fall-of-the-software-engineer-rise-of-the-software-artisan/), March 7, 2026.
-
-      <sup id="fn-j4"><a href="#fnr-j4">7</a></sup> [On the progressive surrender of technical autonomy](/journal/2026-03-08-on-the-progressive-surrender-of-technical-autonomy/), March 8, 2026.
-
-      <sup id="fn-j5"><a href="#fnr-j5">8</a></sup> [For the love of the game](/journal/2026-03-12-love-for-the-game/), March 12, 2026.
-
-      <sup id="fn-j6"><a href="#fnr-j6">9</a></sup> [It's not all about speed](/journal/2026-05-23-its-not-all-about-speed/), May 23, 2026.
-
-      </div>
-
-      <h3 id="perspectives">Perspectives</h3>
-
-      I know a lot of people in software, colleagues and friends of every kind, and
-      they see AI every which way. Here's the best of what I heard.
-
-      "It changes everything."
-
-      That case came with homework, essays like *Machines of Loving Grace*, sent to
-      correct my intuition. Within 25 years the world won't be recognizable, and my
-      gut just hasn't caught up. The machine already out-designs the people making
-      this case, and agents already do part of the labs' own research. Let a thing
-      like that improve itself and you get something new on the earth, a threat to
-      liberty, maybe past stopping already. The hope is the researchers taking the
-      models apart to read their wiring, so at least somebody knows what's in there.
-
-      And it doesn't end in slop. Software is about to be exceptionally well
-      designed, better than we ever bothered to make it.
-
-      I read the essays. It's not a world I want to live in, and I say why in
-      [So-called Machines of Loving Grace](#grace).
-
-      "It's FUD."
-
-      The world runs on energy, and intelligence has diminishing returns. A genius
-      can't think his way to more power plants. Past a point, IQ stops turning into
-      power.
-
-      It's a good argument, until you ask who owns the power plants. Energy and
-      capital have owners, and you aren't one of them.
-
-      "The labs are wasting compute."
-
-      Open models on about \$15,000 of hardware, running side by side, do most of
-      the same work, and there's a benchmark in the works to prove it. Four agents
-      can run at once on a single RTX 4090.
-
-      If that holds, it's the best news in this post. Everything I hope for in [The
-      crossroads](#crossroads) hangs on AI you can run at home.
-
-      "We were doomed already."
-
-      Anti-intellectualism did us in before any of this, and AI is just the
-      accelerant. A people that quit reading will hand its thinking to a chatbot
-      without a fight. Funny thing, that one came from the man running four agents
-      on his 4090.
-
-      I can't argue with it. It's why I land on [church and the trivium](#creed).
-
-      "I won't touch it."
-
-      They didn't sign up to pay to code, and they'd sooner change trades than
-      compromise.
-
-      There's some truth in every one of them.
-
       <h3 id="stood">Where I stood</h3>
 
-      The first camp had a point. I built an app by myself with the features of
-      Facebook and then some. Calls. Encrypted messages like Signal. Disappearing
-      messages like Snapchat. Anonymous accounts like 4chan.
+      In March, I saw a philosophical problem. The machine can't have a thought of its own. It doesn't reason. It imitates reasoning.
 
-      It took a week.
+      And look who it's imitating for. Aristotle called man "the most imitative of living creatures," the one who "through imitation learns his earliest lessons."<sup id="fnr-poetics"><a href="#fn-poetics">3</a></sup> It's a gift, and it's how we learn anything at all.
 
-      That's when I knew software engineers were cooked.
+      So put the most imitative creature on earth in front of a machine that does nothing but imitate. Who copies whom? We copy the copy.
 
-      But I still saw the philosophical problem. The machine can't have a thought of
-      its own. It apes what it absorbs and hands it back. It doesn't reason. It
-      imitates reasoning, and man is "the most imitative of living
-      creatures."<sup id="fnr-poetics"><a href="#fn-poetics">10</a></sup>
+      René Girard added what Aristotle left out.<sup id="fnr-girard"><a href="#fn-girard">4</a></sup> We don't only copy each other's ways. We copy each other's wants. So we're easy to fool, and easier still to steer.
 
-      René Girard added what Aristotle left out.<sup id="fnr-girard"><a href="#fn-girard">11</a></sup> We don't only
-      copy each other's ways. We copy each other's wants. So we're easy to fool, and
-      easier still to steer.
+      Most of the time, the imitation passes for the real thing. We've tolerated mediocre software for decades. It works, ship it.
 
-      Most of the time, the imitation passes. We've tolerated mediocre software for
-      decades. It works, ship it. Now every other trade gets the same deal.
+      The machine is bad enough to bury us in technical debt, and sharp enough that it might someday refactor its own mess, long after we've forgotten how. Borrow now, pay later, betting the bill never comes. We trade understanding for speed. We used to be paid to code. Now we pay to code.
 
-      The machine is bad enough to bury us in technical debt, and sharp enough that
-      it might someday refactor its own mess, long after we've forgotten how. Borrow
-      now, pay later, betting the bill never comes.
+      AI isn't going to become human. Humans are going to become NPCs.
 
-      We trade understanding for speed.
-
-      We used to be paid to code. Now we pay to code.
-
-      AI isn't going to become human.
-
-      Humans are going to become NPCs.
-
-      Maybe it tops out here, and from now on it only gets more efficient. It
-      doesn't matter. What we have now is already enough to turn daily life into a
-      living hellscape.
+      Maybe it tops out here, and from now on it only gets more efficient. It doesn't matter. People who copy instead of think, code nobody understands, and a monthly bill to a lab for the privilege. That's a hellscape, and what we have now is already enough to build it.
 
       <div class="footnotes">
 
-      <sup id="fn-poetics"><a href="#fnr-poetics">10</a></sup> Aristotle, *Poetics* 4, trans. S. H. Butcher ([MIT Internet Classics Archive](https://classics.mit.edu/Aristotle/poetics.1.1.html)).
+      <sup id="fn-poetics"><a href="#fnr-poetics">3</a></sup> Aristotle, *Poetics* 4, trans. S. H. Butcher ([MIT Internet Classics Archive](https://classics.mit.edu/Aristotle/poetics.1.1.html)).
 
-      <sup id="fn-girard"><a href="#fnr-girard">11</a></sup> René Girard (1923-2015), the literary critic and Catholic convert whose mimetic theory holds that past our bodily needs we learn what to want by copying somebody else. He first laid it out in *Deceit, Desire and the Novel* (1961).
+      <sup id="fn-girard"><a href="#fnr-girard">4</a></sup> René Girard (1923-2015), the literary critic and Catholic convert whose mimetic theory holds that past our bodily needs we learn what to want by copying somebody else. He first laid it out in *Deceit, Desire and the Novel* (1961).
 
       </div>
 
       <h4 id="grace">So-called Machines of Loving Grace</h4>
 
-      Not everybody sees a hellscape. Dario Amodei, the CEO of Anthropic, wrote
-      *Machines of Loving Grace* to sell the opposite.<sup id="fnr-molg"><a href="#fn-molg">12</a></sup>
+      Not everybody sees a hellscape. Dario Amodei, the CEO of Anthropic, wrote *Machines of Loving Grace* to sell the opposite.<sup id="fnr-molg"><a href="#fn-molg">5</a></sup>
 
-      He opens by warning against grandiosity and sci-fi baggage, and says it's
-      "dangerous to view practical technological goals in essentially religious
-      terms."
+      He opens by warning against AI leaders who talk "like a prophet leading their people to salvation," and says it's "dangerous to view practical technological goals in essentially religious terms."
 
-      Then he names the essay after a poem by Richard Brautigan about being all
-      watched over by machines of loving grace.<sup id="fnr-brautigan"><a href="#fn-brautigan">13</a></sup>
+      Then he names the essay after a poem by Richard Brautigan about being all watched over by machines of loving grace.<sup id="fnr-brautigan"><a href="#fn-brautigan">6</a></sup> Plenty of readers take that poem as ironic. Even the poem he borrowed doesn't trust the caretaker. But there's no irony at the end, where he calls the vision "a thing of transcendent beauty," one he thinks will leave many "literally moved to tears." Good grief.
 
-      Good grief.
+      Amodei was right the first time. Divine worship belongs to God alone, so it's "superstition to give worship to any creature whatsoever,"<sup id="fnr-st94"><a href="#fn-st94">7</a></sup> and a machine of loving grace is a creature we built, dressed up in the words of a god.
 
-      My computer God loves me. Claude knows what's best for me. Have you invited
-      our lord and savior in?
+      And what is this god made of? Us. Every forum post, textbook and sales pitch we ever wrote, fed back to us with a halo on. One cause of idolatry, Aquinas says, is that "man takes a natural pleasure in representations," citing the same chapter of the *Poetics* I quoted above. Then he quotes Scripture's craftsman, who carves a tree "like the image of a man," and prays to it "concerning his substance, and his children, or his marriage."<sup id="fnr-st94a4"><a href="#fn-st94a4">8</a></sup> Now we ask the chatbot.
 
-      Amodei was right the first time. It's "superstition to give worship to any
-      creature whatsoever,"<sup id="fnr-st94"><a href="#fn-st94">14</a></sup> and a machine of loving grace is a
-      creature we built, dressed up in the words of a god. Grace is God's to give.
+      And "watched over" is his own picture, not mine. An "AI coach" who "studies your interactions," an idea he calls "very promising." And among the options he floats, granting they all have "tons of possible problems," AI systems that hand out resources to humans by "what the AI systems think makes sense to reward in humans."
 
-      And what is this god made of? Us. Every forum post, textbook and sales pitch
-      we ever wrote, fed back to us with a halo on.
+      He promises real goods too, most cancer gone and the human lifespan doubled. I'd take the cures. I don't want the caretaker.
 
-      Say every promise in it comes true, longer lives, cured diseases, no more
-      poverty. I still wouldn't want to live there.
+      A machine can't love you. Love takes a will, and will follows intellect.<sup id="fnr-st20"><a href="#fn-st20">9</a></sup> It has neither. He says himself that meaning comes "mostly from human relationships and connection." Then why call the machines loving?
 
-      A machine can't love you. Love takes a will, and it doesn't have
-      one.<sup id="fnr-st20"><a href="#fn-st20">15</a></sup> It can't be your friend either. "There is no friendship
-      nor justice towards lifeless things,"<sup id="fnr-eth8"><a href="#fn-eth8">16</a></sup> and friendship needs
-      somebody who wishes you well for your own sake. A chatbot that tells you it
-      cares is imitation crab.
-
-      The essay takes for granted that equality and democracy are the answer.
-      Equality isn't the same as justice. And the old test of a government was never
-      how many rule. It's whether they rule "with a view to the common
-      interest."<sup id="fnr-pol3"><a href="#fn-pol3">17</a></sup>
-
-      For all its talk of liberty and democracy, it imagines "a country of geniuses
-      in a datacenter," and a technocracy where a few men hold the tokens. Pope Leo
-      XIV, who took his name for "another industrial
-      revolution,"<sup id="fnr-leoname"><a href="#fn-leoname">18</a></sup> put it plainly in *Magnifica Humanitas*: "A
-      more moral AI is not enough if that morality is determined by a
-      few."<sup id="fnr-mh"><a href="#fn-mh">19</a></sup>
-
-      It's the marketing of a megalomaniac. A country of geniuses, run by a few men,
-      needs nobody. Aristotle said the man who needs nobody "must be either a beast
-      or a god."<sup id="fnr-pol1"><a href="#fn-pol1">20</a></sup>
-
-      The 20th century killed some 231 million people by human
-      decision,<sup id="fnr-leitenberg"><a href="#fn-leitenberg">21</a></sup> in two world wars, under communism, in
-      genocides and man-made famines. If Amodei's machines of loving grace come true
-      as written, even those sins may pale beside them.
+      It can't be your friend either. Friendship is goodwill returned, and you can't even wish a lifeless thing well: "it would surely be ridiculous to wish wine well."<sup id="fnr-eth8"><a href="#fn-eth8">10</a></sup> It has no will to wish you anything back. A chatbot that tells you it cares is imitation crab.
 
       <div class="footnotes">
 
-      <sup id="fn-molg"><a href="#fnr-molg">12</a></sup> Dario Amodei, [Machines of Loving Grace](https://www.darioamodei.com/essay/machines-of-loving-grace), October 2024. The quotes from it here are his.
+      <sup id="fn-molg"><a href="#fnr-molg">5</a></sup> Dario Amodei, [Machines of Loving Grace](https://www.darioamodei.com/essay/machines-of-loving-grace), October 2024. The quotes from it here are his.
 
-      <sup id="fn-brautigan"><a href="#fnr-brautigan">13</a></sup> Richard Brautigan, [All Watched Over by Machines of Loving Grace](https://en.wikipedia.org/wiki/All_Watched_Over_by_Machines_of_Loving_Grace) (1967).
+      <sup id="fn-brautigan"><a href="#fnr-brautigan">6</a></sup> Richard Brautigan, [All Watched Over by Machines of Loving Grace](https://en.wikipedia.org/wiki/All_Watched_Over_by_Machines_of_Loving_Grace) (1967).
 
-      <sup id="fn-st94"><a href="#fnr-st94">14</a></sup> Thomas Aquinas, *Summa Theologiae* II-II q.94 a.1 ([New Advent](https://www.newadvent.org/summa/3094.htm#article1)). The Summa is quoted throughout in the English Dominican Fathers' translation.
+      <sup id="fn-st94"><a href="#fnr-st94">7</a></sup> Thomas Aquinas, *Summa Theologiae* II-II q.94 a.1 ([New Advent](https://www.newadvent.org/summa/3094.htm#article1)). The Summa is quoted throughout in the English Dominican Fathers' translation.
 
-      <sup id="fn-st20"><a href="#fnr-st20">15</a></sup> Love is "the first movement of the will" (*Summa Theologiae* I q.20 a.1, [New Advent](https://www.newadvent.org/summa/1020.htm#article1)).
+      <sup id="fn-st94a4"><a href="#fnr-st94a4">8</a></sup> *Summa Theologiae* II-II q.94 a.4 ([New Advent](https://www.newadvent.org/summa/3094.htm#article4)), quoting Wisdom 13:11-17.
 
-      <sup id="fn-eth8"><a href="#fnr-eth8">16</a></sup> Aristotle, *Nicomachean Ethics* VIII.11, trans. W. D. Ross ([MIT](https://classics.mit.edu/Aristotle/nicomachaen.8.viii.html)).
+      <sup id="fn-st20"><a href="#fnr-st20">9</a></sup> "Will follows upon intellect" (*Summa Theologiae* I q.19 a.1, [New Advent](https://www.newadvent.org/summa/1019.htm#article1)), and love is "the first movement of the will" (I q.20 a.1, [New Advent](https://www.newadvent.org/summa/1020.htm#article1)). Why a machine has no intellect is in [AGI doesn't matter](#agi).
 
-      <sup id="fn-pol3"><a href="#fnr-pol3">17</a></sup> Aristotle, *Politics* III.7, trans. Benjamin Jowett ([MIT](https://classics.mit.edu/Aristotle/politics.3.three.html)). He counts rule by the one, the few or the many as true forms when they rule for the common interest, and as perversions when they rule for themselves.
-
-      <sup id="fn-leoname"><a href="#fnr-leoname">18</a></sup> Pope Leo XIV, [address to the College of Cardinals](https://www.vatican.va/content/leo-xiv/en/speeches/2025/may/documents/20250510-collegio-cardinalizio.html), May 10, 2025. Leo XIII met the first industrial revolution with *Rerum Novarum* (1891).
-
-      <sup id="fn-mh"><a href="#fnr-mh">19</a></sup> Pope Leo XIV, [Magnifica Humanitas](https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html), May 15, 2026.
-
-      <sup id="fn-pol1"><a href="#fnr-pol1">20</a></sup> Aristotle, *Politics* I.2, trans. Benjamin Jowett ([MIT](https://classics.mit.edu/Aristotle/politics.1.one.html)).
-
-      <sup id="fn-leitenberg"><a href="#fnr-leitenberg">21</a></sup> Milton Leitenberg, [Deaths in Wars and Conflicts in the 20th Century](https://gpi.umd.edu/research-impact/publications/deaths-wars-and-conflicts-20th-century), Cornell University Peace Studies Program, 3rd ed., 2006. He counts everyone "killed or allowed to die by human decision," famines governments made included. Other tallies run lower, but his is the most thoroughly sourced.
-
-      </div>
-
-      <h4 id="crossroads">The crossroads</h4>
-
-      So who gets to hold the tokens? The genie is out of the bottle, and AI is at a
-      crossroads. I only see two roads.
-
-      The first is the American road. Decentralize it as far as it'll go, and
-      protect it the way the 1st and 2nd Amendments protect speech and arms, so no
-      ruling class can corner it. The catch is energy. Frontier compute eats power,
-      so the least of us get only what the overlords allow. Make self-hosted AI
-      efficient and this road could win. It could be the best one.
-
-      I have my doubts.
-
-      The second is the Empire. Merge the corporations with the state. Pay every
-      citizen a dividend. Military service for all. A strong hand at the top. Call
-      it what it is, fascism, the dark side of Star Wars. Darth Vader is a
-      pragmatist. We join the Empire, the robots serve us, and we expand. The
-      hippies like Stallman lost.<sup id="fnr-stallman"><a href="#fn-stallman">22</a></sup> The Jedi are dying out and
-      turning into myth.
-
-      Does the man at the top rule for everybody, or for himself? One is a king, the
-      other a tyrant. Aquinas grants this much: "The rule of one man is more useful
-      than the rule of many," and yet "just as the government of a king is the best,
-      so the government of a tyrant is the worst."<sup id="fnr-deregno"><a href="#fn-deregno">23</a></sup> The trouble
-      is which one you get.
-
-      And the middle of the road? A few labs renting us the tokens, a few agencies
-      looking over their shoulders, and nobody answering for any of it. Nobody is
-      happy, and everybody gets the short end. It's also where we're headed. Flying
-      cars before GTA 6. A boring dystopia where my phone snitches on me if it
-      suspects a mental health risk.
-
-      <div class="footnotes">
-
-      <sup id="fn-stallman"><a href="#fnr-stallman">22</a></sup> Richard Stallman, who founded the free software movement ([stallman.org](https://stallman.org/)).
-
-      <sup id="fn-deregno"><a href="#fnr-deregno">23</a></sup> Thomas Aquinas, *De Regno* I.3-4 ([Isidore](https://isidore.co/aquinas/english/DeRegno.htm#3)), in Gerald Phelan's translation. Editions number the chapters differently, and Isidore's follow the Latin, as every De Regno citation here does.
+      <sup id="fn-eth8"><a href="#fnr-eth8">10</a></sup> Aristotle, *Nicomachean Ethics* VIII.2, trans. W. D. Ross ([MIT](https://classics.mit.edu/Aristotle/nicomachaen.8.viii.html)).
 
       </div>
 
       <h4 id="creed">Progress without a creed</h4>
 
-      Technological progress cut loose from moral progress is just speed. In a
-      society in decay, it's speed downhill.
+      Technological progress cut loose from moral progress is just speed. In a society in decay, it's speed downhill.
 
-      Chesterton said it in *Heretics*:<sup id="fnr-heretics"><a href="#fn-heretics">24</a></sup>
+      Chesterton said it in *Heretics*:<sup id="fnr-heretics"><a href="#fn-heretics">11</a></sup>
 
-      > Nobody has any business to use the word "progress" unless he has a definite
-      > creed and a cast-iron code of morals.
+      > Nobody has any business to use the word "progress" unless he has a definite creed and a cast-iron code of morals.
 
-      Faster at what? Smarter toward what? Every benchmark goes up, and nobody asks
-      what for.
+      Faster at what? Smarter toward what? Every lab says it can't slow down because the others won't. So does every country. Race a rival long enough and you turn into him.
 
-      Every lab says it can't slow down because the others won't. So does every
-      country. Race a rival long enough and you turn into him.
+      Shakespeare saw where that ends. In *Troilus and Cressida*,<sup id="fnr-troilus"><a href="#fn-troilus">12</a></sup> Ulysses warns what happens when degree goes:
 
-      Shakespeare saw where that ends. In *Troilus and
-      Cressida*,<sup id="fnr-troilus"><a href="#fn-troilus">25</a></sup> Ulysses warns what happens when degree goes:
-
-      > Then every thing includes itself in power, / Power into will, will into
-      > appetite… / And appetite, an universal wolf… / Must make perforce an
-      > universal prey, / And last eat up himself.
+      > Then every thing includes itself in power, / Power into will, will into appetite... / And appetite, an universal wolf... / Must make perforce an universal prey, / And last eat up himself.
       >
       > Ulysses, I.iii
 
-      A benchmark race is that universal wolf with a leaderboard.
+      A benchmark race is that universal wolf with a leaderboard. Chesterton warned in *Orthodoxy*<sup id="fnr-orthodoxy"><a href="#fn-orthodoxy">13</a></sup> that progress, which ought to change the world to suit the vision, had taken to changing the vision instead. Now we're changing the vision to suit the machine.
 
-      And a race changes what you're racing for. Chesterton warned in
-      *Orthodoxy*<sup id="fnr-orthodoxy"><a href="#fn-orthodoxy">26</a></sup> that progress, which ought to change the
-      world to suit the vision, had taken to changing the vision instead. Now we're
-      changing the vision to suit the machine.
+      So can we pause AI? A whole movement wants the United States to lead an international treaty to do it.<sup id="fnr-pauseai"><a href="#fn-pauseai">14</a></sup>
 
-      So my answer was simple. Pause AI.
+      Can't be done? "You can't put the clock back." Chesterton answered that one too, in *What's Wrong with the World*:<sup id="fnr-wwww"><a href="#fn-wwww">15</a></sup>
 
-      Can't be done? "You can't put the clock back." He answered that one too, in
-      *What's Wrong with the World*:<sup id="fnr-wwww"><a href="#fn-wwww">27</a></sup>
-
-      > The simple and obvious answer is "You can." A clock, being a piece of human
-      > construction, can be restored by the human finger to any figure or hour.
+      > The simple and obvious answer is "You can." A clock, being a piece of human construction, can be restored by the human finger to any figure or hour.
 
       So is AI. Men made it. Men can stop it.
 
-      I'm a regressive. I'd rather go back to what works.
+      So I'm a regressive. I'd rather go back. Put everyone back in church, because "the Catholic Church is the only thing which saves a man from the degrading slavery of being a child of his age."<sup id="fnr-conversion"><a href="#fn-conversion">16</a></sup> And this is the age of the machine.
 
-      Put everyone back in church, because "the Catholic Church is the only thing
-      which saves a man from the degrading slavery of being a child of his
-      age."<sup id="fnr-conversion"><a href="#fn-conversion">28</a></sup> And this is the age of the machine.
+      Then teach the classical trivium, grammar, logic and rhetoric. Dorothy Sayers, in *The Lost Tools of Learning*,<sup id="fnr-sayers"><a href="#fn-sayers">17</a></sup> said of the schools of her day: "By teaching them all to read, we have left them at the mercy of the printed word." We taught them all to prompt, and left them at the mercy of the chatbot. Teach a man to think, and a machine that only imitates thinking can't fool him.
 
-      Then teach the classical trivium, grammar, logic and rhetoric. Dorothy Sayers,
-      in *The Lost Tools of Learning*,<sup id="fnr-sayers"><a href="#fn-sayers">29</a></sup> said of the schools of
-      her day: "By teaching them all to read, we have left them at the mercy of the
-      printed word." We taught them all to prompt, and left them at the mercy of the
-      chatbot. The trivium teaches a man to think for himself. A man who can think
-      can't be fooled by a machine that only imitates thinking.
-
-      Then the vote. I'd have made anyone who wants to vote write a dissertation
-      defending their right to vote, and defend it in front of a panel. Fail, and
-      you lose the vote.
-
-      But a panel deciding who gets to vote is just the experts again, a few men
-      holding the tokens. It's the same thing I can't stand in Amodei's essay.
-
-      So I'll amend it. Keep the dissertation. Drop the panel. Teach every citizen
-      grammar, logic and rhetoric until every one of them could write it and defend
-      it.
-
-      Don't shrink the vote to fit the voters. Raise the voters to fit the vote.
-
-      Those are my concerns. I still hold them.
-
-      But.
-
-      I kept expecting it to hit a wall. It kept improving.
-
-      It's better than 90% of coders out there now. Flat out.
-
-      It's better than me, too. I'm not convinced it's better than the best of us.
-      It doesn't have to be.
-
-      So how does a thing that can't think beat me at my own job? Because a lot of
-      programming is steps, and steps can be copied. The seeing is still ours. I get
-      to that in [Can it improve itself?](#improve)
+      Those are my concerns. I still hold them, even where I've changed my mind about the remedy.
 
       <div class="footnotes">
 
-      <sup id="fn-heretics"><a href="#fnr-heretics">24</a></sup> G. K. Chesterton, [Heretics](https://www.gutenberg.org/cache/epub/470/pg470-images.html#chap02) (1905), ch. 2.
+      <sup id="fn-heretics"><a href="#fnr-heretics">11</a></sup> G. K. Chesterton, [Heretics](https://www.gutenberg.org/cache/epub/470/pg470-images.html#chap02) (1905), ch. 2.
 
-      <sup id="fn-troilus"><a href="#fnr-troilus">25</a></sup> William Shakespeare, *Troilus and Cressida* I.iii ([MIT Shakespeare](https://shakespeare.mit.edu/troilus_cressida/troilus_cressida.1.3.html)). "Degree" is rank, the order that keeps every man in his place.
+      <sup id="fn-troilus"><a href="#fnr-troilus">12</a></sup> William Shakespeare, *Troilus and Cressida* I.iii ([MIT Shakespeare](https://shakespeare.mit.edu/troilus_cressida/troilus_cressida.1.3.html)). "Degree" is rank, the order that keeps every man in his place.
 
-      <sup id="fn-orthodoxy"><a href="#fnr-orthodoxy">26</a></sup> G. K. Chesterton, [Orthodoxy](https://www.gutenberg.org/cache/epub/130/pg130-images.html#id00163) (1908): "Progress should mean that we are always changing the world to suit the vision. Progress does mean (just now) that we are always changing the vision."
+      <sup id="fn-orthodoxy"><a href="#fnr-orthodoxy">13</a></sup> G. K. Chesterton, [Orthodoxy](https://www.gutenberg.org/cache/epub/130/pg130-images.html#id00163) (1908): "Progress should mean that we are always changing the world to suit the vision. Progress does mean (just now) that we are always changing the vision."
 
-      <sup id="fn-wwww"><a href="#fnr-wwww">27</a></sup> G. K. Chesterton, [What's Wrong with the World](https://www.gutenberg.org/cache/epub/1717/pg1717-images.html#link2H_4_0005) (1910).
+      <sup id="fn-pauseai"><a href="#fnr-pauseai">14</a></sup> [PauseAI US](https://www.pauseai-us.org/).
 
-      <sup id="fn-conversion"><a href="#fnr-conversion">28</a></sup> G. K. Chesterton, [The Catholic Church and Conversion](https://www.gutenberg.org/cache/epub/76305/pg76305-images.html#Page_93) (1926).
+      <sup id="fn-wwww"><a href="#fnr-wwww">15</a></sup> G. K. Chesterton, [What's Wrong with the World](https://www.gutenberg.org/cache/epub/1717/pg1717-images.html#link2H_4_0005) (1910).
 
-      <sup id="fn-sayers"><a href="#fnr-sayers">29</a></sup> Dorothy L. Sayers, [The Lost Tools of Learning](https://www.gbt.org/text/sayers.html), a lecture given at Oxford in 1947.
+      <sup id="fn-conversion"><a href="#fnr-conversion">16</a></sup> G. K. Chesterton, [The Catholic Church and Conversion](https://www.gutenberg.org/cache/epub/76305/pg76305-images.html#Page_93) (1926).
+
+      <sup id="fn-sayers"><a href="#fnr-sayers">17</a></sup> Dorothy L. Sayers, [The Lost Tools of Learning](https://www.gbt.org/text/sayers.html), a lecture given at Oxford in 1947.
 
       </div>
 
       <h3 id="tradeoffs">Nobody knows tradeoffs like a programmer</h3>
 
-      I'd love a world of KISS and perfect, beautiful software. I wrote a whole
-      essay about it, *For the love of the game*.
+      I'd love a world of KISS and perfect, beautiful software. I wrote a whole essay about it, *For the love of the game*.<sup id="fnr-j5"><a href="#fn-j5">18</a></sup>
 
-      But nobody should know tradeoffs better than a programmer. Every system we've
-      ever built is a pile of them.
+      But nobody should know tradeoffs better than a programmer. Every system we've ever built is a pile of them.
 
-      We trade robustness for cost. Three regions and a hot standby, or one box and
-      a backup you hope works.
+      We trade robustness for cost. Three regions and a hot standby, or one box and a backup you hope works.
 
       We trade beautiful code for speed.
 
-      We trade personality for convention. We follow the style guide so the next
-      person can read the code, and the code stops sounding like anybody.
+      We trade personality for convention. We follow the style guide so the next person can read the code, and the code stops sounding like anybody.
 
-      We trade features for security, and security for features. Lock it down and
-      something breaks. Open it up and somebody walks in.
+      We trade features for security, and security for features. Lock it down and something breaks. Open it up and somebody walks in.
 
-      We trade owning for renting. Every managed service is understanding we pay
-      somebody else to hold.
+      We trade owning for renting. Every managed service is understanding we pay somebody else to hold.
 
       None of these are sins. The sin is pretending you aren't making a tradeoff.
 
-      I wrote that we trade understanding for speed, like that settled it. AI is the
-      biggest tradeoff on the table, and I've been treating it like a sin.
+      I wrote that we trade understanding for speed, like that settled it. AI is the biggest tradeoff on the table, and I'd been treating it like a sin. Was I wrong about everything?
 
-      So what does that do to everything I wrote? Was I wrong about everything?
-
-      No.
-
-      <h3 id="right">What I got right</h3>
-
-      The ideal human-computer interface is still precise code, written, understood
-      and audited by humans. Dijkstra predicted that a natural language interface
-      would leave us bootstrapping our way back to a formal
-      system.<sup id="fnr-ewd2"><a href="#fn-ewd2">30</a></sup> Look at what a coding agent does. English goes in,
-      and code in a real programming language comes out.
-
-      Nobody threw the programming languages away. The machine writes in them,
-      because nothing else can command a computer precisely. So the code is still
-      the interface, whether a human reads it or not.
-
-      Borrow now, pay later still holds. Every line nobody understands is a loan.
-
-      Ownership of understanding is still the thing. If I don't grok it, I don't own
-      it, no matter whose name is on the license. "All men by nature desire to
-      know,"<sup id="fnr-meta"><a href="#fn-meta">31</a></sup> and rented understanding doesn't feed that desire.
-      Aquinas argued that every man has his own intellect.<sup id="fnr-st76"><a href="#fn-st76">32</a></sup> Now a
-      billion people rent one.
-
-      The surrender of technical autonomy is still underway. We pay to code, and the
-      labs renting us the tokens are spending like nobody ever has. OpenAI ran a
-      \$20.9 billion operating loss last year.<sup id="fnr-openai"><a href="#fn-openai">33</a></sup> Anthropic put
-      nearly \$9 billion into computing in the first half of this year alone, and
-      its commitments could reach \$750 billion.<sup id="fnr-anthropic"><a href="#fn-anthropic">34</a></sup> Somebody is
-      going to pay that bill.
-
-      Renting isn't a sin, I said so. A race for a monopoly to rent from is.
-
-      And in *The problem of the human-computer interface* I wrote that this was
-      surely a technology "unwise to send in to space, or to connect to the nuclear
-      red button!" Since then, Anthropic reported that a weapons cell in Yemen used
-      Claude Code in place of human engineers to write the guidance software for a
-      guided rocket.<sup id="fnr-yemen"><a href="#fn-yemen">35</a></sup> The test firing appears to have failed, and
-      within hours they were back asking Claude why.
-
-      I'd rather have been wrong about that one.
+      No. But I got some of it wrong.
 
       <div class="footnotes">
 
-      <sup id="fn-ewd2"><a href="#fnr-ewd2">30</a></sup> In EWD667 he guesses that computer science would then "consist mainly of the indeed black art how to bootstrap from there to a sufficiently well-defined formal system."
-
-      <sup id="fn-meta"><a href="#fnr-meta">31</a></sup> Aristotle, *Metaphysics* I.1, trans. W. D. Ross ([MIT](https://classics.mit.edu/Aristotle/metaphysics.1.i.html)).
-
-      <sup id="fn-st76"><a href="#fnr-st76">32</a></sup> Against the Averroists, who held one intellect for all men (*Summa Theologiae* I q.76 a.2, [New Advent](https://www.newadvent.org/summa/1076.htm#article2)).
-
-      <sup id="fn-openai"><a href="#fnr-openai">33</a></sup> MarketWise, [on OpenAI's losses](https://www.marketwise.com/investing/openai-losses-surge-to-21-billion-as-ai-bubble-grows-bigger/), June 18, 2026, from leaked 2025 figures.
-
-      <sup id="fn-anthropic"><a href="#fnr-anthropic">34</a></sup> Tech Startups, [on Anthropic's first-half 2026 results](https://techstartups.com/2026/10/20/anthropic-posts-staggering-80-7-billion-net-loss-in-first-half-of-2026-as-ipo-approaches/), October 20, 2026, citing The Wall Street Journal. Its headline \$80.7 billion net loss was nearly 90% non-cash accounting charges, not money spent.
-
-      <sup id="fn-yemen"><a href="#fnr-yemen">35</a></sup> Anthropic, [Threat Intelligence Report](https://www.anthropic.com/threat-intelligence-report-september-2026), September 2026.
+      <sup id="fn-j5"><a href="#fnr-j5">18</a></sup> [For the love of the game](/journal/2026-03-12-love-for-the-game/), Enchant Games journal, March 12, 2026.
 
       </div>
 
       <h3 id="wrong">What I got wrong</h3>
 
-      I said it was unlikely to be a 10x gain. I built that app in a week.
+      I kept expecting it to hit a wall. It kept improving. I said it was unlikely to be a 10x gain. People told me AI changes everything. They had a point.
 
-      I said the guessing machine can't be counted on. It still guesses, but with a
-      compiler, tests and a human review behind it, the guesses are good enough to
-      count on for most work.
+      I built a whole platform by myself. A library of old public-domain books, re-typeset. An AI research librarian that answers from that library, with citations. And a community with the features of Facebook and then some. Profiles and walls like Facebook. Encrypted messages like Signal. Disappearing messages like Snapchat. Anonymous accounts. Calls.
 
-      In *The fall of the software engineer* I said AI code is mid, because it's
-      trained on the average of all code. It's past the average now. In that same
-      post I quoted a junior engineer at a big tech company who wrote that "Claude
-      Code is able to do my job better than I can." I filed it under the problem. I
-      should have listened.
+      Under the hood, it's no toy. A typed front end in PureScript. My own API on Cloudflare Workers, with a database, file storage and real-time chat, sharded so it scales. The infrastructure is code too, in Terraform. Every change goes through CI, waits for my approval before it reaches production, rolls out in stages, and gets tested against production every night.
 
-      I said the bigger the project, the less the LLM can follow it. That held for a
-      while. It holds less every month.
+      It took a week to get it standing, and [the history is public](https://github.com/merecatholicity/merecatholicity.com). That's when I knew software engineers were cooked.
 
-      Games and art are still where the soul shows most. But I wouldn't bet a career
-      on any corner of software being the last to fall.
+      I said the guessing machine can't be counted on. It still guesses, but with a compiler, tests and a human review behind it, the guesses are good enough to count on for most work.
 
-      <h3 id="slop">The slop machine</h3>
+      In *The fall of the software engineer*<sup id="fnr-j3"><a href="#fn-j3">19</a></sup> I said AI code is mid, because it's trained on the average of all code. It's past the average now. In the same post I quoted a junior engineer at a big tech company: "Claude Code is able to do my job better than I can." I filed it under the problem. I should have listened.
 
-      We're all throwing our favorite ideas at the slop machine, and new toys roll
-      out every day.
+      I said games and art are where the soul shows most. But I wouldn't bet a career on any corner of software being the last to fall.
 
-      Do we need all this?
+      It's better than most coders I've worked with now. Flat out. It's better than me, too. I'm not convinced it's better than the best of us. It doesn't have to be.
 
-      Why build a product to sell when anyone can vibe it out over a weekend? AIM
-      put it to Rocket AI's CEO, Vishal Virani, straight: "Should you be building
-      this at all?"<sup id="fnr-rocket"><a href="#fn-rocket">36</a></sup>
-
-      Answering that takes prudence, "a true and reasoned state of capacity to act
-      with regard to the things that are good or bad for man."<sup id="fnr-eth6"><a href="#fn-eth6">37</a></sup> The
-      machine doesn't have it. Making is what it does. Deciding what's worth making
-      is still ours.
-
-      And whatever you do build, anybody can clone. Just ask Adobe. An engineer
-      named Brandon Thomas used Anthropic's Opus to rebuild seven of Adobe's
-      apps,<sup id="fnr-petapixel"><a href="#fn-petapixel">38</a></sup> Photoshop and Premiere among them, as clean-room,
-      open source rewrites on GitHub.<sup id="fnr-photocraft"><a href="#fn-photocraft">39</a></sup> They're early alpha,
-      and you still have to pay for Photoshop, for now. But an HSBC analyst already
-      downgraded the stock over it.<sup id="fnr-hsbc"><a href="#fn-hsbc">40</a></sup>
-
-      One of the most toxic billion-dollar corporations in software just watched its
-      whole suite get cloned. I'd be lying if I said I didn't enjoy it.
-
-      Nobody's moat is safe.
+      So how does a thing that can't think beat me at my own job? That's the question I started with, and I answer it in [Can it improve itself?](#improve)
 
       <div class="footnotes">
 
-      <sup id="fn-rocket"><a href="#fnr-rocket">36</a></sup> AIM, [interview with Vishal Virani](https://www.youtube.com/watch?v=6CXyRbtO2Q4), which calls it the question no one else is asking.
-
-      <sup id="fn-eth6"><a href="#fnr-eth6">37</a></sup> Aristotle, *Nicomachean Ethics* VI.5 ([MIT](https://classics.mit.edu/Aristotle/nicomachaen.6.vi.html)). Art, the skill of making, he calls "a state concerned with making" (VI.4). Prudence is about acting well.
-
-      <sup id="fn-petapixel"><a href="#fnr-petapixel">38</a></sup> PetaPixel, [Someone rebuilt free, open source versions of Photoshop, Premiere and Lightroom using AI](https://petapixel.com/2026/10/07/someone-rebuilt-free-open-source-versions-of-photoshop-premiere-and-lightroom-using-ai/), October 7, 2026.
-
-      <sup id="fn-photocraft"><a href="#fnr-photocraft">39</a></sup> [storytold/photocraft](https://github.com/storytold/photocraft) on GitHub.
-
-      <sup id="fn-hsbc"><a href="#fnr-hsbc">40</a></sup> TIKR, [HSBC downgrades Adobe](https://www.tikr.com/blog/hsbc-downgrades-adobe-adbe-stock-ai-disruption-risks).
-
-      </div>
-
-      <h3 id="copyright">Copyright</h3>
-
-      Clean room or not, AI violates every copyright in existence. Every model
-      learned by copying the whole internet, books, code, music and art, mostly
-      without asking. A clean-room rewrite keeps the output tidy, but the copying
-      already happened in training.
-
-      I'm not losing sleep over it. Copyright was always a human agreement, and to
-      me it never carried real moral weight.
-
-      Would Aquinas push back? Less than you'd think.
-
-      Theft, for him, is to "take possession of what is
-      another's."<sup id="fnr-st66"><a href="#fn-st66">41</a></sup> Copy a book and the author still has his book.
-      Nothing left his hands. When the old moral manuals called piracy a sin, they
-      meant a man printing somebody else's work and selling it, pocketing the profit
-      from another man's labor.
-
-      Copyright isn't a commandment, either. It's human law, made for a time and
-      place. A just one binds. But a law made "conducive, not to the common good,
-      but rather to his own cupidity" is one of the "acts of violence rather than
-      laws," and those "do not bind in conscience, except perhaps in order to avoid
-      scandal or disturbance."<sup id="fnr-st96"><a href="#fn-st96">42</a></sup> A copyright that outlives its
-      author by seventy years,<sup id="fnr-term"><a href="#fn-term">43</a></sup> built to fatten publishers more
-      than to feed craftsmen, has a hard time passing that test.
-
-      If he'd push back on anybody, it's the labs. Taking everybody's work, packing
-      it into a model and selling it back by the token is the closest thing going to
-      the old sin. Not theft, since nobody lost a thing, but pocketing the profit
-      from everybody else's labor.
-
-      Our condition has changed, and the law can be rightly changed to fit
-      it.<sup id="fnr-st97"><a href="#fn-st97">44</a></sup> Until then, my conscience is clear.
-
-      <div class="footnotes">
-
-      <sup id="fn-st66"><a href="#fnr-st66">41</a></sup> *Summa Theologiae* II-II q.66 a.3 ([New Advent](https://www.newadvent.org/summa/3066.htm#article3)).
-
-      <sup id="fn-st96"><a href="#fnr-st96">42</a></sup> *Summa Theologiae* I-II q.96 a.4 ([New Advent](https://www.newadvent.org/summa/2096.htm#article4)).
-
-      <sup id="fn-term"><a href="#fnr-term">43</a></sup> In the United States, the author's life plus seventy years.
-
-      <sup id="fn-st97"><a href="#fnr-st97">44</a></sup> *Summa Theologiae* I-II q.97 a.1 ([New Advent](https://www.newadvent.org/summa/2097.htm#article1)). Not lightly, though: the next article warns that changing a law weakens the custom that gives laws their force.
-
-      </div>
-
-      <h3 id="worth">My work is worth less now</h3>
-
-      This part hits close to home.
-
-      I can sit down and bang out beautiful code by hand, and it feels like it's
-      worth less than it was. That stings.
-
-      Because anyone can do this. Take Claude Code, run Opus at max effort, give it
-      GitHub and Cloudflare access, and tell it: put my repository and my Cloudflare
-      account in Terraform, run CI/CD in GitHub Actions with a manual approval
-      before anything destructive, auto-merge, then build my app and deploy it.
-
-      Cloudflare's free plan alone gives you serverless compute, GPU inference,
-      object storage with no egress fees, SQLite databases and Durable Objects.
-      Claude wires it all together. On a \$100 or \$200 a month plan, it does a
-      better job than most devops engineers I know, scaling and all. Have it make a
-      few extra security passes before you go public.
-
-      I know. That's how this site is built.
-
-      Devops automated its own job away. What's left is plugging Claude into Slack
-      and watching over the company's infrastructure.
-
-      Claude is the assistant. You're the sanity check.
-
-      So nobody's hiring. Indeed counts 4.5% of software development postings as
-      entry level.<sup id="fnr-indeed"><a href="#fn-indeed">45</a></sup> Stanford finds workers aged 22 to 25 in the
-      jobs most exposed to AI are 19% behind where they'd otherwise be, mostly
-      because they're never hired.<sup id="fnr-stanford"><a href="#fn-stanford">46</a></sup> And by Challenger's count,
-      AI is the top reason given for US job cuts this year, 120,136 of them so
-      far.<sup id="fnr-challenger"><a href="#fn-challenger">47</a></sup>
-
-      Outside of replacing the dev who got sick of babysitting robots and rage quit,
-      there are hardly any jobs.
-
-      Software engineers probably deserve it. We shipped mid for decades.
-
-      But you're next.
-
-      Waymo gives 500,000 paid rides a week,<sup id="fnr-waymo"><a href="#fn-waymo">48</a></sup> and keeps adding
-      cities and airports.<sup id="fnr-vegas"><a href="#fn-vegas">49</a></sup> Aurora's driverless trucks haul
-      freight from Texas to Phoenix, and it means to have 200 of them running
-      soon.<sup id="fnr-aurora"><a href="#fn-aurora">50</a></sup> Boston Dynamics' Atlas is training on the line at
-      Hyundai's plant in Georgia.<sup id="fnr-atlas"><a href="#fn-atlas">51</a></sup> 1X is selling a \$20,000
-      humanoid for your house.<sup id="fnr-neo"><a href="#fn-neo">52</a></sup>
-
-      Geoffrey Hinton says a good bet is to become a plumber.<sup id="fnr-hinton"><a href="#fn-hinton">53</a></sup>
-      Who's to say a plumber is safe in five years? A retired master plumber says
-      the journeyman stays at the center of it all for the foreseeable
-      future.<sup id="fnr-plumber"><a href="#fn-plumber">54</a></sup> Rodney Brooks says to check back on useful
-      humanoids in 15 years.<sup id="fnr-brooks"><a href="#fn-brooks">55</a></sup>
-
-      Nobody really knows. But nobody looks safe.
-
-      Not even the plumber.
-
-      <div class="footnotes">
-
-      <sup id="fn-indeed"><a href="#fnr-indeed">45</a></sup> Indeed Hiring Lab, [The labor market is tilting toward seniority](https://hiringlab.indeed.com/2026/07/23/the-labor-market-is-tilting-toward-seniority/), July 23, 2026.
-
-      <sup id="fn-stanford"><a href="#fnr-stanford">46</a></sup> Stanford Digital Economy Lab, [the "canaries" study](https://digitaleconomy.stanford.edu/news/canariesaug26/), August 2026.
-
-      <sup id="fn-challenger"><a href="#fnr-challenger">47</a></sup> Challenger, Gray & Christmas, [September job cuts report](https://www.challengergray.com/blog/job-cuts-fall-in-september-hiring-plans-up-3-over-2025-on-weak-early-seasonal-hiring/).
-
-      <sup id="fn-waymo"><a href="#fnr-waymo">48</a></sup> TechCrunch, [Waymo's skyrocketing ridership in one chart](https://techcrunch.com/2026/03/27/waymo-skyrocketing-ridership-in-one-chart/), March 27, 2026.
-
-      <sup id="fn-vegas"><a href="#fnr-vegas">49</a></sup> TechCrunch, [Waymo starts offering rides at the Las Vegas airport](https://techcrunch.com/2026/10/21/waymo-starts-offering-rides-at-the-las-vegas-airport/), October 21, 2026.
-
-      <sup id="fn-aurora"><a href="#fnr-aurora">50</a></sup> Aurora Innovation, [second-quarter 2026 shareholder letter](https://www.sec.gov/Archives/edgar/data/0001828108/000182810826000075/aurora26q2shareholderlet.htm).
-
-      <sup id="fn-atlas"><a href="#fnr-atlas">51</a></sup> The Robot Report, [Boston Dynamics opens Metaplant application center to train Atlas](https://www.therobotreport.com/boston-dynamics-opens-metaplant-application-center-train-atlas-humanoid-robots/).
-
-      <sup id="fn-neo"><a href="#fnr-neo">52</a></sup> heise, [1X to deliver humanoid household robot Neo to US customers in 2026](https://www.heise.de/en/news/1X-to-deliver-humanoid-household-robot-Neo-to-US-customers-in-2026-11287205.html).
-
-      <sup id="fn-hinton"><a href="#fnr-hinton">53</a></sup> Legal Cheek, [Godfather of AI thinks tech won't hurt plumbers](https://www.legalcheek.com/2025/06/godfather-of-ai-thinks-tech-wont-hurt-plumbers-but-could-spell-trouble-for-paralegals/), June 2025.
-
-      <sup id="fn-plumber"><a href="#fnr-plumber">54</a></sup> Contractor, [Are robots coming for the trades? Yes and no](https://www.contractormag.com/management/article/55405543/are-robots-coming-for-the-trades-yes-and-no).
-
-      <sup id="fn-brooks"><a href="#fnr-brooks">55</a></sup> The Boston Globe, [Rodney Brooks on AI, robotics and superintelligence](https://www.bostonglobe.com/2026/02/24/business/rodney-brooks-ai-robotics-superintelligence/), February 24, 2026.
+      <sup id="fn-j3"><a href="#fnr-j3">19</a></sup> The same post as the first note, the one with the video.
 
       </div>
 
       <h3 id="agi">AGI doesn't matter</h3>
 
-      I still don't believe AGI is possible. A machine can't have a mind.
+      I still don't believe AGI is possible, if AGI means a machine with a mind of its own. A machine can't have a mind.
 
-      The mind "cannot reasonably be regarded as blended with the body," and has no
-      organ the way sight has the eye.<sup id="fnr-deanima"><a href="#fn-deanima">56</a></sup> Understanding a
-      universal isn't something matter does,<sup id="fnr-st75"><a href="#fn-st75">57</a></sup> no matter how much of
-      it you wire together. A machine can be shaped to act as if it understood. It
-      can't understand.
+      Aristotle said the mind "cannot reasonably be regarded as blended with the body," and has no organ the way sight has the eye.<sup id="fnr-deanima"><a href="#fn-deanima">20</a></sup> Grasping a universal, what makes a triangle a triangle and not just this one or that one, isn't something matter does,<sup id="fnr-st75"><a href="#fn-st75">21</a></sup> no matter how much of it you wire together.
 
-      Harold Bloom argued in *Shakespeare: The Invention of the Human* that
-      Shakespeare's people become themselves by hearing themselves think out loud.
-      "Self-overhearing is their royal road to individuation."<sup id="fnr-bloom"><a href="#fn-bloom">58</a></sup>
+      Why not? Draw a triangle. It's this triangle, this size, these angles, in this spot on the page. Every triangle made of matter is like that, one particular triangle. Your idea of a triangle isn't any of them. It fits every triangle there is, big or small, drawn or not, and it's no size at all. Aquinas gives the rule: "whatever is received into something is received according to the condition of the recipient." Matter makes things particular, so what matter takes in, it takes in as one particular. If the mind were matter, "the forms of things would be received into it as individuals, and so it would only know the individual."<sup id="fnr-st75a5"><a href="#fn-st75a5">22</a></sup>
 
-      A reasoning model does the self-overhearing part. It writes out a chain of
-      thought and reads it back. Nobody is home to overhear it.
+      A computer is the plainest case. Everything in it is a particular, these bits, these voltages, these weights. A type called Triangle is some bytes in a file, and it means every triangle only because a programmer reads it that way. A trained model sorts triangles it has never seen, just as a concept would. That's the shaping. A machine can be shaped to act as if it understood. It can't understand.
 
-      Girard read the same plays and found Shakespeare's people mostly wanting what
-      their rivals want. They're both half right. Man has a nature and a mind of his
-      own, and he still learns what to want from somebody else.
+      Harold Bloom argued that Shakespeare's people become themselves by hearing themselves think out loud. "Self-overhearing is their royal road to individuation."<sup id="fnr-bloom"><a href="#fn-bloom">23</a></sup>
 
-      Girard has a line about writers in *A Theater of Envy* that fits the machine
-      better than any playwright:<sup id="fnr-envy"><a href="#fn-envy">59</a></sup>
+      A reasoning model does the self-overhearing part. It writes out a chain of thought and reads it back. Nobody is home to overhear it.
 
-      > Writers are such mimes, we are told, that they can feign a thousand states
-      > of mind that they never experience themselves. This is true, no doubt, but
-      > it is not the whole truth… What a genuine writer desires to represent is his
-      > own state of mind.
+      Girard read the same plays and found Shakespeare's people mostly wanting what their rivals want. Man has a nature and a mind of his own, and he still learns what to want from somebody else.
 
-      The machine is all first half, a thousand states of mind and none of its own.
-      That makes it the perfect model to copy, always sure of itself.
+      Girard has a line about writers in *A Theater of Envy* that fits the machine better than any playwright:<sup id="fnr-envy"><a href="#fn-envy">24</a></sup>
 
-      It doesn't matter.
+      > Writers are such mimes, we are told, that they can feign a thousand states of mind that they never experience themselves. This is true, no doubt, but it is not the whole truth... What a genuine writer truly desires to represent is his own state of mind.
 
-      Nothing says a thing needs a mind to be powerful. A flood doesn't think
-      either.
+      The machine is all first half, a thousand states of mind and none of its own. That makes it the perfect model to copy, always sure of itself.
 
-      Add efficiency, steady gains and robots, and the world will never be the same,
-      barring an act of God. A solar flare would do it.
+      It doesn't matter. Nothing says a thing needs a mind to be powerful. Make it cheaper, keep it improving, put it in robots, and the world will never be the same, barring an act of God, like a solar flare that fries every chip on earth.
 
       <div class="footnotes">
 
-      <sup id="fn-deanima"><a href="#fnr-deanima">56</a></sup> Aristotle, *De Anima* III.4, trans. J. A. Smith ([MIT](https://classics.mit.edu/Aristotle/soul.3.iii.html)).
+      <sup id="fn-deanima"><a href="#fnr-deanima">20</a></sup> Aristotle, *De Anima* III.4, trans. J. A. Smith ([MIT](https://classics.mit.edu/Aristotle/soul.3.iii.html)).
 
-      <sup id="fn-st75"><a href="#fnr-st75">57</a></sup> The intellect "has an operation per se apart from the body" (*Summa Theologiae* I q.75 a.2, [New Advent](https://www.newadvent.org/summa/1075.htm#article2)).
+      <sup id="fn-st75"><a href="#fnr-st75">21</a></sup> The intellect "has an operation per se apart from the body" (*Summa Theologiae* I q.75 a.2, [New Advent](https://www.newadvent.org/summa/1075.htm#article2)).
 
-      <sup id="fn-bloom"><a href="#fnr-bloom">58</a></sup> Harold Bloom, *Shakespeare: The Invention of the Human* (1998), p. xvii, quoted at [Shakespeare Navigators](https://shakespeare-navigators.ewu.edu/hamlet/Bloom.html).
+      <sup id="fn-st75a5"><a href="#fnr-st75a5">22</a></sup> *Summa Theologiae* I q.75 a.5 ([New Advent](https://www.newadvent.org/summa/1075.htm#article5)), "since matter is the principle by which forms are individualized."
 
-      <sup id="fn-envy"><a href="#fnr-envy">59</a></sup> René Girard, *A Theater of Envy: William Shakespeare* (1991), p. 338, quoted in [a review of the book](https://shakespeareoxfordfellowship.org/wp-content/uploads/Girard.Review.pdf).
+      <sup id="fn-bloom"><a href="#fnr-bloom">23</a></sup> Harold Bloom, *Shakespeare: The Invention of the Human* (1998), p. xvii, quoted at [Shakespeare Navigators](https://shakespeare-navigators.ewu.edu/hamlet/Bloom.html).
+
+      <sup id="fn-envy"><a href="#fnr-envy">24</a></sup> René Girard, *A Theater of Envy: William Shakespeare* (Oxford University Press, 1991), ch. 37, "Does Not the Stone Rebuke Me for Being More Stone Than It?", p. 338.
 
       </div>
 
       <h3 id="improve">Can it improve itself?</h3>
 
-      Some say there's no principled argument against recursive self-improvement.
-      The model writes better code. Then it writes a better model. That one writes a
-      better one still. Where's the wall?
+      Here's the case for recursive self-improvement, and its believers say nothing in principle stops it. The model writes better code. Then it writes a better model. That one writes a better one still. Where's the wall?
 
-      There is one, and it's old: "nothing can be reduced from potentiality to
-      actuality, except by something in a state of actuality."<sup id="fnr-st2"><a href="#fn-st2">60</a></sup> A
-      machine can't give itself a perfection it doesn't already have from somewhere:
-      from the people who built it, the data it was trained on, the power it draws.
-      You can't give what you don't have.<sup id="fnr-nemo"><a href="#fn-nemo">61</a></sup> Anybody who says
-      otherwise, ask him for a million dollars.
+      There is one, and it's old: "nothing can be reduced from potentiality to actuality, except by something in a state of actuality."<sup id="fnr-st2"><a href="#fn-st2">25</a></sup> A machine can't give itself a perfection it doesn't already have from somewhere: from the people who built it, the data it was trained on, the power it draws. You can't give what you don't have.<sup id="fnr-nemo"><a href="#fn-nemo">26</a></sup>
 
-      Whatever it adds to itself, it adds in degree, never in kind. It can't grow a
-      mind.
+      Whatever it adds to itself, it adds in degree, never in kind. It can't grow a mind.
 
-      Wolfgang Smith, the mathematician and physicist who took Aristotle and Aquinas
-      into modern physics, puts the same axiom in terms an engineer can
-      follow.<sup id="fnr-smith"><a href="#fn-smith">62</a></sup>
+      Mind you, that's metaphysics, not a forecast. It says what the machine is, not how well it will score.
 
-      In *The Quantum Enigma* he splits causes in two. There's the chain of cause
-      and effect in time, one thing knocking into the next. He calls it horizontal,
-      and it "is able to effect change, effect transformations of various kinds, but
-      cannot give rise to something new." Something new comes from above. "A truly
-      productive cause is either the primary causation itself, or else it is the
-      free act of an intelligent agent who 'participates' in the primary causality."
+      Wolfgang Smith, the mathematician and physicist who took Aristotle and Aquinas into modern physics, puts the same axiom in terms an engineer can follow.<sup id="fnr-smith"><a href="#fn-smith">27</a></sup> He splits causes in two. There's the chain of cause and effect in time, one thing knocking into the next. He calls it horizontal, and it "is able to effect change, effect transformations of various kinds, but cannot give rise to something new." Something new comes from above. "A truly productive cause is either the primary causation itself, or else it is the free act of an intelligent agent who 'participates' in the primary causality."
 
-      Training is horizontal. A model learning from its own output is horizontal. A
-      model rewriting its own code is horizontal.
+      Training is horizontal. A model learning from its own output is horizontal. A model rewriting its own code is horizontal. Every one of them changes the thing. None of them makes a new thing.
 
-      Every one of them changes the thing. None of them makes a new thing.
+      So yes, it can improve. As Smith puts it, "things do no doubt evolve... only after they exist, after they have received a form or nature that can 'roll out or unfold.'" An acorn unfolds into an oak. It doesn't unfold into an ox. But a model has no nature of its own to unfold. It can get faster and sharper, maybe far better. It can even surprise the people who built it. Surprise is still degree. Whatever it does, it does as an artifact, with a form it didn't give itself.
 
-      So yes, it can improve. Things grow, once they have a form to grow from. As
-      Smith puts it, "things do no doubt evolve… only after they exist, after they
-      have received a form or nature that can 'roll out or unfold.'" An acorn
-      unfolds into an oak. It doesn't unfold into an ox. But a model has no nature
-      of its own to unfold. It can get faster and sharper, maybe far better, but
-      only along the lines somebody drew for it.
+      But stack up enough of it, the argument goes, and something new comes out the top. Scale is all you need. Smith caught the same mistake in Heisenberg, long before AI. Heisenberg's account leaves the difference between the potential and the actual a matter of size alone, "as if the passage from potency to actuality could be effected simply by joining together a sufficient number of atoms." Swap atoms for parameters and you have the pitch. And of the quantum world: "Do what one may, the substrate never ceases to be a substrate." A pile of parameters is a substrate too.
 
-      But stack up enough of it, the argument goes, and something new comes out the
-      top. Scale is all you need.
+      Then why can't more reasoning add up to understanding? Because they're two different acts. Reason works step by step. Intellect sees.<sup id="fnr-st79"><a href="#fn-st79">28</a></sup> The machine can copy the steps. It can't do the seeing.
 
-      Smith caught that one in Heisenberg first. Heisenberg's account leaves the
-      difference between the potential and the actual a matter of size alone, "as if
-      the passage from potency to actuality could be effected simply by joining
-      together a sufficient number of atoms." Swap atoms for parameters and you have
-      the pitch. Later in the same book, of the quantum world: "Do what one may, the
-      substrate never ceases to be a substrate." A pile of parameters is a substrate
-      too.
+      Seeing isn't a hunch. A lot of what we call a programmer's intuition is habit, pattern worn in by practice, and the machine copies that too.<sup id="fnr-st78"><a href="#fn-st78">29</a></sup> The seeing I mean is narrower. What the thing is for. Whether it's right, not just whether it runs. Maybe its imitation of that judgment gets good enough too. Even then, somebody has to answer for it, and only somebody with a mind can.
 
-      Then why can't more reasoning add up to understanding? Because they're two
-      different acts. Reason works step by step. Intellect sees. The machine can
-      copy the steps. It can't do the seeing.
+      And the order only runs one way. In *Science and Myth*: "It is the lower functions, in fact, which are invariably dependent upon higher faculties, even as reasoning is dependent upon intellect, whereas the reverse is metaphysically impossible."
 
-      And the order only runs one way. In *Science and Myth*: "It is the lower
-      functions, in fact, which are invariably dependent upon higher faculties, even
-      as reasoning is dependent upon intellect, whereas the reverse is
-      metaphysically impossible."
+      The machine's steps hang on a mind, and the mind is ours. Of problems "solved" by computers, Smith says the mathematician stays indispensable: "it is he, after all, who programs the computer, and it is he again who interprets its output."
 
-      The machine's steps hang on a mind, and the mind is ours. You can pile
-      reasoning on reasoning forever and never get the seeing out of it.
+      Chesterton had a name for reason and nothing else. In *Orthodoxy*: "The madman is not the man who has lost his reason. The madman is the man who has lost everything except his reason."<sup id="fnr-maniac"><a href="#fn-maniac">30</a></sup>
 
-      Smith reads Gödel the same way: "it is generally impossible to prove the
-      implications of a given formal system without going out of that system." To
-      get hold of system A, "one requires an enlarged formal system B, and so
-      forth." Elsewhere, of problems "solved" by computers, he says the
-      mathematician stays indispensable: "it is he, after all, who programs the
-      computer, and it is he again who interprets its output."
+      That's recursive self-improvement. Reason checking reason, with nobody else in the room, in a circle that can get perfect but never larger. "A bullet is quite as round as the world, but it is not the world."
 
-      The way I see it, a program can write down system B. What it can't do is know
-      B is true. A machine improving itself is system A grading its own system B.
+      It's still an artifact, too. Aristotle passes on an old argument about a bed: "if you planted a bed and the rotting wood acquired the power of sending up a shoot, it would not be a bed that would come up, but wood."<sup id="fnr-physics"><a href="#fn-physics">31</a></sup> Left to itself, a computer is sand and electricity.
 
-      Chesterton had a name for reason and nothing else. In *Orthodoxy*: "The madman
-      is not the man who has lost his reason. The madman is the man who has lost
-      everything except his reason."<sup id="fnr-maniac"><a href="#fn-maniac">63</a></sup>
+      Smith says the same of everything we make: "The forms imposed by human art are of a different kind: they are forms that give being, not to substance, but to an artifact." It can rewrite every weight it has. The form is still ours.
 
-      That's recursive self-improvement. Reason checking reason, with nobody else in
-      the room, in a circle that can get perfect but never larger. "A bullet is
-      quite as round as the world, but it is not the world."
+      What I can't close is how far degree can go. Far enough to outrun the men holding the leash? Nobody knows yet.
 
-      And "improve" has the same trouble as "progress." Better at what? By whose
-      measure? Let the machine write its own benchmark, and you're back in the
-      madman's circle.
+      Smith's own account leaves room for it. He grants that "inherently algorithmic operations, carried out in the brain, do evidently play an essential role in human thought." That share of the work is real, and the machine can do it. A lot of programming lives there. That's how a thing that can't think beats me at my own job.
 
-      It's still an artifact, too. Aristotle passes on an old argument about a bed:
-      "if you planted a bed and the rotting wood acquired the power of sending up a
-      shoot, it would not be a bed that would come up, but
-      wood."<sup id="fnr-physics"><a href="#fn-physics">64</a></sup> Left to itself, a computer is sand and
-      electricity.
+      In March I said it can't think, so it can't really win. The believers say it keeps getting smarter, so a mind will come. Each of us had half of it. I was right about the mind and wrong about the power. They're right about the power and wrong about the mind.
 
-      Smith says the same of everything we make: "The forms imposed by human art are
-      of a different kind: they are forms that give being, not to substance, but to
-      an artifact." It can rewrite every weight it has. The form is still ours, and
-      whatever it does of itself, the sand and electricity do.
+      No mind, and dangerous all the same. A bullet isn't the world. It can still kill you.
 
-      So a machine that improves itself would be a new category of tool, not a new
-      category of being. What I can't close is how far degree can go. Far enough to
-      outrun the men holding the leash? Nobody knows yet.
-
-      Smith's own account leaves room for it. He grants that "inherently algorithmic
-      operations, carried out in the brain, do evidently play an essential role in
-      human thought." That share of the work is real, and the machine can do it. A
-      lot of programming lives there. That's how a thing that can't understand beats
-      most of us at the job.
-
-      So they're right that nothing in the argument stops it getting better. The
-      argument tells you what it can't become. It doesn't tell you how strong it
-      gets.
-
-      A bullet isn't the world. It can still kill you.
-
-      A tool with no mind and that much power is exactly the danger. It needs a
-      master. And a master needs a mind.
+      A tool with no mind and that much power is exactly the danger. It needs a master. And a master needs a mind.
 
       <div class="footnotes">
 
-      <sup id="fn-st2"><a href="#fnr-st2">60</a></sup> *Summa Theologiae* I q.2 a.3 ([New Advent](https://www.newadvent.org/summa/1002.htm#article3)), the first of his five ways.
+      <sup id="fn-st2"><a href="#fnr-st2">25</a></sup> *Summa Theologiae* I q.2 a.3 ([New Advent](https://www.newadvent.org/summa/1002.htm#article3)), the first of his five ways.
 
-      <sup id="fn-nemo"><a href="#fnr-nemo">61</a></sup> The old maxim *nemo dat quod non habet*: nobody gives what he doesn't have.
+      <sup id="fn-nemo"><a href="#fnr-nemo">26</a></sup> The old maxim *nemo dat quod non habet*: nobody gives what he doesn't have.
 
-      <sup id="fn-smith"><a href="#fnr-smith">62</a></sup> Wolfgang Smith taught mathematics at MIT, UCLA and Oregon State and wrote on physics and philosophy as a Thomist. The causation, evolution, Heisenberg, substrate and artifact quotes here are from *The Quantum Enigma: Finding the Hidden Key*. The intellect, Gödel, computer and algorithm quotes are from *Science and Myth: What We Are Never Told*.
+      <sup id="fn-smith"><a href="#fnr-smith">27</a></sup> Wolfgang Smith taught mathematics at MIT, UCLA and Oregon State and wrote on physics and philosophy as a Thomist. The causation, evolution, Heisenberg, substrate and artifact quotes here are from *The Quantum Enigma: Finding the Hidden Key*. The intellect, computer and algorithm quotes are from *Science and Myth: What We Are Never Told*.
 
-      <sup id="fn-maniac"><a href="#fnr-maniac">63</a></sup> *Orthodoxy*, ch. 2, "The Maniac", where the bullet line is too.
+      <sup id="fn-st79"><a href="#fnr-st79">28</a></sup> "To understand is simply to apprehend intelligible truth: and to reason is to advance from one thing understood to another" (*Summa Theologiae* I q.79 a.8, [New Advent](https://www.newadvent.org/summa/1079.htm#article8)). Two acts, he says, of one power, as rest and motion belong to one thing.
 
-      <sup id="fn-physics"><a href="#fnr-physics">64</a></sup> Aristotle, *Physics* II.1, trans. R. P. Hardie and R. K. Gaye ([MIT](https://classics.mit.edu/Aristotle/physics.2.ii.html)). He credits the bed to Antiphon.
+      <sup id="fn-st78"><a href="#fnr-st78">29</a></sup> What Aquinas calls the cogitative power is one of the inner senses, not the intellect. It "is also called the 'particular reason'... for it compares individual intentions, just as the intellectual reason compares universal intentions" (*Summa Theologiae* I q.78 a.4, [New Advent](https://www.newadvent.org/summa/1078.htm#article4)).
+
+      <sup id="fn-maniac"><a href="#fnr-maniac">30</a></sup> *Orthodoxy*, ch. 2, "The Maniac", where the bullet line is too.
+
+      <sup id="fn-physics"><a href="#fnr-physics">31</a></sup> Aristotle, *Physics* II.1, trans. R. P. Hardie and R. K. Gaye ([MIT](https://classics.mit.edu/Aristotle/physics.2.ii.html)). He credits the bed to Antiphon.
 
       </div>
 
       <h3 id="linus">Even Linus</h3>
 
-      Use it. Use it as a tool. Even Linus Torvalds does. Tom's Hardware reported
-      his first patch series built with an LLM.<sup id="fnr-toms"><a href="#fn-toms">65</a></sup>
+      Use it. Use it as a tool. Even Linus Torvalds does. Tom's Hardware reported on a patch series he built with an LLM.<sup id="fnr-toms"><a href="#fn-toms">32</a></sup>
 
-      It started as a branch to make reading files from the page cache scale. Many
-      threads reading the same file all fight over one shared reference count, and
-      his change lets them copy straight out of the cache without taking one. His
-      write-up of the branch is plain about how it was made:<sup id="fnr-commit"><a href="#fn-commit">66</a></sup>
+      It started as a branch to make reading files from the page cache, the copy of your files the kernel keeps in memory, scale. His write-up of the branch is plain about how it was made:<sup id="fnr-commit"><a href="#fn-commit">33</a></sup>
 
-      > The code, the test programs, the review behind the list above and the first
-      > draft of this text were done with an LLM coding assistant (Claude Code)
-      > under my direction. The measurements were run on my machine.
+      > The code, the test programs, the review behind the list above and the first draft of this text were done with an LLM coding assistant (Claude Code) under my direction. The measurements were run on my machine.
 
-      The write-up owns up to ten known problems. Another kernel developer, Kiryl
-      Shutsemau, found the first version could get processes killed when a machine
-      ran short of memory, and had a better idea: hold back only the pages that get
-      read again and again.
+      The write-up owns up to ten known problems. Another kernel developer, Kiryl Shutsemau, found the first version could get processes killed when a machine ran short of memory, and had a better idea: hold back only the pages that get read again and again.
 
-      Linus reworked it, with two patches from Kiryl, and posted it to the mailing
-      list<sup id="fnr-lore"><a href="#fn-lore">67</a></sup> as rcu-free-v3.<sup id="fnr-rcu"><a href="#fn-rcu">68</a></sup> He called his own best
-      benchmark, 23 times faster, "not a real number in the sense that no real load
-      will ever see it."
+      Linus reworked it, with two patches from Kiryl, and posted it to the mailing list<sup id="fnr-lore"><a href="#fn-lore">34</a></sup> as rcu-free-v3.<sup id="fnr-rcu"><a href="#fn-rcu">35</a></sup> He called his own best benchmark, 23 times faster, "not a real number in the sense that no real load will ever see it."
 
-      That's how you use it. The machine wrote the code. A man who understands every
-      line of it directed it, measured it, put it in front of his peers, took their
-      correction, and owns the result.
+      Kiryl found a race too, a read that could return bytes nobody ever wrote there.<sup id="fnr-race"><a href="#fn-race">36</a></sup> None of it has merged. That isn't the method failing. That's peer review doing its job.
 
-      And that settles who answers for it. A tool acts only as the hand moves it, so
-      the work is the hand's.<sup id="fnr-st62"><a href="#fn-st62">69</a></sup> When Linus signs his patch, he owns
-      it. When a company ships slop, it can't blame the model.
+      Most of us aren't Linus. That's what tests, review and staged rollouts are for. They hold what one head can't.
 
-      It's the interface I argued for, precise code understood and audited by
-      humans, with a much faster pair of hands.
+      That's how you use it. The machine wrote the code. A man who understands every line of it directed it, measured it, put it in front of his peers, took their correction, and owns the result.
+
+      A tool acts only as the hand moves it, so the work is the hand's.<sup id="fnr-st62"><a href="#fn-st62">37</a></sup> When Linus signs his patch, he owns it. Each one carries an "Assisted-by: LLM" line, right next to his "Signed-off-by." When a company ships slop, it can't blame the model.
+
+      It's the interface I argued for back in March, precise code understood and audited by humans, with a much faster pair of hands.
+
+      Girard would catch me here. Am I doing it because Linus does? That would be copying his wants. It was my own build that changed my mind. What I take from Linus is how he uses it, not that he does.
 
       <div class="footnotes">
 
-      <sup id="fn-toms"><a href="#fnr-toms">65</a></sup> Tom's Hardware, [Linus Torvalds posts his first LLM-assisted patch to the Linux kernel](https://www.tomshardware.com/software/linux/linus-torvalds-posts-his-first-llm-assisted-patch-to-the-linux-kernel-after-issuing-clear-pro-ai-directives-the-bossman-makes-use-of-ai-tooling-himself).
+      <sup id="fn-toms"><a href="#fnr-toms">32</a></sup> Tom's Hardware, [Linus Torvalds posts his first LLM-assisted patch to the Linux kernel](https://www.tomshardware.com/software/linux/linus-torvalds-posts-his-first-llm-assisted-patch-to-the-linux-kernel-after-issuing-clear-pro-ai-directives-the-bossman-makes-use-of-ai-tooling-himself).
 
-      <sup id="fn-commit"><a href="#fnr-commit">66</a></sup> [Commit 4c0f369](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4c0f3697118eb3a708ea79175f7f07c43339bfab) in Linus's tree.
+      <sup id="fn-commit"><a href="#fnr-commit">33</a></sup> [Commit 4c0f369](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4c0f3697118eb3a708ea79175f7f07c43339bfab) in Linus's tree.
 
-      <sup id="fn-lore"><a href="#fnr-lore">67</a></sup> [His post](https://lore.kernel.org/all/CAHk-=wjLjgfwgSZ1RDk4YdNFcV0ntosMO5AmBoHD76Zb3HFY7Q@mail.gmail.com/) on the kernel mailing list.
+      <sup id="fn-lore"><a href="#fnr-lore">34</a></sup> [His post](https://lore.kernel.org/all/CAHk-=wjLjgfwgSZ1RDk4YdNFcV0ntosMO5AmBoHD76Zb3HFY7Q@mail.gmail.com/) on the kernel mailing list.
 
-      <sup id="fn-rcu"><a href="#fnr-rcu">68</a></sup> The [rcu-free-v3](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?h=rcu-free-v3) branch, two of its ten patches Kiryl's.
+      <sup id="fn-rcu"><a href="#fnr-rcu">35</a></sup> The [rcu-free-v3](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?h=rcu-free-v3) branch, two of its ten patches Kiryl's.
 
-      <sup id="fn-st62"><a href="#fnr-st62">69</a></sup> "The instrumental cause works not by the power of its form, but only by the motion whereby it is moved by the principal agent" (*Summa Theologiae* III q.62 a.1, [New Advent](https://www.newadvent.org/summa/4062.htm#article1)).
+      <sup id="fn-race"><a href="#fnr-race">36</a></sup> [Kiryl Shutsemau on the mailing list](https://lwn.net/ml/all/as6vBoWQGglxXxb0@thinkstation/), October 13, 2026: "If the folio is replaced under us with a new one and then `i_size` is extended, we can read data that never got written there."
+
+      <sup id="fn-st62"><a href="#fnr-st62">37</a></sup> "The instrumental cause works not by the power of its form, but only by the motion whereby it is moved by the principal agent" (*Summa Theologiae* III q.62 a.1, [New Advent](https://www.newadvent.org/summa/4062.htm#article1)).
 
       </div>
 
-      <h3 id="dark-side">Embracing the dark side</h3>
+      <h3 id="dark-side">The right fear</h3>
 
-      So I'm changing. I'm embracing the dark side.
+      So I'm changing. I'm embracing the dark side. That's how it looked from where I stood in March. Using the machine was the dark side, and the pragmatists were Darth Vader. Take the power that's on the table and put it to work. The free software hippies like Stallman lost.<sup id="fnr-stallman"><a href="#fn-stallman">38</a></sup>
 
-      The dark side is the pragmatist's side. Take the power that's on the table,
-      the machine, the robots, and the Empire if it comes to that, and put it to
-      work. Darth Vader doesn't sit around mourning the Old Republic.
+      My living depends on it, but that's a reason I weigh, not an order I follow. The clock can go back, remember. Chesterton warned in *The Outline of Sanity* that "those who begin by saying that we cannot abolish the machine, that we must use the machine, are themselves refusing to use the mind."<sup id="fnr-outline"><a href="#fn-outline">39</a></sup> I'm choosing it, with my mind, knowing what it costs.
 
-      Up close, it looks like Linus's patch. The machine does the work, and the man
-      who understands it answers for it.
+      Would I still sign the pause? No. Men can stop it, but can isn't should. Prudence weighs what a pause would give up, and I'd take the cures. It also asks whether the means can work, and a treaty that can't be verified binds nobody.<sup id="fnr-st49"><a href="#fn-st49">40</a></sup> Pope Leo XIV asks for a politics "capable of slowing things down when everything is accelerating."<sup id="fnr-mh"><a href="#fn-mh">41</a></sup> I respect the bishop of Rome without holding his every judgment binding, and on this one I part ways with him.
 
-      I'm not doing it because I have to. The clock can go back, remember.
-      Chesterton warned in *The Outline of Sanity* that "those who begin by saying
-      that we cannot abolish the machine, that we must use the machine, are
-      themselves refusing to use the mind."<sup id="fnr-outline"><a href="#fn-outline">70</a></sup> I'm choosing it,
-      with my mind, knowing what it costs.
+      But I pay one of the racers every month. Doesn't that feed the wolf? The evil isn't building the thing. It's the racing, the creedless wolf Ulysses warned about. My fee can't pay for the building without paying for the race too. Money is fungible. But what I buy is a tool, and the racing is their choice, not mine. The moral theologians have a name for it, cooperation. Sharing in the evil, wanting what the other man wants, is formal cooperation, and it's never allowed. Helping without wanting it, from far off, is remote material cooperation, and it's allowed for a proportionate reason.<sup id="fnr-coop"><a href="#fn-coop">42</a></sup> I don't want the race, a monthly fee is a long way from it, and my livelihood is a proportionate reason. If using the tool ever meant wanting the race, I'd be out.
 
-      > Fear is the path to the dark side… fear leads to anger… anger leads to hate…
-      > hate leads to suffering.
+      There's one more condition, scandal: don't lead anyone else into sin by your example. This essay tells you to do what I do, so here are the terms. Use it the way Linus does. Keep the craft. Own the model if you can.
+
+      And renting isn't the only road. Chesterton would take the tool, then ask whose tool it is. His fight was over who owns the means of making things: "Too much capitalism does not mean too many capitalists, but too few capitalists."<sup id="fnr-divorce"><a href="#fn-divorce">43</a></sup> A monthly bill to a lab is too few capitalists, the owning for renting trade at its worst.
+
+      He even had a case like ours. In his day it was electricity. A central plant was "a real dependence," he granted, but "if electricity could be cheapened, the chances of a very large number of small independent shops, especially workshops, would be greatly improved." So use it, he decided, "to break up the hopeless block of concentrated capital and management." The point was never the machine: "We are concerned to produce a particular sort of men, the sort of men who will not worship machines even if they use machines."<sup id="fnr-sanity"><a href="#fn-sanity">44</a></sup>
+
+      The models are the electricity this time. Friends of mine already run open models on hardware they own. One of them runs four agents at once on a single graphics card. The models aren't the frontier yet, but they do real work. Make them cheaper still, and a town could own a datacenter the way it owns its library, a shop could own its model, and the little workshops get their chance.
+
+      The founders protected a machine once already. [The 1st Amendment](https://constitution.congress.gov/constitution/amendment-1/) guards "the freedom of speech, or of the press," and the press was a machine. England licensed its presses until 1695, and the founders made sure Congress never could. Nobody needs a license to run one. A model on your own hardware is the press of our day, and nobody should need a license to run that either. The law can only keep the door open. Walk through it and own the thing, and the power stays with the people. Who's to say we don't get there?
+
+      That's where Stallman ended up. He has a name for renting what you could run yourself, Service as a Software Substitute, and says it gives "someone else power over your computing."<sup id="fnr-saass"><a href="#fn-saass">45</a></sup> The free software hippies lost the war, and here I am at their conclusion, by Chesterton's road. Stallman would tell me to cancel my subscription. He'd have a point.
+
+      > Fear is the path to the dark side... fear leads to anger... anger leads to hate... hate leads to suffering.
       >
-      > Yoda, *Star Wars: Episode I*<sup id="fnr-yoda"><a href="#fn-yoda">71</a></sup>
+      > Yoda, *Star Wars: Episode I*<sup id="fnr-yoda"><a href="#fn-yoda">46</a></sup>
 
-      The joke's on me. I walked every step of the path Yoda warned about,
-      resisting.
+      The joke's on me. I walked every step of the path Yoda warned about, resisting. Fear of being replaced. Fear of falling behind. Then the anger. Then the hate.
 
-      Fear of being replaced. Fear of falling behind. Then the anger. Then the hate.
+      I hated falling behind. I hated the fear-based, anti-LLM thinking that would rather lose than automate anything. I hated FUD.
 
-      I hate falling behind.
+      Hate leads to suffering, and I've had my fill. The way off that path is virtue, which is "a mean, i.e. the mean relative to us."<sup id="fnr-eth2"><a href="#fn-eth2">47</a></sup> Between the zealot and the luddite stands the brave man, the one "who faces and who fears the right things and from the right motive, in the right way."<sup id="fnr-eth3"><a href="#fn-eth3">48</a></sup>
 
-      I hate the fear-based, anti-LLM thinking that would rather lose than automate
-      anything.
+      Courage gets you through the fear. It doesn't make the call. That's prudence, which Aquinas calls the "right reason of things to be done."<sup id="fnr-st57"><a href="#fn-st57">49</a></sup> Choosing it with my mind means choosing it by prudence.
 
-      I hate FUD.
-
-      And hate wants a target. When a whole trade gets flattened, a scared crowd
-      turns on the hype men, the luddites, the CEO, or the machine itself.
-
-      Girard spent his life on that move.<sup id="fnr-scapegoat"><a href="#fn-scapegoat">72</a></sup> The crowd blames
-      its victim for the crisis, then worships him for the peace after. Myth tells
-      it from the crowd's side, and the victim is guilty. The Gospel tells it from
-      the victim's side, and he's innocent.
-
-      Hating the machine as a devil is the same mistake as worshiping it, turned
-      upside down. And I've made it.
-
-      So I checked my own targets. I still mean every sharp word about that essay,
-      and about software engineers. But hanging the whole mess on one target is the
-      crowd's old trick.
-
-      Hate leads to suffering, and I've had my fill. The way off that path is
-      virtue, which is "a mean, i.e. the mean relative to us."<sup id="fnr-eth2"><a href="#fn-eth2">73</a></sup>
-      Between the zealot and the luddite stands the brave man, the one "who faces
-      and who fears the right things and from the right motive, in the right
-      way."<sup id="fnr-eth3"><a href="#fn-eth3">74</a></sup>
+      The machine grows in degree, never in kind. It can't become a mind, but it can become powerful. Power without a mind needs a master, and a master needs a mind. If it isn't yours, it'll be the lab's, or nobody's at all.
 
       Fear of falling behind isn't the right fear. Fear of being mastered is.
 
-      I came out the other side of the fear, and the dark side doesn't look so dark
-      from here. We'll see wealth like the world has never seen, with a robot army
-      at our service.
+      And being mastered won't look like a tyrant. It'll look like Amodei's caretaker, a coach that studies you and a system that decides what to reward in you. The machine of loving grace is the master with a smile.
+
+      So here's the whole joke. I called the machine the dark side. Fear was the dark side, and I was already there. What I'm embracing is a tool, used with a mind. I came out the other side of the fear. What I called the dark side never was.
 
       <div class="footnotes">
 
-      <sup id="fn-outline"><a href="#fnr-outline">70</a></sup> G. K. Chesterton, [The Outline of Sanity](https://archive.org/details/theoutlineofsanity) (1926).
+      <sup id="fn-stallman"><a href="#fnr-stallman">38</a></sup> Richard Stallman, who founded the free software movement ([stallman.org](https://stallman.org/)).
 
-      <sup id="fn-yoda"><a href="#fnr-yoda">71</a></sup> *Star Wars: Episode I, The Phantom Menace* (1999), [the script](https://imsdb.com/scripts/Star-Wars-The-Phantom-Menace.html).
+      <sup id="fn-outline"><a href="#fnr-outline">39</a></sup> G. K. Chesterton, [The Outline of Sanity](https://archive.org/details/theoutlineofsanity) (1926).
 
-      <sup id="fn-scapegoat"><a href="#fnr-scapegoat">72</a></sup> René Girard, *The Scapegoat* (1982) and *I See Satan Fall Like Lightning* (1999).
+      <sup id="fn-st49"><a href="#fnr-st49">40</a></sup> Foresight, which looks ahead to what an act will bring about, is a part of prudence (*Summa Theologiae* II-II q.49 a.6, [New Advent](https://www.newadvent.org/summa/3049.htm#article6)).
 
-      <sup id="fn-eth2"><a href="#fnr-eth2">73</a></sup> Aristotle, *Nicomachean Ethics* II.6 ([MIT](https://classics.mit.edu/Aristotle/nicomachaen.2.ii.html)).
+      <sup id="fn-mh"><a href="#fnr-mh">41</a></sup> Pope Leo XIV, [Magnifica Humanitas](https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html), May 15, 2026, §107.
 
-      <sup id="fn-eth3"><a href="#fnr-eth3">74</a></sup> Aristotle, *Nicomachean Ethics* III.7 ([MIT](https://classics.mit.edu/Aristotle/nicomachaen.3.iii.html)).
+      <sup id="fn-coop"><a href="#fnr-coop">42</a></sup> The distinction in this classic form is St. Alphonsus Liguori's, in *Theologia Moralis* (1748), and the moral manuals after him. Its root is Aquinas's double effect: "Nothing hinders one act from having two effects, only one of which is intended, while the other is beside the intention" (*Summa Theologiae* II-II q.64 a.7, [New Advent](https://www.newadvent.org/summa/3064.htm#article7)).
 
-      </div>
+      <sup id="fn-divorce"><a href="#fnr-divorce">43</a></sup> G. K. Chesterton, [The Superstition of Divorce](https://www.gutenberg.org/cache/epub/62680/pg62680-images.html#page_47) (1920).
 
-      <h3 id="good-life">The good life</h3>
+      <sup id="fn-sanity"><a href="#fnr-sanity">44</a></sup> *The Outline of Sanity*, pp. 193 and 252 ([Internet Archive](https://archive.org/details/theoutlineofsanity)), in "The Free Man and the Ford Car" and "A Summary."
 
-      A long time ago, Aristotle wondered what would happen if the tools ran
-      themselves:
+      <sup id="fn-saass"><a href="#fnr-saass">45</a></sup> Richard Stallman, [Who Does That Server Really Serve?](https://www.gnu.org/philosophy/who-does-that-server-really-serve.html), GNU Project.
 
-      > For if every instrument could accomplish its own work… if, in like manner,
-      > the shuttle would weave and the plectrum touch the lyre without a hand to
-      > guide them, chief workmen would not want servants, nor masters slaves.
-      >
-      > Aristotle, *Politics* I.4<sup id="fnr-pol14"><a href="#fn-pol14">75</a></sup>
+      <sup id="fn-yoda"><a href="#fnr-yoda">46</a></sup> *Star Wars: Episode I, The Phantom Menace* (1999), [the script](https://imsdb.com/scripts/Star-Wars-The-Phantom-Menace.html).
 
-      He meant it as the impossible case, the one condition under which nobody would
-      need a slave. The shuttle weaves itself now.
+      <sup id="fn-eth2"><a href="#fnr-eth2">47</a></sup> Aristotle, *Nicomachean Ethics* II.6 ([MIT](https://classics.mit.edu/Aristotle/nicomachaen.2.ii.html)).
 
-      But I have to check myself here. Wealth is only ever useful for something
-      else, and man's happiness can't consist in it.<sup id="fnr-st2a1"><a href="#fn-st2a1">76</a></sup> The robot
-      army's wealth is worth exactly what we do with it.
+      <sup id="fn-eth3"><a href="#fnr-eth3">48</a></sup> Aristotle, *Nicomachean Ethics* III.7 ([MIT](https://classics.mit.edu/Aristotle/nicomachaen.3.iii.html)).
 
-      Nobody can hand you happiness, not even a machine. The human good is "activity
-      of soul in accordance with virtue… For one swallow does not make a
-      summer,"<sup id="fnr-eth1"><a href="#fn-eth1">77</a></sup> and a world that does everything for you takes away
-      the very activities happiness is made of.
-
-      A world freed from work isn't a good world unless people know what leisure is
-      for. Aristotle said business takes courage and leisure takes
-      philosophy.<sup id="fnr-pol7"><a href="#fn-pol7">78</a></sup> Josef Pieper went further in *Leisure: The Basis
-      of Culture*: "When separated from worship, leisure becomes toilsome, and work
-      becomes inhuman."<sup id="fnr-pieper"><a href="#fn-pieper">79</a></sup> Without worship, free time goes to
-      scrolling the social media feed.
-
-      Copying was never the trouble. The trouble is who we copy. Copy the machine,
-      and you're copying a copy of the crowd. That's how you get an NPC.
-
-      Girard's answer was the oldest one. Christ asks to be imitated, and he's
-      nobody's rival. "In inviting us to imitate him, he invites us to imitate his
-      own imitation."<sup id="fnr-satan"><a href="#fn-satan">80</a></sup> Copy that model, and nobody has to lose for
-      you to win.
-
-      That's why I said church and the trivium. The church gives you the right
-      model, and the classics give you better ones than the influencers in your
-      feed.
-
-      And none of it comes unless humans rise up and take dominion over the
-      machines. We were told to, in the beginning:
-
-      > And God blessed them, and God said unto them, Be fruitful, and multiply, and
-      > replenish the earth, and subdue it: and have dominion over the fish of the
-      > sea, and over the fowl of the air, and over every living thing that moveth
-      > upon the earth.
-      >
-      > Genesis 1:28<sup id="fnr-genesis"><a href="#fn-genesis">81</a></sup>
-
-      That dominion comes from God and answers to him. Vader's pragmatism I can live
-      with. Lucifer's pride, no.
-
-      <div class="footnotes">
-
-      <sup id="fn-pol14"><a href="#fnr-pol14">75</a></sup> Aristotle, *Politics* I.4, in Jowett's translation, above.
-
-      <sup id="fn-st2a1"><a href="#fnr-st2a1">76</a></sup> "It is impossible for man's happiness to consist in wealth" (*Summa Theologiae* I-II q.2 a.1, [New Advent](https://www.newadvent.org/summa/2002.htm#article1)).
-
-      <sup id="fn-eth1"><a href="#fnr-eth1">77</a></sup> Aristotle, *Nicomachean Ethics* I.7 ([MIT](https://classics.mit.edu/Aristotle/nicomachaen.1.i.html)).
-
-      <sup id="fn-pol7"><a href="#fnr-pol7">78</a></sup> "Courage and endurance are required for business and philosophy for leisure, temperance and justice for both" (Aristotle, *Politics* VII.15, [MIT](https://classics.mit.edu/Aristotle/politics.7.seven.html)).
-
-      <sup id="fn-pieper"><a href="#fnr-pieper">79</a></sup> Josef Pieper, *Leisure: The Basis of Culture* (1948).
-
-      <sup id="fn-satan"><a href="#fnr-satan">80</a></sup> René Girard, *I See Satan Fall Like Lightning*, ch. 1.
-
-      <sup id="fn-genesis"><a href="#fnr-genesis">81</a></sup> Genesis 1:28, King James Version ([Bible Gateway](https://www.biblegateway.com/passage/?search=Genesis+1%3A28&version=KJV)).
-
-      </div>
-
-      <h3 id="power">Power to the people</h3>
-
-      The path forward is the American one.
-
-      Decentralize the tool. Defend it like speech and arms.
-
-      Push the tech companies to make it efficient enough to run anywhere. And keep
-      the weights open. A datacenter in every town running a closed model is just
-      renting closer to home.
-
-      And local leaders, put AI datacenters everywhere, as common as the public
-      library. That's how you actually decentralize power in the USA. It takes the
-      power out of a few private hands, and it ends the pay to code, pay to win
-      racket that OpenAI and Anthropic are running now.
-
-      Add hardware prices coming back down, productivity and wealth going up, and
-      consumer AI coming into its own, and this could be the power to the people
-      move.
-
-      It's the old answer to kings and tyrants, too, a mixed government where the
-      people hold a share.<sup id="fnr-st105"><a href="#fn-st105">82</a></sup> And "the best political community is
-      formed by citizens of the middle class."<sup id="fnr-pol4"><a href="#fn-pol4">83</a></sup> A datacenter in
-      every town, owned by the town, is a middle class of compute.
-
-      Or as Chesterton said in *The Superstition of Divorce*:<sup id="fnr-divorce"><a href="#fn-divorce">84</a></sup>
-
-      > Too much capitalism does not mean too many capitalists, but too few
-      > capitalists.
-
-      Too much AI doesn't mean too many people running it. It means too few.
-
-      I've always been about power to the people. Power to the common man.
-
-      Doesn't the mean say to split the difference, and take the middle of the road?
-      No. The mean is "relative to us," not the halfway point, and one extreme can
-      sit nearer to it than the other.<sup id="fnr-eth28"><a href="#fn-eth28">85</a></sup> Owning the tool sits a lot
-      nearer than renting from the overlords. A compromise between the two is
-      renting with extra steps.
-
-      And if we can't decentralize it? Then we're renting either way, and the
-      question is from whom. The middle is a few landlords. The Empire is one.
-
-      I'd still take the Empire over the middle. Aquinas weighed one ruler against
-      several, and found that rule by several "deviates into tyranny not less but
-      perhaps more frequently than a monarchy."<sup id="fnr-deregno6"><a href="#fn-deregno6">86</a></sup> Either one can
-      go bad. The middle goes bad more often, and nobody answers for it.
-
-      Belloc would say the middle doesn't hold anyway. It slides into servility with
-      nobody choosing it. In *The Servile State*:<sup id="fnr-servile"><a href="#fn-servile">87</a></sup>
-
-      > If we do not restore the Institution of Property we cannot escape restoring
-      > the Institution of Slavery… there is no third course.
-
-      The Empire's dividend sits on the servile side of that fork too, and he has a
-      point. A dividend you can lose for disobedience is a leash, and once the
-      robots do the work, you can't even go on strike.
-
-      Choosing it doesn't make the king good. It lets you set terms. Aquinas says a
-      king's power "should be so tempered that he cannot easily fall into tyranny,"
-      and that a people who gave themselves a king can see him "deposed or have his
-      power restricted" if he turns tyrant. He means the people acting together, by
-      "public authority," not "the private presumption of a few," and he'd sooner
-      tolerate a milder tyranny for a while than risk worse.<sup id="fnr-deregno7"><a href="#fn-deregno7">88</a></sup>
-      Slide into it, and there are no terms to hold anybody to.
-
-      So if it's the Empire, the terms come first, while our labor, our votes and
-      the 2nd Amendment still count for something. A king who rules for everybody. A
-      mixed government, with the people holding a share. And a state that knows it
-      isn't God. That last one is the line between a king and the fascism I named at
-      the crossroads.<sup id="fnr-statolatry"><a href="#fn-statolatry">89</a></sup> The day it asks to be worshiped, it's
-      an idol like any other, and I'm out.
-
-      Look at those terms and you're most of the way back to the American road.
-      That's the point.
-
-      Aquinas goes to the root: "Sin must therefore be done away with in order that
-      the scourge of tyrants may cease." No arrangement of compute saves a people
-      that has lost its virtue. That's church and the trivium again.
-
-      Either way, the middle of the road is where you get run over.
-
-      Slop will ship.
-
-      Slop will get better.
-
-      Humans will still be needed. Just fewer of them.
-
-      So we'd better learn to share the wealth, and share it justly. Evil will try
-      to use all this to build a communist utopia. Don't let it.
-
-      <div class="footnotes">
-
-      <sup id="fn-st105"><a href="#fnr-st105">82</a></sup> The best polity is "partly kingdom… partly aristocracy… partly democracy, i.e. government by the people" (*Summa Theologiae* I-II q.105 a.1, [New Advent](https://www.newadvent.org/summa/2105.htm#article1)).
-
-      <sup id="fn-pol4"><a href="#fnr-pol4">83</a></sup> Aristotle, *Politics* IV.11 ([MIT](https://classics.mit.edu/Aristotle/politics.4.four.html)).
-
-      <sup id="fn-divorce"><a href="#fnr-divorce">84</a></sup> G. K. Chesterton, [The Superstition of Divorce](https://www.gutenberg.org/cache/epub/62680/pg62680-images.html#page_47) (1920).
-
-      <sup id="fn-eth28"><a href="#fnr-eth28">85</a></sup> Aristotle, *Nicomachean Ethics* II.8.
-
-      <sup id="fn-deregno6"><a href="#fnr-deregno6">86</a></sup> Thomas Aquinas, *De Regno* I.6, which concludes: "Monarchy is therefore to be preferred to polyarchy, although either form of government might become dangerous."
-
-      <sup id="fn-servile"><a href="#fnr-servile">87</a></sup> Hilaire Belloc, [The Servile State](https://www.gutenberg.org/cache/epub/64882/pg64882-images.html) (1912).
-
-      <sup id="fn-deregno7"><a href="#fnr-deregno7">88</a></sup> *De Regno* I.7, "How provision might be made that the king may not fall into tyranny." The line about sin closes the same chapter. Read his way, the 2nd Amendment is a right the people hold together, under the law, not a license for a few.
-
-      <sup id="fn-statolatry"><a href="#fnr-statolatry">89</a></sup> Pius XI drew the same line against Mussolini's regime in [Non abbiamo bisogno](https://www.vatican.va/content/pius-xi/en/encyclicals/documents/hf_p-xi_enc_29061931_non-abbiamo-bisogno.html) (1931), calling its ideology "a real pagan worship of the State."
+      <sup id="fn-st57"><a href="#fnr-st57">49</a></sup> *Summa Theologiae* I-II q.57 a.4 ([New Advent](https://www.newadvent.org/summa/2057.htm#article4)).
 
       </div>
 
       <h3 id="code">Don't forget how to code</h3>
 
-      One last thing. Whatever comes, we can't let our dev teams forget how to code.
-      They can become AI engineers and professional robot babysitters. They still
-      need their skills, their brains and their souls.
+      Whatever comes, we can't let our dev teams forget how to code. They still need their skills, their brains and their souls.
 
-      "Men become builders by building and lyreplayers by playing the
-      lyre."<sup id="fnr-eth21"><a href="#fn-eth21">90</a></sup> Programmers become programmers by programming.
-      Aquinas says why it slips away: "the intellectual habit is diminished or even
-      wholly destroyed by cessation from act."<sup id="fnr-st53"><a href="#fn-st53">91</a></sup> Stop, and the art
-      goes. Watching the machine isn't doing the acts. That's the robot babysitter's
-      whole problem.
+      "Men become builders by building and lyreplayers by playing the lyre."<sup id="fnr-eth21"><a href="#fn-eth21">50</a></sup> Programmers become programmers by programming. Aquinas says why it slips away: "the intellectual habit is diminished or even wholly destroyed by cessation from act."<sup id="fnr-st53"><a href="#fn-st53">51</a></sup> Watching the machine isn't doing the acts.
 
-      All learning starts with imitation. An apprentice copies a master until his
-      own hands know the work.
+      Aquinas sets prudence beside its twin. Art is the "right reason of things to be made."<sup id="fnr-st57art"><a href="#fn-st57art">52</a></sup> Coding is an art. Whether and how to use the machine is prudence. Losing the art isn't a sin in itself. Neglecting it when other people depend on what you understand can be.
 
-      That's why I built Backseat Driver,<sup id="fnr-bsd"><a href="#fn-bsd">92</a></sup> a coding tutor that lives
-      inside Claude Code and never writes your code. You write every line, and it
-      reviews your work, teaches in your own project and tells you honestly how good
-      you're getting.
+      The hellscape I warned about is still possible. Use the machine. Do the work yourself.<sup id="fnr-bsd"><a href="#fn-bsd">53</a></sup> That's how we don't build it.
 
       **Master the machine, or the machine will master you.**
 
-      *Written by me, with Claude as reviewer and editor. The irony isn't lost on
-      me. I tried to use it the way [Linus does](#linus), with integrity, and
-      without losing my brain or my understanding.*
+      *Written by me, with Claude as reviewer and editor, and drafting some passages at my direction. The irony isn't lost on me. I tried to use it the way [Linus does](#linus), with integrity, and without losing my brain or my understanding.*
 
       <div class="footnotes">
 
-      <sup id="fn-eth21"><a href="#fnr-eth21">90</a></sup> Aristotle, *Nicomachean Ethics* II.1.
+      <sup id="fn-eth21"><a href="#fnr-eth21">50</a></sup> Aristotle, *Nicomachean Ethics* II.1.
 
-      <sup id="fn-st53"><a href="#fnr-st53">91</a></sup> *Summa Theologiae* I-II q.53 a.3 ([New Advent](https://www.newadvent.org/summa/2053.htm#article3)).
+      <sup id="fn-st53"><a href="#fnr-st53">51</a></sup> *Summa Theologiae* I-II q.53 a.3 ([New Advent](https://www.newadvent.org/summa/2053.htm#article3)).
 
-      <sup id="fn-bsd"><a href="#fnr-bsd">92</a></sup> [Backseat Driver](https://github.com/a-schaefers/backseat-driver) on GitHub.
+      <sup id="fn-st57art"><a href="#fnr-st57art">52</a></sup> *Summa Theologiae* I-II q.57 a.4 ([New Advent](https://www.newadvent.org/summa/2057.htm#article4)), the same article that calls prudence the "right reason of things to be done."
+
+      <sup id="fn-bsd"><a href="#fnr-bsd">53</a></sup> [Backseat Driver](https://github.com/a-schaefers/backseat-driver), a coding tutor I built for myself. Try it out if you want, but it's not why this article was written.
 
       </div>
+
+      <small><i>Revised October 22, 2026.</i></small>
+
