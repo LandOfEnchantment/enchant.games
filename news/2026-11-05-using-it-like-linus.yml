@@ -1,0 +1,67 @@
+title: Using it like Linus
+slug: 2026-11-05-using-it-like-linus
+date: 2026-11-05
+author: Adam Schaefers
+body: |
+
+      *Republished from my blog at [adamschaefers.com](https://adamschaefers.com/blog/2026-11-05-using-it-like-linus/), where it first appeared on November 5, 2026.*
+
+      In March I told you not to lean on AI to code. I changed my mind, [I was wrong](/journal/2026-11-05-i-was-wrong-about-the-machine/).
+
+      ### Sign it, own it
+
+      Linus Torvalds uses it. His patch series to make the page cache scale was, by [his own write-up](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4c0f3697118eb3a708ea79175f7f07c43339bfab), "done with an LLM coding assistant (Claude Code) under my direction." Each patch carries an "Assisted-by: LLM" line, right next to his "Signed-off-by."
+
+      Another kernel developer, Kiryl Shutsemau, found the first version could get processes killed when a machine ran short of memory, and Linus [reworked it](https://lore.kernel.org/all/CAHk-=wjLjgfwgSZ1RDk4YdNFcV0ntosMO5AmBoHD76Zb3HFY7Q@mail.gmail.com/). As of early November none of it has merged. That's review doing its job, and the work is still Linus's.
+
+      A tool moves only as the hand moves it. When Linus signs his patch, he owns it. When a company ships slop, it can't blame the model.
+
+      ### The whiteboard
+
+      Most of us aren't Linus, with the kernel's reviewers reading behind us. That's what tests, review and staged rollouts are for. They hold what one head can't.
+
+      And [Mitchell Hashimoto](https://x.com/mitchellh/status/2100249348345057389) has a bar the rest of us can reach. You don't have to know the code line by line. But somebody should be able to pull you up to a whiteboard and have you explain what you shipped. Why X and not Y. Where it fails. What happens when someone acts maliciously.
+
+      If you can't, you don't own it.
+
+      ### Keep the craft
+
+      "Men become builders by building and lyreplayers by playing the lyre," [Aristotle says](https://classics.mit.edu/Aristotle/nicomachaen.2.ii.html). Programmers become programmers by programming. Watching the machine isn't programming, and you can't judge what you've stopped doing.
+
+      The hand work isn't what lets the machine build. It can build on ground you've never walked. The hand work is what lets you judge what it built.
+
+      Where you don't know the ground, there are two roads. Learn it well enough to check, or sign for work you can't read. The second road ends in code nobody understands, one approval at a time.
+
+      Anthropic [tested the two roads](https://www.anthropic.com/research/AI-assistance-coding-skills). Developers learning a new library with an AI assistant scored 50% on a quiz about it, against 67% for those who coded by hand. The ones who held up used it to understand, asking why, not just for code.
+
+      For some projects the second road is fine. A toy, a weekend hack, a script you'll throw away. It depends on what the thing is for, and what it costs if it breaks.
+
+      The bar is coming down. Fields that used to be closed off are open now, to the common man and to mere mortals. That brings a lot of anguish to seasoned coders, and more to anyone with a superiority complex.
+
+      But anyone with real experience notices fast. The more hard skills you bring to the table, the cooler the things you'll build, and the better time you'll have directing the machine as a tool.
+
+      ### When the job says use it
+
+      Maybe you don't get to choose. If the job says use it, and the deadline leaves no hour to read what it wrote, the two roads are still there.
+
+      Ask it why, not just for code.
+
+      Say which parts you've read and which you're signing blind. Put it in the change, the way Linus does, with an Assisted-by line and the whiteboard questions you can't answer yet, so the risk sits with whoever set the deadline.
+
+      Keep one thing you build by hand on your own time, the way a man with a desk job keeps his legs by walking.
+
+      ### Owning it
+
+      The latest social media freak-out is datacenters. Someone on X who's built them for 22 years [put it plainly](https://x.com/Platos_trad/status/1886921500693065864). "You can either listen to someone who has been engineering and building this for over 20 years or the guy with a camera posting on tiktok reading article taken out of context and not understanding the tech."
+
+      The real worry is who holds the thing. The world was ruled by psychopaths before AI, and it'll be after.
+
+      In theory it should make us rich enough to retire into the things that matter, church, marriage, children, family, hunting, fishing, farming, gardening, cooking, painting, music, etc. But they already make coders do more with AI for the same pay. The overlords aren't going to hand us the rest.
+
+      Renting compute from a lab's private datacenter serves the elites, not the common man. I rent it too, and I sell [Backseat Driver](https://github.com/a-schaefers/backseat-driver), a tutor that runs on Claude Code, so I profit from it. Soon it will run on local models and opencode as well.
+
+      As Chesterton put it in *The Outline of Sanity*, "Too much capitalism does not mean too many capitalists, but too few capitalists."
+
+      So build open, tax-funded datacenters in every city and county, as common as the public library, where anybody can run open models on the same hardware the labs use. Decentralize the hell out of it, and protect it with amendments like the First and the Second.
+
+      AI isn't going away. The genie is out of the bottle. So this is the approach I'm an advocate for, to put the power in the hands of the people.
