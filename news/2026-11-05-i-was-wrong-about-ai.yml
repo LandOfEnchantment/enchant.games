@@ -18,68 +18,14 @@ body: |
 
       I said the guessing machine can't be counted on.
 
-      I kept expecting it to hit a wall.
-
-      ### What changed my mind
-
-      I built [Mere Catholicity](https://merecatholicity.com/) by myself, my eclectic ecumenical project. There's my book, in the public domain, set for PDF, paperback and Logos. There's a library of the Fathers, the councils and the classics, typeset again from public-domain sources. And there's merecat 🐈, an AI research librarian that answers from the library with citations.
-
-      It's serverless, PureScript, lit and Tailwind over my own API on Cloudflare Workers, with D1, R2 and Durable Objects for live chat. CI ships the app and its Terraform, with approval gates before production, staged rollouts and nightly tests against production. For the community I borrowed the best bits of the old internet, 4chan-style auth, Snapchat-style DMs, Signal-style encryption, and Facebook-style profiles and walls.
-
-      By the time it was up, I'd have bet the farm that software engineers were cooked.
-
-      Now I'm writing an MMORPG in Common Lisp, data-driven, with a client and a server, and it holds over a thousand players at once. It's not done yet.
-
-      And I've made my own Linux distro, [Stasis Linux](https://stasislinux.org/).
-
-      Then there's the fun stuff, all in Emacs. A web browser, with Emacs as the display server and headless Chromium as the renderer. My Jellyfin library, music through EMMS and video through mpv. A clone of cava in pure Emacs Lisp, running the FFT in Elisp and drawing the spectrum in a buffer.
-
-      And Emacs as PID 1, for real this time. [el-init](https://github.com/emacs-os/el-init) is a service supervisor built on systemd's model, with a dependency graph, targets, timers, crash-loop detection, a bubblewrap sandbox and an importer for systemd's own unit files, and it comes with a patchset and a static build that make Emacs an actual init, reaping zombies the way PID 1 has to. It's 583 commits in six weeks, about 15,000 lines of Emacs Lisp with C and shell beside it, and 33,000 lines of tests, and its README is a 3,500-line handbook.
-
-      I shouldn't be able to do all of this. I was always a decent devops engineer. Taking what I know to AI agents has been an incredibly powerful experience. It leans more toward architecture than the nuances of code, and more toward finished products than the journey of building them the old-fashioned way. But it's undeniable now. It's going to be unavoidable in the industry, and it isn't going away.
-
-      This is not bitching out and flip flopping my original position, this is being a realist.
-
-      It isn't magic. My own Vulkan driver for AMD cards got to the GPU in a week, and it's still stuck on its first triangle.
-
-      But it still guesses, and with a compiler, tests and a human review behind it, the guesses are good enough to count on. They're past the average now.
-
-      In March I quoted a junior engineer at a big tech company as one more case of what AI was doing to us. They wrote that "Claude Code is able to do my job better than I can," and that "It is no longer sufficient to say 'the tools are not good enough' when in reality they are."
-
-      I read it as a complaint. It was a report.
-
-      I was a Luddite before, but now I'm a pragmatist. The Luddite wants the machine gone. The pragmatist knows it isn't going anywhere, so he learns to use it without letting it use him.
+      It still guesses, but with a compiler, tests and a human review behind it, the guesses are good enough to count on. They're past the average now.
 
       ### The tradeoff
 
-      Every system a programmer has ever built is a pile of tradeoffs.
+      Every system a programmer has ever built is a pile of tradeoffs. With AI we trade more for speed than ever. Understanding, beauty, the fun of building it the old-fashioned way, and the skill itself, if we stop practicing it.
 
-      We trade robustness for cost.
+      ### A pragmatic approach
 
-      We trade beautiful code for speed.
+      From here forward I'm trying to take a pragmatic approach, similar to how Linus Torvalds uses it in the Linux kernel.
 
-      We trade owning for renting. Every managed service is understanding we pay somebody else to hold.
-
-      None of these are bad in themselves. Pretending you aren't making a tradeoff is.
-
-      With the machine we trade more for speed than ever. Understanding, beauty, personality, the fun of building it the old-fashioned way, and the skill itself, if we stop practicing it.
-
-      In March I named one of those, understanding, and acted like naming it settled the question. A tradeoff is something you weigh, and I'd refused to weigh it.
-
-      ### What I got right
-
-      I still don't think it can think.
-
-      It doesn't need to, to beat most of us at a lot of the job.
-
-      And the danger is still people who stop thinking, not a machine that starts. AI isn't going to become human. Humans are going to become NPCs.
-
-      I called using the machine the dark side. Fear was the dark side, and I was already there.
-
-      To keep my own fundamentals sharp, I made [Backseat Driver](https://adamschaefers.com/store/backseat-driver/), a tutor for programmers in the AI era. It's free for personal use.
-
-      When I use AI, I'm trying to [use it like Linus](/journal/2026-11-05-using-large-language-models-like-linus/).
-
-      I'm working on a future post on the philosophy of LLMs, mostly from Aristotle and Wittgenstein.
-
-      **Stay tuned.**
+      Check out [my other post about that](/journal/2026-11-05-using-large-language-models-like-linus/), on how I use AI without letting my brain turn to slop. Or trying to, anyway.
